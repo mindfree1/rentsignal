@@ -1,0 +1,11 @@
+	<?php #foreach($rentsignals as $rentsignal) : ?>
+	<?php	
+	
+	/*$coords = array('lat'=>$rentsignal->lat,
+					'lng'=>$rentsignal->long);
+	$num = count($coords);
+	?>
+	<?php endforeach;?>*/
+<?php /*$groupcoords = json_encode($coords); 
+	  echo $groupcoords;*/
+?>

@@ -1,4 +1,31 @@
 #################
+## Ignore WAMP files
+#################
+
+*barimage.bmp
+*images_off.bmp
+*images_on.bmp
+*license.txt
+*oil
+*unins000.dat
+*unins000.exe
+*uninstall_services.bat
+*wampmanager.conf
+*wampmanager.exe
+*wampmanager.ini
+*wampmanager.tpl
+tools/**/*
+tmp/*
+scripts/*
+lang/**/*
+lang/*
+bin/**/*
+apps/**/*
+logs/*
+*.access.log
+fuel/app/logs/*
+
+#################
 ## Eclipse
 #################
 
@@ -27,7 +54,6 @@ local.properties
 
 # PDT-specific
 .buildpath
-
 
 #################
 ## Visual Studio

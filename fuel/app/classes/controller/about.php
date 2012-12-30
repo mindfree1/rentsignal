@@ -3,10 +3,10 @@ Class Controller_About extends Controller
 {
 	public function action_index()
 	{
-                $data = array();
-		$data['name'] = "CopyPasteCoder";
-		$data['age'] = 27;
-		//echo "This is my first attempts at MVC architecture.";
+        $data = array();
+		$data['name'] = "Trent Durfee";
+		$data['age'] = 28;
+		//echo "This is my first attempt at MVC architecture.";
 		return View::forge('about', $data);
 	}
 
@@ -19,7 +19,7 @@ Class Controller_About extends Controller
 	{
 		$data = array();
 		$data['name'] = $name;
-                $data['age'] = 27;
+        $data['age'] = 28;
 		return View::forge('about', $data);
 	}
 }

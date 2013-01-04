@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Rentsignal</title>
-	<?php echo Asset::css(array('layout.css','map-styles.css','jquery-ui-1.8.21.custom.css','jScrollPane.css','jquery.mCustomScrollbar.css')); ?>
+	<?php echo Asset::css(array('layout.css','map-styles.css','jquery-ui-1.8.21.custom.css')); ?>
 	<?php echo Asset::js(array('init.js','jquery-1.7.2.js','markerclusterer.js','jquery-ui-1.8.21.js','infobubble.js','mapgen.js')); ?>
 	
 	<?php $rentsignals = Model_Rentsignals::find('all'); ?>

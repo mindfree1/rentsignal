@@ -22,7 +22,6 @@ lang/*
 bin/**/*
 apps/**/*
 logs/*
-*.access.log
 fuel/app/logs/*
 
 #################

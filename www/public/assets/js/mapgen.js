@@ -126,7 +126,7 @@ function load_map(){
 			var mcOptions = {gridsize: 50, maxZoom: 15, styles: markerStyles};
 			
 			markers = [];
-			
+
 			for (var i=0; i<len;i++){
 			
 				var mLatLng = new google.maps.LatLng(data[i].rentals.lat,data[i].rentals.lng);
@@ -134,7 +134,7 @@ function load_map(){
 				html: data[i].rentals.description, animation: google.maps.Animation.DROP}); 
 
 				markers[i] = marker;
-				
+
 				$(".listitems").on("click",	function(){
 					map.panTo(markers[i].getPosition());
 				})
@@ -183,11 +183,15 @@ function load_map(){
 			var mclusters = new MarkerClusterer(map, markers, mcOptions);
 			//mclusters.clearMarkers(map);
 			//markers.push(marker);
-			
+			 
+
 			var totalMarkers = mclusters.getTotalMarkers();
 			if(totalMarkers > 1)
 			{
-				mclusters.clearMarkers(map);
+				while(markers[0]){
+  				 markers.pop().setMap(null);
+  				}
+				//mclusters.clearMarkers(map);
 				mclusters = new MarkerClusterer(map, markers, mcOptions);
 				getDistance(data);
 				markers.push(marker);
@@ -205,21 +209,21 @@ function load_map(){
 	{
 		//calculate distance between each point on the map and display appropriately.
 		
-			var R = 6371; // km
+		var R = 6371; // km
 		
-		for(x=0;x<data.length;x++)
+		for(x=0;x<data.length-1;x++)
 		{
-			var dLat = toRad(data[x].rentals.lat - data[x+1].rentals.lat);
-			var dLon = toRad(data[x].rentals.lng - data[x+1].rentals.lng);
-			var lat1 = toRad(data[x].rentals.lat);
-			var lat2 = toRad(data[x+1].rentals.lat);
+				var dLat = toRad(data[x].rentals.lat - data[x+1].rentals.lat);
+				var dLon = toRad(data[x].rentals.lng - data[x+1].rentals.lng);
+				var lat1 = toRad(data[x].rentals.lat);
+				var lat2 = toRad(data[x+1].rentals.lat);
 
-			var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+				var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
 					Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-			var d = R * c;
+				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+				var d = R * c;
 			
-			//alert('distance between ' + data[x].rentals.location + ' and ' + data[x+1].rentals.location + ' is ' + Math.round(d) + 'km');
+				//alert('distance between ' + data[x].rentals.location + ' and ' + data[x+1].rentals.location + ' is ' + Math.round(d) + 'km');
 		}
 	}
 

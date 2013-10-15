@@ -4,7 +4,7 @@ namespace Model;
 use \DB;
 use \View;
 use \Response;
-
+Use \Model\Showlistings;
 //namespace DB;
 
 Class Mapgen extends \Model
@@ -15,41 +15,29 @@ Class Mapgen extends \Model
 		$rentmax = $data["rentmax"];
 		$rooms = $data['rooms'];
 		$brooms = $data['bathrooms'];
-
+	
+		//echo 'location is' .$location;
+		
 		if($rooms == 'Any' || $brooms = 'Any')
 		{	
 			$query_results = DB::query('SELECT * FROM `rentsignals` WHERE rent BETWEEN '.$rentmin.' AND '. $rentmax,  DB::SELECT)->execute();
 		}
 		else
-		{
+		{	
 			$query_results = DB::query('SELECT * FROM `rentsignals` WHERE rent BETWEEN '.$rentmin.' AND '. $rentmax .
 			' AND rooms LIKE' . $rooms . ' AND bathrooms LIKE ' . $brooms, DB::SELECT)->execute();
 		}
 		
 		$numrows = count($query_results);
-	
+
 		foreach($query_results as $item)
 		{
 			$newdata["rentals"] = $item;
+			//$imagedata[] = $item['location'];
 			$response[] = $newdata;
 		}
+		//$img_results = ShowListings::get_results($imagedata);
 		echo json_encode($response);
-	
-		//return $query_results;
 	}
-	
-/*	foreach ($rows as $row)
-{
-	$data["uid"] = $row["DeviceID"];
-		$data["deviceInfo"]["Longitude"] = $row["Longitude"];
-		$data["deviceInfo"]["Latitude"] = $row["Latitude"];
-		$data["deviceInfo"]["Type"] = $row["Type"];
-		$data["deviceInfo"]["latlontime"] = $row["latlontime"];
-
-		$response[] = $data;
-	}
-
-	echo json_encode($response);
-	*/
 }
 ?>

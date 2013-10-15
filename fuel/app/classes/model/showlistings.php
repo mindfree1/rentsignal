@@ -4,61 +4,67 @@ namespace Model;
 use \DB;
 use \View;
 use \Response;
-
-//namespace DB;
+use \Arr;
 
 Class ShowListings extends \Model
 {
-	public static function get_results()
+	public static function get_results($data)
 	{
-	
-		$per_page = 8;
-		$data['page_limit'] = $per_page;
+
+		$location = $data;
+		$location = implode("|", $location);
 		
-		if($_GET)
+		$per_page = 8;
+		$totalresult = DB::query('SELECT * FROM `images` INNER JOIN rentsignals ON images.location=rentsignals.location WHERE images.location REGEXP ' . "'" .$location . "'", DB::SELECT)->execute();
+		
+		$numrows = count($totalresult);
+		$pages = ceil($numrows/$per_page);
+
+		if(isset($_GET['pages']))
 		{
-			$page= $_GET['page'];
+			$page= $_GET['pages'];
 		}
 		else
 		{
 			$page = 1;
 		}
-	
-		$start = ($page-1)*$per_page;
-		
-		/*$rentrange = array("rentmin" => $rentmin,
-					  "rentmax" => $rentmax,
-					 );
-		echo $rentrange["rentmin"];*/
-		
-		//$query_controls = DB::query('SELECT * FROM `rentsignals` WHERE rent LIKE $rentrange["rentmin","rentmax"]')->execute();
-		
-		$totalresult = DB::query('SELECT * FROM `images` order by id',DB::SELECT)->execute();
-		$numrows = count($totalresult);
-		
-		$max = 'limit ' .$start.','.$per_page; 
-		
- 		$result = DB::query('SELECT * FROM `images` order by id ' .$max, DB::SELECT)->execute();
-		$pages = ceil($numrows/$per_page);
-		$data['image_amount'] = count($result);
-		
+
 		if($pages < 1)
 		{
 			$pages = 1;
 		}
+
+		$start = ($pages - 1); 			//first item to display on this page
+		$max = 'limit ' .$start.','.$per_page; 
 		
-		$data['page_nums'] = $pages;
-		$data['numrows'] = $numrows;
-		
+ 		//$result = DB::query('SELECT * FROM `images` WHERE location REGEXP ' . "'" .$location ."'" . " $max", DB::SELECT)->execute();
+ 		$result = DB::query('SELECT * FROM `images` WHERE location REGEXP ' . "'" .$location ."'", DB::SELECT)->execute();
+		$img_amount = count($result);
+
 		foreach($result as $item)
 		{
 			$url[] = $item['url'];
 		}
-		
-		$data['img_url'] = $url;
-		
-		//return Response::forge(View::forge('listings/listings', $data));
-		return Response::forge(View::forge('listings/listings', $data));
+
+		$imgdata = array();
+		$imgdata["page_nums"] = $pages;
+		$imgdata["numrows"] = $numrows;
+		$imgdata["img_url"] = $url;
+		$imgdata["page_limit"] = $per_page;
+		$imgdata["locations"] = $data['loc1'];
+
+		//create the view
+		$imgview = View::forge('listings/listings');
+
+		//assign variables for the view
+		$imgview->set('page_nums', $imgdata["page_nums"], false);
+		$imgview->set('numrows', $imgdata["numrows"], false);
+		$imgview->set('img_url', $imgdata["img_url"], false);
+		$imgview->set('page_limit', $imgdata["page_limit"], false);
+		$imgview->set('locations', $imgdata["locations"], false);
+
+		//assign the view to browser output
+		echo $imgview;
 	}
 }
 ?>

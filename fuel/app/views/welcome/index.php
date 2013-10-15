@@ -4,40 +4,12 @@
 	<meta charset="utf-8">
 	<title>Rentsignal</title>
 	<?php echo Asset::css(array('layout.css','map-styles.css','jquery-ui-1.8.21.custom.css')); ?>
-	<?php echo Asset::js(array('init.js','jquery-1.7.2.js','markerclusterer.js','jquery-ui-1.8.21.js','infobubble.js','mapgen.js')); ?>
+	<?php echo Asset::js(array('jquery-1.7.2.js','markerclusterer.js','jquery-ui-1.8.21.js','infobubble.js','mapgen.js', 'angular.js')); ?>
 	
-	<?php $rentsignals = Model_Rentsignals::find('all'); ?>
 	
-	<?php
-	
-	$result = DB::query('SELECT * FROM `markers`', DB::SELECT)->execute();
-	$numrows = count($result);
-
-	#$on_key = $result('id');
-	foreach($result as $item)
-	{
-		$allcoords[] = $item;
-	}
-	?>
 <script>
-	/*var allcoords = '<?php echo json_encode($allcoords)?>';
-	var numcoords = '<?php echo $numrows ?>';
-	
-	var obj = jQuery.parseJSON(allcoords);*/
-	//alert("first coord obj data returned is: " + obj[1].lat);
 $(document).ready(function() {
-	
-	/*var lat = new Array();
-	var lng = new Array();
-	
-	for (var i=0; i<numcoords; i++){
-		
-		lat[i] = obj[i].lat;
-		lng[i] = obj[i].lng;
-	}*/
-	
 	load_map();
-	//createMarkers(lat,lng,numcoords,'');
 	
 	$("#map-slider").slider({ 
 		range: true,
@@ -71,14 +43,13 @@ $(document).ready(function() {
 			data: searchlistings,
 			dataType: "json",
 			success: function(data) {
-				var len = data.length;
-				var lat;
-				var lng;
-				var location;
-				var description;
-	
+				var len = data.length;		
 				createMarkers(len,data);
-				
+				loadImages(data);
+			},
+			error: function()
+			{
+				console.log('error handling');
 			}
 		});
 		return false;
@@ -86,17 +57,11 @@ $(document).ready(function() {
 	
 	});
 </script>
-<script>
-    
-</script>
 </head>
 <body>
 	<div id="listContent">
-	<div><a href="<!--javascript:prevImage(1);-->" class="imgctrls">Previous</a><a href="<!--javascript:nextImage(2);-->" class="imgctrls">Next</a></div>
-	<div id="content">
+	<div id="content" class="content">
 		<ul class="slider-content">
-			<?php //echo View::forge('listings/listings');?>
-			<script>$("#content").load("http://rentsignal.com/showlistings/getListings?page=1");</script>
 		</ul>
 	</div>
 	</div>
@@ -161,12 +126,39 @@ $(document).ready(function() {
 			<!--<p class="pull-right">Page rendered in {exec_time}s using {mem_usage}mb of memory.</p>
 			<p>
 				<a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.<br>
-				<small>Version: <?php echo e(Fuel::VERSION); ?></small>-->
-			</p>
+				<small>Version: <?php echo e(Fuel::VERSION); ?></small>
+			</p>-->
 		</footer>
 	</div>
-	<script>
-		
-	</script>
+	<?php 	$aview = View::forge('listings/listings');
+			//$aview->page_nums = '1';
+			//$aview->numrows = '5';
+			//$aview->img_url = '';
+	?>
+		<script language="javascript" type="text/javascript"> 
+			function loadImages(data)
+			{
+				var locationimgs = [];
+				var locations;
+
+				if(data.length == 1)
+				{
+					locationimgs = data[0].rentals.location;
+					$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locationimgs);
+				}
+				else
+				{
+					for(var i=0;i<data.length;i++)
+					{
+						locationimgs[i] = data[i].rentals.location;
+						locations = locationimgs.join("|");
+						console.log('data passed over is ' + data[i].rentals.location);
+					}
+					$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locations);
+				}
+				//$("div.content").load("http://rentsignal.com/showlistings/returnimages/" + locations[i]);
+//				$("div.content").load("http://rentsignal.com/showlistings/returnimages/" + location);
+			}
+		</script>
 </body>
 </html>

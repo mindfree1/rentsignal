@@ -12,7 +12,7 @@
 			//$data['pages'] = $_GET['pages'];
 			$data['loc1'] = $_GET['locations'];
 			$results = Showlistings::get_results($data);
-			echo $results;
+			//echo $results;
 			//return View::forge('listings/listings', $results);
 		}
 		

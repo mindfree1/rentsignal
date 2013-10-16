@@ -22,25 +22,25 @@ Class ShowListings extends \Model
 
 		if(isset($_GET['pages']))
 		{
-			$page= $_GET['pages'];
+			$pages = $_GET['pages'];
+			$start = ($pages - 1) * $per_page;	 
 		}
 		else
 		{
-			$page = 1;
+			$start = ($pages - 1);	 
 		}
-
-		if($pages < 1)
+		
+		if($start == '0')
 		{
-			$pages = 1;
+			$start = $pages;
 		}
-
-		$start = ($pages - 1); 			//first item to display on this page
+		
+		$pages = ceil($numrows/$per_page);
 		$max = 'limit ' .$start.','.$per_page; 
 		
- 		//$result = DB::query('SELECT * FROM `images` WHERE location REGEXP ' . "'" .$location ."'" . " $max", DB::SELECT)->execute();
- 		$result = DB::query('SELECT * FROM `images` WHERE location REGEXP ' . "'" .$location ."'", DB::SELECT)->execute();
+ 		$result = DB::query('SELECT * FROM `images` WHERE location REGEXP ' . "'" .$location ."'" . " $max", DB::SELECT)->execute();
 		$img_amount = count($result);
-
+		
 		foreach($result as $item)
 		{
 			$url[] = $item['url'];
@@ -52,6 +52,7 @@ Class ShowListings extends \Model
 		$imgdata["img_url"] = $url;
 		$imgdata["page_limit"] = $per_page;
 		$imgdata["locations"] = $data['loc1'];
+		$imgdata["$img_amount"] = $img_amount;
 
 		//create the view
 		$imgview = View::forge('listings/listings');
@@ -62,6 +63,7 @@ Class ShowListings extends \Model
 		$imgview->set('img_url', $imgdata["img_url"], false);
 		$imgview->set('page_limit', $imgdata["page_limit"], false);
 		$imgview->set('locations', $imgdata["locations"], false);
+		$imgview->set('img_amount', $imgdata["$img_amount"], false);
 
 		//assign the view to browser output
 		echo $imgview;

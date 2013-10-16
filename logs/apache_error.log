@@ -27798,3 +27798,175 @@ Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate
 [Tue Oct 15 23:44:51 2013] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\Router::parse_segments() C:\\wamp\\fuel\\core\\classes\\router.php:147, referer: http://rentsignal.com/
 [Tue Oct 15 23:44:51 2013] [error] [client 127.0.0.1] PHP   7. class_exists() C:\\wamp\\fuel\\core\\classes\\router.php:168, referer: http://rentsignal.com/
 [Tue Oct 15 23:44:51 2013] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 22:14:08 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed Oct 16 22:14:08 2013] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Wed Oct 16 22:14:08 2013] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Wed Oct 16 22:14:08 2013] [notice] Server built: Oct 18 2010 01:58:12
+[Wed Oct 16 22:14:08 2013] [notice] Parent: Created child process 3020
+[Wed Oct 16 22:14:08 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed Oct 16 22:14:08 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed Oct 16 22:14:08 2013] [notice] Child 3020: Child process is running
+[Wed Oct 16 22:14:08 2013] [notice] Child 3020: Acquired the start mutex.
+[Wed Oct 16 22:14:08 2013] [notice] Child 3020: Starting 64 worker threads.
+[Wed Oct 16 22:14:08 2013] [notice] Child 3020: Starting thread to listen on port 80.
+[Wed Oct 16 23:31:47 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ')', expecting ']' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 28
+[Wed Oct 16 23:31:47 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Oct 16 23:31:47 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed Oct 16 23:31:47 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37
+[Wed Oct 16 23:31:47 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Wed Oct 16 23:31:47 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Wed Oct 16 23:31:47 2013] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Wed Oct 16 23:31:51 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ')', expecting ']' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 28
+[Wed Oct 16 23:31:51 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Oct 16 23:31:51 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed Oct 16 23:31:51 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37
+[Wed Oct 16 23:31:51 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Wed Oct 16 23:31:51 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Wed Oct 16 23:31:51 2013] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Wed Oct 16 23:32:00 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ')', expecting ']' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 28, referer: http://rentsignal.com/
+[Wed Oct 16 23:32:00 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Wed Oct 16 23:32:00 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:32:00 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37, referer: http://rentsignal.com/
+[Wed Oct 16 23:32:00 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Wed Oct 16 23:32:00 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:32:00 2013] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:33:16 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 31, referer: http://rentsignal.com/
+[Wed Oct 16 23:33:16 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Wed Oct 16 23:33:16 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:33:16 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37, referer: http://rentsignal.com/
+[Wed Oct 16 23:33:16 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Wed Oct 16 23:33:16 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:33:16 2013] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 131604481 bytes) in C:\\wamp\\fuel\\app\\views\\listings\\listings.php on line 33, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::get_results() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:43, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/
+[Wed Oct 16 23:37:28 2013] [error] [client 127.0.0.1] PHP  10. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/
+
+Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 131604481 bytes) in C:\wamp\fuel\app\views\listings\listings.php on line 33
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 131604481 bytes) in C:\\wamp\\fuel\\app\\views\\listings\\listings.php on line 33, referer: http://rentsignal.com/
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37, referer: http://rentsignal.com/
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::get_results() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:43, referer: http://rentsignal.com/
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/
+[Wed Oct 16 23:50:35 2013] [error] [client 127.0.0.1] PHP  10. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/
+
+Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 131604481 bytes) in C:\wamp\fuel\app\views\listings\listings.php on line 33
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 131604481 bytes) in C:\\wamp\\fuel\\app\\views\\listings\\listings.php on line 33, referer: http://rentsignal.com/
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37, referer: http://rentsignal.com/
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::get_results() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:43, referer: http://rentsignal.com/
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/
+[Wed Oct 16 23:51:02 2013] [error] [client 127.0.0.1] PHP  10. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/
+
+Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 131604481 bytes) in C:\wamp\fuel\app\views\listings\listings.php on line 33
+[Wed Oct 16 23:52:43 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ';', expecting T_WHILE in C:\\wamp\\fuel\\app\\views\\listings\\listings.php on line 45, referer: http://rentsignal.com/
+[Wed Oct 16 23:52:43 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Wed Oct 16 23:52:43 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:52:43 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37, referer: http://rentsignal.com/
+[Wed Oct 16 23:52:43 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Wed Oct 16 23:52:43 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:52:43 2013] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::get_results() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:43, referer: http://rentsignal.com/
+[Wed Oct 16 23:52:43 2013] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/
+[Wed Oct 16 23:52:43 2013] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/
+[Wed Oct 16 23:52:43 2013] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/
+[Wed Oct 16 23:52:43 2013] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\\wamp\\fuel\\core\\classes\\arr.php on line 62, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::get_results() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:43, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  10. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  11. {closure}() C:\\wamp\\fuel\\core\\bootstrap.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  12. Fuel\\Core\\Error::error_handler() C:\\wamp\\fuel\\core\\bootstrap.php:45, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  13. Fuel\\Core\\Config::get() C:\\wamp\\fuel\\core\\classes\\error.php:107, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  14. Fuel\\Core\\Arr::get() C:\\wamp\\fuel\\core\\classes\\config.php:176, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 56209516 bytes) in C:\\wamp\\fuel\\core\\classes\\security.php on line 192, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::get_results() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:43, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  10. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  11. {closure}() C:\\wamp\\fuel\\core\\bootstrap.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  12. Fuel\\Core\\Error::error_handler() C:\\wamp\\fuel\\core\\bootstrap.php:45, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  13. Fuel\\Core\\Config::get() C:\\wamp\\fuel\\core\\classes\\error.php:107, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  14. Fuel\\Core\\Arr::get() C:\\wamp\\fuel\\core\\classes\\config.php:176, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  15. {closure}() C:\\wamp\\fuel\\core\\bootstrap.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  16. Fuel\\Core\\Error::shutdown_handler() C:\\wamp\\fuel\\core\\bootstrap.php:33, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  17. Fuel\\Core\\Error::show_php_error() C:\\wamp\\fuel\\core\\classes\\error.php:59, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  18. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  19. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  20. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  21. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  22. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  23. e() C:\\wamp\\fuel\\core\\views\\errors\\php_fatal_error.php:89, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  24. Fuel\\Core\\Security::htmlentities() C:\\wamp\\fuel\\core\\base.php:184, referer: http://rentsignal.com/
+[Thu Oct 17 00:29:46 2013] [error] [client 127.0.0.1] PHP  25. htmlentities() C:\\wamp\\fuel\\core\\classes\\security.php:192, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\\wamp\\fuel\\core\\bootstrap.php on line 42, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::get_results() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:43, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  10. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  11. {closure}() C:\\wamp\\fuel\\core\\bootstrap.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 58390562 bytes) in C:\\wamp\\fuel\\core\\classes\\security.php on line 192, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_returnimages() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::get_results() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:43, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  10. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  11. {closure}() C:\\wamp\\fuel\\core\\bootstrap.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  12. {closure}() C:\\wamp\\fuel\\core\\bootstrap.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  13. Fuel\\Core\\Error::shutdown_handler() C:\\wamp\\fuel\\core\\bootstrap.php:33, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  14. Fuel\\Core\\Error::show_php_error() C:\\wamp\\fuel\\core\\classes\\error.php:59, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  15. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  16. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  17. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  18. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  19. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  20. e() C:\\wamp\\fuel\\core\\views\\errors\\php_fatal_error.php:89, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  21. Fuel\\Core\\Security::htmlentities() C:\\wamp\\fuel\\core\\base.php:184, referer: http://rentsignal.com/
+[Thu Oct 17 00:31:29 2013] [error] [client 127.0.0.1] PHP  22. htmlentities() C:\\wamp\\fuel\\core\\classes\\security.php:192, referer: http://rentsignal.com/

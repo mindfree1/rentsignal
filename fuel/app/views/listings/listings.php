@@ -22,17 +22,23 @@
 		}
 
 		//this should be used for pagination to load the right images on next page
-		//$("#content").load("http://rentsignal.com/showlistings/getListings?pages=" + pageNum + "&locations=" + <?php echo $locations ?>);
+		$("#content").load('http://rentsignal.com/showlistings/getListings?pages=' + pageNum + '&locations=' + '<?php echo $locations ?>');
 	});
 </script>
 <?php
-	//used later for pagination loop
-	/*for($i=1; $i<= $page_limit; $i++)
+	
+	/*while($numrows <= $page_limit)
 	{
 		echo '<img width="120px" height="120px" src="'. $img_url[$i-1]. '" style="padding-right:10px;"</img>';
 	}*/
-	for($i=1; $i<= $numrows; $i++)
+
+	//used later for pagination loop
+	for($i=1; $i <= $img_amount; $i++)
 	{
 		echo '<img width="120px" height="120px" src="'. $img_url[$i-1]. '" style="padding-right:10px;"</img>';
 	}
+	/*for($i=1; $i<= $numrows; $i++)
+	{
+		echo '<img width="120px" height="120px" src="'. $img_url[$i-1]. '" style="padding-right:10px;"</img>';
+	}*/
 ?>

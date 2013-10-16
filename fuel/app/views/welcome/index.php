@@ -112,10 +112,6 @@ $(document).ready(function() {
 		</div>
 		<div class="row">
 			<div class="span-one-third">
-			<?php 
-				//echo ViewModel::forge('mapper');
-				# echo View::forge('mapgen/index');
-			?>
 			</div>
 			<div class="span-one-third">
 			</div>
@@ -130,11 +126,6 @@ $(document).ready(function() {
 			</p>-->
 		</footer>
 	</div>
-	<?php 	$aview = View::forge('listings/listings');
-			//$aview->page_nums = '1';
-			//$aview->numrows = '5';
-			//$aview->img_url = '';
-	?>
 		<script language="javascript" type="text/javascript"> 
 			function loadImages(data)
 			{
@@ -156,8 +147,6 @@ $(document).ready(function() {
 					}
 					$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locations);
 				}
-				//$("div.content").load("http://rentsignal.com/showlistings/returnimages/" + locations[i]);
-//				$("div.content").load("http://rentsignal.com/showlistings/returnimages/" + location);
 			}
 		</script>
 </body>

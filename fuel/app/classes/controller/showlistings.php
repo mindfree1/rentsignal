@@ -9,11 +9,8 @@
 		public function action_getListings()
 		{
 			//to return which page of images should load
-			//$data['pages'] = $_GET['pages'];
 			$data['loc1'] = $_GET['locations'];
 			$results = Showlistings::get_results($data);
-			//echo $results;
-			//return View::forge('listings/listings', $results);
 		}
 		
 		public function action_search()
@@ -28,12 +25,6 @@
 				$data['bathrooms'] = $_POST['bathrooms'];
 				
 				$results = Mapgen::search_results($data);
-
-				/*$view = View::forge('listings/listings');
-				$this->template->content = $view;
-				$this->template->title = 'Images';*/
-				//$img_results = ShowListings::get_results($imagedata);
-				//echo $results;
 			}
 		}
 

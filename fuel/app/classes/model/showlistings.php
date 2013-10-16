@@ -34,7 +34,7 @@ Class ShowListings extends \Model
 		{
 			$start = $pages;
 		}
-		
+
 		$pages = ceil($numrows/$per_page);
 		$max = 'limit ' .$start.','.$per_page; 
 		
@@ -57,7 +57,7 @@ Class ShowListings extends \Model
 		//create the view
 		$imgview = View::forge('listings/listings');
 
-		//assign variables for the view
+		//assign variables for the view to use based on the data
 		$imgview->set('page_nums', $imgdata["page_nums"], false);
 		$imgview->set('numrows', $imgdata["numrows"], false);
 		$imgview->set('img_url', $imgdata["img_url"], false);

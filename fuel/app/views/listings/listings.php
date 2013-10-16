@@ -21,24 +21,15 @@
 			pageNum = 1;
 		}
 
-		//this should be used for pagination to load the right images on next page
+		//loads the right page based off click/tap on pagination number
 		$("#content").load('http://rentsignal.com/showlistings/getListings?pages=' + pageNum + '&locations=' + '<?php echo $locations ?>');
 	});
 </script>
 <?php
-	
-	/*while($numrows <= $page_limit)
-	{
-		echo '<img width="120px" height="120px" src="'. $img_url[$i-1]. '" style="padding-right:10px;"</img>';
-	}*/
 
-	//used later for pagination loop
+	//loop through for pagination
 	for($i=1; $i <= $img_amount; $i++)
 	{
 		echo '<img width="120px" height="120px" src="'. $img_url[$i-1]. '" style="padding-right:10px;"</img>';
 	}
-	/*for($i=1; $i<= $numrows; $i++)
-	{
-		echo '<img width="120px" height="120px" src="'. $img_url[$i-1]. '" style="padding-right:10px;"</img>';
-	}*/
 ?>

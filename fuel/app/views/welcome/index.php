@@ -43,7 +43,7 @@ $(document).ready(function() {
 			data: searchlistings,
 			dataType: "json",
 			success: function(data) {
-				var len = data.length;		
+				var len = data.length;	
 				createMarkers(len,data);
 				loadImages(data);
 			},

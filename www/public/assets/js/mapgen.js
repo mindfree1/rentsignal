@@ -76,42 +76,37 @@ function setSlidingPanel(container, map, offlineMode)
 				};	
 		});
 }
-var map;		
-function load_map(){
 
-	//alert("latitude is: " + lat);
-	//alert("longitutde is: " + lng);
-	
-	var mapOptions = {
-	center: new google.maps.LatLng(-33.880815,151.187791),
-	zoom: 8,
-	mapTypeId: google.maps.MapTypeId.ROADMAP,
-	};
+	var map;		
+	function load_map(){
 
-		var infoWindow = null;
-		infowindow = new google.maps.InfoWindow({
-        content: "loading...",
-		maxWidth: 500 });
+		//alert("latitude is: " + lat);
+		//alert("longitutde is: " + lng);
 		
-	map = new google.maps.Map(document.getElementById("rentsignal_map"),mapOptions);
-	
-	var slidingPanel = document.createElement('div');
-	setSlidingPanel(slidingPanel, map);
-	
-	slidingPanel.index = -500;
-	map.controls[google.maps.ControlPosition.TOP_LEFT].push(slidingPanel);
+		var mapOptions = {
+		center: new google.maps.LatLng(-33.880815,151.187791),
+		zoom: 8,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		};
+
+			var infoWindow = null;
+			infowindow = new google.maps.InfoWindow({
+	        content: "loading...",
+			maxWidth: 500 });
+			
+		map = new google.maps.Map(document.getElementById("rentsignal_map"),mapOptions);
 		
-	//createMarkers(lat,lng, 2, '');
-}
+		var slidingPanel = document.createElement('div');
+		setSlidingPanel(slidingPanel, map);
+		
+		slidingPanel.index = -500;
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(slidingPanel);
+	}
+	
 	function createMarkers(len,data)
 	{	
 			var markerIcon = "../public/assets/img/home-marker.png";
 			var markerImage = new google.maps.MarkerImage(markerIcon, new google.maps.Size(50, 50));
-			
-			//House for rent in Glebe, super modern luxury converted terrace house, has pool - rent is $550pw
-			//var htmlContent = '<div id="richInfo"><div style="position:absolute; float:left; width: 400px; height:200px;"><img src="../public/assets/img/sydnenham-deg.jpg"></img></div><div id="richCon" style="float:right;width:300px;height:200px;"><p>Terrace house for rent, brand new complex, $900pw has all the luxuries one could want and in a prime location</p></div>';
-
-			//var infoContent = [{title: 'Mascot', content: '<div class="infoCon">' + 'House for rent in Mascot, rent is $250, modern place with sundrenched balcony, close to shops & train' + '</div>',},{ title: 'Glebe', content: '<div class="infoCon">' + 'House for rent in Glebe, super modern luxury converted terrace house, has pool - rent is $550pw' +'</div>',},{title: 'Sydnenham',content: '<div class="infoCon">' + htmlContent,},{title: 'Woy Woy',content: '<div class="infoCon">' + 'Nice place in Woy Woy if youd like to live here itll cost yas $40 per week' + '</div>'}];
 
 			var markerStyles = [{
 				url: markerIcon,
@@ -124,46 +119,71 @@ function load_map(){
 			
 			//create map cluster markers here
 			var mcOptions = {gridsize: 50, maxZoom: 15, styles: markerStyles};
-			
 			markers = [];
 
-			for (var i=0; i<len;i++){
-			
+			for (var i=0; i < len; i++){
 				var mLatLng = new google.maps.LatLng(data[i].rentals.lat,data[i].rentals.lng);
-				var marker = new google.maps.Marker({"position": mLatLng, icon: markerImage, title: data[i].rentals.location, 
-				html: data[i].rentals.description, animation: google.maps.Animation.DROP}); 
+				var marker = new google.maps.Marker({"position": mLatLng, icon: markerImage, title: data[i].rentals.location, animation: google.maps.Animation.DROP}); 
+				
+				contents = data[i].rentals.description;
 
 				markers[i] = marker;
+				attachInfo(markers, contents, i, len);
+			}
 
-				$(".listitems").on("click",	function(){
-					map.panTo(markers[i].getPosition());
-				})
-	
-				var offsetTop = '-300px';
-				var offsetLeft = '-200px';
+			var mclusters = new MarkerClusterer(map, markers, mcOptions);
+			var totalMarkers = mclusters.getTotalMarkers();
+
+			if(totalMarkers > 1)
+			{
+				while(markers[0]){
+  				 markers.pop().setMap(null);
+  				}
 			
-				infoBubbleContent = new InfoBubble({
-					shadowStyle: 1,
-					className: 'test',
-					padding: 0,
-					color: 'rgb(255,255,240)',
-					backgroundColor: 'rgb(57,57,57)',
-					borderRadius: 4,
-					arrowSize: 10,
-					borderWidth: 1,
-					borderColor: '#2c2c2c',
-					disableAutoPan: true,
-					marginLeft: offsetLeft,
-					marginTop: offsetTop
-				});
+				mclusters = new MarkerClusterer(map, markers, mcOptions);
+				//getDistance(data);
+				markers.push(marker);
+			}
+			else
+			{
+				mclusters = new MarkerClusterer(map, markers, mcOptions);
+				//getDistance(data);
+				markers.push(marker);
+			}
+		
+			//mclusters.clearMarkers(map);
+		};
 
-				google.maps.event.addListener(marker, "click", function () {
+	function attachInfo(markers, contents, num, len)
+	{
+		var offsetTop = '-300px';
+		var offsetLeft = '-200px';
+
+		infoBubbleContent = new InfoBubble({
+			shadowStyle: 1,
+			className: 'infoCon',
+			padding: 0,
+			color: 'rgb(255,255,240)',
+			content : contents,
+			backgroundColor: 'rgb(57,57,57)',
+			borderRadius: 4,
+			arrowSize: 10,
+			borderWidth: 1,
+			borderColor: '#2c2c2c',
+			disableAutoPan: true,
+			marginLeft: offsetLeft,
+			marginTop: offsetTop
+		});
+
+		//console.log('marker length is: ' + len);
+			google.maps.event.addListener(markers[num], "click", function () {
+				//console.log('bubble content should be: ' + contents);
 				if(infoBubbleContent.isOpen())
 				{
 						infoBubbleContent.close();
-						infoBubbleContent.setMaxWidth(800);
-						infoBubbleContent.setMaxHeight('800px');
-						infoBubbleContent.content = this.html;
+						infoBubbleContent.setMaxWidth('800px');
+						infoBubbleContent.setMaxHeight('800');
+						infoBubbleContent.content = contents;
 						infoBubbleContent.open(map, this);
 						$(".infoCon").css('width', '930px');
 						$(".infoCon").css('height', '370px');
@@ -171,40 +191,15 @@ function load_map(){
 					}
 					else
 					{
-						infoBubbleContent.content = this.html;
+						infoBubbleContent.content = contents;
 						infoBubbleContent.open(map, this);
 						$(".infoCon").css('width', '930px');
 						$(".infoCon").css('height', '370px');
 						$(".infoCon").css('margin-left', '-120px');
 					}
-				});
-			}
-		
-			var mclusters = new MarkerClusterer(map, markers, mcOptions);
-			//mclusters.clearMarkers(map);
-			//markers.push(marker);
-			 
+			});
+	}
 
-			var totalMarkers = mclusters.getTotalMarkers();
-			if(totalMarkers > 1)
-			{
-				while(markers[0]){
-  				 markers.pop().setMap(null);
-  				}
-				//mclusters.clearMarkers(map);
-				mclusters = new MarkerClusterer(map, markers, mcOptions);
-				getDistance(data);
-				markers.push(marker);
-			}
-			else
-			{
-				mclusters = new MarkerClusterer(map, markers, mcOptions);
-				getDistance(data);
-				markers.push(marker);
-			}
-		
-			//mclusters.clearMarkers(map);
-		}
 	function getDistance(data)
 	{
 		//calculate distance between each point on the map and display appropriately.
@@ -238,14 +233,17 @@ function load_map(){
 		}*/
 	}
 	
-	function clearMarkers(markers,map)
+	function clearMarkers(markers)
 	{
-		if(markers != 'null' || markers != '')
+		if(markers != 'null' || markers != '' || markers.length != 0)
 		{
 			/*clear markers from map and then add new ones
 			probably need to also check and see if markers exist, if so check for matches/duplicates and then only add new ones, would likely
 			save processing time and also be cleaner
 			*/
+			for (var i = 0; i < markers.length; i++ ) {
+    			markers[i].setMap(null);
+  			}
 		}
 	}
 	

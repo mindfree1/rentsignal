@@ -28124,3 +28124,80 @@ Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate
 [Tue Dec 24 00:06:46 2013] [notice] Child 8396: Acquired the start mutex.
 [Tue Dec 24 00:06:46 2013] [notice] Child 8396: Starting 64 worker threads.
 [Tue Dec 24 00:06:46 2013] [notice] Child 8396: Starting thread to listen on port 80.
+[Tue Dec 24 14:24:36 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Dec 24 14:24:36 2013] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Dec 24 14:24:36 2013] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Tue Dec 24 14:24:36 2013] [notice] Server built: Oct 18 2010 01:58:12
+[Tue Dec 24 14:24:36 2013] [notice] Parent: Created child process 7052
+[Tue Dec 24 14:24:36 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Dec 24 14:24:36 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Dec 24 14:24:36 2013] [notice] Child 7052: Child process is running
+[Tue Dec 24 14:24:36 2013] [notice] Child 7052: Acquired the start mutex.
+[Tue Dec 24 14:24:36 2013] [notice] Child 7052: Starting 64 worker threads.
+[Tue Dec 24 14:24:36 2013] [notice] Child 7052: Starting thread to listen on port 80.
+[Thu Dec 26 17:20:48 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Dec 26 17:20:48 2013] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Dec 26 17:20:48 2013] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Dec 26 17:20:48 2013] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Dec 26 17:20:48 2013] [notice] Parent: Created child process 7532
+[Thu Dec 26 17:20:48 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Dec 26 17:20:48 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Dec 26 17:20:48 2013] [notice] Child 7532: Child process is running
+[Thu Dec 26 17:20:48 2013] [notice] Child 7532: Acquired the start mutex.
+[Thu Dec 26 17:20:48 2013] [notice] Child 7532: Starting 64 worker threads.
+[Thu Dec 26 17:20:48 2013] [notice] Child 7532: Starting thread to listen on port 80.
+[Sun Dec 29 10:36:09 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Dec 29 10:36:10 2013] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sun Dec 29 10:36:10 2013] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Sun Dec 29 10:36:10 2013] [notice] Server built: Oct 18 2010 01:58:12
+[Sun Dec 29 10:36:10 2013] [notice] Parent: Created child process 5424
+[Sun Dec 29 10:36:10 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Dec 29 10:36:10 2013] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Dec 29 10:36:10 2013] [notice] Child 5424: Child process is running
+[Sun Dec 29 10:36:10 2013] [notice] Child 5424: Acquired the start mutex.
+[Sun Dec 29 10:36:10 2013] [notice] Child 5424: Starting 64 worker threads.
+[Sun Dec 29 10:36:10 2013] [notice] Child 5424: Starting thread to listen on port 80.
+[Sat Apr 12 11:55:19 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Apr 12 11:55:21 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat Apr 12 11:55:21 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Sat Apr 12 11:55:21 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Sat Apr 12 11:55:21 2014] [notice] Parent: Created child process 7200
+[Sat Apr 12 11:55:21 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Apr 12 11:55:21 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Apr 12 11:55:21 2014] [notice] Child 7200: Child process is running
+[Sat Apr 12 11:55:21 2014] [notice] Child 7200: Acquired the start mutex.
+[Sat Apr 12 11:55:21 2014] [notice] Child 7200: Starting 64 worker threads.
+[Sat Apr 12 11:55:21 2014] [notice] Child 7200: Starting thread to listen on port 80.
+[Sun Apr 13 12:53:46 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Apr 13 12:53:46 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sun Apr 13 12:53:46 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Sun Apr 13 12:53:46 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Sun Apr 13 12:53:46 2014] [notice] Parent: Created child process 2928
+[Sun Apr 13 12:53:46 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Apr 13 12:53:46 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Apr 13 12:53:46 2014] [notice] Child 2928: Child process is running
+[Sun Apr 13 12:53:46 2014] [notice] Child 2928: Acquired the start mutex.
+[Sun Apr 13 12:53:46 2014] [notice] Child 2928: Starting 64 worker threads.
+[Sun Apr 13 12:53:46 2014] [notice] Child 2928: Starting thread to listen on port 80.
+[Thu Apr 17 22:57:09 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Apr 17 22:57:09 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Apr 17 22:57:09 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Apr 17 22:57:09 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Apr 17 22:57:09 2014] [notice] Parent: Created child process 7656
+[Thu Apr 17 22:57:09 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Apr 17 22:57:09 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Apr 17 22:57:09 2014] [notice] Child 7656: Child process is running
+[Thu Apr 17 22:57:09 2014] [notice] Child 7656: Acquired the start mutex.
+[Thu Apr 17 22:57:09 2014] [notice] Child 7656: Starting 64 worker threads.
+[Thu Apr 17 22:57:09 2014] [notice] Child 7656: Starting thread to listen on port 80.
+[Mon Apr 28 23:55:32 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Mon Apr 28 23:55:32 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Apr 28 23:55:32 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Mon Apr 28 23:55:32 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Mon Apr 28 23:55:32 2014] [notice] Parent: Created child process 2180
+[Mon Apr 28 23:55:32 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Mon Apr 28 23:55:32 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Mon Apr 28 23:55:32 2014] [notice] Child 2180: Child process is running
+[Mon Apr 28 23:55:32 2014] [notice] Child 2180: Acquired the start mutex.
+[Mon Apr 28 23:55:32 2014] [notice] Child 2180: Starting 64 worker threads.
+[Mon Apr 28 23:55:32 2014] [notice] Child 2180: Starting thread to listen on port 80.

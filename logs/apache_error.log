@@ -28201,3 +28201,256 @@ Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate
 [Mon Apr 28 23:55:32 2014] [notice] Child 2180: Acquired the start mutex.
 [Mon Apr 28 23:55:32 2014] [notice] Child 2180: Starting 64 worker threads.
 [Mon Apr 28 23:55:32 2014] [notice] Child 2180: Starting thread to listen on port 80.
+[Sun May 04 11:45:09 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun May 04 11:45:09 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sun May 04 11:45:09 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Sun May 04 11:45:09 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Sun May 04 11:45:09 2014] [notice] Parent: Created child process 6528
+[Sun May 04 11:45:09 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun May 04 11:45:09 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun May 04 11:45:09 2014] [notice] Child 6528: Child process is running
+[Sun May 04 11:45:09 2014] [notice] Child 6528: Acquired the start mutex.
+[Sun May 04 11:45:09 2014] [notice] Child 6528: Starting 64 worker threads.
+[Sun May 04 11:45:09 2014] [notice] Child 6528: Starting thread to listen on port 80.
+[Sun May 04 15:19:55 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Sun May 04 15:19:55 2014] [notice] Child 6528: Exit event signaled. Child process is ending.
+[Sun May 04 15:19:56 2014] [notice] Child 6528: Released the start mutex
+[Sun May 04 15:19:57 2014] [notice] Child 6528: All worker threads have exited.
+[Sun May 04 15:19:57 2014] [notice] Child 6528: Child process is exiting
+[Sun May 04 15:19:57 2014] [notice] Parent: Child process exited successfully.
+[Sun May 04 15:20:00 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun May 04 15:20:01 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Sun May 04 15:20:01 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Sun May 04 15:20:01 2014] [notice] Parent: Created child process 8416
+[Sun May 04 15:20:01 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun May 04 15:20:01 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun May 04 15:20:01 2014] [notice] Child 8416: Child process is running
+[Sun May 04 15:20:01 2014] [notice] Child 8416: Acquired the start mutex.
+[Sun May 04 15:20:01 2014] [notice] Child 8416: Starting 64 worker threads.
+[Sun May 04 15:20:01 2014] [notice] Child 8416: Starting thread to listen on port 80.
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected $end in C:\\wamp\\fuel\\app\\views\\mapgen\\update.php on line 9
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 15:20:55 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 15:38:30 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE in C:\\wamp\\fuel\\app\\classes\\controller\\login.php on line 15
+[Sun May 04 15:38:30 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 15:38:30 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 15:38:30 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request::forge() C:\\wamp\\www\\public\\index.php:37
+[Sun May 04 15:38:30 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\Request->__construct() C:\\wamp\\fuel\\core\\classes\\request.php:100
+[Sun May 04 15:38:30 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\Router::process() C:\\wamp\\fuel\\core\\classes\\request.php:333
+[Sun May 04 15:38:30 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Router::parse_match() C:\\wamp\\fuel\\core\\classes\\router.php:122
+[Sun May 04 15:38:30 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\Router::parse_segments() C:\\wamp\\fuel\\core\\classes\\router.php:147
+[Sun May 04 15:38:30 2014] [error] [client 127.0.0.1] PHP   7. class_exists() C:\\wamp\\fuel\\core\\classes\\router.php:168
+[Sun May 04 15:38:30 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Sun May 04 16:28:44 2014] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Controller_Login_Template' not found in C:\\wamp\\fuel\\app\\classes\\controller\\login.php on line 4
+[Sun May 04 16:28:44 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 16:28:44 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 16:28:44 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request::forge() C:\\wamp\\www\\public\\index.php:37
+[Sun May 04 16:28:44 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\Request->__construct() C:\\wamp\\fuel\\core\\classes\\request.php:100
+[Sun May 04 16:28:44 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\Router::process() C:\\wamp\\fuel\\core\\classes\\request.php:333
+[Sun May 04 16:28:44 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Router::parse_match() C:\\wamp\\fuel\\core\\classes\\router.php:122
+[Sun May 04 16:28:44 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\Router::parse_segments() C:\\wamp\\fuel\\core\\classes\\router.php:147
+[Sun May 04 16:28:44 2014] [error] [client 127.0.0.1] PHP   7. class_exists() C:\\wamp\\fuel\\core\\classes\\router.php:168
+[Sun May 04 16:28:44 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Sun May 04 16:28:44 2014] [error] [client 127.0.0.1] PHP   9. include() C:\\wamp\\fuel\\core\\classes\\autoloader.php:282
+[Sun May 04 16:29:02 2014] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Controller_login_Template' not found in C:\\wamp\\fuel\\app\\classes\\controller\\login.php on line 4
+[Sun May 04 16:29:02 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 16:29:02 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 16:29:02 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request::forge() C:\\wamp\\www\\public\\index.php:37
+[Sun May 04 16:29:02 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\Request->__construct() C:\\wamp\\fuel\\core\\classes\\request.php:100
+[Sun May 04 16:29:02 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\Router::process() C:\\wamp\\fuel\\core\\classes\\request.php:333
+[Sun May 04 16:29:02 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Router::parse_match() C:\\wamp\\fuel\\core\\classes\\router.php:122
+[Sun May 04 16:29:02 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\Router::parse_segments() C:\\wamp\\fuel\\core\\classes\\router.php:147
+[Sun May 04 16:29:02 2014] [error] [client 127.0.0.1] PHP   7. class_exists() C:\\wamp\\fuel\\core\\classes\\router.php:168
+[Sun May 04 16:29:02 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Sun May 04 16:29:02 2014] [error] [client 127.0.0.1] PHP   9. include() C:\\wamp\\fuel\\core\\classes\\autoloader.php:282
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Asset::image() in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 43
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 17:26:10 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Response::redirect_back() in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 144
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:37:29 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Response::redirect_back() in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 147
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:40:26 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Response::redirect_back() in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 147
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:46:33 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Response::redirect_back() in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 147
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:46:59 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Response::redirect_back() in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 147
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:47:08 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Model\\Asset' not found in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 12
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:48:31 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Response::redirect_back() in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 149
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:49:01 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Response::redirect_back() in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 149
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:49:04 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Response::redirect_back() in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 149
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:49:22 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined function redirect_back() in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 149
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:49:33 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Response::redirect_back() in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 149
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 19:49:46 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ')' in C:\\wamp\\fuel\\app\\views\\login\\index.php on line 151
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257

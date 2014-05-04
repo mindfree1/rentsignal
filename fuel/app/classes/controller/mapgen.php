@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Mapgen extends Controller_Template
+class Controller_Mapgen extends Controller_login_template
 {
 
 	public function action_update()

@@ -28454,3 +28454,134 @@ Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate
 [Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
 [Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
 [Sun May 04 20:01:48 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Tue May 06 22:06:08 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue May 06 22:06:08 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue May 06 22:06:08 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Tue May 06 22:06:08 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Tue May 06 22:06:08 2014] [notice] Parent: Created child process 4420
+[Tue May 06 22:06:08 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue May 06 22:06:08 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue May 06 22:06:08 2014] [notice] Child 4420: Child process is running
+[Tue May 06 22:06:08 2014] [notice] Child 4420: Acquired the start mutex.
+[Tue May 06 22:06:08 2014] [notice] Child 4420: Starting 64 worker threads.
+[Tue May 06 22:06:08 2014] [notice] Child 4420: Starting thread to listen on port 80.
+[Tue May 06 23:40:27 2014] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Model_User' not found in C:\\wamp\\fuel\\app\\classes\\controller\\base.php on line 10, referer: http://rentsignal.com/public/index.php/admin/login
+[Tue May 06 23:40:27 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/public/index.php/admin/login
+[Tue May 06 23:40:27 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/public/index.php/admin/login
+[Tue May 06 23:40:27 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\public\\index.php:37, referer: http://rentsignal.com/public/index.php/admin/login
+[Tue May 06 23:40:27 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invoke() C:\\wamp\\fuel\\core\\classes\\request.php:440, referer: http://rentsignal.com/public/index.php/admin/login
+[Tue May 06 23:40:27 2014] [error] [client 127.0.0.1] PHP   4. Controller_Admin->before() C:\\wamp\\fuel\\app\\classes\\controller\\admin.php:0, referer: http://rentsignal.com/public/index.php/admin/login
+[Tue May 06 23:40:27 2014] [error] [client 127.0.0.1] PHP   5. Controller_Base->before() C:\\wamp\\fuel\\app\\classes\\controller\\admin.php:9, referer: http://rentsignal.com/public/index.php/admin/login
+[Tue May 06 23:51:13 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_ECHO in C:\\wamp\\fuel\\app\\views\\welcome\\index.php on line 76
+[Tue May 06 23:51:13 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Tue May 06 23:51:13 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Tue May 06 23:51:13 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Tue May 06 23:51:13 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Tue May 06 23:51:13 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Tue May 06 23:51:13 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Tue May 06 23:51:13 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Tue May 06 23:51:42 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected '/' in C:\\wamp\\fuel\\app\\views\\welcome\\index.php on line 76
+[Tue May 06 23:51:42 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Tue May 06 23:51:42 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Tue May 06 23:51:42 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Tue May 06 23:51:42 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Tue May 06 23:51:42 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Tue May 06 23:51:42 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Tue May 06 23:51:42 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Tue May 06 23:53:48 2014] [error] [client 127.0.0.1] PHP Fatal error:  Using $this when not in object context in C:\\wamp\\fuel\\app\\views\\welcome\\index.php on line 76
+[Tue May 06 23:53:48 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Tue May 06 23:53:48 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Tue May 06 23:53:48 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Tue May 06 23:53:48 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Tue May 06 23:53:48 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Tue May 06 23:53:48 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Tue May 06 23:53:48 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Tue May 06 23:53:48 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Tue May 06 23:57:11 2014] [error] [client 127.0.0.1] PHP Fatal error:  Using $this when not in object context in C:\\wamp\\fuel\\app\\views\\welcome\\index.php on line 76
+[Tue May 06 23:57:11 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Tue May 06 23:57:11 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Tue May 06 23:57:11 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Tue May 06 23:57:11 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Tue May 06 23:57:11 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Tue May 06 23:57:11 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Tue May 06 23:57:11 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Tue May 06 23:57:11 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected '(', expecting T_STRING or T_VARIABLE or '$' in C:\\wamp\\fuel\\app\\views\\admin\\login.php on line 49, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:01 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected '(', expecting T_STRING or T_VARIABLE or '$' in C:\\wamp\\fuel\\app\\views\\admin\\login.php on line 49, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:11 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected '(', expecting T_STRING or T_VARIABLE or '$' in C:\\wamp\\fuel\\app\\views\\admin\\login.php on line 49
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Wed May 07 00:06:16 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in C:\\wamp\\fuel\\app\\views\\admin\\login.php on line 49
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Wed May 07 00:11:28 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ';' in C:\\wamp\\fuel\\app\\views\\admin\\login.php on line 22, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:46:14 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Form::post() in C:\\wamp\\fuel\\app\\views\\admin\\login.php on line 22, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/public/index.php/admin

@@ -43,7 +43,7 @@ $(document).ready(function() {
 			data: searchlistings,
 			dataType: "json",
 			success: function(data) {
-				var len = data.length;	
+				var len = data.length;
 				createMarkers(len,data);
 				loadImages(data);
 			},
@@ -73,6 +73,7 @@ $(document).ready(function() {
 	<div class="container">
 		<div class="hero-unit">
 			<div id="nav-bar"></div>
+			<div><!--current user logged in name should go here--></div>
 			<div id="controls">
 			<form action="" name="control-form">
 			<fieldset>

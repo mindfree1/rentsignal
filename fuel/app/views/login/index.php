@@ -13,60 +13,17 @@ use \Arr;
 <style media="screen" type="text/css">
     .defaultText { width: 300px; left: 500px; position: absolute; margin: auto}
     .defaultTextActive { color: #a1a1a1; font-style: italic; }
-
     #email{top:180px;}
     #username{top:230px;}
     #password{top:280px;}
-
-    #signup
-    {
-    	padding-left: 200px;
-    }
-
-    #signupnow
-    {
-    	margin-top: 94px;
-    	margin-left: 80px;
-    	font-style: italic;
-    	color: #a1a1a1;
-    }
-
-    #signupbtn
-    {
-    	margin-left: 520px;
-    	top: 92px;
-    }
-
-    #signinbtn
-    {
-    	top: 340px;
-    	margin-left: 100px;
-    	width: 100px;
-    }
-
-    #wrapper
-    {
-    	width:100%;
-    	left:0px;
-    	top:0px;
-    }
-
-    #login_bg img
-    {
-    	width: 100%;
-    }
-
-    .body
-    {
-    	margin: none;
-    }
-
-    .fb-login-button
-    {
-    	position: absolute;
-    	top: 342px;
-    	left: 720px;
-    }
+    #signup{padding-left: 200px;}
+    #signupnow{margin-top: 94px;margin-left: 80px;font-style: italic;color: #a1a1a1;}
+    #signupbtn{margin-left: 520px;top: 92px;}
+    #signinbtn{top: 340px;margin-left: 100px;width: 100px;}
+    #wrapper{width:100%;left:0px;top:0px;}
+    #login_bg img{width: 100%;}
+    .body{margin: none;}
+    .fb-login-button{position: absolute;top: 342px;left: 720px;}
 </style>
 <body>
 		<script>
@@ -145,9 +102,9 @@ use \Arr;
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Good to see you, ' + response.name + '.');
-      document.getElementById('status').innerHTML = 'Good to see you, ' +
-        response.name;
-
+      /*document.getElementById('status').innerHTML = 'Good to see you, ' +
+        response.name;*/
+        //
     });
   }
 </script>

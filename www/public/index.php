@@ -30,7 +30,6 @@ defined('FUEL_START_MEM') or define('FUEL_START_MEM', memory_get_usage());
 
 // Boot the app
 require APPPATH.'bootstrap.php';
-
 // Generate the request, execute it and send the output.
 try
 {

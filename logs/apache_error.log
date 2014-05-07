@@ -28585,3 +28585,203 @@ Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate
 [Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548, referer: http://rentsignal.com/public/index.php/admin
 [Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257, referer: http://rentsignal.com/public/index.php/admin
 [Wed May 07 00:50:56 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 19:45:12 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 19:45:12 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Wed May 07 19:45:13 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Wed May 07 19:45:13 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Wed May 07 19:45:13 2014] [notice] Parent: Created child process 7060
+[Wed May 07 19:45:13 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 19:45:13 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 19:45:13 2014] [notice] Child 7060: Child process is running
+[Wed May 07 19:45:13 2014] [notice] Child 7060: Acquired the start mutex.
+[Wed May 07 19:45:13 2014] [notice] Child 7060: Starting 64 worker threads.
+[Wed May 07 19:45:13 2014] [notice] Child 7060: Starting thread to listen on port 80.
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Fuel\\Core\\Form::post() in C:\\wamp\\fuel\\app\\views\\admin\\login.php on line 20
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP   2. str_replace() C:\\wamp\\www\\public\\index.php:60
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP   7. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Wed May 07 20:14:12 2014] [error] [client 127.0.0.1] PHP  12. include() C:\\wamp\\fuel\\core\\classes\\view.php:243
+[Wed May 07 23:03:30 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING, expecting ')' in C:\\wamp\\fuel\\app\\config\\config.php on line 30, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 23:03:30 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 23:03:30 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 23:03:30 2014] [error] [client 127.0.0.1] PHP   2. require() C:\\wamp\\www\\public\\index.php:32, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 23:03:30 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\Fuel::init() C:\\wamp\\fuel\\app\\bootstrap.php:30, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 23:03:30 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\Config::load() C:\\wamp\\fuel\\core\\classes\\fuel.php:154, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 23:03:30 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Config_File->load() C:\\wamp\\fuel\\core\\classes\\config.php:82, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 23:03:30 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\Config_Php->load_file() C:\\wamp\\fuel\\core\\classes\\config\\file.php:48, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 23:03:30 2014] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\Fuel::load() C:\\wamp\\fuel\\core\\classes\\config\\php.php:20, referer: http://rentsignal.com/public/index.php/admin
+[Wed May 07 23:13:49 2014] [error] [client 127.0.0.1] script 'C:/wamp/www/index.php' not found or unable to stat
+[Wed May 07 23:13:56 2014] [error] [client 127.0.0.1] script 'C:/wamp/www/index.php' not found or unable to stat
+[Wed May 07 23:14:09 2014] [error] [client 127.0.0.1] script 'C:/wamp/www/index.php' not found or unable to stat
+[Wed May 07 23:24:31 2014] [error] [client 127.0.0.1] PHP Warning:  require(\\bootstrap.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in C:\\wamp\\www\\public\\index.php on line 32
+[Wed May 07 23:24:31 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 07 23:24:31 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed May 07 23:24:31 2014] [error] [client 127.0.0.1] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required '\\bootstrap.php' (include_path='.;C:\\php\\pear') in C:\\wamp\\www\\public\\index.php on line 32
+[Wed May 07 23:24:31 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 07 23:24:31 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed May 07 23:33:06 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ')' in C:\\wamp\\www\\public\\index.php on line 11
+[Wed May 07 23:33:28 2014] [error] [client 127.0.0.1] PHP Notice:  Use of undefined constant APPPATH - assumed 'APPPATH' in C:\\wamp\\www\\public\\index.php on line 11
+[Wed May 07 23:33:28 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 07 23:33:28 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed May 07 23:33:56 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING in C:\\wamp\\www\\public\\index.php on line 11
+[Wed May 07 23:34:09 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING in C:\\wamp\\www\\public\\index.php on line 11
+[Wed May 07 23:34:11 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING in C:\\wamp\\www\\public\\index.php on line 11
+[Wed May 07 23:34:27 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ')' in C:\\wamp\\www\\public\\index.php on line 11
+[Wed May 07 23:37:47 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Wed May 07 23:37:47 2014] [notice] Child 7060: Exit event signaled. Child process is ending.
+[Wed May 07 23:37:48 2014] [notice] Child 7060: Released the start mutex
+[Wed May 07 23:37:49 2014] [notice] Child 7060: All worker threads have exited.
+[Wed May 07 23:37:49 2014] [notice] Child 7060: Child process is exiting
+[Wed May 07 23:37:49 2014] [notice] Parent: Child process exited successfully.
+[Wed May 07 23:37:55 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:37:55 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Wed May 07 23:37:55 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Wed May 07 23:37:55 2014] [notice] Parent: Created child process 8068
+[Wed May 07 23:37:55 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:37:55 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:37:55 2014] [notice] Child 8068: Child process is running
+[Wed May 07 23:37:55 2014] [notice] Child 8068: Acquired the start mutex.
+[Wed May 07 23:37:55 2014] [notice] Child 8068: Starting 64 worker threads.
+[Wed May 07 23:37:55 2014] [notice] Child 8068: Starting thread to listen on port 80.
+[Wed May 07 23:49:28 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Wed May 07 23:49:28 2014] [notice] Child 8068: Exit event signaled. Child process is ending.
+[Wed May 07 23:49:29 2014] [notice] Child 8068: Released the start mutex
+[Wed May 07 23:49:30 2014] [notice] Child 8068: All worker threads have exited.
+[Wed May 07 23:49:30 2014] [notice] Child 8068: Child process is exiting
+[Wed May 07 23:49:30 2014] [notice] Parent: Child process exited successfully.
+[Wed May 07 23:49:31 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:49:31 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Wed May 07 23:49:31 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Wed May 07 23:49:31 2014] [notice] Parent: Created child process 8712
+[Wed May 07 23:49:31 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:49:31 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:49:31 2014] [notice] Child 8712: Child process is running
+[Wed May 07 23:49:31 2014] [notice] Child 8712: Acquired the start mutex.
+[Wed May 07 23:49:31 2014] [notice] Child 8712: Starting 64 worker threads.
+[Wed May 07 23:49:31 2014] [notice] Child 8712: Starting thread to listen on port 80.
+[Wed May 07 23:50:17 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Wed May 07 23:50:17 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Wed May 07 23:52:22 2014] [error] [client 127.0.0.1] PHP Warning:  require(\\bootstrap.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in C:\\wamp\\www\\public\\index.php on line 32
+[Wed May 07 23:52:22 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 07 23:52:22 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed May 07 23:52:22 2014] [error] [client 127.0.0.1] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required '\\bootstrap.php' (include_path='.;C:\\php\\pear') in C:\\wamp\\www\\public\\index.php on line 32
+[Wed May 07 23:52:22 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 07 23:52:22 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed May 07 23:52:57 2014] [error] [client 127.0.0.1] PHP Warning:  require(\\classes\\autoloader.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in C:\\wamp\\www\\fuel\\app\\bootstrap.php on line 4
+[Wed May 07 23:52:57 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 07 23:52:57 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed May 07 23:52:57 2014] [error] [client 127.0.0.1] PHP   2. require() C:\\wamp\\www\\public\\index.php:32
+[Wed May 07 23:52:57 2014] [error] [client 127.0.0.1] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required '\\classes\\autoloader.php' (include_path='.;C:\\php\\pear') in C:\\wamp\\www\\fuel\\app\\bootstrap.php on line 4
+[Wed May 07 23:52:57 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 07 23:52:57 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Wed May 07 23:52:57 2014] [error] [client 127.0.0.1] PHP   2. require() C:\\wamp\\www\\public\\index.php:32
+[Wed May 07 23:59:03 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Wed May 07 23:59:03 2014] [notice] Child 8712: Exit event signaled. Child process is ending.
+[Wed May 07 23:59:04 2014] [notice] Child 8712: Released the start mutex
+[Wed May 07 23:59:05 2014] [notice] Child 8712: All worker threads have exited.
+[Wed May 07 23:59:05 2014] [notice] Child 8712: Child process is exiting
+[Wed May 07 23:59:05 2014] [notice] Parent: Child process exited successfully.
+[Wed May 07 23:59:07 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:59:07 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Wed May 07 23:59:07 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Wed May 07 23:59:07 2014] [notice] Parent: Created child process 8776
+[Wed May 07 23:59:07 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:59:07 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:59:07 2014] [notice] Child 8776: Child process is running
+[Wed May 07 23:59:07 2014] [notice] Child 8776: Acquired the start mutex.
+[Wed May 07 23:59:07 2014] [notice] Child 8776: Starting 64 worker threads.
+[Wed May 07 23:59:07 2014] [notice] Child 8776: Starting thread to listen on port 80.
+[Wed May 07 23:59:45 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Wed May 07 23:59:45 2014] [notice] Child 8776: Exit event signaled. Child process is ending.
+[Wed May 07 23:59:46 2014] [notice] Child 8776: Released the start mutex
+[Wed May 07 23:59:47 2014] [notice] Child 8776: All worker threads have exited.
+[Wed May 07 23:59:47 2014] [notice] Child 8776: Child process is exiting
+[Wed May 07 23:59:47 2014] [notice] Parent: Child process exited successfully.
+[Wed May 07 23:59:49 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:59:49 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Wed May 07 23:59:49 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Wed May 07 23:59:49 2014] [notice] Parent: Created child process 4308
+[Wed May 07 23:59:49 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:59:49 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed May 07 23:59:49 2014] [notice] Child 4308: Child process is running
+[Wed May 07 23:59:49 2014] [notice] Child 4308: Acquired the start mutex.
+[Wed May 07 23:59:49 2014] [notice] Child 4308: Starting 64 worker threads.
+[Wed May 07 23:59:49 2014] [notice] Child 4308: Starting thread to listen on port 80.
+[Thu May 08 00:02:33 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:02:33 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:03:01 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/public, referer: http://rentsignal.com/
+[Thu May 08 00:03:12 2014] [error] [client 127.0.0.1] script 'C:/wamp/www/index.php' not found or unable to stat
+[Thu May 08 00:03:16 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:03:16 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:03:47 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:03:47 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:04:11 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:04:11 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:04:43 2014] [error] [client 127.0.0.1] PHP Warning:  require(\\bootstrap.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in C:\\wamp\\www\\public\\index.php on line 32
+[Thu May 08 00:04:43 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu May 08 00:04:43 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Thu May 08 00:04:43 2014] [error] [client 127.0.0.1] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required '\\bootstrap.php' (include_path='.;C:\\php\\pear') in C:\\wamp\\www\\public\\index.php on line 32
+[Thu May 08 00:04:43 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu May 08 00:04:43 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\public\\index.php:0
+[Thu May 08 00:06:33 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Thu May 08 00:06:33 2014] [notice] Child 4308: Exit event signaled. Child process is ending.
+[Thu May 08 00:06:34 2014] [notice] Child 4308: Released the start mutex
+[Thu May 08 00:06:35 2014] [notice] Child 4308: All worker threads have exited.
+[Thu May 08 00:06:35 2014] [notice] Child 4308: Child process is exiting
+[Thu May 08 00:06:35 2014] [notice] Parent: Child process exited successfully.
+[Thu May 08 00:06:37 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu May 08 00:06:37 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu May 08 00:06:37 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu May 08 00:06:37 2014] [notice] Parent: Created child process 7184
+[Thu May 08 00:06:37 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu May 08 00:06:37 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu May 08 00:06:37 2014] [notice] Child 7184: Child process is running
+[Thu May 08 00:06:37 2014] [notice] Child 7184: Acquired the start mutex.
+[Thu May 08 00:06:37 2014] [notice] Child 7184: Starting 64 worker threads.
+[Thu May 08 00:06:37 2014] [notice] Child 7184: Starting thread to listen on port 80.
+[Thu May 08 00:07:07 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:07:07 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:07:14 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Thu May 08 00:07:14 2014] [notice] Child 7184: Exit event signaled. Child process is ending.
+[Thu May 08 00:07:15 2014] [notice] Child 7184: Released the start mutex
+[Thu May 08 00:07:16 2014] [notice] Child 7184: All worker threads have exited.
+[Thu May 08 00:07:16 2014] [notice] Child 7184: Child process is exiting
+[Thu May 08 00:07:16 2014] [notice] Parent: Child process exited successfully.
+[Thu May 08 00:07:17 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu May 08 00:07:17 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu May 08 00:07:17 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu May 08 00:07:17 2014] [notice] Parent: Created child process 8860
+[Thu May 08 00:07:17 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu May 08 00:07:17 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu May 08 00:07:17 2014] [notice] Child 8860: Child process is running
+[Thu May 08 00:07:17 2014] [notice] Child 8860: Acquired the start mutex.
+[Thu May 08 00:07:17 2014] [notice] Child 8860: Starting 64 worker threads.
+[Thu May 08 00:07:17 2014] [notice] Child 8860: Starting thread to listen on port 80.
+[Thu May 08 00:07:22 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:07:22 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/
+[Thu May 08 00:07:31 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/admin
+[Thu May 08 00:08:30 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Thu May 08 00:08:30 2014] [notice] Child 8860: Exit event signaled. Child process is ending.
+[Thu May 08 00:08:31 2014] [notice] Child 8860: Released the start mutex
+[Thu May 08 00:08:32 2014] [notice] Child 8860: All worker threads have exited.
+[Thu May 08 00:08:32 2014] [notice] Child 8860: Child process is exiting
+[Thu May 08 00:08:32 2014] [notice] Parent: Child process exited successfully.
+[Thu May 08 00:08:32 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu May 08 00:08:32 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu May 08 00:08:32 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu May 08 00:08:32 2014] [notice] Parent: Created child process 6788
+[Thu May 08 00:08:32 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu May 08 00:08:32 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu May 08 00:08:32 2014] [notice] Child 6788: Child process is running
+[Thu May 08 00:08:32 2014] [notice] Child 6788: Acquired the start mutex.
+[Thu May 08 00:08:32 2014] [notice] Child 6788: Starting 64 worker threads.
+[Thu May 08 00:08:32 2014] [notice] Child 6788: Starting thread to listen on port 80.

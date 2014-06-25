@@ -549,3 +549,59 @@ Warning - 2014-05-10 20:53:22 --> Fuel\Core\View::factory - This method is depre
 Warning - 2014-05-10 21:22:04 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
 Warning - 2014-05-10 21:22:10 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
 Warning - 2014-05-10 21:22:10 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.
+Warning - 2014-05-10 22:22:47 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:22:47 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.
+Warning - 2014-05-10 22:24:03 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:24:03 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.
+Warning - 2014-05-10 22:24:52 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:24:52 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.
+Warning - 2014-05-10 22:25:00 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:25:06 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:26:42 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:26:42 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.
+Warning - 2014-05-10 22:26:45 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:26:51 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:27:07 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:27:11 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:27:11 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.
+Warning - 2014-05-10 22:27:13 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:29:01 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:29:03 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:29:34 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:29:53 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:29:56 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:29:56 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.
+Warning - 2014-05-10 22:30:08 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:30:12 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:30:12 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:30:14 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:30:14 --> Fuel\Core\Request::execute - The Controller_ShowListings::after() method should accept and return the Controller's response, empty return for the after() method is deprecated.
+Warning - 2014-05-10 22:30:14 --> Fuel\Core\Request::execute - The Controller_ShowListings controller should return a string or a Response object, support for the $controller->response object is deprecated.
+Warning - 2014-05-10 22:30:14 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:30:14 --> Fuel\Core\Request::execute - The Controller_ShowListings::after() method should accept and return the Controller's response, empty return for the after() method is deprecated.
+Warning - 2014-05-10 22:30:14 --> Fuel\Core\Request::execute - The Controller_ShowListings controller should return a string or a Response object, support for the $controller->response object is deprecated.
+Warning - 2014-05-10 22:30:23 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:30:23 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.
+Warning - 2014-05-10 22:30:30 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:30:33 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:30:33 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.
+Warning - 2014-05-10 22:30:35 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:31:02 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:44:54 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:45:08 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:45:08 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.
+Warning - 2014-05-10 22:45:15 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:45:15 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:45:15 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:45:15 --> Fuel\Core\Validation::errors - This method is deprecated. Please use Validation::error() instead.
+Warning - 2014-05-10 22:45:15 --> Fuel\Core\Validation::errors - This method is deprecated. Please use Validation::error() instead.
+Warning - 2014-05-10 22:45:22 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Error - 2014-05-10 22:45:22 --> 8 - Undefined variable: current_user in C:\wamp\www\fuel\app\classes\controller\admin.php on line 39
+Error - 2014-05-10 22:45:22 --> 8 - Trying to get property of non-object in C:\wamp\www\fuel\app\classes\controller\admin.php on line 39
+Warning - 2014-05-10 22:45:22 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:45:22 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.
+Warning - 2014-05-10 22:45:25 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:45:32 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:45:52 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:45:54 --> Fuel\Core\Fuel::init - The configured locale en_AU is not installed on your system.
+Warning - 2014-05-10 22:45:54 --> Fuel\Core\View::factory - This method is deprecated.  Please use a forge() instead.

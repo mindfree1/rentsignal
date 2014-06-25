@@ -20,8 +20,6 @@
 
 			<td><?php echo $rentsignal->location; ?></td>
 			<td><?php echo $rentsignal->description; ?></td>
-			<!--<td><?php //echo $rentsignal->lat; ?></td>-->
-			<!--<td><?php //echo $rentsignal->long; ?></td>-->
 			<td><?php echo $rentsignal->rent; ?></td>
 			<td><?php echo $rentsignal->avail_from; ?></td>
 			<td><?php echo $rentsignal->rooms; ?></td>

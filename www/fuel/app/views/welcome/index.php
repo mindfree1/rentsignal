@@ -72,7 +72,9 @@ $(document).ready(function() {
 	</div>
 	<div class="container">
 		<div class="hero-unit">
-			<div id="nav-bar"></div>
+			<div id="nav-bar">
+				<?php echo Html::anchor('admin', 'Dashboard');?>
+			</div>
 			<div><!--current user logged in name should go here--></div>
 			<div id="controls">
 			<form action="" name="control-form">

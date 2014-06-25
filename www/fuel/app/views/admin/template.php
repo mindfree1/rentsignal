@@ -33,7 +33,7 @@
 	<div class="topbar">
 	    <div class="fill">
 	        <div class="container">
-	            <h3><a href="#">My Site</a></h3>
+	            <h3><?php echo Html::anchor('/', 'Rentsignal');?></h3>
 	            <ul>
 					<?php foreach (glob(APPPATH.'classes/controller/admin/*.php') as $controller): ?>
 						<?php

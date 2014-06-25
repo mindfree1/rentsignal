@@ -1,0 +1,192 @@
+if ($add)
+{
+    /*if (ValidateField($childid) == false)
+    {
+        echo "Please supply child id";
+		exit();
+    }
+	
+	 if (ValidateLength($childid) == false)
+    {
+        echo "The child id cannot contain more than 5 characters";
+		exit();
+    }
+	
+	 if (ValidateNumeric($childid) == false)
+    {
+        echo "Child ID must be numeric";
+		exit();
+		
+		
+    }
+	*/
+	if (ValidateField($childfirstname)  == false)
+    {
+        echo "Please supply child first name";
+		exit();
+    }
+	
+	if (ValidateLength($childfirstname, 20) == false)
+    {
+        echo "The child first name cannot contain more than 20 characters";
+		exit();
+	}
+	
+	if (ValidateField($childsecondname) == false)
+    {
+        echo "Please supply child second name";
+		exit();
+    } 
+	 
+	if (ValidateLength($childmiddlename, 20) == false)
+    {
+        echo "The child second name cannot contain more than 20 characters";
+		exit();
+    }
+	
+	if (ValidateField($childfamilyname) == false)
+    {
+        echo "Please supply child family name";
+		exit();
+    } 
+	 
+	if (ValidateLength($childfamilyname, 20) == false)
+    {
+        echo "The child family name cannot contain more than 20 characters";
+		exit();
+    }
+	 
+    if(ValidateRadioButtons($childgender) == false)
+	{
+		echo "Please select a gender";
+		exit();
+	}
+	
+	if(ValidateDropdownBox($ChildDOBday) == false)
+	{
+		echo "Please select a day";
+		exit();
+	}
+	
+	if(ValidateDropdownBox($childDOBmonth) == false)
+	{
+		echo "Please select a month";
+		exit();
+	}
+	
+	if(ValidateDropdownBox($childDOByear) == false)
+	{
+		echo "Please select a year";
+		exit();
+	}
+    else
+    {
+        $dob = $childDOByear . "-" . $childDOBmonth . "-" . $childDOBday;
+        
+        $query = "insert into child values (childid, '$childfirstname', '$childmiddlename', '$childlastname', '$childgender','$childDOB')";
+        echo $query;
+        exit();
+     
+        mysqli_query($link, $query) or die ("Error in the executing the query");
+     
+        if (mysqli_affected_rows($link) > 0)
+        {
+            echo "Child Inserted";
+        }
+    }
+}
+else if ($delete)
+{
+    if ($childid == "")
+    {
+        echo "Please supply child id";
+	}
+    else
+    {
+      $query = "update child set firstname = '$childfirstname', middlename = '$childmiddlename',
+				lastname = '$childlastname', gender = '$childgender', dob ='$childDOB'
+                where childid = $childid";
+          
+        mysqli_query($link, $query) or die("Error in executing the query");
+            
+        if (mysqli_affected_rows ($link) > 0)
+        {
+            echo "Child deleted";
+        }
+    }
+}
+else if ($delete)
+{
+    if ($childid == "")
+    {
+        echo "Please supply child id";
+    }
+    else
+    {  
+        $link = mysqli_connect("localhost", "root", "", "childcare");
+        //Check connection
+        
+		if (mysqli_connect_errno($link))
+		{
+			echo "Failed to connect to MySQL: ";
+			exit();
+		}
+		$query = "delete from child where childid = $childid)"; 
+	}
+}
+else if ($viewall)
+{
+    $link = mysqli_connect("localhost", "root","", "childcare") or die("Error " . mysqli_error($link));
+
+    //consultation:
+    $query = "SELECT * FROM child";
+	
+    //execute the query.
+    $result = mysqli_query($link, $query) or die("Error in the executing the query");
+    $numbchild = 0;
+    $numfemale = 0;
+    $nummale = 0;
+	
+    //display information:
+    echo "<table border='1' align='center'>";
+    echo "<caption style='font-size:30'>Child Table</caption>";
+    echo "<tr>";
+    echo "<td> Child Id</td>";
+    echo "<td> Child First Name</td>";
+    echo "<td> Gender</td>";
+    echo "</tr>";
+    while($row = mysqli_fetch_row($result))
+    {
+        if ($row[4] == 'f')
+        {
+			$gender = "Female";
+			echo "<tr style='background:red'>";
+			$numfemale++;
+        }
+        else
+        {
+			$nummale++;
+			$gender = "Male";
+			echo "<tr>";
+        }
+			echo "<td>$row[0]</td>";
+			echo "<td>$row[1]</td>";
+			echo "<td>$gender</td>";
+			echo "</tr>";
+			$numchild++;
+    }
+	
+	echo "<tr>";
+	echo "<td colspan='2'>Number of children</td>";
+	echo "<td>$numchild</td>";
+	echo "</tr>";
+	echo "<td colspan='2'>Number of female children</td>";
+	echo "<td>$numfemale</td>";
+	echo "</tr>";
+	echo "<tr>";
+	echo "<td colspan='2'>Number of male children</td>";
+	echo "<td>$nummale</td>";
+	echo "</tr>";
+	echo "</table>";
+	mysqli_free_result($result);
+}

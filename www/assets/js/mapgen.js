@@ -2,13 +2,13 @@
 //This is the main file that creates the map and inserts it, 
 //perhaps this logic should be in a controller, in a class, with a model used to create/modify the data?
 	
-	function displayPoint(marker, index){
+	/*function displayPoint(marker, index){
 		var markerOffset = map.fromLatLngToDivPixel(marker.getLatLng());
-		//alert(marker.getLatLng());
+		alert(marker.getLatLng());
 		
-		//$("#message").fadeIn().css({ top:markerOffset.y, left:markerOffset.x });
-		//map.panTo(marker.getLatLng());
-	}
+		$("#message").fadeIn().css({ top:markerOffset.y, left:markerOffset.x });
+		map.panTo(marker.getLatLng());
+	}*/
 	
 function setSlidingPanel(container, map, offlineMode)
 {
@@ -79,9 +79,6 @@ function setSlidingPanel(container, map, offlineMode)
 
 	var map;		
 	function load_map(){
-
-		//alert("latitude is: " + lat);
-		//alert("longitutde is: " + lng);
 		
 		var mapOptions = {
 		center: new google.maps.LatLng(-33.880815,151.187791),
@@ -105,7 +102,7 @@ function setSlidingPanel(container, map, offlineMode)
 	
 	function createMarkers(len,data)
 	{	
-			var markerIcon = "../public/assets/img/home-marker.png";
+			var markerIcon = "../assets/img/home-marker.png";
 			var markerImage = new google.maps.MarkerImage(markerIcon, new google.maps.Size(50, 50));
 
 			var markerStyles = [{
@@ -156,8 +153,8 @@ function setSlidingPanel(container, map, offlineMode)
 
 	function attachInfo(markers, contents, num, len)
 	{
-		var offsetTop = '-300px';
-		var offsetLeft = '-200px';
+		var offsetTop = '300px';
+		var offsetLeft = '200px';
 
 		infoBubbleContent = new InfoBubble({
 			shadowStyle: 1,
@@ -165,16 +162,18 @@ function setSlidingPanel(container, map, offlineMode)
 			padding: 0,
 			color: 'rgb(255,255,240)',
 			content : contents,
-			backgroundColor: 'rgb(57,57,57)',
+			backgroundColor: 'rgb(223, 223, 223)',
 			borderRadius: 4,
+			height:  300,
+			width: '300px',
 			arrowSize: 10,
 			borderWidth: 1,
 			borderColor: '#2c2c2c',
-			disableAutoPan: true,
+			disableAutoPan: false,
 			marginLeft: offsetLeft,
 			marginTop: offsetTop
 		});
-
+		$("infoBubbleContent").addClass('infoCon');
 		//console.log('marker length is: ' + len);
 			google.maps.event.addListener(markers[num], "click", function () {
 				//console.log('bubble content should be: ' + contents);
@@ -182,7 +181,7 @@ function setSlidingPanel(container, map, offlineMode)
 				{
 						infoBubbleContent.close();
 						infoBubbleContent.setMaxWidth('800px');
-						infoBubbleContent.setMaxHeight('800');
+						infoBubbleContent.setMaxHeight('800px');
 						infoBubbleContent.content = contents;
 						infoBubbleContent.open(map, this);
 						$(".infoCon").css('width', '930px');

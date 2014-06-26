@@ -30545,3 +30545,163 @@ Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate
 [Sun Jun 22 21:03:27 2014] [notice] Child 7908: Acquired the start mutex.
 [Sun Jun 22 21:03:27 2014] [notice] Child 7908: Starting 64 worker threads.
 [Sun Jun 22 21:03:27 2014] [notice] Child 7908: Starting thread to listen on port 80.
+[Thu Jun 26 21:09:42 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:09:42 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Jun 26 21:09:42 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Jun 26 21:09:42 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Jun 26 21:09:42 2014] [notice] Parent: Created child process 4216
+[Thu Jun 26 21:09:42 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:09:42 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:09:42 2014] [notice] Child 4216: Child process is running
+[Thu Jun 26 21:09:42 2014] [notice] Child 4216: Acquired the start mutex.
+[Thu Jun 26 21:09:42 2014] [notice] Child 4216: Starting 64 worker threads.
+[Thu Jun 26 21:09:42 2014] [notice] Child 4216: Starting thread to listen on port 80.
+[Thu Jun 26 21:10:04 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:10:04 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:10:04 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:10:18 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Thu Jun 26 21:10:18 2014] [notice] Child 4216: Exit event signaled. Child process is ending.
+[Thu Jun 26 21:10:19 2014] [notice] Child 4216: Released the start mutex
+[Thu Jun 26 21:10:20 2014] [notice] Child 4216: All worker threads have exited.
+[Thu Jun 26 21:10:20 2014] [notice] Child 4216: Child process is exiting
+[Thu Jun 26 21:10:20 2014] [notice] Parent: Child process exited successfully.
+[Thu Jun 26 21:10:21 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:10:21 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Jun 26 21:10:21 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Jun 26 21:10:21 2014] [notice] Parent: Created child process 7788
+[Thu Jun 26 21:10:21 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:10:21 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:10:21 2014] [notice] Child 7788: Child process is running
+[Thu Jun 26 21:10:21 2014] [notice] Child 7788: Acquired the start mutex.
+[Thu Jun 26 21:10:21 2014] [notice] Child 7788: Starting 64 worker threads.
+[Thu Jun 26 21:10:21 2014] [notice] Child 7788: Starting thread to listen on port 80.
+[Thu Jun 26 21:10:44 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:10:44 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:10:44 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:10:48 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:10:48 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:10:48 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:11:05 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:11:05 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:11:05 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: Expected </<<<<<<> but saw </IfModule>
+[Thu Jun 26 21:13:49 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: </IfModule> without matching <IfModule> section
+[Thu Jun 26 21:13:49 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: </IfModule> without matching <IfModule> section
+[Thu Jun 26 21:13:49 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: </IfModule> without matching <IfModule> section
+[Thu Jun 26 21:13:53 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Thu Jun 26 21:13:53 2014] [notice] Child 7788: Exit event signaled. Child process is ending.
+[Thu Jun 26 21:13:54 2014] [notice] Child 7788: Released the start mutex
+[Thu Jun 26 21:13:55 2014] [notice] Child 7788: All worker threads have exited.
+[Thu Jun 26 21:13:55 2014] [notice] Child 7788: Child process is exiting
+[Thu Jun 26 21:13:55 2014] [notice] Parent: Child process exited successfully.
+[Thu Jun 26 21:13:57 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:13:57 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Jun 26 21:13:57 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Jun 26 21:13:57 2014] [notice] Parent: Created child process 6276
+[Thu Jun 26 21:13:57 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:13:57 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:13:57 2014] [notice] Child 6276: Child process is running
+[Thu Jun 26 21:13:57 2014] [notice] Child 6276: Acquired the start mutex.
+[Thu Jun 26 21:13:57 2014] [notice] Child 6276: Starting 64 worker threads.
+[Thu Jun 26 21:13:57 2014] [notice] Child 6276: Starting thread to listen on port 80.
+[Thu Jun 26 21:14:01 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: </IfModule> without matching <IfModule> section
+[Thu Jun 26 21:14:01 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: </IfModule> without matching <IfModule> section
+[Thu Jun 26 21:14:01 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: </IfModule> without matching <IfModule> section
+[Thu Jun 26 21:14:03 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: </IfModule> without matching <IfModule> section
+[Thu Jun 26 21:14:04 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: </IfModule> without matching <IfModule> section
+[Thu Jun 26 21:14:04 2014] [alert] [client 127.0.0.1] C:/wamp/www/.htaccess: </IfModule> without matching <IfModule> section
+[Thu Jun 26 21:15:13 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Thu Jun 26 21:15:13 2014] [notice] Child 6276: Exit event signaled. Child process is ending.
+[Thu Jun 26 21:15:14 2014] [notice] Child 6276: Released the start mutex
+[Thu Jun 26 21:15:15 2014] [notice] Child 6276: All worker threads have exited.
+[Thu Jun 26 21:15:15 2014] [notice] Child 6276: Child process is exiting
+[Thu Jun 26 21:15:15 2014] [notice] Parent: Child process exited successfully.
+[Thu Jun 26 21:15:15 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:15:15 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Jun 26 21:15:15 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Jun 26 21:15:15 2014] [notice] Parent: Created child process 4036
+[Thu Jun 26 21:15:15 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:15:15 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:15:16 2014] [notice] Child 4036: Child process is running
+[Thu Jun 26 21:15:16 2014] [notice] Child 4036: Acquired the start mutex.
+[Thu Jun 26 21:15:16 2014] [notice] Child 4036: Starting 64 worker threads.
+[Thu Jun 26 21:15:16 2014] [notice] Child 4036: Starting thread to listen on port 80.
+[Thu Jun 26 21:15:23 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:15:23 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:15:23 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:15:28 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:15:29 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:15:29 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:15:49 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:15:49 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:15:49 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:16:00 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Thu Jun 26 21:16:00 2014] [notice] Child 4036: Exit event signaled. Child process is ending.
+[Thu Jun 26 21:16:01 2014] [notice] Child 4036: Released the start mutex
+[Thu Jun 26 21:16:02 2014] [notice] Child 4036: All worker threads have exited.
+[Thu Jun 26 21:16:02 2014] [notice] Child 4036: Child process is exiting
+[Thu Jun 26 21:16:03 2014] [notice] Parent: Child process exited successfully.
+[Thu Jun 26 21:16:03 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:16:03 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Jun 26 21:16:03 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Jun 26 21:16:03 2014] [notice] Parent: Created child process 6728
+[Thu Jun 26 21:16:03 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:16:03 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:16:03 2014] [notice] Child 6728: Child process is running
+[Thu Jun 26 21:16:03 2014] [notice] Child 6728: Acquired the start mutex.
+[Thu Jun 26 21:16:03 2014] [notice] Child 6728: Starting 64 worker threads.
+[Thu Jun 26 21:16:03 2014] [notice] Child 6728: Starting thread to listen on port 80.
+[Thu Jun 26 21:16:09 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:16:09 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:16:09 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:19:46 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Thu Jun 26 21:19:46 2014] [notice] Child 6728: Exit event signaled. Child process is ending.
+[Thu Jun 26 21:19:47 2014] [notice] Child 6728: Released the start mutex
+[Thu Jun 26 21:19:48 2014] [notice] Child 6728: All worker threads have exited.
+[Thu Jun 26 21:19:48 2014] [notice] Child 6728: Child process is exiting
+[Thu Jun 26 21:19:48 2014] [notice] Parent: Child process exited successfully.
+[Thu Jun 26 21:19:51 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:19:51 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Jun 26 21:19:51 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Jun 26 21:19:51 2014] [notice] Parent: Created child process 3876
+[Thu Jun 26 21:19:51 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:19:51 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:19:51 2014] [notice] Child 3876: Child process is running
+[Thu Jun 26 21:19:51 2014] [notice] Child 3876: Acquired the start mutex.
+[Thu Jun 26 21:19:51 2014] [notice] Child 3876: Starting 64 worker threads.
+[Thu Jun 26 21:19:51 2014] [notice] Child 3876: Starting thread to listen on port 80.
+[Thu Jun 26 21:19:59 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:19:59 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:19:59 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 21:21:29 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Thu Jun 26 21:21:29 2014] [notice] Child 3876: Exit event signaled. Child process is ending.
+[Thu Jun 26 21:21:30 2014] [notice] Child 3876: Released the start mutex
+[Thu Jun 26 21:21:31 2014] [notice] Child 3876: All worker threads have exited.
+[Thu Jun 26 21:21:31 2014] [notice] Child 3876: Child process is exiting
+[Thu Jun 26 21:21:31 2014] [notice] Parent: Child process exited successfully.
+[Thu Jun 26 21:21:31 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:21:31 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Jun 26 21:21:31 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Jun 26 21:21:31 2014] [notice] Parent: Created child process 7972
+[Thu Jun 26 21:21:32 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:21:32 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 21:21:32 2014] [notice] Child 7972: Child process is running
+[Thu Jun 26 21:21:32 2014] [notice] Child 7972: Acquired the start mutex.
+[Thu Jun 26 21:21:32 2014] [notice] Child 7972: Starting 64 worker threads.
+[Thu Jun 26 21:21:32 2014] [notice] Child 7972: Starting thread to listen on port 80.
+[Thu Jun 26 21:21:47 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/public
+[Thu Jun 26 21:21:47 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/favicon.ico
+[Thu Jun 26 21:22:08 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_SL in C:\\wamp\\www\\index.php on line 31
+[Thu Jun 26 21:22:59 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_IS_IDENTICAL in C:\\wamp\\www\\index.php on line 32
+[Thu Jun 26 21:23:16 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_SL, expecting ')' in C:\\wamp\\www\\fuel\\app\\config\\config.php on line 44
+[Thu Jun 26 21:23:16 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 21:23:16 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 21:23:16 2014] [error] [client 127.0.0.1] PHP   2. require() C:\\wamp\\www\\index.php:31
+[Thu Jun 26 21:23:16 2014] [error] [client 127.0.0.1] PHP   3. Fuel\\Core\\Fuel::init() C:\\wamp\\www\\fuel\\app\\bootstrap.php:30
+[Thu Jun 26 21:23:16 2014] [error] [client 127.0.0.1] PHP   4. Fuel\\Core\\Config::load() C:\\wamp\\www\\fuel\\core\\classes\\fuel.php:154
+[Thu Jun 26 21:23:16 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Config_File->load() C:\\wamp\\www\\fuel\\core\\classes\\config.php:82
+[Thu Jun 26 21:23:16 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\Config_Php->load_file() C:\\wamp\\www\\fuel\\core\\classes\\config\\file.php:48
+[Thu Jun 26 21:23:16 2014] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\Fuel::load() C:\\wamp\\www\\fuel\\core\\classes\\config\\php.php:20
+[Thu Jun 26 21:45:37 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/rentsignal, referer: http://rentsignal.com/
+[Thu Jun 26 21:45:37 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/rentsignal, referer: http://rentsignal.com/
+[Thu Jun 26 21:52:20 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/rentsignal, referer: http://rentsignal.com/
+[Thu Jun 26 21:52:20 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/rentsignal, referer: http://rentsignal.com/

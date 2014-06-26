@@ -41,12 +41,7 @@ return array(
 	 *
 	 * Set this to false or remove if you using mod_rewrite.
 	 */
-<<<<<<< HEAD:www/fuel/app/config/config.php
 	'index_file'  => false,
-=======
-	'index_file'  => '',
->>>>>>> 349047136b8b30ba7fb993623727a9f4867c84b3:fuel/app/config/config.php
-
 	'profiling'  => false,
 
 	/**

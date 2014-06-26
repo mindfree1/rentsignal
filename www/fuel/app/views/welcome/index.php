@@ -129,6 +129,8 @@ $(document).ready(function() {
 			</p>-->
 		</footer>
 	</div>
+	<div id="bottonMenu" style="position:fixed;bottom:0;z-index: 1000;width:100%;height:80px;background-color:#CCCCCC;overflow: auto;">
+	</div>
 		<script language="javascript" type="text/javascript"> 
 			function loadImages(data)
 			{

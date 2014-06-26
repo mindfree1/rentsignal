@@ -30705,3 +30705,155 @@ Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate
 [Thu Jun 26 21:45:37 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/rentsignal, referer: http://rentsignal.com/
 [Thu Jun 26 21:52:20 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/rentsignal, referer: http://rentsignal.com/
 [Thu Jun 26 21:52:20 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/rentsignal, referer: http://rentsignal.com/
+[Thu Jun 26 22:20:29 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/showlistings
+[Thu Jun 26 22:20:33 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/showlistings
+[Thu Jun 26 22:20:43 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/showlistings
+[Thu Jun 26 22:21:04 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/rentsignal, referer: http://rentsignal.com/
+[Thu Jun 26 22:21:04 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/rentsignal, referer: http://rentsignal.com/
+[Thu Jun 26 22:21:05 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/showlistings, referer: http://rentsignal.com/
+[Thu Jun 26 22:21:39 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/showlistings
+[Thu Jun 26 22:23:28 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/showlistings
+[Thu Jun 26 22:23:35 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/rentsignal
+[Thu Jun 26 22:23:38 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/showlistings
+[Thu Jun 26 22:23:56 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/admin, referer: http://rentsignal.com/
+[Thu Jun 26 22:25:02 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/admin, referer: http://rentsignal.com/
+[Thu Jun 26 22:25:05 2014] [error] [client 127.0.0.1] PHP Warning:  require(\\classes\\autoloader.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in C:\\wamp\\www\\fuel\\app\\bootstrap.php on line 4
+[Thu Jun 26 22:25:05 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:25:05 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:25:05 2014] [error] [client 127.0.0.1] PHP   2. require() C:\\wamp\\www\\index.php:31
+[Thu Jun 26 22:25:05 2014] [error] [client 127.0.0.1] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required '\\classes\\autoloader.php' (include_path='.;C:\\php\\pear') in C:\\wamp\\www\\fuel\\app\\bootstrap.php on line 4
+[Thu Jun 26 22:25:05 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:25:05 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:25:05 2014] [error] [client 127.0.0.1] PHP   2. require() C:\\wamp\\www\\index.php:31
+[Thu Jun 26 22:25:24 2014] [error] [client 127.0.0.1] PHP Warning:  require(\\bootstrap.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in C:\\wamp\\www\\index.php on line 31
+[Thu Jun 26 22:25:24 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:25:24 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:25:24 2014] [error] [client 127.0.0.1] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required '\\bootstrap.php' (include_path='.;C:\\php\\pear') in C:\\wamp\\www\\index.php on line 31
+[Thu Jun 26 22:25:24 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:25:24 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:25:48 2014] [error] [client 127.0.0.1] PHP Warning:  require(\\bootstrap.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in C:\\wamp\\www\\index.php on line 31
+[Thu Jun 26 22:25:48 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:25:48 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:25:48 2014] [error] [client 127.0.0.1] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required '\\bootstrap.php' (include_path='.;C:\\php\\pear') in C:\\wamp\\www\\index.php on line 31
+[Thu Jun 26 22:25:48 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:25:48 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:26:32 2014] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Request' not found in C:\\wamp\\www\\index.php on line 35
+[Thu Jun 26 22:26:32 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:26:32 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:27:59 2014] [error] [client 127.0.0.1] PHP Warning:  require(C:\\wamp\\www) [<a href='function.require'>function.require</a>]: failed to open stream: Permission denied in C:\\wamp\\www\\index.php on line 31
+[Thu Jun 26 22:27:59 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:27:59 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:27:59 2014] [error] [client 127.0.0.1] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required '\\' (include_path='.;C:\\php\\pear') in C:\\wamp\\www\\index.php on line 31
+[Thu Jun 26 22:27:59 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:27:59 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:28:30 2014] [error] [client 127.0.0.1] PHP Warning:  require(\\bootstrap.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in C:\\wamp\\www\\index.php on line 31
+[Thu Jun 26 22:28:30 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:28:30 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:28:30 2014] [error] [client 127.0.0.1] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required '\\bootstrap.php' (include_path='.;C:\\php\\pear') in C:\\wamp\\www\\index.php on line 31
+[Thu Jun 26 22:28:30 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:28:30 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:28:43 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/showlistings
+[Thu Jun 26 22:28:54 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/fuel
+[Thu Jun 26 22:29:00 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/rentsignal
+[Thu Jun 26 22:29:04 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/1
+[Thu Jun 26 22:29:35 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/1
+[Thu Jun 26 22:29:40 2014] [error] [client 127.0.0.1] PHP Warning:  require(\\bootstrap.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in C:\\wamp\\www\\index.php on line 31
+[Thu Jun 26 22:29:40 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:29:40 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:29:40 2014] [error] [client 127.0.0.1] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required '\\bootstrap.php' (include_path='.;C:\\php\\pear') in C:\\wamp\\www\\index.php on line 31
+[Thu Jun 26 22:29:40 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jun 26 22:29:40 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Thu Jun 26 22:30:04 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/admin, referer: http://rentsignal.com/
+[Thu Jun 26 22:32:39 2014] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Thu Jun 26 22:32:39 2014] [notice] Child 7972: Exit event signaled. Child process is ending.
+[Thu Jun 26 22:32:40 2014] [notice] Child 7972: Released the start mutex
+[Thu Jun 26 22:32:41 2014] [notice] Child 7972: All worker threads have exited.
+[Thu Jun 26 22:32:41 2014] [notice] Child 7972: Child process is exiting
+[Thu Jun 26 22:32:41 2014] [notice] Parent: Child process exited successfully.
+[Thu Jun 26 22:32:43 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 22:32:44 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Jun 26 22:32:44 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Jun 26 22:32:44 2014] [notice] Parent: Created child process 4216
+[Thu Jun 26 22:32:44 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 22:32:44 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Jun 26 22:32:44 2014] [notice] Child 4216: Child process is running
+[Thu Jun 26 22:32:44 2014] [notice] Child 4216: Acquired the start mutex.
+[Thu Jun 26 22:32:44 2014] [notice] Child 4216: Starting 64 worker threads.
+[Thu Jun 26 22:32:44 2014] [notice] Child 4216: Starting thread to listen on port 80.
+[Thu Jun 26 22:32:57 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 22:33:02 2014] [error] [client 127.0.0.1] Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Thu Jun 26 22:35:25 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/public
+[Thu Jun 26 22:35:41 2014] [error] [client 127.0.0.1] File does not exist: C:/wamp/www/public
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')' in C:\\wamp\\fuel\\app\\config\\db.php on line 22, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP   4. Controller_Admin->action_login() C:\\wamp\\fuel\\app\\classes\\controller\\admin.php:0, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP   5. Auth\\Auth_Login_SimpleAuth->login() C:\\wamp\\fuel\\app\\classes\\controller\\admin.php:36, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\Database_Query->execute() C:\\wamp\\fuel\\packages\\auth\\classes\\auth\\login\\simpleauth.php:119, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\Database_Connection::instance() C:\\wamp\\fuel\\core\\classes\\database\\query.php:216, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\Config::load() C:\\wamp\\fuel\\core\\classes\\database\\connection.php:48, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\Config_File->load() C:\\wamp\\fuel\\core\\classes\\config.php:82, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP  10. Fuel\\Core\\Config_Php->load_file() C:\\wamp\\fuel\\core\\classes\\config\\file.php:48, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:25 2014] [error] [client 127.0.0.1] PHP  11. Fuel\\Core\\Fuel::load() C:\\wamp\\fuel\\core\\classes\\config\\php.php:20, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:40 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in C:\\wamp\\fuel\\core\\classes\\database\\mysqli\\result.php on line 72, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:40 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:40 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:40 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:40 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:40 2014] [error] [client 127.0.0.1] PHP   4. Controller_Admin->action_login() C:\\wamp\\fuel\\app\\classes\\controller\\admin.php:0, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:40 2014] [error] [client 127.0.0.1] PHP   5. Auth\\Auth_Login_SimpleAuth->login() C:\\wamp\\fuel\\app\\classes\\controller\\admin.php:36, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:57:40 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\Database_MySQLi_Result->current() C:\\wamp\\fuel\\packages\\auth\\classes\\auth\\login\\simpleauth.php:119, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:58:00 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in C:\\wamp\\fuel\\core\\classes\\database\\mysqli\\result.php on line 72, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:58:00 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:58:00 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:58:00 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:58:00 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:58:00 2014] [error] [client 127.0.0.1] PHP   4. Controller_Admin->action_login() C:\\wamp\\fuel\\app\\classes\\controller\\admin.php:0, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:58:00 2014] [error] [client 127.0.0.1] PHP   5. Auth\\Auth_Login_SimpleAuth->login() C:\\wamp\\fuel\\app\\classes\\controller\\admin.php:36, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 22:58:00 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\Database_MySQLi_Result->current() C:\\wamp\\fuel\\packages\\auth\\classes\\auth\\login\\simpleauth.php:119, referer: http://rentsignal.com/admin/login
+[Thu Jun 26 23:21:18 2014] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Asset' not found in C:\\wamp\\www\\index.php on line 6, referer: http://rentsignal.com/admin
+[Thu Jun 26 23:21:18 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/admin
+[Thu Jun 26 23:21:18 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0, referer: http://rentsignal.com/admin
+[Thu Jun 26 23:21:27 2014] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Asset' not found in C:\\wamp\\www\\index.php on line 6, referer: http://rentsignal.com/admin
+[Thu Jun 26 23:21:27 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/admin
+[Thu Jun 26 23:21:27 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0, referer: http://rentsignal.com/admin
+[Thu Jun 26 23:36:18 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/css/layout.css?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:36:18 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/css/map-styles.css?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:36:18 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/jquery-1.7.2.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:36:18 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/css/jquery-ui-1.8.21.custom.css?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:36:18 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/jquery-ui-1.8.21.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:36:18 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/markerclusterer.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:36:18 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/infobubble.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:36:18 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/mapgen.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:36:18 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/angular.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:36:37 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/css/bootstrap.css?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/admin
+[Thu Jun 26 23:36:37 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/bootstrap.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/admin
+[Thu Jun 26 23:38:57 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/css/layout.css?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:38:57 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/css/map-styles.css?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:38:57 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/css/jquery-ui-1.8.21.custom.css?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:38:57 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/jquery-1.7.2.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:38:57 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/markerclusterer.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:38:57 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/jquery-ui-1.8.21.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:38:57 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/infobubble.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:38:57 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/mapgen.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:38:57 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/angular.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:39:01 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/css/map-styles.css?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:39:01 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/css/layout.css?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:39:01 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/css/jquery-ui-1.8.21.custom.css?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:39:01 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/markerclusterer.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:39:01 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/jquery-1.7.2.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:39:01 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/jquery-ui-1.8.21.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:39:01 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/infobubble.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:39:01 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/mapgen.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:39:01 2014] [error] [client 127.0.0.1] (20023)The given path was above the root path: Cannot map GET /C:/wamp/www//assets/js/angular.js?1403693338 HTTP/1.1 to file, referer: http://rentsignal.com/
+[Thu Jun 26 23:39:39 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/assets/
+[Thu Jun 26 23:39:39 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/assets/
+[Thu Jun 26 23:39:39 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/assets/
+[Thu Jun 26 23:39:47 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/assets/css/
+[Thu Jun 26 23:39:47 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/assets/css/
+[Thu Jun 26 23:39:47 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/assets/css/
+[Thu Jun 26 23:41:26 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/assets/css/
+[Thu Jun 26 23:41:26 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/assets/css/
+[Thu Jun 26 23:41:26 2014] [error] [client 127.0.0.1] File does not exist: C:/Dev, referer: http://rentsignal.com/assets/css/

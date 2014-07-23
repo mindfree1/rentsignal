@@ -1,4 +1,4 @@
-<ul id="pagination">
+<ul id="pagination" style="position:absolute;margin-left:-200px;">
 	<?php
 		for($i=1; $i<=$page_nums; $i++)
 		{
@@ -8,9 +8,7 @@
 </ul>
 <script>
 	$("#pagination li").click(function(){
-	$("#pagination li")
-		.css({'border' : 'solid #dddddd 1px'})
-		.css({'color' : '#0063DC'});
+	$("#pagination li").css({'border' : 'solid #dddddd 1px', 'color'  : '#0063DC'});
 
 	$(this)
 		.css({'color' : '#FF0084'})
@@ -30,6 +28,6 @@
 	//loop through for pagination
 	for($i=1; $i <= $img_amount; $i++)
 	{
-		echo '<img id="img_' .$locations. '" width="120px" height="120px" src="'. $img_url[$i-1]. '" style="padding-right:10px;"</img>';
+		echo '<img id="img_' .$locations. '" width="120px" height="120px" src="'. $img_url[$i-1]. '" </img>';
 	}
 ?>

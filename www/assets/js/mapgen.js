@@ -13,19 +13,19 @@
 function setSlidingPanel(container, map, offlineMode)
 {
 	var control = this;
-    control.isOpen = true;
+    control.isOpen = false;
 	
 	var createPanel = document.createElement('div');
 	createPanel.id = 'listingsPane';
-	createPanel.style.width = '300px';
-	createPanel.style.height = '910px';
+	createPanel.style.width = '50px';
+	createPanel.style.height = '50px';
 	
 	container.appendChild(createPanel);
 	
-	var toggleBtn = document.createElement('input');
+	var toggleBtn = document.createElement('div');
     toggleBtn.id = 'openrentals';
-	toggleBtn.type = 'button';
-    toggleBtn.value = '<<';
+	//toggleBtn.type = 'button';
+    //toggleBtn.value = '>>';
     createPanel.appendChild(toggleBtn);
 	
 	$("#listContent").show().animate({display :'inline'}, 500);
@@ -47,32 +47,35 @@ function setSlidingPanel(container, map, offlineMode)
 	$('#openrentals').live('click', function() {
 	if (control.isOpen) {
 		$("#listingsPane").animate({
-			"marginLeft": "-255px", "height": "50px"},
+			"marginLeft": "-255px", "height" : "50px", "width" : "300px"},
 			{			
 				duration: 500,
 				step: function() {
 				google.maps.event.trigger(map, 'resize');
 					$('#listContent').css('display','none');
+					toggleBtn.value = '>>';
+					$("#controls").css('display','none');
 					//$("#listingsPane").mCustomScrollbar("update");
 				}
 			});
 			
 			control.isOpen = false;
-			toggleBtn.value = '>>';
+			toggleBtn.innerHTML = '<img src="../assets/img/search-icon.jpg" />';
 			} else {
 				$("#listingsPane").animate({
-					"marginLeft": "0px", "height" : "990px"}, 
+					"marginLeft": "0px", "height" : "900px", "width" : "100%"}, 
 				{
 					duration: 500,
 					step: function() {
 						google.maps.event.trigger(map, 'resize');
 						$('#listContent').css('display','inline');
-						$("#content").css('margin','50px auto');
+						//$("#content").css('margin','50px auto');
+						$("#controls").css('display','inline');
 						//$("#listingsPane").mCustomScrollbar("update");
 					}
 				});
 					control.isOpen = true;
-					toggleBtn.value = '<<';
+					toggleBtn.innerHTML = '<img src="../assets/img/search-icon.jpg" />';
 				};	
 		});
 }
@@ -94,10 +97,17 @@ function setSlidingPanel(container, map, offlineMode)
 		map = new google.maps.Map(document.getElementById("rentsignal_map"),mapOptions);
 		
 		var slidingPanel = document.createElement('div');
+
+		slidingPanel.style.width = '100%';
+		slidingPanel.id = 'slider';
+		slidingPanel.style.zIndex  = '100';
 		setSlidingPanel(slidingPanel, map);
 		
-		slidingPanel.index = -500;
-		map.controls[google.maps.ControlPosition.TOP_LEFT].push(slidingPanel);
+		slidingPanel.index = -700;
+		slidingPanel.margin = '50px';
+
+		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(slidingPanel);
+		$('.gmnoprint').first().css('margin-top','50px');
 	}
 	
 	function createMarkers(len,data)

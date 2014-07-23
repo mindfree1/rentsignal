@@ -1,86 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Rentsignal</title>
-	<?php echo Asset::css(array('layout.css','map-styles.css','jquery-ui-1.8.21.custom.css')); ?>
-	<?php echo Asset::js(array('jquery-1.7.2.js','markerclusterer.js','jquery-ui-1.8.21.js','infobubble.js','mapgen.js', 'angular.js')); ?>
-	
-	
-<script>
-$(document).ready(function() {
-	load_map();
-	
-	$("#map-slider").slider({ 
-		range: true,
-		min:	0, 
-		max:	1000,
-		values: [300,700],
-		slide: function(event, ui) {
-				$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-			}
-		});
-		
-		$("#amount").val("$" + $("#map-slider").slider("values", 0) + " - $" + $("#map-slider").slider("values", 1));
-		
-		$("#showhide_btn").live("click",function() {
-			$("#controls").slideToggle("slow");
-			$("#showhide_btn").text = 'Show Controls';
-		});
-	
-	$("#content > ul:gt(0)").hide();
-	
-	$(".btnsubmit").click(function() {
-	
-		var searchlistings = "rentmin=" + $("#map-slider").slider("values", 0) + "&rentmax=" + 
-		$("#map-slider").slider("values", 1) + "&rooms=" + $('#rooms option:selected').val() + "&bathrooms=" + 
-		$('#bathrooms option:selected').val();
-		
-		$.ajax({
-			type: "POST",
-			url: "http://rentsignal.com/showlistings/search",
-			data: searchlistings,
-			dataType: "json",
-			success: function(data) {
-				var len = data.length;
-				createMarkers(len,data);
-				loadImages(data);
-			},
-			error: function()
-			{
-				console.log('error handling');
-			}
-		});
-		return false;
-	});
-	
-	});
-</script>
+<meta charset="utf-8">
+<title>Rentsignal</title>
+<?php echo Asset::css(array('layout.css','map-styles.css','jquery-ui-1.8.21.custom.css')); ?>
+<?php echo Asset::js(array('jquery-1.7.2.js','markerclusterer.js','jquery-ui-1.8.21.js','infobubble.js','mapgen.js', 'angular.js')); ?>
+
 </head>
 <body>
-	<div id="listContent">
-	<div id="content" class="content">
-		<ul class="slider-content">
-		</ul>
-	</div>
-	</div>
 	<div id="header">
 		<div class="row">
 			<div id="logo"></div>
 		</div>
 	</div>
-	<div class="container">
-		<div class="hero-unit">
-			<div id="nav-bar">
-				<?php echo Html::anchor('admin', 'Dashboard');?>
-			</div>
-			<div><!--current user logged in name should go here--></div>
+
+	<div id="listContent">
+	<div id="searchContent">
+		<ul class="slider-content">
 			<div id="controls">
 			<form action="" name="control-form">
 			<fieldset>
 				<p><label for="amount">Price range:</label>
 				<input type="text" id="amount"/></p>
-					<div id='map-slider'></div>
+					<div id='map-slider'>
+						<script type="text/javascript">
+						$("#map-slider").slider({ 
+							range: true,
+							min:	0, 
+							max:	1000,
+							values: [300,700],
+							slide: function(event, ui) {
+							$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+								}
+						});
+		
+						$("#amount").val("$" + $("#map-slider").slider("values", 0) + " - $" + $("#map-slider").slider("values", 1));
+						</script>
+					</div>
 					<div id="rooms">
 						<label for="rooms">Rooms:</label>
 						<select id="rooms">
@@ -101,22 +57,59 @@ $(document).ready(function() {
 					</div>
 					<div id="search_listings">
 						<input type="submit" value="search" class="btnsubmit" id="submit-btn"/>
+						<script type="text/javascript">
+						$(".btnsubmit").click(function() {
+	
+						var searchlistings = "rentmin=" + $("#map-slider").slider("values", 0) + "&rentmax=" + 
+						$("#map-slider").slider("values", 1) + "&rooms=" + $('#rooms option:selected').val() + "&bathrooms=" + 
+						$('#bathrooms option:selected').val();
+		
+						$.ajax({
+							type: "POST",
+							url: "http://rentsignal.com/showlistings/search",
+							data: searchlistings,
+							dataType: "json",
+							success: function(data) {
+								var len = data.length;
+								createMarkers(len,data);
+								loadImages(data);
+								closeSearchPane();
+							},
+							error: function()
+							{
+								console.log('error handling');
+							}
+						});
+						return false;
+						});
+
+						function closeSearchPane()
+						{
+							$("#listingsPane").animate({"marginLeft": "-255px", "height" : "50px", "width" : "300px"},
+							{			
+									duration: 500,
+									step: function() {
+										google.maps.event.trigger(map, 'resize');
+										$('#listContent').css('display','none');
+									
+										$("#controls").css('display','none');
+									}
+							});
+						}
+						</script>
 					</div>
-				</fieldset>
-				</form>
+			</fieldset>
+			</form>
 			</div>
-			<div id="showhide_btn">Show / Hide Controls</div>
-			<p><script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBKdZ3ZnSzIRg2bdZye0ndl56zkWWPVCJw&sensor=false"></script></p>
+		</ul>
+	</div>
+	</div>
+	<div class="container">
+		<div class="hero-unit"></div>
+			<div id="nav-bar"><?php echo Html::anchor('admin', 'Dashboard');?></div>
+			<!--current user logged in name should go here-->
+			<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBKdZ3ZnSzIRg2bdZye0ndl56zkWWPVCJw&sensor=false"></script>
 			<div id="rentsignal_map" style="width:100%;height:1024px;float:right;z-index:1;overflow:hidden;"></div>
-		</div>
-		<div class="row">
-			<div class="span-one-third">
-			</div>
-			<div class="span-one-third">
-			</div>
-			<div class="span-one-third">
-			</div>
-		</div>
 		<footer>
 			<!--<p class="pull-right">Page rendered in {exec_time}s using {mem_usage}mb of memory.</p>
 			<p>
@@ -125,30 +118,41 @@ $(document).ready(function() {
 			</p>-->
 		</footer>
 	</div>
-	<div id="bottonMenu" style="position:fixed;bottom:0;z-index:1000;width:100%;height:80px;background-color:#CCCCCC;overflow:auto;">
+	<div id="content" class="content"></div>
+	<script language="javascript" type="text/javascript"> 
+	function loadImages(data)
+	{
+		var locationimgs = [];
+		var locations;
 
-	</div>
-		<script language="javascript" type="text/javascript"> 
-			function loadImages(data)
+		if(data.length == 1)
+		{
+			locationimgs = data[0].rentals.location;
+			$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locationimgs);
+		}
+		else
+		{
+			for(var i=0;i<data.length;i++)
 			{
-				var locationimgs = [];
-				var locations;
-
-				if(data.length == 1)
-				{
-					locationimgs = data[0].rentals.location;
-					$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locationimgs);
-				}
-				else
-				{
-					for(var i=0;i<data.length;i++)
-					{
-						locationimgs[i] = data[i].rentals.location;
-						locations = locationimgs.join("|");
-					}
-					$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locations);
-				}
+				locationimgs[i] = data[i].rentals.location;
+				locations = locationimgs.join("|");
 			}
-		</script>
+			$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locations);
+		}
+	}
+	
+	$(document).ready(function() {
+		load_map();
+
+		$("#openrentals").live("click",function() {
+			$("#searchContent").css('display', 'inline');
+			$("#searchContent").css('visibility', 'visible');
+		});
+	
+		$("#openrentals").html('<img src="../assets/img/search-icon.jpg" />');
+	
+		$("#searchContent > ul:gt(0)").hide();
+	});
+</script>
 </body>
 </html>

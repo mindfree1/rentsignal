@@ -31033,3 +31033,152 @@ Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate
 [Wed Jul 23 21:04:56 2014] [notice] Child 4004: Acquired the start mutex.
 [Wed Jul 23 21:04:56 2014] [notice] Child 4004: Starting 64 worker threads.
 [Wed Jul 23 21:04:56 2014] [notice] Child 4004: Starting thread to listen on port 80.
+[Sat Jul 26 18:40:35 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Jul 26 18:40:35 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat Jul 26 18:40:35 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Sat Jul 26 18:40:35 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Sat Jul 26 18:40:35 2014] [notice] Parent: Created child process 4056
+[Sat Jul 26 18:40:35 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Jul 26 18:40:35 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Jul 26 18:40:36 2014] [notice] Child 4056: Child process is running
+[Sat Jul 26 18:40:36 2014] [notice] Child 4056: Acquired the start mutex.
+[Sat Jul 26 18:40:36 2014] [notice] Child 4056: Starting 64 worker threads.
+[Sat Jul 26 18:40:36 2014] [notice] Child 4056: Starting thread to listen on port 80.
+[Sat Jul 26 19:49:57 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Jul 26 19:49:57 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat Jul 26 19:49:59 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Sat Jul 26 19:49:59 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Sat Jul 26 19:50:00 2014] [notice] Parent: Created child process 3164
+[Sat Jul 26 19:50:02 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Jul 26 19:50:02 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Jul 26 19:50:02 2014] [notice] Child 3164: Child process is running
+[Sat Jul 26 19:50:02 2014] [notice] Child 3164: Acquired the start mutex.
+[Sat Jul 26 19:50:02 2014] [notice] Child 3164: Starting 64 worker threads.
+[Sat Jul 26 19:50:02 2014] [notice] Child 3164: Starting thread to listen on port 80.
+[Sat Jul 26 22:21:38 2014] [error] [client 127.0.0.1] Invalid URI in request GET  HTTP/1.1
+[Sat Jul 26 22:22:00 2014] [error] [client 127.0.0.1] Invalid URI in request GET  HTTP/1.1
+[Sat Jul 26 22:24:34 2014] [error] [client 127.0.0.1] Invalid URI in request GET  HTTP/1.1
+[Sat Jul 26 22:24:56 2014] [error] [client 127.0.0.1] Invalid URI in request GET  HTTP/1.1
+[Sat Jul 26 22:26:08 2014] [error] [client 127.0.0.1] Invalid URI in request GET  HTTP/1.1
+[Sat Jul 26 22:27:40 2014] [error] [client 127.0.0.1] Invalid URI in request GET  HTTP/1.1
+[Sat Jul 26 22:28:02 2014] [error] [client 127.0.0.1] Invalid URI in request GET  HTTP/1.1
+[Sat Jul 26 22:30:53 2014] [error] [client 127.0.0.1] Invalid URI in request GET  HTTP/1.1
+[Mon Jul 28 20:45:39 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Mon Jul 28 20:45:39 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Jul 28 20:45:39 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Mon Jul 28 20:45:39 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Mon Jul 28 20:45:39 2014] [notice] Parent: Created child process 3360
+[Mon Jul 28 20:45:39 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Mon Jul 28 20:45:39 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Mon Jul 28 20:45:39 2014] [notice] Child 3360: Child process is running
+[Mon Jul 28 20:45:39 2014] [notice] Child 3360: Acquired the start mutex.
+[Mon Jul 28 20:45:39 2014] [notice] Child 3360: Starting 64 worker threads.
+[Mon Jul 28 20:45:39 2014] [notice] Child 3360: Starting thread to listen on port 80.
+[Mon Jul 28 22:25:46 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING, expecting '(' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 101
+[Mon Jul 28 22:25:46 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:25:46 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:25:46 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:25:46 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:25:46 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:25:46 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Mon Jul 28 22:27:04 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING, expecting '(' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 101
+[Mon Jul 28 22:27:04 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:27:04 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:27:04 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:27:04 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:27:04 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:27:04 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Mon Jul 28 22:28:06 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING, expecting '(' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 101
+[Mon Jul 28 22:28:06 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:28:06 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:28:06 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:28:06 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:28:06 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:28:06 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Mon Jul 28 22:28:15 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING, expecting '(' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 101
+[Mon Jul 28 22:28:15 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:28:15 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:28:15 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:28:15 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:28:15 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:28:15 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Mon Jul 28 22:29:43 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING, expecting '(' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 101
+[Mon Jul 28 22:29:43 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:29:43 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:29:43 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:29:43 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:29:43 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:29:43 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Mon Jul 28 22:30:03 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Model\\ShowListings::favpop_results() in C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php on line 33
+[Mon Jul 28 22:30:03 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:30:03 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:30:03 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:30:03 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:30:03 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:30:56 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined function Model\\return_imagedata() in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 104
+[Mon Jul 28 22:30:56 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:30:56 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:30:56 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:30:56 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:30:56 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:30:56 2014] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::search_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:33
+[Mon Jul 28 22:31:46 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined function Model\\return_imagedata() in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 105
+[Mon Jul 28 22:31:46 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:31:46 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:31:46 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:31:46 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:31:46 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:31:46 2014] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::search_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:33
+[Mon Jul 28 22:32:07 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined function Model\\return_imagedata() in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 105
+[Mon Jul 28 22:32:07 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:32:07 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:32:07 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:32:07 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:32:07 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:32:07 2014] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::search_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:33
+[Mon Jul 28 22:32:49 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ';', expecting '{' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 105
+[Mon Jul 28 22:32:49 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:32:49 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:32:49 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:32:49 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:32:49 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:32:49 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Mon Jul 28 22:32:58 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ';', expecting '(' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 105
+[Mon Jul 28 22:32:58 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:32:58 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:32:58 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:32:58 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:32:58 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:32:58 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Mon Jul 28 22:33:01 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ';', expecting '(' in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 105
+[Mon Jul 28 22:33:01 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:33:01 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:33:01 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:33:01 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:33:01 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:33:01 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0
+[Mon Jul 28 22:36:24 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined function Model\\return_imagedata() in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 104
+[Mon Jul 28 22:36:24 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:36:24 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:36:24 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:36:24 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:36:24 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:36:24 2014] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::search_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:33
+[Mon Jul 28 22:37:50 2014] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined function Model\\return_imagedata() in C:\\wamp\\fuel\\app\\classes\\model\\showlistings.php on line 80
+[Mon Jul 28 22:37:50 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:37:50 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:37:50 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:37:50 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:37:50 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:37:50 2014] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::search_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:33
+[Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_LNUMBER, expecting ',' or ';' in C:\\wamp\\fuel\\app\\views\\listings\\favourites.php on line 31
+[Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::search_favpopular() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:33
+[Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257

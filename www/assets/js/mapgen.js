@@ -247,7 +247,7 @@ function setSlidingPanel(container, map, offlineMode)
 		if(markers != 'null' || markers != '' || markers.length != 0)
 		{
 			/*clear markers from map and then add new ones
-			probably need to also check and see if markers exist, if so check for matches/duplicates and then only add new ones, would likely
+			need to also check and see if markers exist, if so check for matches/duplicates and then only add new ones, would likely
 			save processing time and also be cleaner
 			*/
 			for (var i = 0; i < markers.length; i++ ) {

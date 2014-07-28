@@ -140,10 +140,16 @@
 			$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locations);
 		}
 	}
+
+	function loadFavourites()
+	{
+		$("div.content").load("http://rentsignal.com/showlistings/favpopular");
+	}
 	
 	$(document).ready(function() {
 		load_map();
-
+		loadFavourites();
+		
 		$("#openrentals").live("click",function() {
 			$("#searchContent").css('display', 'inline');
 			$("#searchContent").css('visibility', 'visible');

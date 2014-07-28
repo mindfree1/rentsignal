@@ -1,3 +1,4 @@
+<p style="position:absolute;margin-left:-180px;"><b>Search Results</b></p>
 <ul id="pagination" style="position:absolute;margin-left:-200px;">
 	<?php
 		for($i=1; $i<=$page_nums; $i++)

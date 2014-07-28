@@ -28,6 +28,11 @@
 			}
 		}
 
+		public function action_favpopular()
+		{
+			$results = Showlistings::search_favpopular();
+		}
+
 		public function action_returnimages()
 		{
 			$data['loc1'] = $_GET['locations'];

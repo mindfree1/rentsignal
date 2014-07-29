@@ -31182,3 +31182,14 @@ Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate
 [Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
 [Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
 [Mon Jul 28 22:52:07 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Tue Jul 29 19:12:09 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Jul 29 19:12:09 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Jul 29 19:12:09 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Tue Jul 29 19:12:09 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Tue Jul 29 19:12:09 2014] [notice] Parent: Created child process 3736
+[Tue Jul 29 19:12:09 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Jul 29 19:12:09 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Jul 29 19:12:09 2014] [notice] Child 3736: Child process is running
+[Tue Jul 29 19:12:09 2014] [notice] Child 3736: Acquired the start mutex.
+[Tue Jul 29 19:12:09 2014] [notice] Child 3736: Starting 64 worker threads.
+[Tue Jul 29 19:12:09 2014] [notice] Child 3736: Starting thread to listen on port 80.

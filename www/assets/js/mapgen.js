@@ -18,15 +18,18 @@ function setSlidingPanel(container, map, offlineMode)
 	var createPanel = document.createElement('div');
 	createPanel.id = 'listingsPane';
 	createPanel.style.width = '50px';
-	createPanel.style.height = '50px';
+	createPanel.style.height = '100px';
 	
 	container.appendChild(createPanel);
 	
-	var toggleBtn = document.createElement('div');
-    toggleBtn.id = 'openrentals';
-	//toggleBtn.type = 'button';
-    //toggleBtn.value = '>>';
-    createPanel.appendChild(toggleBtn);
+	var toggleBtnOne = document.createElement('div');
+    toggleBtnOne.id = 'openrentals';
+
+	var toggleBtnTwo = document.createElement('div');
+	toggleBtnTwo.id = 'openfavourites';    
+
+    createPanel.appendChild(toggleBtnOne);
+    createPanel.appendChild(toggleBtnTwo);
 	
 	$("#listContent").show().animate({display :'inline'}, 500);
 	
@@ -47,20 +50,19 @@ function setSlidingPanel(container, map, offlineMode)
 	$('#openrentals').live('click', function() {
 	if (control.isOpen) {
 		$("#listingsPane").animate({
-			"marginLeft": "-255px", "height" : "50px", "width" : "300px"},
+			"marginLeft": "0px", "height" : "100px", "width" : "50px"},
 			{			
 				duration: 500,
 				step: function() {
 				google.maps.event.trigger(map, 'resize');
 					$('#listContent').css('display','none');
-					toggleBtn.value = '>>';
+					$('#openfavourites').css('visibililty', 'hidden');
 					$("#controls").css('display','none');
 					//$("#listingsPane").mCustomScrollbar("update");
 				}
 			});
 			
 			control.isOpen = false;
-			toggleBtn.innerHTML = '<img src="../assets/img/search-icon.jpg" />';
 			} else {
 				$("#listingsPane").animate({
 					"marginLeft": "0px", "height" : "900px", "width" : "100%"}, 
@@ -69,13 +71,15 @@ function setSlidingPanel(container, map, offlineMode)
 					step: function() {
 						google.maps.event.trigger(map, 'resize');
 						$('#listContent').css('display','inline');
+						$('#openfavourites').css('visibililty', 'visible');
+						$('#openfavourites').css('margin-top', '50px');
+						$('#openfavourites').css('margin-right', '-50px');
 						//$("#content").css('margin','50px auto');
 						$("#controls").css('display','inline');
 						//$("#listingsPane").mCustomScrollbar("update");
 					}
 				});
 					control.isOpen = true;
-					toggleBtn.innerHTML = '<img src="../assets/img/search-icon.jpg" />';
 				};	
 		});
 }
@@ -87,6 +91,15 @@ function setSlidingPanel(container, map, offlineMode)
 		center: new google.maps.LatLng(-33.880815,151.187791),
 		zoom: 8,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		panControl: true,
+		panControlOptions: {
+  		position: google.maps.ControlPosition.TOP_RIGHT
+		},
+		zoomControl: true,
+		zoomControlOptions: {
+  		style: google.maps.ZoomControlStyle.LARGE,
+  	position: google.maps.ControlPosition.TOP_RIGHT
+	}
 		};
 
 			var infoWindow = null;
@@ -101,13 +114,16 @@ function setSlidingPanel(container, map, offlineMode)
 		slidingPanel.style.width = '100%';
 		slidingPanel.id = 'slider';
 		slidingPanel.style.zIndex  = '100';
+		slidingPanel.left = '0px';
+		slidingPanel.margin = '50px';
 		setSlidingPanel(slidingPanel, map);
 		
 		slidingPanel.index = -700;
-		slidingPanel.margin = '50px';
 
-		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(slidingPanel);
-		$('.gmnoprint').first().css('margin-top','50px');
+
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(slidingPanel);
+
+		$('.gmnoprint').first().css('margin-top','150px');
 	}
 	
 	function createMarkers(len,data)
@@ -128,20 +144,24 @@ function setSlidingPanel(container, map, offlineMode)
 			var mcOptions = {gridsize: 50, maxZoom: 15, styles: markerStyles};
 			markers = [];
 
-			for (var i=0; i < len; i++){
-				var mLatLng = new google.maps.LatLng(data[i].rentals.lat,data[i].rentals.lng);
-				var marker = new google.maps.Marker({"position": mLatLng, icon: markerImage, title: data[i].rentals.location, animation: google.maps.Animation.DROP}); 
+			for (var i=0; i < len; i++)
+			{
+				if(!markers[i] || markers[0])
+				{
+					var mLatLng = new google.maps.LatLng(data[i].rentals.lat,data[i].rentals.lng);
+					var marker = new google.maps.Marker({"position": mLatLng, icon: markerImage, title: data[i].rentals.location, animation: google.maps.Animation.DROP}); 
 				
-				contents = data[i].rentals.description;
+					contents = data[i].rentals.description;
 
-				markers[i] = marker;
-				attachInfo(markers, contents, i, len);
+					markers[i] = marker;
+					attachInfo(markers, contents, i, len);
+				}
 			}
 
 			var mclusters = new MarkerClusterer(map, markers, mcOptions);
 			var totalMarkers = mclusters.getTotalMarkers();
 
-			if(totalMarkers > 1)
+			/*if(totalMarkers > 1)
 			{
 				while(markers[0]){
   				 markers.pop().setMap(null);
@@ -158,7 +178,7 @@ function setSlidingPanel(container, map, offlineMode)
 				markers.push(marker);
 			}
 		
-			//mclusters.clearMarkers(map);
+			mclusters.clearMarkers(map);*/
 		};
 
 	function attachInfo(markers, contents, num, len)
@@ -174,8 +194,8 @@ function setSlidingPanel(container, map, offlineMode)
 			content : contents,
 			backgroundColor: 'rgb(223, 223, 223)',
 			borderRadius: 4,
-			height:  300,
-			width: '300px',
+			height:  '800px',
+			width: '800px',
 			arrowSize: 10,
 			borderWidth: 1,
 			borderColor: '#2c2c2c',
@@ -190,13 +210,15 @@ function setSlidingPanel(container, map, offlineMode)
 				if(infoBubbleContent.isOpen())
 				{
 						infoBubbleContent.close();
+						infoBubbleContent.height('800px')
+						infoBubbleContent.width('800px')
 						infoBubbleContent.setMaxWidth('800px');
 						infoBubbleContent.setMaxHeight('800px');
-						infoBubbleContent.content = contents;
-						infoBubbleContent.open(map, this);
 						$(".infoCon").css('width', '930px');
 						$(".infoCon").css('height', '370px');
 						$(".infoCon").css('margin-left', '-120px');
+						infoBubbleContent.content = contents;
+						infoBubbleContent.open(map, this);
 					}
 					else
 					{

@@ -85,13 +85,12 @@
 
 						function closeSearchPane()
 						{
-							$("#listingsPane").animate({"marginLeft": "-255px", "height" : "50px", "width" : "300px"},
+							$("#listingsPane").animate({"marginLeft": "0px", "height" : "100px", "width" : "50px"},
 							{			
 									duration: 500,
 									step: function() {
 										google.maps.event.trigger(map, 'resize');
 										$('#listContent').css('display','none');
-									
 										$("#controls").css('display','none');
 									}
 							});
@@ -155,7 +154,7 @@
 			$("#searchContent").css('visibility', 'visible');
 		});
 	
-		$("#openrentals").html('<img src="../assets/img/search-icon.jpg" />');
+		//$("#openrentals").html('<img src="../assets/img/search-icon.jpg" />');
 	
 		$("#searchContent > ul:gt(0)").hide();
 	});

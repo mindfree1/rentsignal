@@ -18,7 +18,7 @@ return array(
 			'port' => '3306',
 			'database' => 'rentsignal',
 			'username' => 'root',
-			'password' => '',
+			'password' => 'pass',
 			'persistent' => false,
 			'compress' => false,
 		),

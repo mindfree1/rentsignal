@@ -1,6 +1,5 @@
 <!-- THIS VIEW SHOULD BE CLEVER ENOUGH TO EITHER POPULATE FAVOURITES OR SEARCHED RESULTS - also users will need to be able to switch between their favourites
 	others favourites as well as a certain range of favourites -->
-<p style="position:absolute;margin-left:-80px;"><b>Favourites</b></p>
 <ul id="pagination" style="position:absolute;margin-left:-200px;">
 	<?php
 		for($i=1; $i<=$page_nums; $i++)
@@ -31,6 +30,6 @@
 	//loop through for pagination
 	for($i=1; $i <= $img_amount; $i++)
 	{
-		echo '<img id="img_' .'"' .$i. '"'. 'width="120px" height="120px" src="'. $img_url[$i-1]. '" </img>';
+		echo '<img class="fav_imgs" id="img_' .$i. '"'. 'width="120px" height="120px" src="'. $img_url[$i-1]. '"</img>';
 	}
 ?>

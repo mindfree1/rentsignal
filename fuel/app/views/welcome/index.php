@@ -2,9 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Rentsignal</title>
+<title>Rentsignal Local</title>
 <?php echo Asset::css(array('layout.css','map-styles.css','jquery-ui-1.8.21.custom.css')); ?>
-<?php echo Asset::js(array('jquery-1.7.2.js','markerclusterer.js','jquery-ui-1.8.21.js','infobubble.js','mapgen.js', 'angular.js')); ?>
+<?php echo Asset::js(array('jquery-1.7.2.js','markerclusterer.js','jquery-ui-1.8.21.js','infobubble.js','mapgen.js', 'angular.js', 'core_func.js')); ?>
 
 </head>
 <body>
@@ -19,7 +19,7 @@
 		<ul class="slider-content">
 			<div id="controls">
 			<form action="" name="control-form">
-			<fieldset>
+			<fieldset style="height:230px;">
 				<p><label for="amount">Price range:</label>
 				<input type="text" id="amount"/></p>
 					<div id='map-slider'>
@@ -54,6 +54,16 @@
 							<option value="2+">2+</option>
 							<option value="3+">3+</option>
 						</select>
+						<div class="starrating">
+							<!--<label for="stars" style="position:absolute;left:0px;">Favourite Rating</label>-->
+								<ul class="stars" id="star_ratings">
+									<li><a href="#" rel="star-1"></a></li>
+									<li><a href="#" rel="star-2"></a></li>
+									<li><a href="#" rel="star-3"></a></li>
+									<li><a href="#" rel="star-4"></a></li>
+									<li><a href="#" rel="star-5"></a></li>
+								</ul>	
+						</div>
 					</div>
 					<div id="search_listings">
 						<input type="submit" value="search" class="btnsubmit" id="submit-btn"/>
@@ -117,6 +127,7 @@
 			</p>-->
 		</footer>
 	</div>
+	<div id="image_titlebar">Favourites</div>
 	<div id="content" class="content"></div>
 	<script language="javascript" type="text/javascript"> 
 	function loadImages(data)
@@ -148,7 +159,7 @@
 	$(document).ready(function() {
 		load_map();
 		loadFavourites();
-		
+
 		$("#openrentals").live("click",function() {
 			$("#searchContent").css('display', 'inline');
 			$("#searchContent").css('visibility', 'visible');

@@ -40,13 +40,11 @@ Class ShowListings extends \Model
 		
  		$result = DB::query('SELECT * FROM `images` WHERE location REGEXP ' . "'" .$location ."'" . " $max", DB::SELECT)->execute();
 		$img_amount = count($result);
-		
-		foreach($result as $item)
+
+		foreach($totalresult as $item)
 		{
 			$url[] = $item['url'];
 		}
-
-		//return_imagedata();
 
 		$imgdata = array();
 		$imgdata["page_nums"] = $pages;

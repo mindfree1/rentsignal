@@ -23,7 +23,8 @@
 				$data['rentmax'] = $_POST['rentmax'];
 				$data['rooms'] = $_POST['rooms'];
 				$data['bathrooms'] = $_POST['bathrooms'];
-				
+				$data['ratings'] = $_POST['ratings'];
+
 				$results = Mapgen::search_results($data);
 			}
 		}

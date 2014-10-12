@@ -55,6 +55,7 @@ function setSlidingPanel(container, map, offlineMode)
 				duration: 500,
 				step: function() {
 				google.maps.event.trigger(map, 'resize');
+					$('#slider').css('width', '50px');
 					$('#listContent').css('display','none');
 					$('#openfavourites').css('visibililty', 'hidden');
 					$("#controls").css('display','none');
@@ -74,7 +75,7 @@ function setSlidingPanel(container, map, offlineMode)
 						$('#openfavourites').css('visibililty', 'visible');
 						$('#openfavourites').css('margin-top', '50px');
 						$('#openfavourites').css('margin-right', '-50px');
-						//$("#content").css('margin','50px auto');
+						$('#slider').css('width', '100%');
 						$("#controls").css('display','inline');
 						//$("#listingsPane").mCustomScrollbar("update");
 					}
@@ -98,31 +99,27 @@ function setSlidingPanel(container, map, offlineMode)
 		zoomControl: true,
 		zoomControlOptions: {
   		style: google.maps.ZoomControlStyle.LARGE,
-  	position: google.maps.ControlPosition.TOP_RIGHT
+  		position: google.maps.ControlPosition.TOP_RIGHT
 	}
 		};
 
-			var infoWindow = null;
-			infowindow = new google.maps.InfoWindow({
-	        content: "loading...",
-			maxWidth: 500 });
+		var infoWindow = null;
+		infowindow = new google.maps.InfoWindow({
+        	content: "loading...",
+		maxWidth: 500 });
 			
 		map = new google.maps.Map(document.getElementById("rentsignal_map"),mapOptions);
-		
 		var slidingPanel = document.createElement('div');
 
-		slidingPanel.style.width = '100%';
+		slidingPanel.style.width = '50px';
 		slidingPanel.id = 'slider';
 		slidingPanel.style.zIndex  = '100';
 		slidingPanel.left = '0px';
 		slidingPanel.margin = '50px';
 		setSlidingPanel(slidingPanel, map);
-		
-		slidingPanel.index = -700;
-
+		slidingPanel.index = 1;
 
 		map.controls[google.maps.ControlPosition.TOP_LEFT].push(slidingPanel);
-
 		$('.gmnoprint').first().css('margin-top','150px');
 	}
 	
@@ -131,60 +128,58 @@ function setSlidingPanel(container, map, offlineMode)
 			var markerIcon = "../assets/img/home-marker.png";
 			var markerImage = new google.maps.MarkerImage(markerIcon, new google.maps.Size(50, 50));
 
+			var id = [];
+			markers = [];
+
+			for(i=0; i <len; i++)
+			{
+				id[i] = i;
+				console.log('marker ID is currently: ' + id[i]);
+			}
+
 			var markerStyles = [{
 				url: markerIcon,
 				height: 35,
 				width: 35,
 				anchor: [16, 0],
 				textColor: '#ffffff',
-				textSize: 10
+				textSize: 10,
+				id: 'test'
 			}];
 			
-			//create map cluster markers here
+			//setups params ready to add markers, checks first whether markers already exist on map, if so doesn't re-add them.
+			/*NOTE BUG: Only works for when the search query is exactly the same as the last e.g search for all properties done again, however
+					if you say search for all properties and then do another search that contains one of the markers already there then it still adds it
+			*/
 			var mcOptions = {gridsize: 50, maxZoom: 15, styles: markerStyles};
-			markers = [];
-
-			for (var i=0; i < len; i++)
-			{
-				if(!markers[i] || markers[0])
-				{
-					var mLatLng = new google.maps.LatLng(data[i].rentals.lat,data[i].rentals.lng);
-					var marker = new google.maps.Marker({"position": mLatLng, icon: markerImage, title: data[i].rentals.location, animation: google.maps.Animation.DROP}); 
-				
-					contents = data[i].rentals.description;
-
-					markers[i] = marker;
-					attachInfo(markers, contents, i, len);
-				}
-			}
-
-			var mclusters = new MarkerClusterer(map, markers, mcOptions);
-			var totalMarkers = mclusters.getTotalMarkers();
-
-			/*if(totalMarkers > 1)
-			{
-				while(markers[0]){
-  				 markers.pop().setMap(null);
-  				}
-			
-				mclusters = new MarkerClusterer(map, markers, mcOptions);
-				//getDistance(data);
-				markers.push(marker);
-			}
-			else
-			{
-				mclusters = new MarkerClusterer(map, markers, mcOptions);
-				//getDistance(data);
-				markers.push(marker);
-			}
-		
-			mclusters.clearMarkers(map);*/
+			addMarkersToMap(markers, id, len, data, markerImage, markerIcon, mcOptions, markerStyles);
 		};
+
+	function addMarkersToMap(markers,markerID, len, data, markerImage, markerIcon, mcOptions, markerStyles)
+	{
+		for (var i=0; i < len; i++)
+		{
+			if(!markerID)
+			{
+				var mLatLng = new google.maps.LatLng(data[i].rentals.lat,data[i].rentals.lng);
+				var marker = new google.maps.Marker({"position": mLatLng, icon: markerImage, title: data[i].rentals.location, animation: google.maps.Animation.DROP}); 
+				
+				//contents = data[i].rentals.description;
+				contents = '<div id="contents" style="width:1200px;height:400px;left:-550px;z-index:10000;">' + data[i].rentals.description + '</div>';
+
+				markers[i] = marker;
+				attachInfo(markers, contents, i, len);
+			}
+		}
+
+		var mclusters = new MarkerClusterer(map, markers, mcOptions);
+		var totalMarkers = mclusters.getTotalMarkers();
+	}
 
 	function attachInfo(markers, contents, num, len)
 	{
-		var offsetTop = '300px';
-		var offsetLeft = '200px';
+		var offsetTop = '400px';
+		var offsetLeft = '100px';
 
 		infoBubbleContent = new InfoBubble({
 			shadowStyle: 1,
@@ -194,48 +189,43 @@ function setSlidingPanel(container, map, offlineMode)
 			content : contents,
 			backgroundColor: 'rgb(223, 223, 223)',
 			borderRadius: 4,
-			height:  '800px',
-			width: '800px',
 			arrowSize: 10,
+			zIndex: 10000,
 			borderWidth: 1,
 			borderColor: '#2c2c2c',
 			disableAutoPan: false,
 			marginLeft: offsetLeft,
 			marginTop: offsetTop
 		});
-		$("infoBubbleContent").addClass('infoCon');
-		//console.log('marker length is: ' + len);
-			google.maps.event.addListener(markers[num], "click", function () {
-				//console.log('bubble content should be: ' + contents);
-				if(infoBubbleContent.isOpen())
-				{
-						infoBubbleContent.close();
-						infoBubbleContent.height('800px')
-						infoBubbleContent.width('800px')
-						infoBubbleContent.setMaxWidth('800px');
-						infoBubbleContent.setMaxHeight('800px');
-						$(".infoCon").css('width', '930px');
-						$(".infoCon").css('height', '370px');
-						$(".infoCon").css('margin-left', '-120px');
-						infoBubbleContent.content = contents;
-						infoBubbleContent.open(map, this);
-					}
-					else
-					{
-						infoBubbleContent.content = contents;
-						infoBubbleContent.open(map, this);
-						$(".infoCon").css('width', '930px');
-						$(".infoCon").css('height', '370px');
-						$(".infoCon").css('margin-left', '-120px');
-					}
-			});
+		//$("infoBubbleContent").addClass('infoCon');
+		
+		google.maps.event.addListener(markers[num], "click", function () {
+		
+		if(infoBubbleContent.isOpen())
+		{
+				infoBubbleContent.close();
+				/*$(".infoCon").css('width', '930px');
+				$(".infoCon").css('height', '370px');
+				$(".infoCon").css('margin-left', '-120px');*/
+				infoBubbleContent.content = contents;
+				infoBubbleContent.open(map, this);
+			}
+			else
+			{
+				infoBubbleContent.content = contents;
+				infoBubbleContent.open(map, this);
+				/*$(".infoCon").css('width', '930px');
+				$(".infoCon").css('height', '370px');
+				$(".infoCon").css('margin-left', '-120px');*/
+			}
+		});
 	}
 
 	function getDistance(data)
 	{
 		//calculate distance between each point on the map and display appropriately.
 		
-		var R = 6371; // km
+		var R = 6371; // km circumfrence around the earth in kms
 		
 		for(x=0;x<data.length-1;x++)
 		{
@@ -264,7 +254,7 @@ function setSlidingPanel(container, map, offlineMode)
 		}*/
 	}
 	
-	function clearMarkers(markers)
+	function clearMarkers(markers, markerID)
 	{
 		if(markers != 'null' || markers != '' || markers.length != 0)
 		{

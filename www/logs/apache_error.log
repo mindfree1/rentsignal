@@ -32311,3 +32311,145 @@ Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate
 [Mon Sep 29 20:29:11 2014] [notice] Child 3012: Acquired the start mutex.
 [Mon Sep 29 20:29:11 2014] [notice] Child 3012: Starting 64 worker threads.
 [Mon Sep 29 20:29:11 2014] [notice] Child 3012: Starting thread to listen on port 80.
+[Tue Sep 30 22:06:55 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Sep 30 22:06:55 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Sep 30 22:06:55 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Tue Sep 30 22:06:55 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Tue Sep 30 22:06:55 2014] [notice] Parent: Created child process 2948
+[Tue Sep 30 22:06:55 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Sep 30 22:06:55 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Sep 30 22:06:55 2014] [notice] Child 2948: Child process is running
+[Tue Sep 30 22:06:55 2014] [notice] Child 2948: Acquired the start mutex.
+[Tue Sep 30 22:06:55 2014] [notice] Child 2948: Starting 64 worker threads.
+[Tue Sep 30 22:06:55 2014] [notice] Child 2948: Starting thread to listen on port 80.
+[Thu Oct 02 19:19:16 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Oct 02 19:19:16 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Oct 02 19:19:17 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Oct 02 19:19:17 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Oct 02 19:19:17 2014] [notice] Parent: Created child process 1244
+[Thu Oct 02 19:19:17 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Oct 02 19:19:18 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Oct 02 19:19:18 2014] [notice] Child 1244: Child process is running
+[Thu Oct 02 19:19:18 2014] [notice] Child 1244: Acquired the start mutex.
+[Thu Oct 02 19:19:18 2014] [notice] Child 1244: Starting 64 worker threads.
+[Thu Oct 02 19:19:18 2014] [notice] Child 1244: Starting thread to listen on port 80.
+[Sat Oct 04 21:04:32 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Oct 04 21:04:33 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat Oct 04 21:04:40 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Sat Oct 04 21:04:40 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Sat Oct 04 21:04:40 2014] [notice] Parent: Created child process 3520
+[Sat Oct 04 21:04:40 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Oct 04 21:04:40 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sat Oct 04 21:04:40 2014] [notice] Child 3520: Child process is running
+[Sat Oct 04 21:04:40 2014] [notice] Child 3520: Acquired the start mutex.
+[Sat Oct 04 21:04:40 2014] [notice] Child 3520: Starting 64 worker threads.
+[Sat Oct 04 21:04:40 2014] [notice] Child 3520: Starting thread to listen on port 80.
+[Sun Oct 05 10:31:44 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Oct 05 10:31:47 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sun Oct 05 10:31:47 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Sun Oct 05 10:31:47 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Sun Oct 05 10:31:48 2014] [notice] Parent: Created child process 3136
+[Sun Oct 05 10:31:48 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Oct 05 10:31:48 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Oct 05 10:31:48 2014] [notice] Child 3136: Child process is running
+[Sun Oct 05 10:31:48 2014] [notice] Child 3136: Acquired the start mutex.
+[Sun Oct 05 10:31:48 2014] [notice] Child 3136: Starting 64 worker threads.
+[Sun Oct 05 10:31:48 2014] [notice] Child 3136: Starting thread to listen on port 80.
+[Tue Oct 07 10:50:14 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Oct 07 10:50:14 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Oct 07 10:50:16 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Tue Oct 07 10:50:16 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Tue Oct 07 10:50:16 2014] [notice] Parent: Created child process 1560
+[Tue Oct 07 10:50:16 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Oct 07 10:50:16 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Tue Oct 07 10:50:16 2014] [notice] Child 1560: Child process is running
+[Tue Oct 07 10:50:16 2014] [notice] Child 1560: Acquired the start mutex.
+[Tue Oct 07 10:50:16 2014] [notice] Child 1560: Starting 64 worker threads.
+[Tue Oct 07 10:50:16 2014] [notice] Child 1560: Starting thread to listen on port 80.
+[Wed Oct 08 10:05:18 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed Oct 08 10:05:18 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Wed Oct 08 10:05:18 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Wed Oct 08 10:05:18 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Wed Oct 08 10:05:18 2014] [notice] Parent: Created child process 1432
+[Wed Oct 08 10:05:20 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed Oct 08 10:05:20 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Wed Oct 08 10:05:20 2014] [notice] Child 1432: Child process is running
+[Wed Oct 08 10:05:20 2014] [notice] Child 1432: Acquired the start mutex.
+[Wed Oct 08 10:05:20 2014] [notice] Child 1432: Starting 64 worker threads.
+[Wed Oct 08 10:05:20 2014] [notice] Child 1432: Starting thread to listen on port 80.
+[Thu Oct 09 18:02:28 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Oct 09 18:02:28 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Oct 09 18:02:32 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Thu Oct 09 18:02:32 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Thu Oct 09 18:02:32 2014] [notice] Parent: Created child process 3132
+[Thu Oct 09 18:02:32 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Oct 09 18:02:32 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Thu Oct 09 18:02:32 2014] [notice] Child 3132: Child process is running
+[Thu Oct 09 18:02:32 2014] [notice] Child 3132: Acquired the start mutex.
+[Thu Oct 09 18:02:32 2014] [notice] Child 3132: Starting 64 worker threads.
+[Thu Oct 09 18:02:32 2014] [notice] Child 3132: Starting thread to listen on port 80.
+[Fri Oct 10 15:24:48 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Fri Oct 10 15:24:49 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Fri Oct 10 15:24:53 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Fri Oct 10 15:24:53 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Fri Oct 10 15:24:53 2014] [notice] Parent: Created child process 3040
+[Fri Oct 10 15:24:53 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Fri Oct 10 15:24:53 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Fri Oct 10 15:24:53 2014] [notice] Child 3040: Child process is running
+[Fri Oct 10 15:24:53 2014] [notice] Child 3040: Acquired the start mutex.
+[Fri Oct 10 15:24:53 2014] [notice] Child 3040: Starting 64 worker threads.
+[Fri Oct 10 15:24:53 2014] [notice] Child 3040: Starting thread to listen on port 80.
+[Fri Oct 10 19:07:54 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in C:\\wamp\\fuel\\app\\classes\\model\\mapgen.php on line 28, referer: http://rentsignal.com/
+[Fri Oct 10 19:07:54 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Fri Oct 10 19:07:54 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0, referer: http://rentsignal.com/
+[Fri Oct 10 19:07:54 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35, referer: http://rentsignal.com/
+[Fri Oct 10 19:07:54 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Fri Oct 10 19:07:54 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_search() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Fri Oct 10 19:07:54 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0, referer: http://rentsignal.com/
+[Fri Oct 10 19:08:47 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in C:\\wamp\\fuel\\app\\classes\\model\\mapgen.php on line 28, referer: http://rentsignal.com/
+[Fri Oct 10 19:08:47 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Fri Oct 10 19:08:47 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0, referer: http://rentsignal.com/
+[Fri Oct 10 19:08:47 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35, referer: http://rentsignal.com/
+[Fri Oct 10 19:08:47 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Fri Oct 10 19:08:47 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_search() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Fri Oct 10 19:08:47 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0, referer: http://rentsignal.com/
+[Fri Oct 10 19:10:30 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in C:\\wamp\\fuel\\app\\classes\\model\\mapgen.php on line 29, referer: http://rentsignal.com/
+[Fri Oct 10 19:10:30 2014] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://rentsignal.com/
+[Fri Oct 10 19:10:30 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0, referer: http://rentsignal.com/
+[Fri Oct 10 19:10:30 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35, referer: http://rentsignal.com/
+[Fri Oct 10 19:10:30 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442, referer: http://rentsignal.com/
+[Fri Oct 10 19:10:30 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_search() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0, referer: http://rentsignal.com/
+[Fri Oct 10 19:10:30 2014] [error] [client 127.0.0.1] PHP   5. Fuel\\Core\\Autoloader::load() C:\\wamp\\fuel\\core\\classes\\autoloader.php:0, referer: http://rentsignal.com/
+[Sat Oct 11 14:04:01 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in C:\\wamp\\fuel\\app\\views\\listings\\listings.php on line 33
+[Sat Oct 11 14:04:01 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sat Oct 11 14:04:01 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Sat Oct 11 14:04:01 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Sat Oct 11 14:04:01 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Sat Oct 11 14:04:01 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_getListings() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Sat Oct 11 14:04:01 2014] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::get_results() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:13
+[Sat Oct 11 14:04:01 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sat Oct 11 14:04:01 2014] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sat Oct 11 14:04:01 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sat Oct 11 14:04:01 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sat Oct 11 14:04:20 2014] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_LNUMBER, expecting ',' or ';' in C:\\wamp\\fuel\\app\\views\\listings\\listings.php on line 33
+[Sat Oct 11 14:04:20 2014] [error] [client 127.0.0.1] PHP Stack trace:
+[Sat Oct 11 14:04:20 2014] [error] [client 127.0.0.1] PHP   1. {main}() C:\\wamp\\www\\index.php:0
+[Sat Oct 11 14:04:20 2014] [error] [client 127.0.0.1] PHP   2. Fuel\\Core\\Request->execute() C:\\wamp\\www\\index.php:35
+[Sat Oct 11 14:04:20 2014] [error] [client 127.0.0.1] PHP   3. ReflectionMethod->invokeArgs() C:\\wamp\\fuel\\core\\classes\\request.php:442
+[Sat Oct 11 14:04:20 2014] [error] [client 127.0.0.1] PHP   4. Controller_ShowListings->action_getListings() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:0
+[Sat Oct 11 14:04:20 2014] [error] [client 127.0.0.1] PHP   5. Model\\ShowListings::get_results() C:\\wamp\\fuel\\app\\classes\\controller\\showlistings.php:13
+[Sat Oct 11 14:04:20 2014] [error] [client 127.0.0.1] PHP   6. Fuel\\Core\\View->__toString() C:\\wamp\\fuel\\core\\classes\\view.php:0
+[Sat Oct 11 14:04:20 2014] [error] [client 127.0.0.1] PHP   7. Fuel\\Core\\View->render() C:\\wamp\\fuel\\core\\classes\\view.php:211
+[Sat Oct 11 14:04:20 2014] [error] [client 127.0.0.1] PHP   8. Fuel\\Core\\View->process_file() C:\\wamp\\fuel\\core\\classes\\view.php:548
+[Sat Oct 11 14:04:20 2014] [error] [client 127.0.0.1] PHP   9. Fuel\\Core\\{closure}() C:\\wamp\\fuel\\core\\classes\\view.php:257
+[Sun Oct 12 11:07:18 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Oct 12 11:07:18 2014] [warn] pid file C:/wamp/bin/apache/Apache2.2.17/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sun Oct 12 11:07:22 2014] [notice] Apache/2.2.17 (Win32) PHP/5.3.5 configured -- resuming normal operations
+[Sun Oct 12 11:07:22 2014] [notice] Server built: Oct 18 2010 01:58:12
+[Sun Oct 12 11:07:22 2014] [notice] Parent: Created child process 3244
+[Sun Oct 12 11:07:22 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Oct 12 11:07:22 2014] [warn] The Alias directive in C:/wamp/alias/rentsignal.conf at line 2 will probably never match because it overlaps an earlier Alias.
+[Sun Oct 12 11:07:22 2014] [notice] Child 3244: Child process is running
+[Sun Oct 12 11:07:22 2014] [notice] Child 3244: Acquired the start mutex.
+[Sun Oct 12 11:07:22 2014] [notice] Child 3244: Starting 64 worker threads.
+[Sun Oct 12 11:07:22 2014] [notice] Child 3244: Starting thread to listen on port 80.

@@ -29,6 +29,7 @@
 	//loop through for pagination
 	for($i=1; $i <= $img_amount; $i++)
 	{
-		echo '<img id="img_' .$locations. '" width="120px" height="120px" src="'. $img_url[$i-1]. '" </img>';
+		//
+		echo '<img id="img_' .$locations. '" width="120px" height="120px" src="'. $img_url[$i-1]. '"' . '/>';
 	}
 ?>

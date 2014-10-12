@@ -41,18 +41,18 @@
 						<label for="rooms">Rooms:</label>
 						<select id="rooms">
 							<option value="Any">Any</option>
-							<option value="1+">1+</option>
-							<option value="2+">2+</option>
-							<option value="3+">3+</option>
+							<option value="1">1+</option>
+							<option value="2">2+</option>
+							<option value="3">3+</option>
 						</select>
 					</div>
 					<div id="bathrooms">
 						<label for="bathrooms">Bathrooms:</label>
 						<select id="bathrooms">
 							<option value="Any">Any</option>
-							<option value="1+">1+</option>
-							<option value="2+">2+</option>
-							<option value="3+">3+</option>
+							<option value="1">1+</option>
+							<option value="2">2+</option>
+							<option value="3">3+</option>
 						</select>
 						<div class="starrating">
 							<!--<label for="stars" style="position:absolute;left:0px;">Favourite Rating</label>-->
@@ -69,11 +69,16 @@
 						<input type="submit" value="search" class="btnsubmit" id="submit-btn"/>
 						<script type="text/javascript">
 						$(".btnsubmit").click(function() {
-	
-						var searchlistings = "rentmin=" + $("#map-slider").slider("values", 0) + "&rentmax=" + 
-						$("#map-slider").slider("values", 1) + "&rooms=" + $('#rooms option:selected').val() + "&bathrooms=" + 
-						$('#bathrooms option:selected').val();
-		
+
+						var starMapped = get_starMappings($('.stars').attr('class'));
+						var bathrooms = $('#bathrooms option:selected').val();
+						var bedrooms = $('#rooms option:selected').val();
+						$('#slider').css('width', '50px');
+						
+						var validData = [starMapped,bathrooms,bedrooms];
+						validateSearch(validData);
+						var searchlistings = "rentmin=" + $("#map-slider").slider("values", 0) + "&rentmax=" + $("#map-slider").slider("values", 1) + "&rooms=" + bedrooms + "&bathrooms=" + bathrooms + "&ratings=" + starMapped;
+
 						$.ajax({
 							type: "POST",
 							url: "http://rentsignal.com/showlistings/search",

@@ -23,6 +23,46 @@ var starRating = {
 	},
 }
 
+function validateSearch(validData)
+{
+		if(validData[0] == '' || null)
+		{
+			starMapped = '%';
+		}
+		else if(validData[1] == 'Any')
+		{
+			bathrooms = '%';
+		}
+		else if(validData[2] == ' Any')
+		{
+			bedrooms = '%';
+		}
+}
+
+function get_starMappings(starClass)
+{
+	switch(starClass){
+		case 'stars star-1':
+			return 1;
+			break;
+		case 'stars star-2':
+			return 2;
+			break;
+		case 'stars star-3':
+			return 3;
+			break;
+		case 'stars star-4':
+			return 4;
+			break;
+		case 'stars star-5':
+			return 5;
+			break;
+		default:
+			return null;
+			break;
+	}
+}
+
 $(document).ready(function() {
 	$('.stars li a').live('mouseover mouseout', function(event) {
         starRating.showHover($(this), event);

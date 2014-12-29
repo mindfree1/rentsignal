@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -34,6 +34,21 @@ class Route
 	 * @var  string  route path
 	 */
 	public $path = '';
+
+	/**
+	 * @var  boolean  route case match behaviour
+	 */
+	public $case_sensitive = false;
+
+	/**
+	 * @var  boolean  wether to strip the extension from the URI
+	 */
+	public $strip_extension = true;
+
+	/**
+	 * @var  string  route name
+	 */
+	public $name = null;
 
 	/**
 	 * @var  string  route module
@@ -70,11 +85,14 @@ class Route
 	 */
 	protected $search = null;
 
-	public function __construct($path, $translation = null)
+	public function __construct($path, $translation = null, $case_sensitive = null, $strip_extension = null, $name = null)
 	{
 		$this->path = $path;
 		$this->translation = ($translation === null) ? $path : $translation;
 		$this->search = ($translation == stripslashes($path)) ? $path : $this->compile();
+		$this->case_sensitive = ($case_sensitive === null) ? \Config::get('routing.case_sensitive', true) : $case_sensitive;
+		$this->strip_extension = ($strip_extension === null) ? \Config::get('routing.strip_extension', true) : $strip_extension;
+		$this->name = $name;
 	}
 
 	/**
@@ -102,7 +120,7 @@ class Route
 			'[[:alpha:]]+',
 			'[^/]*',
 		), $this->path);
-					
+
 		return preg_replace('#(?<!\[\[):([a-z\_]+)(?!:\]\])#uD', '(?P<$1>.+?)', $search);
 	}
 
@@ -116,13 +134,14 @@ class Route
 	public function parse(\Request $request)
 	{
 		$uri = $request->uri->get();
+		$method = $request->get_method();
 
 		if ($uri === '' and $this->path === '_root_')
 		{
 			return $this->matched();
 		}
 
-		$result = $this->_parse_search($uri);
+		$result = $this->_parse_search($uri, null, $method);
 
 		if ($result)
 		{
@@ -162,7 +181,20 @@ class Route
 
 			if ($uri != '')
 			{
-				$path = preg_replace('#^'.$this->search.'$#uD', $this->translation, $uri);
+				// strip the extension if needed and there is something to strip
+				if ($this->strip_extension and strrchr($uri, '.') == $ext = '.'.\Input::extension())
+				{
+					$uri = substr($uri, 0, -(strlen($ext)));
+				}
+
+				if ($this->case_sensitive)
+				{
+					$path = preg_replace('#^'.$this->search.'$#uD', $this->translation, $uri);
+				}
+				else
+				{
+					$path = preg_replace('#^'.$this->search.'$#uiD', $this->translation, $uri);
+				}
 			}
 
 			$this->segments = explode('/', trim($path, '/'));
@@ -175,9 +207,11 @@ class Route
 	 * Parses an actual route - extracted out of parse() to make it recursive.
 	 *
 	 * @param   string  The URI object
+	 * @param   object  route object
+	 * @param   string  request method
 	 * @return  array|boolean
 	 */
-	protected function _parse_search($uri, $route = null)
+	protected function _parse_search($uri, $route = null, $method = null)
 	{
 		if ($route === null)
 		{
@@ -190,10 +224,12 @@ class Route
 			{
 				$verb = $r[0];
 
-				if (\Input::method() == strtoupper($verb))
+				$protocol = isset($r[2]) ? ($r[2] ? 'https' : 'http') : false;
+
+				if (($protocol === false or $protocol == \Input::protocol()) and $method == strtoupper($verb))
 				{
 					$r[1]->search = $route->search;
-					$result = $route->_parse_search($uri, $r[1]);
+					$result = $route->_parse_search($uri, $r[1], $method);
 
 					if ($result)
 					{
@@ -205,7 +241,16 @@ class Route
 			return false;
 		}
 
-		if (preg_match('#^'.$route->search.'$#uD', $uri, $params) != false)
+		if ($this->case_sensitive)
+		{
+			$result = preg_match('#^'.$route->search.'$#uD', $uri, $params);
+		}
+		else
+		{
+			$result = preg_match('#^'.$route->search.'$#uiD', $uri, $params);
+		}
+
+		if ($result === 1)
 		{
 			return $route->matched($uri, $params);
 		}
@@ -215,5 +260,3 @@ class Route
 		}
 	}
 }
-
-

@@ -10,6 +10,8 @@
 		map.panTo(marker.getLatLng());
 	}*/
 	
+markerID = []; //globally remember markers on map
+
 function setSlidingPanel(container, map, offlineMode)
 {
 	var control = this;
@@ -128,15 +130,6 @@ function setSlidingPanel(container, map, offlineMode)
 			var markerIcon = "../assets/img/home-marker.png";
 			var markerImage = new google.maps.MarkerImage(markerIcon, new google.maps.Size(50, 50));
 
-			var id = [];
-			markers = [];
-
-			for(i=0; i <len; i++)
-			{
-				id[i] = i;
-				console.log('marker ID is currently: ' + id[i]);
-			}
-
 			var markerStyles = [{
 				url: markerIcon,
 				height: 35,
@@ -147,33 +140,78 @@ function setSlidingPanel(container, map, offlineMode)
 				id: 'test'
 			}];
 			
-			//setups params ready to add markers, checks first whether markers already exist on map, if so doesn't re-add them.
-			/*NOTE BUG: Only works for when the search query is exactly the same as the last e.g search for all properties done again, however
-					if you say search for all properties and then do another search that contains one of the markers already there then it still adds it
-			*/
-			var mcOptions = {gridsize: 50, maxZoom: 15, styles: markerStyles};
-			addMarkersToMap(markers, id, len, data, markerImage, markerIcon, mcOptions, markerStyles);
-		};
+			//var markerID = [];
+			markers = [];
 
-	function addMarkersToMap(markers,markerID, len, data, markerImage, markerIcon, mcOptions, markerStyles)
+			/*for(i=0; i <len; i++)
+			{
+				markerID[i] = data[i].rentals.id;
+				console.log('marker ID is currently: ' + markerID[i]);
+			}*/
+
+			//This is supposed to not add markers if they already exist but currently doesn't work. Not sure why yet.
+			var mcOptions = {gridsize: 50, maxZoom: 15, styles: markerStyles};
+
+			for(var i=1; i <= len; i++)
+			{
+				markerID[i] = markerID[i+1];
+			}
+
+			for(var i=0; i <len; i++)
+			{
+				if(markerID[i] == data[i].rentals.id)
+				{
+					markerID[i] = markerID[len+1];
+					addMarkersToMap(markers, markerID[i], len, data, markerImage, markerIcon, mcOptions, markerStyles);
+				}
+				else
+				{
+					markerID[i] = i;
+					addMarkersToMap(markers, markerID[i], len, data, markerImage, markerIcon, mcOptions, markerStyles);
+				}
+			}
+	}
+
+	function addMarkersToMap(markers, markerID, len, data, markerImage, markerIcon, mcOptions, markerStyles)
 	{
 		for (var i=0; i < len; i++)
 		{
-			if(!markerID)
-			{
 				var mLatLng = new google.maps.LatLng(data[i].rentals.lat,data[i].rentals.lng);
-				var marker = new google.maps.Marker({"position": mLatLng, icon: markerImage, title: data[i].rentals.location, animation: google.maps.Animation.DROP}); 
+				var marker = new google.maps.Marker({"position": mLatLng, icon: markerImage, id: markerID[i], title: data[i].rentals.location, animation: google.maps.Animation.DROP}); 
 				
 				//contents = data[i].rentals.description;
-				contents = '<div id="contents" style="width:1200px;height:400px;left:-550px;z-index:10000;">' + data[i].rentals.description + '</div>';
+
+				//contents = '<div id="contents" style="width:1200px;height:400px;left:-550px;z-index:10000;">' + data[i].rentals.description + 
+				//$('#overlaycontent').val() + '</div>';
+
+				contents = '<div id="contents" class="contents" style="width:1200px;height:400px;left:-550px;z-index:10000;"></div>';
+
+				/*for(var i=0;i<markersArray;i++)
+				{
+					var markerID = i;
+				}*/
+
+				//data[i].rental_images.url
+				//loadOverlay();
+				/*console.log(data[i].rentals.url);
+				console.log(len);*/
+				//if(!markers[i].isAdded)
 
 				markers[i] = marker;
 				attachInfo(markers, contents, i, len);
-			}
 		}
 
-		var mclusters = new MarkerClusterer(map, markers, mcOptions);
-		var totalMarkers = mclusters.getTotalMarkers();
+		for(var i=0; i<len;i++)
+		{
+			if(!markerID[i])
+			{
+				var mclusters = new MarkerClusterer(map, markers, mcOptions);
+			}
+		}
+		//var totalMarkers = mclusters.getTotalMarkers();
+
+		//var markersArray = mclusters.getMarkers();
+		//console.log('Markers added: ' + markers[1].isAdded);
 	}
 
 	function attachInfo(markers, contents, num, len)
@@ -199,20 +237,52 @@ function setSlidingPanel(container, map, offlineMode)
 		});
 		//$("infoBubbleContent").addClass('infoCon');
 		
-		google.maps.event.addListener(markers[num], "click", function () {
+		google.maps.event.addListener(markers[num], "click", function (evt) {
 		
+		var getLocation = $(this).attr('title');
 		if(infoBubbleContent.isOpen())
 		{
+				//alert($(this).attr('title'));
 				infoBubbleContent.close();
+				$.ajax({
+					type: "GET",
+					url: "http://rentsignal.com/propertydetails",
+					data: 'location=' + getLocation,
+					dataType: "html",
+					success: function(data) {
+						contents = data;
+						$("#contents").html(contents);
+					},
+					error: function()
+					{
+						console.log('view not returned');
+
+					}
+				});
 				/*$(".infoCon").css('width', '930px');
 				$(".infoCon").css('height', '370px');
 				$(".infoCon").css('margin-left', '-120px');*/
-				infoBubbleContent.content = contents;
+				//$("#contents").load("http://rentsignal.com/propertydetails");
+				//loadOverlay();
 				infoBubbleContent.open(map, this);
 			}
 			else
 			{
-				infoBubbleContent.content = contents;
+					$.ajax({
+							type: "GET",
+							url: "http://rentsignal.com/propertydetails",
+							data: 'location=' + getLocation,
+							dataType: "html",
+							success: function(data) {
+								contents = data;
+								$("#contents").html(contents);
+							},
+							error: function()
+							{
+								console.log('view not returned');
+
+							}
+					});
 				infoBubbleContent.open(map, this);
 				/*$(".infoCon").css('width', '930px');
 				$(".infoCon").css('height', '370px');
@@ -280,3 +350,7 @@ function displayPoint(marker, index){
 	});
 	map.panTo(marker.getLatLng());
 }
+
+$(document).ready(function() {
+		$("#overlaycontent").load("http://rentsignal.com/propertydetails");
+	});

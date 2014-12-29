@@ -29,7 +29,7 @@
 	</script>
 </head>
 <body>
-	<?php if ($current_user): ?>
+	<!--<?php //if ($current_user): ?>-->
 	<div class="topbar">
 	    <div class="fill">
 	        <div class="container">
@@ -52,7 +52,7 @@
 
 	          <ul class="nav secondary-nav">
 	            <li class="menu">
-	                <a href="#" class="menu"><?php echo $current_user->username ?></a>
+	                <a href="#" class="menu"><!--<?php //echo $current_user->username ?>--></a>
 	                <ul class="menu-dropdown">
 	                    <li><?php 
 	                    		echo Html::anchor('admin/logout', 'Logout');
@@ -65,7 +65,7 @@
 	    </div>
 	</div>
 
-	<?php endif; ?>
+	<!--<?php //endif; ?>-->
 	
 	<div class="container">
 		<div class="row">

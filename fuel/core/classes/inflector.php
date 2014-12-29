@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -29,55 +29,55 @@ class Inflector
 	);
 
 	protected static $plural_rules = array(
-		'/^(ox)$/'                 => '\1\2en',     // ox
-		'/([m|l])ouse$/'           => '\1ice',      // mouse, louse
-		'/(matr|vert|ind)ix|ex$/'  => '\1ices',     // matrix, vertex, index
-		'/(x|ch|ss|sh)$/'          => '\1es',       // search, switch, fix, box, process, address
-		'/([^aeiouy]|qu)y$/'       => '\1ies',      // query, ability, agency
-		'/(hive)$/'                => '\1s',        // archive, hive
-		'/(?:([^f])fe|([lr])f)$/'  => '\1\2ves',    // half, safe, wife
-		'/sis$/'                   => 'ses',        // basis, diagnosis
-		'/([ti])um$/'              => '\1a',        // datum, medium
-		'/(p)erson$/'              => '\1eople',    // person, salesperson
-		'/(m)an$/'                 => '\1en',       // man, woman, spokesman
-		'/(c)hild$/'               => '\1hildren',  // child
-		'/(buffal|tomat)o$/'       => '\1\2oes',    // buffalo, tomato
-		'/(bu|campu)s$/'           => '\1\2ses',    // bus, campus
-		'/(alias|status|virus)$/'  => '\1es',       // alias
-		'/(octop)us$/'             => '\1i',        // octopus
-		'/(ax|cris|test)is$/'      => '\1es',       // axis, crisis
+		'/^(ox)$/i'                 => '\1\2en',     // ox
+		'/([m|l])ouse$/i'           => '\1ice',      // mouse, louse
+		'/(matr|vert|ind)ix|ex$/i'  => '\1ices',     // matrix, vertex, index
+		'/(x|ch|ss|sh)$/i'          => '\1es',       // search, switch, fix, box, process, address
+		'/([^aeiouy]|qu)y$/i'       => '\1ies',      // query, ability, agency
+		'/(hive)$/i'                => '\1s',        // archive, hive
+		'/(?:([^f])fe|([lr])f)$/i'  => '\1\2ves',    // half, safe, wife
+		'/sis$/i'                   => 'ses',        // basis, diagnosis
+		'/([ti])um$/i'              => '\1a',        // datum, medium
+		'/(p)erson$/i'              => '\1eople',    // person, salesperson
+		'/(m)an$/i'                 => '\1en',       // man, woman, spokesman
+		'/(c)hild$/i'               => '\1hildren',  // child
+		'/(buffal|tomat)o$/i'       => '\1\2oes',    // buffalo, tomato
+		'/(bu|campu)s$/i'           => '\1\2ses',    // bus, campus
+		'/(alias|status|virus)$/i'  => '\1es',       // alias
+		'/(octop)us$/i'             => '\1i',        // octopus
+		'/(ax|cris|test)is$/i'      => '\1es',       // axis, crisis
 		'/s$/'                     => 's',          // no change (compatibility)
 		'/$/'                      => 's',
 	);
 
 	protected static $singular_rules = array(
-		'/(matr)ices$/'         => '\1ix',
-		'/(vert|ind)ices$/'     => '\1ex',
-		'/^(ox)en/'             => '\1',
-		'/(alias)es$/'          => '\1',
-		'/([octop|vir])i$/'     => '\1us',
-		'/(cris|ax|test)es$/'   => '\1is',
-		'/(shoe)s$/'            => '\1',
-		'/(o)es$/'              => '\1',
-		'/(bus|campus)es$/'     => '\1',
-		'/([m|l])ice$/'         => '\1ouse',
-		'/(x|ch|ss|sh)es$/'     => '\1',
-		'/(m)ovies$/'           => '\1\2ovie',
-		'/(s)eries$/'           => '\1\2eries',
-		'/([^aeiouy]|qu)ies$/'  => '\1y',
-		'/([lr])ves$/'          => '\1f',
-		'/(tive)s$/'            => '\1',
-		'/(hive)s$/'            => '\1',
-		'/([^f])ves$/'          => '\1fe',
-		'/(^analy)ses$/'        => '\1sis',
-		'/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/' => '\1\2sis',
-		'/([ti])a$/'            => '\1um',
-		'/(p)eople$/'           => '\1\2erson',
-		'/(m)en$/'              => '\1an',
-		'/(s)tatuses$/'         => '\1\2tatus',
-		'/(c)hildren$/'         => '\1\2hild',
-		'/(n)ews$/'             => '\1\2ews',
-		'/([^us])s$/'           => '\1',
+		'/(matr)ices$/i'         => '\1ix',
+		'/(vert|ind)ices$/i'     => '\1ex',
+		'/^(ox)en/i'             => '\1',
+		'/(alias)es$/i'          => '\1',
+		'/([octop|vir])i$/i'     => '\1us',
+		'/(cris|ax|test)es$/i'   => '\1is',
+		'/(shoe)s$/i'            => '\1',
+		'/(o)es$/i'              => '\1',
+		'/(bus|campus)es$/i'     => '\1',
+		'/([m|l])ice$/i'         => '\1ouse',
+		'/(x|ch|ss|sh)es$/i'     => '\1',
+		'/(m)ovies$/i'           => '\1\2ovie',
+		'/(s)eries$/i'           => '\1\2eries',
+		'/([^aeiouy]|qu)ies$/i'  => '\1y',
+		'/([lr])ves$/i'          => '\1f',
+		'/(tive)s$/i'            => '\1',
+		'/(hive)s$/i'            => '\1',
+		'/([^f])ves$/i'          => '\1fe',
+		'/(^analy)ses$/i'        => '\1sis',
+		'/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i' => '\1\2sis',
+		'/([ti])a$/i'            => '\1um',
+		'/(p)eople$/i'           => '\1\2erson',
+		'/(m)en$/i'              => '\1an',
+		'/(s)tatuses$/i'         => '\1\2tatus',
+		'/(c)hildren$/i'         => '\1\2hild',
+		'/(n)ews$/i'             => '\1\2ews',
+		'/([^us])s$/i'           => '\1',
 	);
 
 
@@ -123,11 +123,19 @@ class Inflector
 	 * Gets the plural version of the given word
 	 *
 	 * @param   string  the word to pluralize
+	 * @param   int     number of instances
 	 * @return  string  the plural version of $word
 	 */
-	public static function pluralize($word)
+	public static function pluralize($word, $count = 0)
 	{
 		$result = strval($word);
+
+		// If a counter is provided, and that equals 1
+		// return as singular.
+		if ($count === 1)
+		{
+			return $result;
+		}
 
 		if ( ! static::is_countable($result))
 		{
@@ -182,7 +190,14 @@ class Inflector
 	 */
 	public static function camelize($underscored_word)
 	{
-		return preg_replace('/(^|_)(.)/e', "strtoupper('\\2')", strval($underscored_word));
+		return preg_replace_callback(
+			'/(^|_)(.)/',
+			function ($parm)
+			{
+				return strtoupper($parm[2]);
+			},
+			strval($underscored_word)
+		);
 	}
 
 	/**
@@ -200,10 +215,11 @@ class Inflector
 	 * Translate string to 7-bit ASCII
 	 * Only works with UTF-8.
 	 *
-	 * @param   string
-	 * @return  string
+	 * @param   string  $str              string to translate
+	 * @param   bool    $allow_non_ascii  wether to remove non ascii
+	 * @return  string                    translated string
 	 */
-	public static function ascii($str)
+	public static function ascii($str, $allow_non_ascii = false)
 	{
 		// Translate unicode characters to their simpler counterparts
 		\Config::load('ascii', true);
@@ -211,35 +227,53 @@ class Inflector
 
 		$str = preg_replace(array_keys($foreign_characters), array_values($foreign_characters), $str);
 
-		// remove any left over non 7bit ASCII
-		return preg_replace('/[^\x09\x0A\x0D\x20-\x7E]/', '', $str);
+		if ( ! $allow_non_ascii)
+		{
+			return preg_replace('/[^\x09\x0A\x0D\x20-\x7E]/', '', $str);
+		}
+
+		return $str;
 	}
 
 	/**
 	 * Converts your text to a URL-friendly title so it can be used in the URL.
 	 * Only works with UTF8 input and and only outputs 7 bit ASCII characters.
 	 *
-	 * @param   string  the text
-	 * @param   string  the separator (either - or _)
-	 * @return  string  the new title
+	 * @param   string  $str              the text
+	 * @param   string  $sep              the separator
+	 * @param   bool    $lowercase        wether to convert to lowercase
+	 * @param   bool    $allow_non_ascii  wether to allow non ascii
+	 * @return  string                    the new title
 	 */
-	public static function friendly_title($str, $sep = '-', $lowercase = false)
+	public static function friendly_title($str, $sep = '-', $lowercase = false, $allow_non_ascii = false)
 	{
-		// Allow underscore, otherwise default to dash
-		$sep = $sep === '_' ? '_' : '-';
-
 		// Remove tags
 		$str = \Security::strip_tags($str);
 
 		// Decode all entities to their simpler forms
 		$str = html_entity_decode($str, ENT_QUOTES, 'UTF-8');
 
-		// Only allow 7bit characters
-		$str = static::ascii($str);
+		// Replace apostrophes.
+		$str = preg_replace("#[\’]#", '-', $str);
 
-		// Strip unwanted characters
-		$str = preg_replace("#[^a-z0-9]#i", $sep, $str);
-		$str = preg_replace("#[/_|+ -]+#", $sep, $str);
+		// Remove all quotes.
+		$str = preg_replace("#[\"\']#", '', $str);
+
+		// Only allow 7bit characters
+		$str = static::ascii($str, $allow_non_ascii);
+
+		if ($allow_non_ascii)
+		{
+			// Strip regular special chars.
+			$str = preg_replace("#[\.;:'\"\]\}\[\{\+\)\(\*&\^\$\#@\!±`%~']#iu", '', $str);
+		}
+		else
+		{
+			// Strip unwanted characters
+			$str = preg_replace("#[^a-z0-9]#i", $sep, $str);
+		}
+
+		$str = preg_replace("#[/_|+ -]+#u", $sep, $str);
 		$str = trim($str, $sep);
 
 		if ($lowercase === true)
@@ -335,11 +369,12 @@ class Inflector
 	 * Takes an underscored classname and uppercases all letters after the underscores.
 	 *
 	 * @param   string  classname
+	 * @param   string  separator
 	 * @return  string
 	 */
-	public static function words_to_upper($class)
+	public static function words_to_upper($class, $sep = '_')
 	{
-		return str_replace(' ', '_', ucwords(str_replace('_', ' ', $class)));
+		return str_replace(' ', $sep, ucwords(str_replace($sep, ' ', $class)));
 	}
 
 	/**

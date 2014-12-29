@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.6
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -90,14 +90,14 @@ class Num
 		// Verify the size format and store the matching parts
 		if (!preg_match($pattern, $size, $matches))
 		{
-			throw new Exception('The byte unit size, "'.$size.'", is improperly formatted.');
+			throw new \Exception('The byte unit size, "'.$size.'", is improperly formatted.');
 		}
 
 		// Find the float value of the size
 		$size = (float) $matches[1];
 
 		// Find the actual unit, assume B if no unit specified
-		$unit = Arr::element($matches, 2, 'B');
+		$unit = \Arr::get($matches, 2, 'B');
 
 		// Convert the size into bytes
 		$bytes = $size * pow(2, static::$byte_units[$unit]);
@@ -124,7 +124,7 @@ class Num
 			'TB' => 1099511627776,  // pow( 1024, 4)
 			'GB' => 1073741824,     // pow( 1024, 3)
 			'MB' => 1048576,        // pow( 1024, 2)
-			'kB' => 1024,           // pow( 1024, 1)
+			'KB' => 1024,           // pow( 1024, 1)
 			'B ' => 1,              // pow( 1024, 0)
 		);
 

@@ -3,17 +3,14 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
 namespace Fuel\Core;
-
-import('phpseclib/Crypt/AES', 'vendor');
-import('phpseclib/Crypt/Hash', 'vendor');
 
 use \PHPSecLib\Crypt_AES;
 use \PHPSecLib\Crypt_Hash;
@@ -179,8 +176,8 @@ class Crypt
 		return (static::secure_compare(static::safe_b64encode(static::$hasher->hash($value)), $hmac)) ? $value : false;
 	}
 
-	private static function secure_compare($a, $b) {
-
+	private static function secure_compare($a, $b)
+	{
 		// make sure we're only comparing equal length strings
 		if (strlen($a) !== strlen($b))
 		{
@@ -193,7 +190,7 @@ class Crypt
 		{
 			$result |= ord($a[$i]) ^ ord($b[$i]);
 		}
-		return $result == 0;
+		return $result === 0;
 	}
 }
 

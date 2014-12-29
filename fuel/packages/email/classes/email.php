@@ -1,12 +1,14 @@
 <?php
 /**
+ * Fuel
+ *
  * Fuel is a fast, lightweight, community driven PHP5 framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -29,12 +31,12 @@ class Email
 	 * Instance for singleton usage.
 	 */
 	public static $_instance = false;
-	
+
 	/**
 	 * Driver config defaults.
 	 */
 	protected static $_defaults;
-	
+
 	/**
 	 * Email priorities
 	 */
@@ -47,29 +49,33 @@ class Email
 	/**
 	 * Email driver forge.
 	 *
-	 * @param	string|array	$setup		setup key for array defined in email.setups config or config array
-	 * @param	array			$config		extra config array
+	 * @param    string|array $setup setup key for array defined in email.setups config or config array
+	 * @param    array        $config extra config array
+	 *
+	 * @throws \FuelException Could not find Email driver
+	 *
+	 * @return  Email_Driver    one of the email drivers
 	 */
 	public static function forge($setup = null, array $config = array())
 	{
 		empty($setup) and $setup = \Config::get('email.default_setup', 'default');
 		is_string($setup) and $setup = \Config::get('email.setups.'.$setup, array());
-		
+
 		$setup = \Arr::merge(static::$_defaults, $setup);
 		$config = \Arr::merge($setup, $config);
-		
+
 		$driver = '\\Email_Driver_'.ucfirst(strtolower($config['driver']));
-		
+
 		if( ! class_exists($driver, true))
 		{
 			throw new \FuelException('Could not find Email driver: '.$config['driver']. ' ('.$driver.')');
 		}
-		
+
 		$driver = new $driver($config);
-				
+
 		return $driver;
 	}
-	
+
 	/**
 	 * Init, config loading.
 	 */
@@ -78,12 +84,16 @@ class Email
 		\Config::load('email', true);
 		static::$_defaults = \Config::get('email.defaults');
 	}
-	
+
 	/**
 	 * Call rerouting for static usage.
 	 *
-	 * @param	string	$method		method name called
-	 * @param	array	$args		supplied arguments
+	 * @param    string $method method name called
+	 * @param    array  $args supplied arguments
+	 *
+	 * @throws \BadMethodCallException Invalid method
+	 *
+	 * @return mixed
 	 */
 	public static function __callStatic($method, $args = array())
 	{
@@ -92,12 +102,12 @@ class Email
 			$instance = static::forge();
 			static::$_instance = &$instance;
 		}
-		
+
 		if(is_callable(array(static::$_instance, $method)))
 		{
-			return call_user_func_array(array(static::$_instance, $method), $args);
+			return call_fuel_func_array(array(static::$_instance, $method), $args);
 		}
-		
+
 		throw new \BadMethodCallException('Invalid method: '.get_called_class().'::'.$method);
 	}
 

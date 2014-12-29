@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -56,20 +56,79 @@ class Uri
 	}
 
 	/**
-	 * Converts the current URI segments to an associative array.  If
-	 * the URI has an odd number of segments, null will be returned.
+	 * Replace all * wildcards in a URI by the current segment in that location
 	 *
-	 * @return  array|null  the array or null
+	 * @param  string  $url     The url containing the wildcards
+	 * @param  bool    $secure  To force a particular HTTP scheme
+	 * @return  string
 	 */
-	public static function to_assoc()
+	public static function segment_replace($url, $secure = null)
 	{
-		return \Arr::to_assoc(static::segments());
+		// get the path from the url
+		$parts = parse_url($url);
+
+		// explode it in it's segments
+		$segments = explode('/', trim($parts['path'], '/'));
+
+		// fetch any segments needed
+		$wildcards = 0;
+		foreach ($segments as $index => &$segment)
+		{
+			if (strpos($segment, '*') !== false)
+			{
+				$wildcards++;
+				if (($new = static::segment($index+1)) === null)
+				{
+					throw new \OutofBoundsException('Segment replace on "'.$url.'" failed. No segment exists for wildcard '.$wildcards.'.');
+				}
+				$segment = str_replace('*', $new, $segment);
+			}
+		}
+
+		// re-assemble the path
+		$parts['path'] = '/'.implode('/', $segments);
+
+		// do we need to force a scheme?
+		if (is_bool($secure))
+		{
+			$parts['scheme'] = $secure ? 'https' : 'http';
+		}
+
+		// and rebuild the url with the new path
+		if (empty($parts['host']))
+		{
+			// if a relative url was given, fake a host so we can remove it after building
+			$url = substr(http_build_url('http://__removethis__/', $parts), 22);
+		}
+		else
+		{
+			// a hostname was present, just rebuild it
+			$url = http_build_url('', $parts);
+		}
+
+		// return the newly constructed url
+		return $url;
+	}
+
+	/**
+	 * Converts the current URI segments to an associative array.  If
+	 * the URI has an odd number of segments, an empty value will be added.
+	 *
+	 * @param  int  segment number to start from. default value is the first segment
+	 * @return  array  the assoc array
+	 */
+	public static function to_assoc($start = 1)
+	{
+		$segments = array_slice(static::segments(), ($start - 1));
+		count($segments) % 2 and $segments[] = null;
+
+		return \Arr::to_assoc($segments);
 	}
 
 	/**
 	 * Returns the full uri as a string
 	 *
-	 * @return	string
+	 * @return  string
 	 */
 	public static function string()
 	{
@@ -93,7 +152,7 @@ class Uri
 	public static function create($uri = null, $variables = array(), $get_variables = array(), $secure = null)
 	{
 		$url = '';
-		$uri = $uri ?: static::string();
+		is_null($uri) and $uri = static::string();
 
 		// If the given uri is not a full URL
 		if( ! preg_match("#^(http|https|ftp)://#i", $uri))
@@ -107,10 +166,14 @@ class Uri
 		}
 		$url .= ltrim($uri, '/');
 
-		// Add a url_suffix if defined and the url doesn't already have one
-		if (substr($url, -1) != '/' and (($suffix = strrchr($url, '.')) === false or strlen($suffix) > 5))
+		// stick a url suffix onto it if defined and needed
+		if ($url_suffix = \Config::get('url_suffix', false) and substr($url, -1) != '/')
 		{
-			\Config::get('url_suffix') and $url .= \Config::get('url_suffix');
+			$current_suffix = strrchr($url, '.');
+			if ( ! $current_suffix or strpos($current_suffix, '/') !== false)
+			{
+				$url .= $url_suffix;
+			}
 		}
 
 		if ( ! empty($get_variables))
@@ -126,9 +189,13 @@ class Uri
 			}
 		}
 
-		array_walk($variables, function ($val, $key) use (&$url) {
-			$url = str_replace(':'.$key, $val, $url);
-		});
+		array_walk(
+			$variables,
+			function ($val, $key) use (&$url)
+			{
+				$url = str_replace(':'.$key, $val, $url);
+			}
+		);
 
 		is_bool($secure) and $url = http_build_url($url, array('scheme' => $secure ? 'https' : 'http'));
 
@@ -173,18 +240,71 @@ class Uri
 		return $url;
 	}
 
+	/**
+	 * Builds a query string by merging all array and string values passed. If
+	 * a string is passed, it will be assumed to be a switch, and converted
+	 * to "string=1".
+	 *
+	 * @param array|string Array or string to merge
+	 * @param array|string ...
+	 *
+	 * @return string
+	 */
+	public static function build_query_string()
+	{
+		$params = array();
+
+		foreach (func_get_args() as $arg)
+		{
+			$arg = is_array($arg) ? $arg : array($arg => '1');
+
+			$params = array_merge($params, $arg);
+		}
+
+		return http_build_query($params);
+	}
 
 	/**
-	 * @deprecated  Make protected in 1.2
+	 * Updates the query string of the current or passed URL with the data passed
+	 *
+	 * @param  array|string  $vars    Assoc array of GET variables, or a get variable name
+	 * @param  string|mixed  $uri     Optional URI to use if $vars is an array, otherwise the get variable name
+	 * @param  bool          $secure  If false, force http. If true, force https
+	 *
+	 * @return string
+	 */
+	public static function update_query_string($vars = array(), $uri = null, $secure = null)
+	{
+		// unify the input data
+		if ( ! is_array($vars))
+		{
+			$vars = array($vars => $uri);
+			$uri = null;
+		}
+
+		// if we have a custom URI, use that
+		if ($uri === null)
+		{
+			// use the current URI if not is passed
+			$uri = static::current();
+
+			// merge them with the existing query string data
+			$vars = array_merge(\Input::get(), $vars);
+		}
+
+		// return the updated uri
+		return static::create($uri, array(), $vars, $secure);
+	}
+
+	/**
 	 * @var  string  The URI string
 	 */
-	public $uri = '';
+	protected $uri = '';
 
 	/**
-	 * @deprecated  Make protected in 1.2
 	 * @var  array  The URI segments
 	 */
-	public $segments = '';
+	protected $segments = '';
 
 	/**
 	 * Construct takes a URI or detects it if none is given and generates
@@ -200,8 +320,19 @@ class Uri
 			\Profiler::mark(__METHOD__.' Start');
 		}
 
+		// if the route is a closure, an object will be passed here
+		is_object($uri) and $uri = null;
+
 		$this->uri = trim($uri ?: \Input::uri(), '/');
-		$this->segments = $this->uri === '' ? array() : explode('/', $this->uri);
+
+		if (empty($this->uri))
+		{
+			$this->segments = array();
+		}
+		else
+		{
+			$this->segments = explode('/', $this->uri);
+		}
 
 		if (\Fuel::$profiling)
 		{

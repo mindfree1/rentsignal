@@ -1,0 +1,12 @@
+<?php
+
+$host="localhost"; 
+$username="root"; 
+$password="pass";  
+
+
+mysql_connect("$host", "$username", "$password")or die("cannot connect"); 
+mysql_select_db("shoppingcart")or die("cannot select DB");
+
+
+?>

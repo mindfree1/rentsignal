@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -28,6 +28,8 @@ class Cli
 	public static $readline_support = false;
 
 	public static $wait_msg = 'Press any key to continue...';
+
+	public static $nocolor = false;
 
 	protected static $args = array();
 
@@ -62,6 +64,9 @@ class Cli
 		'light_gray'	=> '47',
 	);
 
+	protected static $STDOUT;
+	protected static $STDERR;
+
 	/**
 	 * Static constructor.	Parses all the CLI params.
 	 */
@@ -69,7 +74,7 @@ class Cli
 	{
 		if ( ! \Fuel::$is_cli)
 		{
-			throw new Exception('Cli class cannot be used outside of the command line.');
+			throw new \Exception('Cli class cannot be used outside of the command line.');
 		}
 		for ($i = 1; $i < $_SERVER['argc']; $i++)
 		{
@@ -86,6 +91,9 @@ class Cli
 		// Readline is an extension for PHP that makes interactive with PHP much more bash-like
 		// http://www.php.net/manual/en/readline.installation.php
 		static::$readline_support = extension_loaded('readline');
+
+		static::$STDERR = STDERR;
+		static::$STDOUT = STDOUT;
 	}
 
 	/**
@@ -95,8 +103,9 @@ class Cli
 	 * Named options must be in the following formats:
 	 * php index.php user -v --v -name=John --name=John
 	 *
-	 * @param	string|int	$name	the name of the option (int if unnamed)
-	 * @return	string
+	 * @param   string|int  $name     the name of the option (int if unnamed)
+	 * @param   mixed       $default  value to return if the option is not defined
+	 * @return  mixed
 	 */
 	public static function option($name, $default = null)
 	{
@@ -107,7 +116,28 @@ class Cli
 		return static::$args[$name];
 	}
 
-	
+	/**
+	 * Allows you to set a commandline option from code
+	 *
+	 * @param   string|int  $name   the name of the option (int if unnamed)
+	 * @param   mixed|null  $value  value to set, or null to delete the option
+	 * @return  mixed
+	 */
+	public static function set_option($name, $value = null)
+	{
+		if ($value === null)
+		{
+			if (isset(static::$args[$name]))
+			{
+				unset(static::$args[$name]);
+			}
+		}
+		else
+		{
+			static::$args[$name] = $value;
+		}
+	}
+
 	/**
 	 * Get input from the shell, using readline or the standard STDIN
 	 *
@@ -218,7 +248,7 @@ class Cli
 				$extra_output = ' [ '.implode(', ', $options).' ]';
 			}
 
-			fwrite(STDOUT, $output.$extra_output.': ');
+			fwrite(static::$STDOUT, $output.$extra_output.': ');
 		}
 
 		// Read the input from keyboard.
@@ -263,7 +293,7 @@ class Cli
 			$text = static::color($text, $foreground, $background);
 		}
 
-		fwrite(STDOUT, $text.PHP_EOL);
+		fwrite(static::$STDOUT, $text.PHP_EOL);
 	}
 
 	/**
@@ -283,7 +313,7 @@ class Cli
 			$text = static::color($text, $foreground, $background);
 		}
 
-		fwrite(STDERR, $text.PHP_EOL);
+		fwrite(static::$STDERR, $text.PHP_EOL);
 	}
 
 	/**
@@ -311,7 +341,7 @@ class Cli
 
 			while ($time > 0)
 			{
-				fwrite(STDOUT, $time.'... ');
+				fwrite(static::$STDOUT, $time.'... ');
 				sleep(1);
 				$time--;
 			}
@@ -327,7 +357,7 @@ class Cli
 			else
 			{
 				static::write(static::$wait_msg);
-				static::read();
+				static::input();
 			}
 		}
 	}
@@ -337,7 +367,7 @@ class Cli
 	 * if operating system === windows
 	 */
  	public static function is_windows()
- 	{ 
+ 	{
  		return 'win' === strtolower(substr(php_uname("s"), 0, 3));
  	}
 
@@ -369,7 +399,7 @@ class Cli
 			? static::new_line(40)
 
 			// Anything with a flair of Unix will handle these magic characters
-			: fwrite(STDOUT, chr(27)."[H".chr(27)."[2J");
+			: fwrite(static::$STDOUT, chr(27)."[H".chr(27)."[2J");
 	}
 
 	/**
@@ -379,15 +409,21 @@ class Cli
 	 * @param	string	$text		the text to color
 	 * @param	string	$foreground the foreground color
 	 * @param	string	$background the background color
+	 * @param	string	$format		other formatting to apply. Currently only 'underline' is understood
 	 * @return	string	the color coded string
 	 */
-	public static function color($text, $foreground, $background = null)
+	public static function color($text, $foreground, $background = null, $format=null)
 	{
-		if (static::is_windows())
+		if (static::is_windows() and ! \Input::server('ANSICON'))
 		{
 			return $text;
 		}
-		
+
+		if (static::$nocolor)
+		{
+			return $text;
+		}
+
 		if ( ! array_key_exists($foreground, static::$foreground_colors))
 		{
 			throw new \FuelException('Invalid CLI foreground color: '.$foreground);
@@ -405,11 +441,16 @@ class Cli
 			$string .= "\033[".static::$background_colors[$background]."m";
 		}
 
+		if ($format === 'underline')
+		{
+			$string .= "\033[4m";
+		}
+
 		$string .= $text."\033[0m";
 
 		return $string;
 	}
-	
+
 	/**
 	* Spawn Background Process
 	*
@@ -426,13 +467,62 @@ class Cli
 		{
 			pclose(popen('start /b '.$call, 'r'));
 	    }
-	
+
 		// Some sort of UNIX
-		else 
+		else
 		{
 			pclose(popen($call.' > '.$output.' &', 'r'));
 	    }
 	}
 
+	/**
+	 * Redirect STDERR writes to this file or fh
+	 *
+	 * Call with no argument to retrieve the current filehandle.
+	 *
+	 * Is not smart about opening the file if it's a string. Existing files will be truncated.
+	 *
+	 * @param  resource|string  $fh  Opened filehandle or string filename.
+	 *
+	 * @return resource
+	 */
+	public static function stderr($fh = null)
+	{
+		$orig = static::$STDERR;
+
+		if (! is_null($fh)) {
+			if (is_string($fh)) {
+				$fh = fopen($fh, "w");
+			}
+			static::$STDERR = $fh;
+		}
+
+		return $orig;
+	}
+
+	/**
+	 * Redirect STDOUT writes to this file or fh
+	 *
+	 * Call with no argument to retrieve the current filehandle.
+	 *
+	 * Is not smart about opening the file if it's a string. Existing files will be truncated.
+	 *
+	 * @param  resource|string|null  $fh  Opened filehandle or string filename.
+	 *
+	 * @return resource
+	 */
+	public static function stdout($fh = null)
+	{
+		$orig = static::$STDOUT;
+
+		if (! is_null($fh)) {
+			if (is_string($fh)) {
+				$fh = fopen($fh, "w");
+			}
+			static::$STDOUT = $fh;
+		}
+
+		return $orig;
+	}
 }
 

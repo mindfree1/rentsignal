@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -34,20 +34,10 @@ class Ftp
 	protected $_username  = '';
 	protected $_password  = '';
 	protected $_port      = 21;
+	protected $_timeout   = 90;
 	protected $_passive   = true;
 	protected $_debug     = false;
 	protected $_conn_id   = false;
-
-	/**
-	 * This method is deprecated...use forge() instead.
-	 * 
-	 * @deprecated until 1.2
-	 */
-	public static function factory($config = 'default', $connect = true)
-	{
-		logger(\Fuel::L_WARNING, 'This method is deprecated.  Please use a forge() instead.', __METHOD__);
-		return static::forge($config, $connect);
-	}
 
 	/**
 	 * Returns a new Ftp object. If you do not define the "file" parameter,
@@ -97,10 +87,11 @@ class Ftp
 		$this->_hostname = preg_replace('|.+?://|', '', $config['hostname']);
 		$this->_username = $config['username'];
 		$this->_password = $config['password'];
-		$this->_port = ! empty($config['port']) ? (int) $config['port'] : 21;
-		$this->_passive = (bool) $config['passive'];
+		$this->_timeout  = ! empty($config['timeout']) ? (int) $config['timeout'] : 90;
+		$this->_port     = ! empty($config['port']) ? (int) $config['port'] : 21;
+		$this->_passive  = (bool) $config['passive'];
 		$this->_ssl_mode = (bool) $config['ssl_mode'];
-		$this->_debug = (bool) $config['debug'];
+		$this->_debug    = (bool) $config['debug'];
 
 		static::$initialized = true;
 	}
@@ -123,12 +114,12 @@ class Ftp
 				throw new \RuntimeException('ftp_ssl_connect() function is missing.');
 			}
 
-			$this->_conn_id = @ftp_ssl_connect($this->_hostname, $this->_port);
+			$this->_conn_id = @ftp_ssl_connect($this->_hostname, $this->_port, $this->_timeout);
 		}
 
 		else
 		{
-			$this->_conn_id = @ftp_connect($this->_hostname, $this->_port);
+			$this->_conn_id = @ftp_connect($this->_hostname, $this->_port, $this->_timeout);
 		}
 
 		if ($this->_conn_id === false)
@@ -281,7 +272,7 @@ class Ftp
 			return false;
 		}
 
-		if ( ! file_exists($local_path))
+		if ( ! is_file($local_path))
 		{
 			throw new \FtpFileAccessException('No source file');
 			return false;
@@ -468,7 +459,11 @@ class Ftp
 				// we'll recursively call delete_dir()
 				if ( ! @ftp_delete($this->_conn_id, $item))
 				{
-					$this->delete_dir($item);
+					// don't recurse into current of parent directory
+					if ( ! preg_match('/\/\.\.|\/\.$/', $item)) 
+					{
+						$this->delete_dir($item);
+					}
 				}
 			}
 		}
@@ -590,7 +585,7 @@ class Ftp
 				elseif (substr($file, 0, 1) != ".")
 				{
 					// Get the file extension so we can se the upload type
-					$ext = $this->_getext($file);
+					$ext = pathinfo($file, PATHINFO_EXTENSION);
 					$mode = $this->_settype($ext);
 
 					$this->upload($local_path.$file, $remote_path.$file, $mode);

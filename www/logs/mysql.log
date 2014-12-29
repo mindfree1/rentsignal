@@ -4511,3 +4511,777 @@ InnoDB: Last MySQL binlog file position 0 1425, file name .\mysql-bin.000352
 141012 11:07:29 [Note] Event Scheduler: Loaded 0 events
 141012 11:07:29 [Note] wampmysqld: ready for connections.
 Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141013 13:44:22 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141013 13:44:22  InnoDB: Initializing buffer pool, size = 128.0M
+141013 13:44:22  InnoDB: Completed initialization of buffer pool
+141013 13:44:24  InnoDB: highest supported file format is Barracuda.
+InnoDB: The log sequence number in ibdata files does not match
+InnoDB: the log sequence number in the ib_logfiles!
+141013 13:44:24  InnoDB: Database was not shut down normally!
+InnoDB: Starting crash recovery.
+InnoDB: Reading tablespace information from the .ibd files...
+InnoDB: Restoring possible half-written data pages from the doublewrite
+InnoDB: buffer...
+InnoDB: Last MySQL binlog file position 0 1425, file name .\mysql-bin.000352
+141013 13:44:26  InnoDB: 1.1.4 started; log sequence number 2612964
+141013 13:44:26 [Note] Recovering after a crash using mysql-bin
+141013 13:44:26 [Note] Starting crash recovery...
+141013 13:44:26 [Note] Crash recovery finished.
+141013 13:44:26 [Note] Event Scheduler: Loaded 0 events
+141013 13:44:26 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141013 19:03:26 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141013 19:03:26  InnoDB: Initializing buffer pool, size = 128.0M
+141013 19:03:26  InnoDB: Completed initialization of buffer pool
+141013 19:03:26  InnoDB: highest supported file format is Barracuda.
+InnoDB: The log sequence number in ibdata files does not match
+InnoDB: the log sequence number in the ib_logfiles!
+141013 19:03:26  InnoDB: Database was not shut down normally!
+InnoDB: Starting crash recovery.
+InnoDB: Reading tablespace information from the .ibd files...
+InnoDB: Restoring possible half-written data pages from the doublewrite
+InnoDB: buffer...
+InnoDB: Last MySQL binlog file position 0 407, file name .\mysql-bin.000354
+141013 19:03:42  InnoDB: 1.1.4 started; log sequence number 2613503
+141013 19:03:42 [Note] Recovering after a crash using mysql-bin
+141013 19:03:42 [Note] Starting crash recovery...
+141013 19:03:42 [Note] Crash recovery finished.
+141013 19:03:47 [Note] Event Scheduler: Loaded 0 events
+141013 19:03:47 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141013 23:35:44 [Note] wampmysqld: Normal shutdown
+
+141013 23:35:44 [Note] Event Scheduler: Purging the queue. 0 events
+141013 23:35:45  InnoDB: Starting shutdown...
+141013 23:35:46  InnoDB: Shutdown completed; log sequence number 2613545
+141013 23:35:46 [Note] wampmysqld: Shutdown complete
+
+141014 16:14:49 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141014 16:14:53  InnoDB: Initializing buffer pool, size = 128.0M
+141014 16:14:54  InnoDB: Completed initialization of buffer pool
+141014 16:14:55  InnoDB: highest supported file format is Barracuda.
+141014 16:16:37  InnoDB: 1.1.4 started; log sequence number 2613545
+141014 16:17:54 [Note] Event Scheduler: Loaded 0 events
+141014 16:17:54 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141015 11:36:40 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141015 11:36:40  InnoDB: Initializing buffer pool, size = 128.0M
+141015 11:36:40  InnoDB: Completed initialization of buffer pool
+141015 11:36:45  InnoDB: highest supported file format is Barracuda.
+InnoDB: The log sequence number in ibdata files does not match
+InnoDB: the log sequence number in the ib_logfiles!
+141015 11:36:49  InnoDB: Database was not shut down normally!
+InnoDB: Starting crash recovery.
+InnoDB: Reading tablespace information from the .ibd files...
+InnoDB: Restoring possible half-written data pages from the doublewrite
+InnoDB: buffer...
+InnoDB: Last MySQL binlog file position 0 407, file name .\mysql-bin.000354
+141015 11:36:57  InnoDB: 1.1.4 started; log sequence number 2613555
+141015 11:36:57 [Note] Recovering after a crash using mysql-bin
+141015 11:36:57 [Note] Starting crash recovery...
+141015 11:36:57 [Note] Crash recovery finished.
+141015 11:36:58 [Note] Event Scheduler: Loaded 0 events
+141015 11:36:58 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141016 19:51:53 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141016 19:51:54  InnoDB: Initializing buffer pool, size = 128.0M
+141016 19:51:54  InnoDB: Completed initialization of buffer pool
+141016 19:51:54  InnoDB: highest supported file format is Barracuda.
+InnoDB: The log sequence number in ibdata files does not match
+InnoDB: the log sequence number in the ib_logfiles!
+141016 19:51:54  InnoDB: Database was not shut down normally!
+InnoDB: Starting crash recovery.
+InnoDB: Reading tablespace information from the .ibd files...
+InnoDB: Restoring possible half-written data pages from the doublewrite
+InnoDB: buffer...
+InnoDB: Last MySQL binlog file position 0 407, file name .\mysql-bin.000354
+141016 19:51:58  InnoDB: 1.1.4 started; log sequence number 2613565
+141016 19:51:58 [Note] Recovering after a crash using mysql-bin
+141016 19:51:58 [Note] Starting crash recovery...
+141016 19:51:58 [Note] Crash recovery finished.
+141016 19:51:58 [Note] Event Scheduler: Loaded 0 events
+141016 19:51:58 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141017  0:25:15 [Note] wampmysqld: Normal shutdown
+
+141017  0:25:16 [Note] Event Scheduler: Purging the queue. 0 events
+141018 13:24:11 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141018 13:24:11  InnoDB: Initializing buffer pool, size = 128.0M
+141018 13:24:11  InnoDB: Completed initialization of buffer pool
+141018 13:24:11  InnoDB: highest supported file format is Barracuda.
+InnoDB: The log sequence number in ibdata files does not match
+InnoDB: the log sequence number in the ib_logfiles!
+141018 13:24:11  InnoDB: Database was not shut down normally!
+InnoDB: Starting crash recovery.
+InnoDB: Reading tablespace information from the .ibd files...
+InnoDB: Restoring possible half-written data pages from the doublewrite
+InnoDB: buffer...
+InnoDB: Last MySQL binlog file position 0 407, file name .\mysql-bin.000354
+141018 13:24:12  InnoDB: 1.1.4 started; log sequence number 2613585
+141018 13:24:13 [Note] Event Scheduler: Loaded 0 events
+141018 13:24:13 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141020 23:16:31 [Note] wampmysqld: Normal shutdown
+
+141020 23:16:32 [Note] Event Scheduler: Purging the queue. 0 events
+141020 23:16:33  InnoDB: Starting shutdown...
+141020 23:16:37  InnoDB: Shutdown completed; log sequence number 2613595
+141020 23:16:37 [Note] wampmysqld: Shutdown complete
+
+141025  9:38:33 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141025  9:38:33  InnoDB: Initializing buffer pool, size = 128.0M
+141025  9:38:33  InnoDB: Completed initialization of buffer pool
+141025  9:38:36  InnoDB: highest supported file format is Barracuda.
+141025  9:38:42  InnoDB: 1.1.4 started; log sequence number 2613595
+141025  9:38:44 [Note] Event Scheduler: Loaded 0 events
+141025  9:38:44 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141025 14:25:13 [Note] wampmysqld: Normal shutdown
+
+141025 14:25:15 [Note] Event Scheduler: Purging the queue. 0 events
+141025 14:25:18  InnoDB: Starting shutdown...
+141025 18:17:02 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141025 18:17:02  InnoDB: Initializing buffer pool, size = 128.0M
+141025 18:17:02  InnoDB: Completed initialization of buffer pool
+141025 18:17:02  InnoDB: highest supported file format is Barracuda.
+141025 18:17:03  InnoDB: 1.1.4 started; log sequence number 2613595
+141025 18:17:07 [Note] Event Scheduler: Loaded 0 events
+141025 18:17:07 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141025 22:36:08 [Note] wampmysqld: Normal shutdown
+
+141025 22:36:10 [Note] Event Scheduler: Purging the queue. 0 events
+141025 22:36:20  InnoDB: Starting shutdown...
+141101 10:44:13 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141101 10:44:13  InnoDB: Initializing buffer pool, size = 128.0M
+141101 10:44:13  InnoDB: Completed initialization of buffer pool
+141101 10:44:17  InnoDB: highest supported file format is Barracuda.
+141101 10:44:19  InnoDB: 1.1.4 started; log sequence number 2613595
+141101 10:44:24 [Note] Event Scheduler: Loaded 0 events
+141101 10:44:24 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141101 18:15:22 [Note] wampmysqld: Normal shutdown
+
+141101 18:15:22 [Note] Event Scheduler: Purging the queue. 0 events
+141101 18:15:22  InnoDB: Starting shutdown...
+141101 18:15:23  InnoDB: Shutdown completed; log sequence number 2620679
+141101 18:15:23 [Note] wampmysqld: Shutdown complete
+
+141101 18:15:26 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141101 18:15:26  InnoDB: Initializing buffer pool, size = 128.0M
+141101 18:15:26  InnoDB: Completed initialization of buffer pool
+141101 18:15:26  InnoDB: highest supported file format is Barracuda.
+141101 18:15:27  InnoDB: 1.1.4 started; log sequence number 2620679
+141101 18:15:28 [Note] Event Scheduler: Loaded 0 events
+141101 18:15:28 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141101 18:19:21 [Note] wampmysqld: Normal shutdown
+
+141101 18:19:21 [Note] Event Scheduler: Purging the queue. 0 events
+141101 18:19:21  InnoDB: Starting shutdown...
+141101 18:19:21  InnoDB: Shutdown completed; log sequence number 2620679
+141101 18:19:21 [Note] wampmysqld: Shutdown complete
+
+141101 18:19:23 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141101 18:19:23  InnoDB: Initializing buffer pool, size = 128.0M
+141101 18:19:23  InnoDB: Completed initialization of buffer pool
+141101 18:19:23  InnoDB: highest supported file format is Barracuda.
+141101 18:19:27  InnoDB: 1.1.4 started; log sequence number 2620679
+141101 18:19:27 [Note] Event Scheduler: Loaded 0 events
+141101 18:19:27 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141102  1:22:51 [Note] wampmysqld: Normal shutdown
+
+141102  1:22:51 [Note] Event Scheduler: Purging the queue. 0 events
+141102  1:22:51  InnoDB: Starting shutdown...
+141102  1:22:53  InnoDB: Shutdown completed; log sequence number 2624378
+141102  1:22:53 [Note] wampmysqld: Shutdown complete
+
+141102 18:29:09 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141102 18:29:12  InnoDB: Initializing buffer pool, size = 128.0M
+141102 18:29:12  InnoDB: Completed initialization of buffer pool
+141102 18:29:12  InnoDB: highest supported file format is Barracuda.
+141102 18:29:12  InnoDB: 1.1.4 started; log sequence number 2624378
+141102 18:29:20 [Note] Event Scheduler: Loaded 0 events
+141102 18:29:20 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141102 21:19:54 [Note] wampmysqld: Normal shutdown
+
+141102 21:19:55 [Note] Event Scheduler: Purging the queue. 0 events
+141102 21:20:02  InnoDB: Starting shutdown...
+141104 22:36:10 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141104 22:36:10  InnoDB: Initializing buffer pool, size = 128.0M
+141104 22:36:10  InnoDB: Completed initialization of buffer pool
+141104 22:36:10  InnoDB: highest supported file format is Barracuda.
+141104 22:36:11  InnoDB: 1.1.4 started; log sequence number 2624614
+141104 22:36:12 [Note] Event Scheduler: Loaded 0 events
+141104 22:36:12 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141104 23:26:58 [Note] wampmysqld: Normal shutdown
+
+141104 23:26:59 [Note] Event Scheduler: Purging the queue. 0 events
+141104 23:27:07  InnoDB: Starting shutdown...
+141104 23:27:12  InnoDB: Shutdown completed; log sequence number 2624614
+141104 23:27:12 [Note] wampmysqld: Shutdown complete
+
+141105 13:03:42 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141105 13:03:42  InnoDB: Initializing buffer pool, size = 128.0M
+141105 13:03:42  InnoDB: Completed initialization of buffer pool
+141105 13:03:42  InnoDB: highest supported file format is Barracuda.
+141105 13:03:42  InnoDB: 1.1.4 started; log sequence number 2624614
+141105 13:03:44 [Note] Event Scheduler: Loaded 0 events
+141105 13:03:44 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141105 22:05:49 [Note] wampmysqld: Normal shutdown
+
+141105 22:05:49 [Note] Event Scheduler: Purging the queue. 0 events
+141105 22:05:50  InnoDB: Starting shutdown...
+141105 22:05:52  InnoDB: Shutdown completed; log sequence number 2624614
+141105 22:05:52 [Note] wampmysqld: Shutdown complete
+
+141106 21:51:46 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141106 21:51:46  InnoDB: Initializing buffer pool, size = 128.0M
+141106 21:51:46  InnoDB: Completed initialization of buffer pool
+141106 21:51:46  InnoDB: highest supported file format is Barracuda.
+141106 21:51:48  InnoDB: 1.1.4 started; log sequence number 2624614
+141106 21:51:52 [Note] Event Scheduler: Loaded 0 events
+141106 21:51:52 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141106 22:26:43 [Note] wampmysqld: Normal shutdown
+
+141106 22:26:43 [Note] Event Scheduler: Purging the queue. 0 events
+141106 22:26:43  InnoDB: Starting shutdown...
+141106 22:26:45  InnoDB: Shutdown completed; log sequence number 2624614
+141106 22:26:45 [Note] wampmysqld: Shutdown complete
+
+141109 15:56:23 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141109 15:56:23  InnoDB: Initializing buffer pool, size = 128.0M
+141109 15:56:23  InnoDB: Completed initialization of buffer pool
+141109 15:56:23  InnoDB: highest supported file format is Barracuda.
+141109 15:56:23  InnoDB: 1.1.4 started; log sequence number 2624614
+141109 15:56:26 [Note] Event Scheduler: Loaded 0 events
+141109 15:56:26 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141109 20:44:15 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141109 20:44:15  InnoDB: Initializing buffer pool, size = 128.0M
+141109 20:44:15  InnoDB: Completed initialization of buffer pool
+141109 20:44:15  InnoDB: highest supported file format is Barracuda.
+InnoDB: The log sequence number in ibdata files does not match
+InnoDB: the log sequence number in the ib_logfiles!
+141109 20:44:15  InnoDB: Database was not shut down normally!
+InnoDB: Starting crash recovery.
+InnoDB: Reading tablespace information from the .ibd files...
+InnoDB: Restoring possible half-written data pages from the doublewrite
+InnoDB: buffer...
+InnoDB: Last MySQL binlog file position 0 2438, file name .\mysql-bin.000364
+141109 20:47:12  InnoDB: 1.1.4 started; log sequence number 2624624
+141109 20:47:12 [Note] Recovering after a crash using mysql-bin
+141109 20:47:12 [Note] Starting crash recovery...
+141109 20:47:12 [Note] Crash recovery finished.
+141109 20:47:44 [Note] Event Scheduler: Loaded 0 events
+141109 20:47:44 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141109 23:53:51 [Note] wampmysqld: Normal shutdown
+
+141109 23:53:51 [Note] Event Scheduler: Purging the queue. 0 events
+141109 23:53:51  InnoDB: Starting shutdown...
+141109 23:53:52  InnoDB: Shutdown completed; log sequence number 2624624
+141109 23:53:52 [Note] wampmysqld: Shutdown complete
+
+141112 18:18:53 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141112 18:18:53  InnoDB: Initializing buffer pool, size = 128.0M
+141112 18:18:53  InnoDB: Completed initialization of buffer pool
+141112 18:18:53  InnoDB: highest supported file format is Barracuda.
+141112 18:18:54  InnoDB: 1.1.4 started; log sequence number 2624624
+141112 18:18:56 [Note] Event Scheduler: Loaded 0 events
+141112 18:18:56 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141112 23:25:36 [Note] wampmysqld: Normal shutdown
+
+141112 23:25:37 [Note] Event Scheduler: Purging the queue. 0 events
+141112 23:25:38  InnoDB: Starting shutdown...
+141112 23:25:40  InnoDB: Shutdown completed; log sequence number 2624624
+141112 23:25:40 [Note] wampmysqld: Shutdown complete
+
+141113 19:55:28 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141113 19:55:28  InnoDB: Initializing buffer pool, size = 128.0M
+141113 19:55:28  InnoDB: Completed initialization of buffer pool
+141113 19:55:28  InnoDB: highest supported file format is Barracuda.
+141113 19:55:29  InnoDB: 1.1.4 started; log sequence number 2624624
+141113 19:55:30 [Note] Event Scheduler: Loaded 0 events
+141113 19:55:30 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141114  3:44:55 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141114  3:44:55  InnoDB: Initializing buffer pool, size = 128.0M
+141114  3:44:55  InnoDB: Completed initialization of buffer pool
+141114  3:44:55  InnoDB: highest supported file format is Barracuda.
+InnoDB: The log sequence number in ibdata files does not match
+InnoDB: the log sequence number in the ib_logfiles!
+141114  3:44:55  InnoDB: Database was not shut down normally!
+InnoDB: Starting crash recovery.
+InnoDB: Reading tablespace information from the .ibd files...
+InnoDB: Restoring possible half-written data pages from the doublewrite
+InnoDB: buffer...
+InnoDB: Last MySQL binlog file position 0 2438, file name .\mysql-bin.000364
+141114  3:44:57  InnoDB: 1.1.4 started; log sequence number 2624634
+141114  3:44:57 [Note] Recovering after a crash using mysql-bin
+141114  3:44:57 [Note] Starting crash recovery...
+141114  3:44:57 [Note] Crash recovery finished.
+141114  3:44:57 [Note] Event Scheduler: Loaded 0 events
+141114  3:44:57 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141115  1:24:18 [Note] wampmysqld: Normal shutdown
+
+141115  1:24:23 [Note] Event Scheduler: Purging the queue. 0 events
+141115  1:24:31  InnoDB: Starting shutdown...
+141115  1:24:35  InnoDB: Shutdown completed; log sequence number 2624634
+141115  1:24:35 [Note] wampmysqld: Shutdown complete
+
+141115 21:30:01 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141115 21:30:01  InnoDB: Initializing buffer pool, size = 128.0M
+141115 21:30:01  InnoDB: Completed initialization of buffer pool
+141115 21:30:01  InnoDB: highest supported file format is Barracuda.
+141115 21:30:01  InnoDB: 1.1.4 started; log sequence number 2624634
+141115 21:30:05 [Note] Event Scheduler: Loaded 0 events
+141115 21:30:05 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141116 11:57:30 [Note] wampmysqld: Normal shutdown
+
+141116 11:57:31 [Note] Event Scheduler: Purging the queue. 0 events
+141116 11:57:38  InnoDB: Starting shutdown...
+141116 11:57:50  InnoDB: Shutdown completed; log sequence number 2624644
+141116 11:57:54 [Note] wampmysqld: Shutdown complete
+
+141116 17:33:27 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141116 17:33:27  InnoDB: Initializing buffer pool, size = 128.0M
+141116 17:33:27  InnoDB: Completed initialization of buffer pool
+141116 17:33:27  InnoDB: highest supported file format is Barracuda.
+141116 17:33:27  InnoDB: 1.1.4 started; log sequence number 2624644
+141116 17:33:34 [Note] Event Scheduler: Loaded 0 events
+141116 17:33:34 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141116 23:35:58 [Note] wampmysqld: Normal shutdown
+
+141116 23:35:58 [Note] Event Scheduler: Purging the queue. 0 events
+141116 23:36:03  InnoDB: Starting shutdown...
+141116 23:36:14  InnoDB: Shutdown completed; log sequence number 2645643
+141117 22:10:48 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141117 22:10:48  InnoDB: Initializing buffer pool, size = 128.0M
+141117 22:10:48  InnoDB: Completed initialization of buffer pool
+141117 22:10:48  InnoDB: highest supported file format is Barracuda.
+141117 22:10:49  InnoDB: 1.1.4 started; log sequence number 2645643
+141117 22:10:50 [Note] Event Scheduler: Loaded 0 events
+141117 22:10:50 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141117 23:44:48 [Note] wampmysqld: Normal shutdown
+
+141117 23:44:48 [Note] Event Scheduler: Purging the queue. 0 events
+141117 23:44:48  InnoDB: Starting shutdown...
+141117 23:44:48  InnoDB: Shutdown completed; log sequence number 2645850
+141117 23:44:48 [Note] wampmysqld: Shutdown complete
+
+141119 19:30:16 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141119 19:30:16  InnoDB: Initializing buffer pool, size = 128.0M
+141119 19:30:16  InnoDB: Completed initialization of buffer pool
+141119 19:30:16  InnoDB: highest supported file format is Barracuda.
+141119 19:30:17  InnoDB: 1.1.4 started; log sequence number 2645850
+141119 19:30:23 [Note] Event Scheduler: Loaded 0 events
+141119 19:30:23 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141120  1:42:24 [Note] wampmysqld: Normal shutdown
+
+141120  1:42:25 [Note] Event Scheduler: Purging the queue. 0 events
+141120  1:42:32  InnoDB: Starting shutdown...
+141120  1:42:40  InnoDB: Shutdown completed; log sequence number 2645860
+141120  1:42:40 [Note] wampmysqld: Shutdown complete
+
+141120 10:45:00 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141120 10:45:00  InnoDB: Initializing buffer pool, size = 128.0M
+141120 10:45:00  InnoDB: Completed initialization of buffer pool
+141120 10:45:01  InnoDB: highest supported file format is Barracuda.
+141120 10:45:02  InnoDB: 1.1.4 started; log sequence number 2645860
+141120 10:45:03 [Note] Event Scheduler: Loaded 0 events
+141120 10:45:03 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141120 13:34:25 [Note] wampmysqld: Normal shutdown
+
+141120 13:34:26 [Note] Event Scheduler: Purging the queue. 0 events
+141120 13:34:31  InnoDB: Starting shutdown...
+141120 13:34:46  InnoDB: Shutdown completed; log sequence number 2645870
+141120 13:34:48 [Note] wampmysqld: Shutdown complete
+
+141120 16:11:44 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141120 16:11:44  InnoDB: Initializing buffer pool, size = 128.0M
+141120 16:11:44  InnoDB: Completed initialization of buffer pool
+141120 16:11:44  InnoDB: highest supported file format is Barracuda.
+141120 16:11:48  InnoDB: 1.1.4 started; log sequence number 2645870
+141120 16:11:55 [Note] Event Scheduler: Loaded 0 events
+141120 16:11:55 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141121  2:36:12 [Note] wampmysqld: Normal shutdown
+
+141121  2:36:13 [Note] Event Scheduler: Purging the queue. 0 events
+141121  2:36:22  InnoDB: Starting shutdown...
+141121  2:36:30  InnoDB: Shutdown completed; log sequence number 2645890
+141121  2:36:31 [Note] wampmysqld: Shutdown complete
+
+141121 16:32:31 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141121 16:32:32  InnoDB: Initializing buffer pool, size = 128.0M
+141121 16:32:32  InnoDB: Completed initialization of buffer pool
+141121 16:32:32  InnoDB: highest supported file format is Barracuda.
+141121 16:32:32  InnoDB: 1.1.4 started; log sequence number 2645890
+141121 16:32:37 [Note] Event Scheduler: Loaded 0 events
+141121 16:32:37 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141122  4:04:28 [Note] wampmysqld: Normal shutdown
+
+141122  4:04:28 [Note] Event Scheduler: Purging the queue. 0 events
+141122  4:04:28  InnoDB: Starting shutdown...
+141122  4:04:29  InnoDB: Shutdown completed; log sequence number 2645890
+141122  4:04:29 [Note] wampmysqld: Shutdown complete
+
+141122 17:33:20 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141122 17:33:20  InnoDB: Initializing buffer pool, size = 128.0M
+141122 17:33:20  InnoDB: Completed initialization of buffer pool
+141122 17:33:25  InnoDB: highest supported file format is Barracuda.
+141122 17:33:31  InnoDB: 1.1.4 started; log sequence number 2645890
+141122 17:33:42 [Note] Event Scheduler: Loaded 0 events
+141122 17:33:42 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141123  2:04:31 [Note] wampmysqld: Normal shutdown
+
+141123  2:04:33 [Note] Event Scheduler: Purging the queue. 0 events
+141123 10:02:28 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141123 10:02:28  InnoDB: Initializing buffer pool, size = 128.0M
+141123 10:02:28  InnoDB: Completed initialization of buffer pool
+141123 10:02:28  InnoDB: highest supported file format is Barracuda.
+InnoDB: The log sequence number in ibdata files does not match
+InnoDB: the log sequence number in the ib_logfiles!
+141123 10:02:28  InnoDB: Database was not shut down normally!
+InnoDB: Starting crash recovery.
+InnoDB: Reading tablespace information from the .ibd files...
+InnoDB: Restoring possible half-written data pages from the doublewrite
+InnoDB: buffer...
+InnoDB: Last MySQL binlog file position 0 18666, file name .\mysql-bin.000381
+141123 10:02:42  InnoDB: 1.1.4 started; log sequence number 2682745
+141123 10:02:42 [Note] Event Scheduler: Loaded 0 events
+141123 10:02:42 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141123 14:01:53 [Note] wampmysqld: Normal shutdown
+
+141123 14:01:55 [Note] Event Scheduler: Purging the queue. 0 events
+141123 14:02:15  InnoDB: Starting shutdown...
+141123 15:51:16 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141123 15:51:16  InnoDB: Initializing buffer pool, size = 128.0M
+141123 15:51:16  InnoDB: Completed initialization of buffer pool
+141123 15:51:16  InnoDB: highest supported file format is Barracuda.
+141123 15:51:17  InnoDB: 1.1.4 started; log sequence number 2684339
+141123 15:51:24 [Note] Event Scheduler: Loaded 0 events
+141123 15:51:24 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141123 23:15:47 [Note] wampmysqld: Normal shutdown
+
+141123 23:15:48 [Note] Event Scheduler: Purging the queue. 0 events
+141123 23:15:50  InnoDB: Starting shutdown...
+141123 23:15:52  InnoDB: Shutdown completed; log sequence number 2684349
+141123 23:15:52 [Note] wampmysqld: Shutdown complete
+
+141124 20:08:11 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141124 20:08:11  InnoDB: Initializing buffer pool, size = 128.0M
+141124 20:08:11  InnoDB: Completed initialization of buffer pool
+141124 20:08:11  InnoDB: highest supported file format is Barracuda.
+141124 20:08:12  InnoDB: 1.1.4 started; log sequence number 2684349
+141124 20:08:28 [Note] Event Scheduler: Loaded 0 events
+141124 20:08:28 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141125  0:39:30 [Note] wampmysqld: Normal shutdown
+
+141125  0:39:37 [Note] Event Scheduler: Purging the queue. 0 events
+141125  0:39:55  InnoDB: Starting shutdown...
+141125  0:40:09  InnoDB: Shutdown completed; log sequence number 2687935
+141125  0:40:10 [Note] wampmysqld: Shutdown complete
+
+141129 12:11:59 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141129 12:11:59  InnoDB: Initializing buffer pool, size = 128.0M
+141129 12:11:59  InnoDB: Completed initialization of buffer pool
+141129 12:11:59  InnoDB: highest supported file format is Barracuda.
+141129 12:12:00  InnoDB: 1.1.4 started; log sequence number 2687935
+141129 12:12:07 [Note] Event Scheduler: Loaded 0 events
+141129 12:12:07 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141130  0:05:31 [Note] wampmysqld: Normal shutdown
+
+141130  0:05:32 [Note] Event Scheduler: Purging the queue. 0 events
+141130  0:05:32  InnoDB: Starting shutdown...
+141130  0:05:34  InnoDB: Shutdown completed; log sequence number 2688116
+141130  0:05:34 [Note] wampmysqld: Shutdown complete
+
+141130 15:08:19 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141130 15:08:19  InnoDB: Initializing buffer pool, size = 128.0M
+141130 15:08:19  InnoDB: Completed initialization of buffer pool
+141130 15:08:19  InnoDB: highest supported file format is Barracuda.
+141130 15:08:19  InnoDB: 1.1.4 started; log sequence number 2688116
+141130 15:08:31 [Note] Event Scheduler: Loaded 0 events
+141130 15:08:31 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141201 23:25:23 [Note] wampmysqld: Normal shutdown
+
+141201 23:25:24 [Note] Event Scheduler: Purging the queue. 0 events
+141201 23:25:25  InnoDB: Starting shutdown...
+141203 20:48:11 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141203 20:48:11  InnoDB: Initializing buffer pool, size = 128.0M
+141203 20:48:11  InnoDB: Completed initialization of buffer pool
+141203 20:48:11  InnoDB: highest supported file format is Barracuda.
+141203 20:48:11  InnoDB: 1.1.4 started; log sequence number 2688126
+141203 20:48:17 [Note] Event Scheduler: Loaded 0 events
+141203 20:48:17 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141203 23:39:57 [Note] wampmysqld: Normal shutdown
+
+141203 23:39:59 [Note] Event Scheduler: Purging the queue. 0 events
+141203 23:40:07  InnoDB: Starting shutdown...
+141203 23:40:07  InnoDB: Shutdown completed; log sequence number 2688126
+141203 23:40:08 [Note] wampmysqld: Shutdown complete
+
+141206 15:25:03 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141206 15:25:03  InnoDB: Initializing buffer pool, size = 128.0M
+141206 15:25:03  InnoDB: Completed initialization of buffer pool
+141206 15:25:03  InnoDB: highest supported file format is Barracuda.
+141206 15:25:03  InnoDB: 1.1.4 started; log sequence number 2688126
+141206 15:25:11 [Note] Event Scheduler: Loaded 0 events
+141206 15:25:11 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141207  0:21:59 [Note] wampmysqld: Normal shutdown
+
+141207  0:21:59 [Note] Event Scheduler: Purging the queue. 0 events
+141207  0:21:59  InnoDB: Starting shutdown...
+141207  0:21:59  InnoDB: Shutdown completed; log sequence number 2688126
+141207  0:21:59 [Note] wampmysqld: Shutdown complete
+
+141211 15:20:13 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141211 15:20:13  InnoDB: Initializing buffer pool, size = 128.0M
+141211 15:20:13  InnoDB: Completed initialization of buffer pool
+141211 15:20:13  InnoDB: highest supported file format is Barracuda.
+141211 15:20:13  InnoDB: 1.1.4 started; log sequence number 2688126
+141211 15:20:21 [Note] Event Scheduler: Loaded 0 events
+141211 15:20:21 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141215  1:07:04 [Note] wampmysqld: Normal shutdown
+
+141215  1:07:05 [Note] Event Scheduler: Purging the queue. 0 events
+141215  1:07:07  InnoDB: Starting shutdown...
+141215  1:07:15  InnoDB: Shutdown completed; log sequence number 2688126
+141215  1:07:15 [Note] wampmysqld: Shutdown complete
+
+141215  1:11:55 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141215  1:11:55  InnoDB: Initializing buffer pool, size = 128.0M
+141215  1:11:55  InnoDB: Completed initialization of buffer pool
+141215  1:11:55  InnoDB: highest supported file format is Barracuda.
+141215  1:11:56  InnoDB: 1.1.4 started; log sequence number 2688126
+141215  1:12:02 [Note] Event Scheduler: Loaded 0 events
+141215  1:12:02 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141215  2:05:05 [Note] wampmysqld: Normal shutdown
+
+141215  2:05:06 [Note] Event Scheduler: Purging the queue. 0 events
+141215  2:05:17  InnoDB: Starting shutdown...
+141215 11:50:56 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141215 11:50:56  InnoDB: Initializing buffer pool, size = 128.0M
+141215 11:50:56  InnoDB: Completed initialization of buffer pool
+141215 11:50:56  InnoDB: highest supported file format is Barracuda.
+141215 11:50:57  InnoDB: 1.1.4 started; log sequence number 2688126
+141215 11:51:02 [Note] Event Scheduler: Loaded 0 events
+141215 11:51:02 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141217 15:40:49 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141217 15:40:49  InnoDB: Initializing buffer pool, size = 128.0M
+141217 15:40:49  InnoDB: Completed initialization of buffer pool
+141217 15:40:49  InnoDB: highest supported file format is Barracuda.
+141217 15:40:49  InnoDB: 1.1.4 started; log sequence number 2688126
+141217 15:40:49 [Note] Recovering after a crash using mysql-bin
+141217 15:40:49 [Note] Starting crash recovery...
+141217 15:40:49 [Note] Crash recovery finished.
+141217 15:40:57 [Note] Event Scheduler: Loaded 0 events
+141217 15:40:57 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141224 18:35:47 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141224 18:35:47  InnoDB: Initializing buffer pool, size = 128.0M
+141224 18:35:47  InnoDB: Completed initialization of buffer pool
+141224 18:35:48  InnoDB: highest supported file format is Barracuda.
+141224 18:35:48  InnoDB: 1.1.4 started; log sequence number 2688126
+141224 18:35:49 [Note] Recovering after a crash using mysql-bin
+141224 18:35:49 [Note] Starting crash recovery...
+141224 18:35:49 [Note] Crash recovery finished.
+141224 18:35:57 [Note] Event Scheduler: Loaded 0 events
+141224 18:35:57 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141228 12:47:46 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141228 12:47:47  InnoDB: Initializing buffer pool, size = 128.0M
+141228 12:47:47  InnoDB: Completed initialization of buffer pool
+141228 12:47:47  InnoDB: highest supported file format is Barracuda.
+141228 12:47:47  InnoDB: 1.1.4 started; log sequence number 2688126
+141228 12:47:47 [Note] Recovering after a crash using mysql-bin
+141228 12:47:47 [Note] Starting crash recovery...
+141228 12:47:47 [Note] Crash recovery finished.
+141228 12:47:49 [Note] Event Scheduler: Loaded 0 events
+141228 12:47:49 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141229  1:54:27 [Note] wampmysqld: Normal shutdown
+
+141229  1:54:28 [Note] Event Scheduler: Purging the queue. 0 events
+141229  1:54:46  InnoDB: Starting shutdown...
+141229  1:55:06  InnoDB: Shutdown completed; log sequence number 2701272
+141229  1:55:08 [Note] wampmysqld: Shutdown complete
+
+141229  9:11:27 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141229  9:11:27  InnoDB: Initializing buffer pool, size = 128.0M
+141229  9:11:27  InnoDB: Completed initialization of buffer pool
+141229  9:11:33  InnoDB: highest supported file format is Barracuda.
+141229  9:11:33  InnoDB: 1.1.4 started; log sequence number 2701272
+141229  9:11:34 [Note] Event Scheduler: Loaded 0 events
+141229  9:11:34 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141229 11:35:49 [Note] wampmysqld: Normal shutdown
+
+141229 11:35:50 [Note] Event Scheduler: Purging the queue. 0 events
+141229 11:35:57  InnoDB: Starting shutdown...
+141229 11:36:04  InnoDB: Shutdown completed; log sequence number 2708521
+141229 11:36:04 [Note] wampmysqld: Shutdown complete
+
+141229 16:51:18 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141229 16:51:19  InnoDB: Initializing buffer pool, size = 128.0M
+141229 16:51:19  InnoDB: Completed initialization of buffer pool
+141229 16:51:21  InnoDB: highest supported file format is Barracuda.
+141229 16:51:57  InnoDB: 1.1.4 started; log sequence number 2708521
+141229 16:52:31 [Note] Event Scheduler: Loaded 0 events
+141229 16:52:31 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)

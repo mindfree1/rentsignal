@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -27,8 +27,8 @@ namespace Fuel\Core;
  */
 class Html
 {
-	public static $doctypes = array();
-	public static $html5 = false;
+	public static $doctypes = null;
+	public static $html5 = true;
 
 	/**
 	 * Creates an html link
@@ -46,9 +46,12 @@ class Html
 			$urlparts = explode('?', $href, 2);
 			$href = \Uri::create($urlparts[0], array(), isset($urlparts[1])?$urlparts[1]:array(), $secure);
 		}
-		elseif ( ! preg_match('#^(javascript:|\#)# i', $href) and  is_bool($secure))
+		elseif ( ! preg_match('#^(javascript:|\#)# i', $href) and is_bool($secure))
 		{
 			$href = http_build_url($href, array('scheme' => $secure ? 'https' : 'http'));
+
+			// Trim the trailing slash
+			$href = rtrim($href, '/');
 		}
 
 		// Create and display a URL hyperlink
@@ -104,7 +107,7 @@ class Html
 	 * @param	string	The subject
 	 * @return	string	The mailto link
 	 */
-	public static function mail_to($email, $text = NULL, $subject = NULL, $attr = array())
+	public static function mail_to($email, $text = null, $subject = null, $attr = array())
 	{
 		$text or $text = $email;
 
@@ -181,8 +184,12 @@ class Html
 	 */
 	public static function doctype($type = 'xhtml1-trans')
 	{
-		\Config::load('doctypes', true);
-		static::$doctypes = \Config::get('doctypes');
+		if(static::$doctypes === null)
+		{
+			\Config::load('doctypes', true);
+			static::$doctypes = \Config::get('doctypes', array());
+		}
+
 		if(is_array(static::$doctypes) and isset(static::$doctypes[$type]))
 		{
 			if($type == "html5")

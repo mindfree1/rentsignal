@@ -7,7 +7,6 @@ class Controller_Rentsignals extends Controller_Template
 		$data['rentsignals'] = Model_Rentsignals::find('all');
 		$this->template->title = "Rentsignals";
 		$this->template->content = View::forge('rentsignals/index', $data);
-
 	}
 
 	public function action_view($id = null)

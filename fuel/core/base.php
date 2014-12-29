@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -22,8 +22,12 @@ if ( ! function_exists('import'))
 	function import($path, $folder = 'classes')
 	{
 		$path = str_replace('/', DIRECTORY_SEPARATOR, $path);
-		require_once COREPATH.$folder.DIRECTORY_SEPARATOR.$path.'.php';
-
+		// load it ffrom the core if it exists
+		if (is_file(COREPATH.$folder.DIRECTORY_SEPARATOR.$path.'.php'))
+		{
+			require_once COREPATH.$folder.DIRECTORY_SEPARATOR.$path.'.php';
+		}
+		// if the app has an override (or a non-core file), load that too
 		if (is_file(APPPATH.$folder.DIRECTORY_SEPARATOR.$path.'.php'))
 		{
 			require_once APPPATH.$folder.DIRECTORY_SEPARATOR.$path.'.php';
@@ -31,20 +35,71 @@ if ( ! function_exists('import'))
 	}
 }
 
-
+/**
+ * Shortcut for writing to the Log
+ *
+ * @param	int|string	the error level
+ * @param	string	the error message
+ * @param	string	information about the method
+ * @return	bool
+ */
 if ( ! function_exists('logger'))
 {
 	function logger($level, $msg, $method = null)
 	{
-		if ($level > \Config::get('log_threshold'))
+		static $labels = array(
+			100 => 'DEBUG',
+			200 => 'INFO',
+			250 => 'NOTICE',
+			300 => 'WARNING',
+			400 => 'ERROR',
+			500 => 'CRITICAL',
+			550 => 'ALERT',
+			600 => 'EMERGENCY',
+			700 => 'ALL',
+		);
+
+		// make sure $level has the correct value
+		if ((is_int($level) and ! isset($labels[$level])) or (is_string($level) and ! array_search(strtoupper($level), $labels)))
+		{
+			throw new \FuelException('Invalid level "'.$level.'" passed to logger()');
+		}
+
+		if(is_string($level))	$level = array_search(strtoupper($level), $labels);
+
+		// get the levels defined to be logged
+		$loglabels = \Config::get('log_threshold');
+
+		// bail out if we don't need logging at all
+		if ($loglabels == \Fuel::L_NONE)
 		{
 			return false;
 		}
 
-		! class_exists('Fuel\\Core\\Log') and import('log');
-		! class_exists('Log') and class_alias('Fuel\\Core\\Log', 'Log');
+		// if profiling is active log the message to the profile
+		if (\Config::get('profiling'))
+		{
+			\Console::log($method.' - '.$msg);
+		}
 
-		return \Log::write($level, $msg, $method);
+		// if it's not an array, assume it's an "up to" level
+		if ( ! is_array($loglabels))
+		{
+			$a = array();
+			foreach ($labels as $l => $label)
+			{
+				$l >= $loglabels and $a[] = $l;
+			}
+			$loglabels = $a;
+		}
+
+		// do we need to log the message with this level?
+		if ( ! in_array($level, $loglabels))
+		{
+			return false;
+		}
+
+		return \Log::instance()->log($level, (empty($method) ? '' : $method.' - ').$msg);
 	}
 }
 
@@ -61,15 +116,10 @@ if ( ! function_exists('array_to_attr'))
 	{
 		$attr_str = '';
 
-		if ( ! is_array($attr))
+		foreach ((array) $attr as $property => $value)
 		{
-			$attr = (array) $attr;
-		}
-
-		foreach ($attr as $property => $value)
-		{
-			// Ignore null values
-			if (is_null($value))
+			// Ignore null/false
+			if ($value === null or $value === false)
 			{
 				continue;
 			}
@@ -80,7 +130,7 @@ if ( ! function_exists('array_to_attr'))
 				$property = $value;
 			}
 
-			$attr_str .= $property.'="'.$value.'" ';
+			$attr_str .= $property.'="'.str_replace('"', '&quot;', $value).'" ';
 		}
 
 		// We strip off the last space for return
@@ -100,12 +150,31 @@ if ( ! function_exists('html_tag'))
 {
 	function html_tag($tag, $attr = array(), $content = false)
 	{
-		$has_content = (bool) ($content !== false and $content !== null);
-		$html = '<'.$tag;
+		// list of void elements (tags that can not have content)
+		static $void_elements = array(
+			// html4
+			"area","base","br","col","hr","img","input","link","meta","param",
+			// html5
+			"command","embed","keygen","source","track","wbr",
+			// html5.1
+			"menuitem",
+		);
 
+		// construct the HTML
+		$html = '<'.$tag;
 		$html .= ( ! empty($attr)) ? ' '.(is_array($attr) ? array_to_attr($attr) : $attr) : '';
-		$html .= $has_content ? '>' : ' />';
-		$html .= $has_content ? $content.'</'.$tag.'>' : '';
+
+		// a void element?
+		if (in_array(strtolower($tag), $void_elements))
+		{
+			// these can not have content
+			$html .= ' />';
+		}
+		else
+		{
+			// add the content and close the tag
+			$html .= '>'.$content.'</'.$tag.'>';
+		}
 
 		return $html;
 	}
@@ -165,9 +234,9 @@ if ( ! function_exists('render'))
  */
 if ( ! function_exists('__'))
 {
-	function __($string, $params = array(), $default = null)
+	function __($string, $params = array(), $default = null, $language = null)
 	{
-		return \Lang::get($string, $params, $default);
+		return \Lang::get($string, $params, $default, $language);
 	}
 }
 
@@ -327,23 +396,131 @@ if (!function_exists('http_build_url'))
 }
 
 /**
- * Loads in the classes used for the error handlers.  The class_exists() calls
- * will trigger the autoloader if it is loaded, if not, then it will import
- * the classes and do the work itself.
+ * Find the common "root" path of two given paths or FQFN's
  *
- * @return  void
+ * @param   array   array with the paths to compare
+ *
+ * @return  string  the determined common path section
  */
-if ( ! function_exists('load_error_classes'))
+if ( ! function_exists('get_common_path'))
 {
-	function load_error_classes()
+	function get_common_path($paths)
 	{
-		! class_exists('Fuel\\Core\\Error') and import('error');
-		! class_exists('Error') and class_alias('Fuel\\Core\\Error', 'Error');
+		$lastOffset = 1;
+		$common = '/';
+		while (($index = strpos($paths[0], '/', $lastOffset)) !== false)
+		{
+			$dirLen = $index - $lastOffset + 1;	// include /
+			$dir = substr($paths[0], $lastOffset, $dirLen);
+			foreach ($paths as $path)
+			{
+				if (substr($path, $lastOffset, $dirLen) != $dir)
+				{
+					return $common;
+				}
+			}
+			$common .= $dir;
+			$lastOffset = $index + 1;
+		}
+		return $common;
+	}
+}
 
-		! class_exists('Fuel\\Core\\Debug') and import('debug');
-		! class_exists('Debug') and class_alias('Fuel\\Core\\Debug', 'Debug');
+/**
+ * Faster equivalent of call_user_func_array
+ */
+if ( ! function_exists('call_fuel_func_array'))
+{
+	function call_fuel_func_array($callback , array $args)
+	{
+		// deal with "class::method" syntax
+		if (is_string($callback) and strpos($callback, '::') !== false)
+		{
+			$callback = explode('::', $callback);
+		}
 
-		! class_exists('Fuel\\Core\\View') and import('view');
-		! class_exists('View') and class_alias('Fuel\\Core\\View', 'View');
+		// if an array is passed, extract the object and method to call
+		if (is_array($callback) and isset($callback[1]) and is_object($callback[0]))
+		{
+			// make sure our arguments array is indexed
+			if ($count = count($args))
+			{
+				$args = array_values($args);
+			}
+
+			list($instance, $method) = $callback;
+
+			// calling the method directly is faster then call_user_func_array() !
+			switch ($count)
+			{
+				case 0:
+					return $instance->$method();
+
+				case 1:
+					return $instance->$method($args[0]);
+
+				case 2:
+					return $instance->$method($args[0], $args[1]);
+
+				case 3:
+					return $instance->$method($args[0], $args[1], $args[2]);
+
+				case 4:
+					return $instance->$method($args[0], $args[1], $args[2], $args[3]);
+			}
+		}
+
+		elseif (is_array($callback) and isset($callback[1]) and is_string($callback[0]))
+		{
+			list($class, $method) = $callback;
+			$class = '\\'.ltrim($class, '\\');
+
+			// calling the method directly is faster then call_user_func_array() !
+			switch (count($args))
+			{
+				case 0:
+					return $class::$method();
+
+				case 1:
+					return $class::$method($args[0]);
+
+				case 2:
+					return $class::$method($args[0], $args[1]);
+
+				case 3:
+					return $class::$method($args[0], $args[1], $args[2]);
+
+				case 4:
+					return $class::$method($args[0], $args[1], $args[2], $args[3]);
+			}
+		}
+
+		// if it's a string, it's a native function or a static method call
+		elseif (is_string($callback) or $callback instanceOf \Closure)
+		{
+			is_string($callback) and $callback = ltrim($callback, '\\');
+
+			// calling the method directly is faster then call_user_func_array() !
+			switch (count($args))
+			{
+				case 0:
+					return $callback();
+
+				case 1:
+					return $callback($args[0]);
+
+				case 2:
+					return $callback($args[0], $args[1]);
+
+				case 3:
+					return $callback($args[0], $args[1], $args[2]);
+
+				case 4:
+					return $callback($args[0], $args[1], $args[2], $args[3]);
+			}
+		}
+
+		// fallback, handle the old way
+		return call_user_func_array($callback, $args);
 	}
 }

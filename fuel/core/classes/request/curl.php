@@ -2,6 +2,16 @@
 
 namespace Fuel\Core;
 
+
+/**
+ * Request_Curl Class
+ *
+ * Curl driver for Requests
+ *
+ * @package   Fuel\Core
+ *
+ */
+
 class Request_Curl extends \Request_Driver
 {
 	/**
@@ -12,12 +22,14 @@ class Request_Curl extends \Request_Driver
 	/**
 	 * Extends parent constructor to detect availability of cURL
 	 *
-	 * @param   string  $resource
-	 * @param   array   $options
+	 * @param   string  $resource  url to use
+	 * @param   array   $options   options array
+	 * @param   string  $method    request method
 	 * @throws  \RuntimeException
 	 */
-	public function __construct($resource, array $options)
+	public function __construct($resource, array $options, $method = null)
 	{
+
 		// check if we have libcurl available
 		if ( ! function_exists('curl_init'))
 		{
@@ -32,22 +44,7 @@ class Request_Curl extends \Request_Driver
 			$this->http_login($options['user'], $options['pass'], $options['auth']);
 		}
 
-		// we want to handle failure ourselves
-		$this->set_option('failonerror', false);
-
-		parent::__construct($resource, $options);
-	}
-
-	/**
-	 * Change the HTTP method
-	 *
-	 * @param   string  $method
-	 * @return  Request_Curl
-	 */
-	public function set_method($method)
-	{
-		$this->options[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-		return $this;
+		parent::__construct($resource, $options, $method);
 	}
 
 	/**
@@ -118,7 +115,7 @@ class Request_Curl extends \Request_Driver
 		}
 		if ( ! isset($this->options[CURLOPT_FAILONERROR]))
 		{
-			$this->options[CURLOPT_FAILONERROR] = true;
+			$this->options[CURLOPT_FAILONERROR] = false;
 		}
 
 		// Only set follow location if not running securely
@@ -137,10 +134,12 @@ class Request_Curl extends \Request_Driver
 		}
 
 		$additional_params and $this->params = \Arr::merge($this->params, $additional_params);
+		$this->method and $this->options[CURLOPT_CUSTOMREQUEST] = $this->method;
 
-		if ( ! empty($this->options[CURLOPT_CUSTOMREQUEST]))
+		if ( ! empty($this->method))
 		{
-			$this->{'method_'.strtolower($this->options[CURLOPT_CUSTOMREQUEST])}();
+			$this->options[CURLOPT_CUSTOMREQUEST] = $this->method;
+			$this->{'method_'.strtolower($this->method)}();
 		}
 		else
 		{
@@ -154,14 +153,39 @@ class Request_Curl extends \Request_Driver
 		// Execute the request & and hide all output
 		$body = curl_exec($connection);
 		$this->response_info = curl_getinfo($connection);
-		$mime = isset($this->headers['Accept']) ? $this->headers['Accept'] : $this->response_info('content_type', 'text/plain');
-		$this->set_response($body, $this->response_info('http_code', 200), $mime);
+		$mime = $this->response_info('content_type', 'text/plain');
+
+		// Was header data requested?
+		$headers = array();
+		if (isset($this->options[CURLOPT_HEADER]) and $this->options[CURLOPT_HEADER])
+		{
+			// Split the headers from the body
+			$raw_headers = explode("\n", str_replace("\r", "", substr($body, 0, $this->response_info['header_size'])));
+			$body = $this->response_info['header_size'] >= strlen($body) ? '' : substr($body, $this->response_info['header_size']);
+
+			// Convert the header data
+			foreach ($raw_headers as $header)
+			{
+				$header = explode(':', $header, 2);
+				if (isset($header[1]))
+				{
+					$headers[trim($header[0])] = trim($header[1]);
+				}
+			}
+		}
+
+		$this->set_response($body, $this->response_info('http_code', 200), $mime, $headers, isset($this->headers['Accept']) ? $this->headers['Accept'] : null);
 
 		// Request failed
-		if ($body === false or $this->response->status >= 400)
+		if ($body === false)
 		{
 			$this->set_defaults();
 			throw new \RequestException(curl_error($connection), curl_errno($connection));
+		}
+		elseif ($this->response->status >= 400)
+		{
+			$this->set_defaults();
+			throw new \RequestStatusException($body, $this->response->status);
 		}
 		else
 		{
@@ -203,6 +227,21 @@ class Request_Curl extends \Request_Driver
 	{
 		$this->preserve_resource = $this->resource;
 		$this->resource = \Uri::create($this->resource, array(), $this->params);
+	}
+
+	/**
+	 * HEAD request
+	 *
+	 * @param   array  $params
+	 * @return  void
+	 */
+	protected function method_head()
+	{
+		$this->method_get();
+
+		$this->set_option(CURLOPT_NOBODY, true);
+		$this->set_option(CURLOPT_HEADER, true);
+
 	}
 
 	/**
@@ -250,10 +289,10 @@ class Request_Curl extends \Request_Driver
 		// Override method, I think this makes $_POST DELETE data but... we'll see eh?
 		$this->set_header('X-HTTP-Method-Override', 'DELETE');
 	}
-	
+
 	/**
 	 * Function to encode input array depending on the content type
-	 * 
+	 *
 	 * @param   array $input
 	 * @return  mixed encoded output
 	 */
@@ -261,10 +300,10 @@ class Request_Curl extends \Request_Driver
 	{
 		// Detect the request content type, default to 'text/plain'
 		$content_type = isset($this->headers['Content-Type']) ? $this->headers['Content-Type'] : $this->response_info('content_type', 'text/plain');
-		
+
 		// Get the correct format for the current content type
 		$format = \Arr::key_exists(static::$auto_detect_formats, $content_type) ? static::$auto_detect_formats[$content_type] : null;
-		
+
 		switch($format)
 		{
 			// Format as XML

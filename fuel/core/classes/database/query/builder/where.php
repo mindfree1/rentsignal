@@ -13,15 +13,20 @@ namespace Fuel\Core;
 
 abstract class Database_Query_Builder_Where extends \Database_Query_Builder
 {
-
-	// WHERE ...
+	/**
+	 * @var array  $_where  where statements
+	 */
 	protected $_where = array();
 
-	// ORDER BY ...
+	/**
+	 * @var array  $_order_by  order by clause
+	 */
 	protected $_order_by = array();
 
-	// LIMIT ...
-	protected $_limit = NULL;
+	/**
+	 * @var  integer  $_limit
+	 */
+	protected $_limit = null;
 
 	/**
 	 * Alias of and_where()
@@ -30,19 +35,28 @@ abstract class Database_Query_Builder_Where extends \Database_Query_Builder
 	 */
 	public function where()
 	{
-		return call_user_func_array(array($this, 'and_where'), func_get_args());
+		return call_fuel_func_array(array($this, 'and_where'), func_get_args());
 	}
 
 	/**
 	 * Creates a new "AND WHERE" condition for the query.
 	 *
-	 * @param   mixed   column name or array($column, $alias) or object
-	 * @param   string  logic operator
-	 * @param   mixed   column value
+	 * @param   mixed   $column  column name or array($column, $alias) or object
+	 * @param   string  $op      logic operator
+	 * @param   mixed   $value   column value
+	 *
 	 * @return  $this
 	 */
 	public function and_where($column, $op = null, $value = null)
 	{
+		if($column instanceof \Closure)
+		{
+			$this->and_where_open();
+			$column($this);
+			$this->and_where_close();
+			return $this;
+		}
+
 		if (is_array($column))
 		{
 			foreach ($column as $key => $val)
@@ -73,13 +87,22 @@ abstract class Database_Query_Builder_Where extends \Database_Query_Builder
 	/**
 	 * Creates a new "OR WHERE" condition for the query.
 	 *
-	 * @param   mixed   column name or array($column, $alias) or object
-	 * @param   string  logic operator
-	 * @param   mixed   column value
+	 * @param   mixed   $column  column name or array($column, $alias) or object
+	 * @param   string  $op      logic operator
+	 * @param   mixed   $value   column value
+	 *
 	 * @return  $this
 	 */
 	public function or_where($column, $op = null, $value = null)
 	{
+		if($column instanceof \Closure)
+		{
+			$this->or_where_open();
+			$column($this);
+			$this->or_where_close();
+			return $this;
+		}
+
 		if (is_array($column))
 		{
 			foreach ($column as $key => $val)
@@ -177,11 +200,12 @@ abstract class Database_Query_Builder_Where extends \Database_Query_Builder
 	/**
 	 * Applies sorting with "ORDER BY ..."
 	 *
-	 * @param   mixed   column name or array($column, $alias) or object
-	 * @param   string  direction of sorting
+	 * @param   mixed   $column     column name or array($column, $alias) or object
+	 * @param   string  $direction  direction of sorting
+	 *
 	 * @return  $this
 	 */
-	public function order_by($column, $direction = NULL)
+	public function order_by($column, $direction = null)
 	{
 		$this->_order_by[] = array($column, $direction);
 
@@ -191,7 +215,8 @@ abstract class Database_Query_Builder_Where extends \Database_Query_Builder
 	/**
 	 * Return up to "LIMIT ..." results
 	 *
-	 * @param   integer  maximum results to return
+	 * @param   integer  $number  maximum results to return
+	 *
 	 * @return  $this
 	 */
 	public function limit($number)
@@ -200,5 +225,4 @@ abstract class Database_Query_Builder_Where extends \Database_Query_Builder
 
 		return $this;
 	}
-
-} // End Database_Query_Builder_Where
+}

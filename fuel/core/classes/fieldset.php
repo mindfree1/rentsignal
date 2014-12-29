@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -37,16 +37,12 @@ class Fieldset
 	protected static $_instances = array();
 
 	/**
-	 * This method is deprecated...use forge() instead.
+	 * Create Fieldset object
 	 *
-	 * @deprecated until 1.2
+	 * @param   string    Identifier for this fieldset
+	 * @param   array     Configuration array
+	 * @return  Fieldset
 	 */
-	public static function factory($name = 'default', array $config = array())
-	{
-		logger(\Fuel::L_WARNING, 'This method is deprecated.  Please use a forge() instead.', __METHOD__);
-		return static::forge($name, $config);
-	}
-
 	public static function forge($name = 'default', array $config = array())
 	{
 		if ($exists = static::instance($name))
@@ -132,13 +128,35 @@ class Fieldset
 	protected $config = array();
 
 	/**
+	 * @var  array  disabled fields array
+	 */
+	protected $disabled = array();
+
+	/**
+	 * @var  string  name of class providing the tabular form
+	 */
+	protected $tabular_form_model = null;
+
+	/**
+	 * @var  string  name of the relation of the parent object this tabular form is modeled on
+	 */
+	protected $tabular_form_relation = null;
+
+	/**
 	 * Object constructor
 	 *
 	 * @param  string
 	 * @param  array
 	 */
-	protected function __construct($name, array $config = array())
+	public function __construct($name = '', array $config = array())
 	{
+		// support new Fieldset($config) syntax
+		if (is_array($name))
+		{
+			$config = $name;
+			$name = '';
+		}
+
 		if (isset($config['validation_instance']))
 		{
 			$this->validation($config['validation_instance']);
@@ -196,6 +214,19 @@ class Fieldset
 		}
 
 		return $this->form;
+	}
+
+	/**
+	 * Set the tag to be used for this fieldset
+	 *
+	 * @param  string  $tag
+	 * @return  Fieldset       this, to allow chaining
+	 */
+	public function set_fieldset_tag($tag)
+	{
+		$this->fieldset_tag = $tag;
+
+		return $this;
 	}
 
 	/**
@@ -298,10 +329,74 @@ class Fieldset
 			return $field;
 		}
 
-		$field = new \Fieldset_Field($name, $label, $attributes, $rules, $this);
-		$this->fields[$name] = $field;
+		$this->fields[$name] = new \Fieldset_Field($name, $label, $attributes, $rules, $this);
+
+		return $this->fields[$name];
+	}
+
+	/**
+	 * Add a new Fieldset_Field before an existing field in a Fieldset
+	 *
+	 * @param   string  $name
+	 * @param   string  $label
+	 * @param   array   $attributes
+	 * @param   array   $rules
+	 * @param   string  $fieldname   fieldname before which the new field is inserted in the fieldset
+	 * @return  Fieldset_Field
+	 */
+	public function add_before($name, $label = '', array $attributes = array(), array $rules = array(), $fieldname = null)
+	{
+		$field = $this->add($name, $label, $attributes, $rules);
+
+		// Remove from tail and reinsert at correct location
+		unset($this->fields[$field->name]);
+
+		if ( ! \Arr::insert_before_key($this->fields, array($field->name => $field), $fieldname, true))
+		{
+			throw new \RuntimeException('Field "'.$fieldname.'" does not exist in this Fieldset. Field "'.$name.'" can not be added.');
+		}
 
 		return $field;
+	}
+
+	/**
+	 * Add a new Fieldset_Field after an existing field in a Fieldset
+	 *
+	 * @param   string  $name
+	 * @param   string  $label
+	 * @param   array   $attributes
+	 * @param   array   $rules
+	 * @param   string  $fieldname   fieldname after which the new field is inserted in the fieldset
+	 * @return  Fieldset_Field
+	 */
+	public function add_after($name, $label = '', array $attributes = array(), array $rules = array(), $fieldname = null)
+	{
+		$field = $this->add($name, $label, $attributes, $rules);
+
+		// Remove from tail and reinsert at correct location
+		unset($this->fields[$field->name]);
+		if ( ! \Arr::insert_after_key($this->fields, array($field->name => $field), $fieldname, true))
+		{
+			throw new \RuntimeException('Field "'.$fieldname.'" does not exist in this Fieldset. Field "'.$name.'" can not be added.');
+		}
+
+		return $field;
+	}
+
+	/**
+	 * Delete a field instance
+	 *
+	 * @param   string  field name or null to fetch an array of all
+	 * @return  Fieldset  this fieldset, for chaining
+	 */
+	public function delete($name)
+	{
+		if (isset($this->field[$name]))
+		{
+			unset($this->field[$name]);
+		}
+
+		return $this;
 	}
 
 	/**
@@ -309,33 +404,39 @@ class Fieldset
 	 *
 	 * @param   string|null           field name or null to fetch an array of all
 	 * @param   bool                  whether to get the fields array or flattened array
+	 * @param   bool                  whether to include tabular form fields in the flattened array
 	 * @return  Fieldset_Field|false  returns false when field wasn't found
 	 */
-	public function field($name = null, $flatten = false)
+	public function field($name = null, $flatten = false, $tabular_form = true)
 	{
 		if ($name === null)
 		{
-			if ( ! $flatten)
-			{
-				return $this->fields;
-			}
-
 			$fields = $this->fields;
-			foreach ($this->fieldset_children as $fs_name => $fieldset)
+
+			if ($flatten)
 			{
-				\Arr::insert_after_key($fields, $fieldset->field(null, true), $fs_name);
-				unset($fields[$fs_name]);
+				foreach ($this->fieldset_children as $fs_name => $fieldset)
+				{
+					if ($tabular_form or ! $fieldset->get_tabular_form())
+					{
+						\Arr::insert_after_key($fields, $fieldset->field(null, true), $fs_name);
+					}
+					unset($fields[$fs_name]);
+				}
 			}
 			return $fields;
 		}
 
 		if ( ! array_key_exists($name, $this->fields))
 		{
-			foreach ($this->fieldset_children as $fieldset)
+			if ($flatten)
 			{
-				if (($field = $fieldset->field($name) !== false))
+				foreach ($this->fieldset_children as $fieldset)
 				{
-					return $field;
+					if (($field = $fieldset->field($name)) !== false)
+					{
+						return $field;
+					}
 				}
 			}
 			return false;
@@ -380,7 +481,14 @@ class Fieldset
 		$config = is_array($config) ? $config : array($config => $value);
 		foreach ($config as $key => $value)
 		{
-			$this->config[$key] = $value;
+			if (strpos($key, '.') === false)
+			{
+				$this->config[$key] = $value;
+			}
+			else
+			{
+				\Arr::set($this->config, $key, $value);
+			}
 		}
 
 		return $this;
@@ -405,12 +513,19 @@ class Fieldset
 			$output = array();
 			foreach ($key as $k)
 			{
-				$output[$k] = array_key_exists($k, $this->config) ? $this->config[$k] : $default;
+				$output[$k] = $this->get_config($k, $default);
 			}
 			return $output;
 		}
 
-		return array_key_exists($key, $this->config) ? $this->config[$key] : $default;
+		if (strpos($key, '.') === false)
+		{
+			return array_key_exists($key, $this->config) ? $this->config[$key] : $default;
+		}
+		else
+		{
+			return \Arr::get($this->config, $key, $default);
+		}
 	}
 
 	/**
@@ -422,19 +537,22 @@ class Fieldset
 	 */
 	public function populate($input, $repopulate = false)
 	{
-		$fields = $this->field(null, true);
+		$fields = $this->field(null, true, false);
 		foreach ($fields as $f)
 		{
 			if (is_array($input) or $input instanceof \ArrayAccess)
 			{
-				if (isset($input[$f->name]))
-				{
-					$f->set_value($input[$f->name], true);
-				}
+				// convert form field array's to Fuel dotted notation
+				$name = str_replace(array('[',']'), array('.', ''), $f->name);
+
+				// fetch the value for this field, and set it if found
+				$value = \Arr::get($input, $name, null);
+				$value === null and $value = \Arr::get($input, $f->basename, null);
+				$value !== null and $f->set_value($value, true);
 			}
-			elseif (is_object($input) and property_exists($input, $f->name))
+			elseif (is_object($input) and property_exists($input, $f->basename))
 			{
-				$f->set_value($input->{$f->name}, true);
+				$f->set_value($input->{$f->basename}, true);
 			}
 		}
 
@@ -450,17 +568,10 @@ class Fieldset
 	/**
 	 * Set all fields to the input from get or post (depends on the form method attribute)
 	 *
-	 * @param   array|object  input for initial population of fields, this is deprecated - you should use populate() instea
 	 * @return  Fieldset      this, to allow chaining
 	 */
-	public function repopulate($deprecated = null)
+	public function repopulate()
 	{
-		// The following usage will be deprecated in Fuel 1.1
-		if ( ! is_null($deprecated))
-		{
-			return $this->populate($deprecated, true);
-		}
-
 		$fields = $this->field(null, true);
 		foreach ($fields as $f)
 		{
@@ -497,9 +608,33 @@ class Fieldset
 			: $this->form()->{$this->fieldset_tag.'_open'}($attributes);
 
 		$fields_output = '';
+
+		// construct the tabular form table header
+		if ($this->tabular_form_relation)
+		{
+			$properties = call_user_func($this->tabular_form_model.'::properties');
+			$primary_keys = call_user_func($this->tabular_form_model.'::primary_key');
+			$fields_output .= '<thead><tr>'.PHP_EOL;
+			foreach ($properties as $field => $settings)
+			{
+				if ((isset($settings['skip']) and $settings['skip']) or in_array($field, $primary_keys))
+				{
+					continue;
+				}
+				if (isset($settings['form']['type']) and ($settings['form']['type'] === false or $settings['form']['type'] === 'hidden'))
+				{
+					continue;
+				}
+				$fields_output .= "\t".'<th class="'.$this->tabular_form_relation.'_col_'.$field.'">'.(isset($settings['label'])?\Lang::get($settings['label'], array(), $settings['label']):'').'</th>'.PHP_EOL;
+			}
+			$fields_output .= "\t".'<th>'.\Config::get('form.tabular_delete_label', 'Delete?').'</th>'.PHP_EOL;
+
+			$fields_output .= '</tr></thead>'.PHP_EOL;
+		}
+
 		foreach ($this->field() as $f)
 		{
-			$fields_output .= $f->build().PHP_EOL;
+			in_array($f->name, $this->disabled) or $fields_output .= $f->build().PHP_EOL;
 		}
 
 		$close = ($this->fieldset_tag == 'form' or empty($this->fieldset_tag))
@@ -508,11 +643,51 @@ class Fieldset
 
 		$template = $this->form()->get_config((empty($this->fieldset_tag) ? 'form' : $this->fieldset_tag).'_template',
 			"\n\t\t{open}\n\t\t<table>\n{fields}\n\t\t</table>\n\t\t{close}\n");
+
 		$template = str_replace(array('{form_open}', '{open}', '{fields}', '{form_close}', '{close}'),
 			array($open, $open, $fields_output, $close, $close),
 			$template);
 
 		return $template;
+	}
+
+	/**
+	 * Enable a disabled field from being build
+	 *
+	 * @return  Fieldset      this, to allow chaining
+	 */
+	public function enable($name = null)
+	{
+		// Check if it exists. if not, bail out
+		if ( ! $this->field($name))
+		{
+			throw new \RuntimeException('Field "'.$name.'" does not exist in this Fieldset.');
+		}
+
+		if (isset($this->disabled[$name]))
+		{
+			unset($this->disabled[$name]);
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Disable a field from being build
+	 *
+	 * @return  Fieldset      this, to allow chaining
+	 */
+	public function disable($name = null)
+	{
+		// Check if it exists. if not, bail out
+		if ( ! $this->field($name))
+		{
+			throw new \RuntimeException('Field "'.$name.'" does not exist in this Fieldset.');
+		}
+
+		isset($this->disabled[$name]) or $this->disabled[$name] = $name;
+
+		return $this;
 	}
 
 	/**
@@ -566,17 +741,6 @@ class Fieldset
 	}
 
 	/**
-	 * Alias of $this->error() for backwards compatibility
-	 *
-	 * @depricated  Remove in v1.2
-	 */
-	public function errors($field = null)
-	{
-		logger(\Fuel::L_WARNING, 'This method is deprecated. Please use Fieldset::error() instead.', __METHOD__);
-		return $this->error($field);
-	}
-
-	/**
 	 * Alias for $this->validation()->error()
 	 *
 	 * @return  Validation_Error|array
@@ -595,6 +759,125 @@ class Fieldset
 	{
 		return $this->validation()->show_errors($config);
 	}
+
+	/**
+	 * Get the fieldset name
+	 *
+	 * @return string
+	 */
+	public function get_name()
+	{
+		return $this->name;
+	}
+
+	/**
+	 * Enable or disable the tabular form feature of this fieldset
+	 *
+	 * @param  string  Model on which to define the tabular form
+	 * @param  string  Relation of the Model on the tabular form is modeled
+	 * @param  array  Collection of Model objects from a many relation
+	 * @param  int  Number of empty rows to generate
+	 *
+	 * @return  Fieldset  this, to allow chaining
+	 */
+	public function set_tabular_form($model, $relation, $parent, $blanks = 1)
+	{
+		// make sure our parent is an ORM model instance
+		if ( ! $parent instanceOf \Orm\Model)
+		{
+			throw new \RuntimeException('Parent passed to set_tabular_form() is not an ORM model object.');
+		}
+
+		// validate the model and relation
+		// fetch the relations of the parent model
+		$relations = call_user_func(array($parent, 'relations'));
+		if ( ! array_key_exists($relation, $relations))
+		{
+			throw new \RuntimeException('Relation passed to set_tabular_form() is not a valid relation of the ORM parent model object.');
+		}
+
+		// check for compound primary keys
+		try
+		{
+			// fetch the relations of the parent model
+			$primary_key = call_user_func($model.'::primary_key');
+
+			// we don't support compound primary keys
+			if (count($primary_key) !== 1)
+			{
+			throw new \RuntimeException('set_tabular_form() does not supports models with compound primary keys.');
+			}
+
+			// store the primary key name, we need that later
+			$primary_key = reset($primary_key);
+		}
+		catch (\Exception $e)
+		{
+			throw new \RuntimeException('Unable to fetch the models primary key information.');
+		}
+
+		// store the tabular form class name
+		$this->tabular_form_model = $model;
+
+		// and the relation on which we model the rows
+		$this->tabular_form_relation = $relation;
+
+		// load the form config if not loaded yet
+		\Config::load('form', true);
+
+		// load the config for embedded forms
+		$this->set_config(array(
+			'form_template' => \Config::get('form.tabular_form_template', "<table>{fields}</table>\n"),
+			'field_template' => \Config::get('form.tabular_field_template', "{field}")
+		));
+
+		// add the rows to the tabular form fieldset
+		foreach ($parent->{$relation} as $row)
+		{
+			// add the row fieldset to the tabular form fieldset
+			$this->add($fieldset = \Fieldset::forge($this->tabular_form_relation.'_row_'.$row->{$primary_key}));
+
+			// and add the model fields to the row fielset
+			$fieldset->add_model($model, $row)->set_fieldset_tag(false);
+			$fieldset->set_config(array(
+				'form_template' => \Config::get('form.tabular_row_template', "<table>{fields}</table>\n"),
+				'field_template' => \Config::get('form.tabular_row_field_template', "{field}")
+			));
+			$fieldset->add($this->tabular_form_relation.'['.$row->{$primary_key}.'][_delete]', '', array('type' => 'checkbox', 'value' => 1));
+		}
+
+		// and finish with zero or more empty rows so we can add new data
+		if ( ! is_numeric($blanks) or $blanks < 0)
+		{
+			$blanks = 1;
+		}
+		for ($i = 0; $i < $blanks; $i++)
+		{
+			$this->add($fieldset = \Fieldset::forge($this->tabular_form_relation.'_new_'.$i));
+			$fieldset->add_model($model)->set_fieldset_tag(false);
+			$fieldset->set_config(array(
+				'form_template' => \Config::get('form.tabular_row_template', "<tr>{fields}</tr>"),
+				'field_template' => \Config::get('form.tabular_row_field_template', "{field}")
+			));
+			$fieldset->add($this->tabular_form_relation.'_new['.$i.'][_delete]', '', array('type' => 'checkbox', 'value' => 0, 'disabled' => 'disabled'));
+
+			// no required rules on this row
+			foreach ($fieldset->field() as $f)
+			{
+				$f->delete_rule('required', false)->delete_rule('required_with', false);
+			}
+		}
+
+		return $this;
+	}
+
+	/**
+	 * return the tabular form relation of this fieldset
+	 *
+	 * @return  bool
+	 */
+	public function get_tabular_form()
+	{
+		return $this->tabular_form_relation;
+	}
 }
-
-

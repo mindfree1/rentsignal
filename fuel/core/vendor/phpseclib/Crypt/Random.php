@@ -6,132 +6,117 @@ namespace PHPSecLib;
 /**
  * Random Number Generator
  *
+ * The idea behind this function is that it can be easily replaced with your own crypt_random_string()
+ * function. eg. maybe you have a better source of entropy for creating the initial states or whatever.
+ *
  * PHP versions 4 and 5
  *
  * Here's a short example of how to use this library:
  * <code>
  * <?php
- *    include('Crypt/Random.php');
+ *    include 'Crypt/Random.php';
  *
- *    $random = new crypt_random();
- *    $salt = $random->get();
+ *    echo bin2hex(crypt_random_string(8));
  * ?>
  * </code>
  *
- * LICENSE: This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * LICENSE: Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- * MA  02111-1307  USA
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  *
- * @category   Crypt
- * @package    Crypt_Random
- * @author     Jim Wigginton <terrafrost@php.net>
- * @copyright  MMVII Jim Wigginton
- * @license    http://www.gnu.org/licenses/lgpl.txt
- * @version    $Id: Random.php,v 1.9 2010/04/24 06:40:48 terrafrost Exp $
- * @link       http://phpseclib.sourceforge.net
+ * @category  Crypt
+ * @package   Crypt_Random
+ * @author    Jim Wigginton <terrafrost@php.net>
+ * @copyright MMVII Jim Wigginton
+ * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @link      http://phpseclib.sourceforge.net
  */
 
-/**
- * Generate a random value.
- *
- * On 32-bit machines, the largest distance that can exist between $min and $max is 2**31.
- * If $min and $max are farther apart than that then the last ($max - range) numbers.
- *
- * Depending on how this is being used, it may be worth while to write a replacement.  For example,
- * a PHP-based web app that stores its data in an SQL database can collect more entropy than this function
- * can.
- *
- * @param optional Integer $min
- * @param optional Integer $max
- * @return Integer
- * @access public
- */
+// laravel is a PHP framework that utilizes phpseclib. laravel workbenches may, independently,
+// have phpseclib as a requirement as well. if you're developing such a program you may encounter
+// a "Cannot redeclare crypt_random_string()" error.
+if (!function_exists('crypt_random_string')) {
+    /**
+     * "Is Windows" test
+     *
+     * @access private
+     */
+    define('CRYPT_RANDOM_IS_WINDOWS', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN');
 
-class Crypt_Random {
-
-	public function get($min = 0, $max = 0x7FFFFFFF)
-	{
-		if ($min == $max) {
-			return $min;
-		}
-
-		// see http://en.wikipedia.org/wiki//dev/random
-		// if open_basedir is enabled file_exists() will ouput an "open_basedir restriction in effect" warning,
-		// so we suppress it.
-		if (@file_exists('/dev/urandom')) {
-			static $fp;
-			if (!$fp) {
-				$fp = fopen('/dev/urandom', 'rb');
-			}
-			extract(unpack('Nrandom', fread($fp, 4)));
-
-			// say $min = 0 and $max = 3.  if we didn't do abs() then we could have stuff like this:
-			// -4 % 3 + 0 = -1, even though -1 < $min
-			return abs($random) % ($max - $min) + $min;
-		}
-
-		/* Prior to PHP 4.2.0, mt_srand() had to be called before mt_rand() could be called.
-		   Prior to PHP 5.2.6, mt_rand()'s automatic seeding was subpar, as elaborated here:
-
-		   http://www.suspekt.org/2008/08/17/mt_srand-and-not-so-random-numbers/
-
-		   The seeding routine is pretty much ripped from PHP's own internal GENERATE_SEED() macro:
-
-		   http://svn.php.net/viewvc/php/php-src/branches/PHP_5_3_2/ext/standard/php_rand.h?view=markup */
-		if (version_compare(PHP_VERSION, '5.2.5', '<=')) {
-			static $seeded;
-			if (!isset($seeded)) {
-				$seeded = true;
-				mt_srand(fmod(time() * getmypid(), 0x7FFFFFFF) ^ fmod(1000000 * lcg_value(), 0x7FFFFFFF));
-			}
-		}
-
-		static $crypto;
-
-		// The CSPRNG's Yarrow and Fortuna periodically reseed.  This function can be reseeded by hitting F5
-		// in the browser and reloading the page.
-
-		if (!isset($crypto)) {
-			$key = $iv = '';
-			for ($i = 0; $i < 8; $i++) {
-				$key.= pack('n', mt_rand(0, 0xFFFF));
-				$iv .= pack('n', mt_rand(0, 0xFFFF));
-			}
-			switch (true) {
-				case class_exists('Crypt_AES'):
-					$crypto = new Crypt_AES(CRYPT_AES_MODE_CTR);
-					break;
-				case class_exists('Crypt_TripleDES'):
-					$crypto = new Crypt_TripleDES(CRYPT_DES_MODE_CTR);
-					break;
-				case class_exists('Crypt_DES'):
-					$crypto = new Crypt_DES(CRYPT_DES_MODE_CTR);
-					break;
-				case class_exists('Crypt_RC4'):
-					$crypto = new Crypt_RC4();
-					break;
-				default:
-					extract(unpack('Nrandom', pack('H*', sha1(mt_rand(0, 0x7FFFFFFF)))));
-					return abs($random) % ($max - $min) + $min;
-			}
-			$crypto->setKey($key);
-			$crypto->setIV($iv);
-			$crypto->enableContinuousBuffer();
-		}
-
-		extract(unpack('Nrandom', $crypto->encrypt("\0\0\0\0")));
-		return abs($random) % ($max - $min) + $min;
-	}
-
+    /**
+     * Generate a random string.
+     *
+     * Although microoptimizations are generally discouraged as they impair readability this function is ripe with
+     * microoptimizations because this function has the potential of being called a huge number of times.
+     * eg. for RSA key generation.
+     *
+     * @param Integer $length
+     * @return String
+     * @access public
+     */
+    function crypt_random_string($length)
+    {
+        if (CRYPT_RANDOM_IS_WINDOWS) {
+            // method 1. prior to PHP 5.3 this would call rand() on windows hence the function_exists('class_alias') call.
+            // ie. class_alias is a function that was introduced in PHP 5.3
+            if (function_exists('mcrypt_create_iv') && function_exists('class_alias')) {
+                return mcrypt_create_iv($length);
+            }
+            // method 2. openssl_random_pseudo_bytes was introduced in PHP 5.3.0 but prior to PHP 5.3.4 there was,
+            // to quote <http://php.net/ChangeLog-5.php#5.3.4>, "possible blocking behavior". as of 5.3.4
+            // openssl_random_pseudo_bytes and mcrypt_create_iv do the exact same thing on Windows. ie. they both
+            // call php_win32_get_random_bytes():
+            //
+            // https://github.com/php/php-src/blob/7014a0eb6d1611151a286c0ff4f2238f92c120d6/ext/openssl/openssl.c#L5008
+            // https://github.com/php/php-src/blob/7014a0eb6d1611151a286c0ff4f2238f92c120d6/ext/mcrypt/mcrypt.c#L1392
+            //
+            // php_win32_get_random_bytes() is defined thusly:
+            //
+            // https://github.com/php/php-src/blob/7014a0eb6d1611151a286c0ff4f2238f92c120d6/win32/winutil.c#L80
+            //
+            // we're calling it, all the same, in the off chance that the mcrypt extension is not available
+            if (function_exists('openssl_random_pseudo_bytes') && version_compare(PHP_VERSION, '5.3.4', '>=')) {
+                return openssl_random_pseudo_bytes($length);
+            }
+        } else {
+            // method 1. the fastest
+            if (function_exists('openssl_random_pseudo_bytes')) {
+                return openssl_random_pseudo_bytes($length);
+            }
+            // method 2
+            static $fp = true;
+            if ($fp === true) {
+                // warning's will be output unles the error suppression operator is used. errors such as
+                // "open_basedir restriction in effect", "Permission denied", "No such file or directory", etc.
+                $fp = @fopen('/dev/urandom', 'rb');
+            }
+            if ($fp !== true && $fp !== false) { // surprisingly faster than !is_bool() or is_resource()
+                return fread($fp, $length);
+            }
+            // method 3. pretty much does the same thing as method 2 per the following url:
+            // https://github.com/php/php-src/blob/7014a0eb6d1611151a286c0ff4f2238f92c120d6/ext/mcrypt/mcrypt.c#L1391
+            // surprisingly slower than method 2. maybe that's because mcrypt_create_iv does a bunch of error checking that we're
+            // not doing. regardless, this'll only be called if this PHP script couldn't open /dev/urandom due to open_basedir
+            // restrictions or some such
+            if (function_exists('mcrypt_create_iv')) {
+                return mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
+            }
+        }
+        // Throw an exception. We can't generate a secure enough key.
+        throw new \Exception("Insufficient random abilities on this machine");
+    }
 }

@@ -1,14 +1,15 @@
 <?php
 /**
+ * Fuel
+ *
  * Fuel is a fast, lightweight, community driven PHP5 framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
- */
 
 /**
  * NOTICE:
@@ -27,12 +28,15 @@ return array(
 	'extensions' => array(
 		'php'       => 'View',
 		'twig'      => 'View_Twig',
+		'mthaml'    =>  array('class' => 'View_HamlTwig', 'extension' => 'twig'),
 		'mustache'  => 'View_Mustache',
 		'md'        => 'View_Markdown',
 		'dwoo'      => array('class' => 'View_Dwoo', 'extension' => 'tpl'),
 		'jade'      => 'View_Jade',
 		'haml'      => 'View_Haml',
 		'smarty'    => 'View_Smarty',
+		'phptal'    => 'View_Phptal',
+		'lex'       => 'View_Lex',
 	),
 
 
@@ -44,7 +48,7 @@ return array(
 	// MARKDOWN ( http://michelf.com/projects/php-markdown/ )
 	// ------------------------------------------------------------------------
 	'View_Markdown' => array(
-		'include'      => PKGPATH.'parser'.DS.'vendor'.DS.'markdown'.DS.'markdown.php',
+		'include'      => \Package::exists('parser').'vendor'.DS.'markdown'.DS.'markdown.php',
 		'auto_encode'  => true,
 		'allow_php'    => true,
 	),
@@ -52,13 +56,12 @@ return array(
 	// TWIG ( http://www.twig-project.org/documentation )
 	// ------------------------------------------------------------------------
 	'View_Twig' => array(
-		'include' => APPPATH.'vendor'.DS.'Twig'.DS.'Autoloader.php',
 		'auto_encode' => true,
 		'views_paths' => array(APPPATH.'views'),
 		'delimiters' => array(
-			'tag_block'     => array('{%', '%}'),
-			'tag_comment'   => array('{#', '#}'),
-			'tag_variable'  => array('{{', '}}'),
+			'tag_block'     => array('left' => '{%', 'right' => '%}'),
+			'tag_comment'   => array('left' => '{#', 'right' => '#}'),
+			'tag_variable'  => array('left' => '{{', 'right' => '}}'),
 		),
 		'environment' => array(
 			'debug'                => false,
@@ -75,12 +78,29 @@ return array(
 		),
 	),
 
+	// HamlTwig with MtHaml https://github.com/arnaud-lb/MtHaml
+	// Twig configuration is grabbed from 'View_Twig' config key
+	// Packagist url: https://packagist.org/packages/mthaml/mthaml
+	// Uses > 1.1.1 (Master branch ATM)
+	// ------------------------------------------------------------------------
+	'View_HamlTwig' => array(
+		//'include' => APPPATH.'vendor'.DS.'MtHaml'.DS.'Autoloader.php',
+		'auto_encode' => true,
+		'environment' => array(
+			'auto_escaper' => true,
+			'escape_html'	 => true,
+			'escape_attrs' => true,
+			'charset' 		 => 'UTF-8',
+			'format' 		 	 => 'html5',
+		),
+	),
+
 	// DWOO ( http://wiki.dwoo.org/ )
 	// ------------------------------------------------------------------------
 	'View_Dwoo' => array(
 		'include' => APPPATH.'vendor'.DS.'Dwoo'.DS.'dwooAutoload.php',
 		'auto_encode' => true,
-		'delimiters' => array('{{', '}}'),
+		'delimiters' => array('left' => '{{', 'right' => '}}'),
 		'environment' => array(
 			'autoescape'       => false,
 			'nested_comments'  => false,
@@ -101,12 +121,12 @@ return array(
 	// MUSTACHE ( https://github.com/bobthecow/mustache.php )
 	// ------------------------------------------------------------------------
 	'View_Mustache' => array(
-		'include' => PKGPATH.'parser'.DS.'vendor'.DS.'Mustache'.DS.'Mustache.php',
 		'auto_encode' => true,
-		'delimiters' => array('{{', '}}'),
 		'environment' => array(
-			'charset' => 'UTF-8',
-			'pragmas' => array(),
+			'cache_dir' => APPPATH.'cache'.DS.'mustache'.DS,
+			'partials'  => array(),
+			'helpers'   => array(),
+			'charset'   => 'UTF-8',
 		),
 	),
 
@@ -130,13 +150,13 @@ return array(
 	// SMARTY ( http://www.smarty.net/documentation )
 	// ------------------------------------------------------------------------
 	'View_Smarty'   => array(
-		'include'       => APPPATH.'vendor'.DS.'Smarty'.DS.'libs'.DS.'Smarty.class.php',
-		'auto_encode' => true,
-		'delimiters'    => array('{', '}'),
+		'auto_encode'   => true,
+		'delimiters'    => array('left' => '{', 'right' => '}'),
 		'environment'   => array(
 			'compile_dir'       => APPPATH.'tmp'.DS.'Smarty'.DS.'templates_c'.DS,
 			'config_dir'        => APPPATH.'tmp'.DS.'Smarty'.DS.'configs'.DS,
 			'cache_dir'         => APPPATH.'cache'.DS.'Smarty'.DS,
+			'plugins_dir'       => array(),
 			'caching'           => false,
 			'cache_lifetime'    => 0,
 			'force_compile'     => false,
@@ -146,6 +166,25 @@ return array(
 			'default_modifiers' => array(),
 		),
 	),
-);
 
-// end of file parser.php
+	// Phptal ( http://phptal.org/manual/en/ )
+	// ------------------------------------------------------------------------
+	'View_Phptal'   => array(
+		'include'   => APPPATH.'vendor'.DS.'PHPTAL'.DS.'PHPTAL.php',
+		'auto_encode' => true,
+		'cache_dir' => APPPATH.'cache'.DS.'PHPTAL'.DS,
+		'cache_lifetime' => 0,
+		'encoding' => 'UTF-8',
+		'output_mode' => 'PHPTAL::XHTML',
+		'template_repository' => '',
+		'force_reparse' => false,
+	),
+
+	// Lex ( http://github.com/pyrocms/lex/ )
+	// Packagist url: https://packagist.org/packages/pyrocms/lex
+	// ------------------------------------------------------------------------
+	'View_Lex' => array(
+		'scope_glue' => '.',
+		'allow_php'  => false,
+	),
+);

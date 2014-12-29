@@ -9,9 +9,10 @@
 	</div>
 	<div class="span-one-third">
 		<ul>
-			<p><a class="btn primary large" href="http://docs.fuelphp.com">Read the Docs</a></p>
-			<li><a href="http://github.com/fuel/fuel">GitHub Respository</a></li>
-			<li><a href="http://fuelphp.com/contribute/issue-tracker">Issue Tracker</a></li>
+			<p>Content to go here for each indivduals dashboard, could I guess show properties favourited, rental history / payments / budget management for </br>
+				utilities as well as enquiries made for properties and responses back from tenants / landlords. </br></br> For landlords it could show info such as 
+				rental payments made, enquires sent and any other valuable information for landlords to manage their proeprty and/or properties.
+			</p>
 		</ul>
 	</div>
 </div>

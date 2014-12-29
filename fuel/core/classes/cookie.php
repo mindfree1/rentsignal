@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -29,7 +29,7 @@ class Cookie
 	/**
 	 * @var  array  Cookie class configuration defaults
 	 */
-	private static $config = array(
+	protected static $config = array(
 		'expiration'            => 0,
 		'path'                  => '/',
 		'domain'                => null,
@@ -57,7 +57,7 @@ class Cookie
 	 * @param   mixed   default value to return
 	 * @return  string
 	 */
-	public static function get($name, $default = null)
+	public static function get($name = null, $default = null)
 	{
 		return \Input::cookie($name, $default);
 	}
@@ -80,6 +80,12 @@ class Cookie
 	 */
 	public static function set($name, $value, $expiration = null, $path = null, $domain = null, $secure = null, $http_only = null)
 	{
+		// you can't set cookies in CLi mode
+		if (\Fuel::$is_cli)
+		{
+			return false;
+		}
+
 		$value = \Fuel::value($value);
 
 		// use the class defaults for the other parameters if not provided

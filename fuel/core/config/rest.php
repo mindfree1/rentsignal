@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -28,7 +28,15 @@ return array(
 	|	Default: xml
 	|
 	*/
-	'default_format' => 'json',
+	'default_format' => 'xml',
+
+	/*
+	| XML Basenode name
+	|
+	|	Default: xml
+	|
+	*/
+	'xml_basenode' => 'xml',
 
 	/*
 	| Name for the password protected REST API displayed on login dialogs
@@ -41,7 +49,10 @@ return array(
 	/*
 	| Is login required and if so, which type of login?
 	|
-	|	'' = no login required, 'basic' = unsecure login, 'digest' = more secure login
+	|	'' = no login required,
+	| 'basic' = unsecure login,
+	| 'digest' = more secure login
+	| or define a method name in your REST controller that handles authorization
 	|
 	*/
 	'auth' => '',
@@ -56,12 +67,12 @@ return array(
 
 	/*
 	| Ignore HTTP_ACCEPT
-	| 
-	| A lot of work can go into detecting incoming data, 
+	|
+	| A lot of work can go into detecting incoming data,
 	| disabling this will speed up your requests if you do not use a ACCEPT header.
 	|
 	*/
-	'ignore_http_accept' => true,
+	'ignore_http_accept' => false,
 
 );
 

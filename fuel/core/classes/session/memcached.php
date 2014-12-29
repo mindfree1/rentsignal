@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -100,12 +100,6 @@ class Session_Memcached extends \Session_Driver
 		$this->keys['created'] 		= $this->time->get_timestamp();
 		$this->keys['updated'] 		= $this->keys['created'];
 
-		// create the session record
-		$this->_write_memcached($this->keys['session_id'], serialize(array()));
-
-		// and set the session cookie
-		$this->_set_cookie();
-
 		return $this;
 	}
 
@@ -120,57 +114,69 @@ class Session_Memcached extends \Session_Driver
 	 */
 	public function read($force = false)
 	{
+		// initialize the session
+		$this->data = array();
+		$this->keys = array();
+		$this->flash = array();
+
 		// get the session cookie
 		$cookie = $this->_get_cookie();
 
-		// if no session cookie was present, create it
-		if ($cookie === false or $force)
+		// if a cookie was present, find the session record
+		if ($cookie and ! $force and isset($cookie[0]))
 		{
-			$this->create();
-		}
-
-		// read the session file
-		$payload = $this->_read_memcached($this->keys['session_id']);
-
-		if ($payload === false)
-		{
-			// try to find the previous one
-			$payload = $this->_read_memcached($this->keys['previous_id']);
+			// read the session file
+			$payload = $this->_read_memcached($cookie[0]);
 
 			if ($payload === false)
 			{
 				// cookie present, but session record missing. force creation of a new session
-				$this->read(true);
-				return;
+				return $this->read(true);
 			}
-		}
 
-		// unpack the payload
-		$payload = $this->_unserialize($payload);
+			// unpack the payload
+			$payload = $this->_unserialize($payload);
 
-		// session referral?
-		if (isset($payload['rotated_session_id']))
-		{
-			$payload = $this->_read_memcached($payload['rotated_session_id']);
-			if ($payload === false)
+			// session referral?
+			if (isset($payload['rotated_session_id']))
 			{
-				// cookie present, but session record missing. force creation of a new session
-				$this->read(true);
-				return;
+				$payload = $this->_read_memcached($payload['rotated_session_id']);
+				if ($payload === false)
+				{
+					// cookie present, but session record missing. force creation of a new session
+					return $this->read(true);
+				}
+				else
+				{
+					// unpack the payload
+					$payload = $this->_unserialize($payload);
+				}
+			}
+
+			if ( ! isset($payload[0]) or ! is_array($payload[0]))
+			{
+				logger('DEBUG', 'Error: not a valid memcached payload!');
+			}
+			elseif ($payload[0]['updated'] + $this->config['expiration_time'] <= $this->time->get_timestamp())
+			{
+				logger('DEBUG', 'Error: session id has expired!');
+			}
+			elseif ($this->config['match_ip'] and $payload[0]['ip_hash'] !== md5(\Input::ip().\Input::real_ip()))
+			{
+				logger('DEBUG', 'Error: IP address in the session doesn\'t match this requests source IP!');
+			}
+			elseif ($this->config['match_ua'] and $payload[0]['user_agent'] !== \Input::user_agent())
+			{
+				logger('DEBUG', 'Error: User agent in the session doesn\'t match the browsers user agent string!');
 			}
 			else
 			{
-				// update the session
-				$this->keys['previous_id'] = $this->keys['session_id'];
-				$this->keys['session_id'] = $payload['rotated_session_id'];
-
-				// unpack the payload
-				$payload = $this->_unserialize($payload);
+				// session is valid, retrieve the rest of the payload
+				if (isset($payload[0]) and is_array($payload[0])) $this->keys  = $payload[0];
+				if (isset($payload[1]) and is_array($payload[1])) $this->data  = $payload[1];
+				if (isset($payload[2]) and is_array($payload[2])) $this->flash = $payload[2];
 			}
 		}
-
-		if (isset($payload[0])) $this->data = $payload[0];
-		if (isset($payload[1])) $this->flash = $payload[1];
 
 		return parent::read();
 	}
@@ -186,15 +192,18 @@ class Session_Memcached extends \Session_Driver
 	public function write()
 	{
 		// do we have something to write?
-		if ( ! empty($this->keys))
+		if ( ! empty($this->keys) or ! empty($this->data) or ! empty($this->flash))
 		{
 			parent::write();
 
 			// rotate the session id if needed
 			$this->rotate(false);
 
+			// record the last update time of the session
+			$this->keys['updated'] = $this->time->get_timestamp();
+
 			// session payload
-			$payload = $this->_serialize(array($this->data, $this->flash));
+			$payload = $this->_serialize(array($this->keys, $this->data, $this->flash));
 
 			// create the session file
 			$this->_write_memcached($this->keys['session_id'], $payload);
@@ -207,7 +216,7 @@ class Session_Memcached extends \Session_Driver
 				$this->_write_memcached($this->keys['previous_id'], $payload);
 			}
 
-			$this->_set_cookie();
+			$this->_set_cookie(array($this->keys['session_id']));
 		}
 
 		return $this;
@@ -233,8 +242,7 @@ class Session_Memcached extends \Session_Driver
 			}
 		}
 
-		// reset the stored session data
-		$this->keys = $this->flash = $this->data = array();
+		parent::destroy();
 
 		return $this;
 	}
@@ -249,11 +257,8 @@ class Session_Memcached extends \Session_Driver
 	 */
 	protected function _write_memcached($session_id, $payload)
 	{
-		// session payload
-		$payload = $this->_serialize(array($this->data, $this->flash));
-
 		// write it to the memcached server
-		if ($this->memcached->set($this->config['cookie_name'].'_'.$this->keys['session_id'], $payload, $this->config['expiration_time']) === false)
+		if ($this->memcached->set($this->config['cookie_name'].'_'.$session_id, $payload, $this->config['expiration_time']) === false)
 		{
 			throw new \FuelException('Memcached returned error code "'.$this->memcached->getResultCode().'" on write. Check your configuration.');
 		}
@@ -270,7 +275,7 @@ class Session_Memcached extends \Session_Driver
 	protected function _read_memcached($session_id)
 	{
 		// fetch the session data from the Memcached server
-		return $this->memcached->get($this->config['cookie_name'].'_'.$this->keys['session_id']);
+		return $this->memcached->get($this->config['cookie_name'].'_'.$session_id);
 	}
 
 	// --------------------------------------------------------------------

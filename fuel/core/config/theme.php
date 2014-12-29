@@ -1,4 +1,23 @@
 <?php
+/**
+ * Part of the Fuel framework.
+ *
+ * @package    Fuel
+ * @version    1.7
+ * @author     Fuel Development Team
+ * @license    MIT License
+ * @copyright  2010 - 2014 Fuel Development Team
+ * @link       http://fuelphp.com
+ */
+
+/**
+ * NOTICE:
+ *
+ * If you need to make modifications to the default configuration, copy
+ * this file to your app/config folder, and make them in there.
+ *
+ * This will allow you to upgrade fuel without losing your custom config.
+ */
 
 return array(
 	/**
@@ -17,7 +36,7 @@ return array(
 	 * on the fly via Theme::add_path($path) or Theme::add_paths(array($path1, $path2));
 	 */
 	'paths' => array(
-		DOCROOT.'themes',
+		APPPATH.'themes',
 	),
 
 	/**
@@ -39,10 +58,14 @@ return array(
 	/**
 	 * The theme info file name
 	 */
-	'info_file_name' => 'theme.info',
+	'info_file_name' => 'themeinfo.php',
 
 	/**
-	 * File type of the theme info file.  Possible values: php, ini, json and yaml
+	 * Auto prefixing for modules
+	 *
+	 * If true, the view to be loaded will be prefixed by the name of the current module (if any)
+	 * If a string, it will be prefixed too, allowing you to store all modules in a subfolder
+	 * if false, module prefixing is not used
 	 */
-	'info_file_type' => 'php',
+	'use_modules' => false,
 );

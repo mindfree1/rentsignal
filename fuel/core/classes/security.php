@@ -3,14 +3,16 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
 namespace Fuel\Core;
+
+class SecurityException extends \DomainException {}
 
 /**
  * Security Class
@@ -42,25 +44,37 @@ class Security
 	 * Class init
 	 *
 	 * Fetches CSRF settings and current token
+	 *
+	 * @throws SecurityException it the CSRF token validation failed
+	 * @throws FuelException if no security output filter is defined
 	 */
 	public static function _init()
 	{
 		static::$csrf_token_key = \Config::get('security.csrf_token_key', 'fuel_csrf_token');
 		static::$csrf_old_token = \Input::cookie(static::$csrf_token_key, false);
 
+		// if csrf automatic checking is enabled, and it fails validation, bail out!
 		if (\Config::get('security.csrf_autoload', true))
 		{
-			static::check_token();
+			$check_token_methods = \Config::get('security.csrf_autoload_methods', array('post', 'put', 'delete'));
+			if (in_array(strtolower(\Input::method()), $check_token_methods) and ! static::check_token())
+			{
+				throw new \SecurityException('CSRF validation failed, Possible hacking attempt detected!');
+			}
 		}
 
-		// set a default output filter if none is defined in the config
-		// this code is deprecated and will be removed in v1.2
+		// throw an exception if the output filter setting is missing from the app config
 		if (\Config::get('security.output_filter', null) === null)
 		{
-			\Config::set('security.output_filter', '\\Security::htmlentities');
-			logger(\Fuel::L_WARNING, 'There is no security.output_filter defined in your application config file.', __METHOD__);
+			throw new \FuelException('There is no security.output_filter defined in your application config file');
 		}
 
+		// deal with duplicate filters, no need to slow the framework down
+		foreach (array('output_filter', 'uri_filter', 'input_filter') as $setting)
+		{
+			$config = \Config::get('security.'.$setting, array());
+			is_array($config) and \Config::set('security.'.$setting, \Arr::unique($config));
+		}
 	}
 
 	/**
@@ -112,12 +126,26 @@ class Security
 				{
 					foreach($var as $key => $value)
 					{
-						$var[$key] = call_user_func($filter, $value);
+						if ($value instanceOf \Sanitization)
+						{
+							$value->sanitize();
+						}
+						else
+						{
+							$var[$key] = call_user_func($filter, $value);
+						}
 					}
 				}
 				else
 				{
-					$var = call_user_func($filter, $var);
+					if ($var instanceOf \Sanitization)
+					{
+						$var->sanitize();
+					}
+					else
+					{
+						$var = call_user_func($filter, $var);
+					}
 				}
 			}
 
@@ -128,19 +156,33 @@ class Security
 				{
 					foreach($var as $key => $value)
 					{
-						$var[$key] = preg_replace('#['.$filter.']#ui', '', $value);
+						if ($value instanceOf \Sanitization)
+						{
+							$value->sanitize();
+						}
+						else
+						{
+							$var[$key] = preg_replace('#['.$filter.']#ui', '', $value);
+						}
 					}
 				}
 				else
 				{
-					$var = preg_replace('#['.$filter.']#ui', '', $var);
+					if ($var instanceOf \Sanitization)
+					{
+						$var->sanitize();
+					}
+					else
+					{
+						$var = preg_replace('#['.$filter.']#ui', '', $var);
+					}
 				}
 			}
 		}
 		return $var;
 	}
 
-	public static function xss_clean($value)
+	public static function xss_clean($value, array $options = array())
 	{
 		if ( ! is_array($value))
 		{
@@ -149,7 +191,7 @@ class Security
 				import('htmlawed/htmlawed', 'vendor');
 			}
 
-			return htmLawed($value, array('safe' => 1, 'balanced' => 0));
+			return htmLawed($value, array_merge(array('safe' => 1, 'balanced' => 0), $options));
 		}
 
 		foreach ($value as $k => $v)
@@ -177,9 +219,13 @@ class Security
 		return $value;
 	}
 
-	public static function htmlentities($value)
+	public static function htmlentities($value, $flags = null, $encoding = null, $double_encode = null)
 	{
 		static $already_cleaned = array();
+
+		is_null($flags) and $flags = \Config::get('security.htmlentities_flags', ENT_QUOTES);
+		is_null($encoding) and $encoding = \Fuel::$encoding;
+		is_null($double_encode) and $double_encode = \Config::get('security.htmlentities_double_encode', false);
 
 		// Nothing to escape for non-string scalars, or for already processed values
 		if (is_bool($value) or is_int($value) or is_float($value) or in_array($value, $already_cleaned, true))
@@ -189,7 +235,13 @@ class Security
 
 		if (is_string($value))
 		{
-			$value = htmlentities($value, ENT_COMPAT, \Fuel::$encoding, false);
+			$value = htmlentities($value, $flags, $encoding, $double_encode);
+		}
+		elseif (is_object($value) and $value instanceOf \Sanitization)
+		{
+			$value->sanitize();
+			return $value;
+
 		}
 		elseif (is_array($value) or ($value instanceof \Iterator and $value instanceof \ArrayAccess))
 		{
@@ -198,7 +250,7 @@ class Security
 
 			foreach ($value as $k => $v)
 			{
-				$value[$k] = static::htmlentities($v);
+				$value[$k] = static::htmlentities($v, $flags, $encoding, $double_encode);
 			}
 		}
 		elseif ($value instanceof \Iterator or get_class($value) == 'stdClass')
@@ -208,7 +260,7 @@ class Security
 
 			foreach ($value as $k => $v)
 			{
-				$value->{$k} = static::htmlentities($v);
+				$value->{$k} = static::htmlentities($v, $flags, $encoding, $double_encode);
 			}
 		}
 		elseif (is_object($value))
@@ -229,11 +281,11 @@ class Security
 			if ( ! method_exists($value, '__toString'))
 			{
 				throw new \RuntimeException('Object class "'.get_class($value).'" could not be converted to string or '.
-					'sanitized as ArrayAcces. Whitelist it in security.whitelisted_classes in app/config/config.php '.
+					'sanitized as ArrayAccess. Whitelist it in security.whitelisted_classes in app/config/config.php '.
 					'to allow it to be passed unchecked.');
 			}
 
-			$value = static::htmlentities((string) $value);
+			$value = static::htmlentities((string) $value, $flags, $encoding, $double_encode);
 		}
 
 		return $value;
@@ -247,7 +299,7 @@ class Security
 	 */
 	public static function check_token($value = null)
 	{
-		$value = $value ?: \Input::post(static::$csrf_token_key, 'fail');
+		$value = $value ?: \Input::param(static::$csrf_token_key, \Input::json(static::$csrf_token_key, 'fail'));
 
 		// always reset token once it's been checked and still the same
 		if (static::fetch_token() == static::$csrf_old_token and ! empty($value))
@@ -275,6 +327,26 @@ class Security
 		return static::$csrf_token;
 	}
 
+	/**
+	 * Generate new token. Based on an example from OWASP
+	 *
+	 * @return string
+	 */
+	public static function generate_token()
+	{
+		$token_base = time() . uniqid() . \Config::get('security.token_salt', '') . mt_rand(0, mt_getrandmax());
+		if (function_exists('hash_algos') and in_array('sha512', hash_algos()))
+		{
+			$token = hash('sha512', $token_base);
+		}
+		else
+		{
+			$token = md5($token_base);
+		}
+
+		return $token;
+	}
+
 	protected static function set_token($reset = false)
 	{
 		// re-use old token when found (= not expired) and expiration is used (otherwise always reset)
@@ -285,7 +357,7 @@ class Security
 		// set new token for next session when necessary
 		else
 		{
-			static::$csrf_token = md5(uniqid().time());
+			static::$csrf_token = static::generate_token();
 
 			$expiration = \Config::get('security.csrf_expiration', 0);
 			\Cookie::set(static::$csrf_token_key, static::$csrf_token, $expiration);
@@ -372,5 +444,3 @@ class Security
 		return $output;
 	}
 }
-
-

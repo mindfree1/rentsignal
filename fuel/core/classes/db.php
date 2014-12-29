@@ -2,8 +2,7 @@
 /**
  * Database object creation helper methods.
  *
- * @package    Fuel/Database
- * @category   Base
+ * @package    Fuel\Database
  * @author     Kohana Team
  * @copyright  (c) 2009 Kohana Team
  * @license    http://kohanaphp.com/license
@@ -56,6 +55,16 @@ class DB
 	public static function last_query($db = null)
 	{
 		return \Database_Connection::instance($db)->last_query;
+	}
+
+	/*
+	 * Returns the DB drivers error info
+	 *
+	 * @return	mixed	the DB drivers error info
+	 */
+	public static function error_info($db = null)
+	{
+		return \Database_Connection::instance($db)->error_info();
 	}
 
 	/**
@@ -146,6 +155,21 @@ class DB
 	public static function expr($string)
 	{
 		return new \Database_Expression($string);
+	}
+
+	/**
+	 * Create a new [Database_Expression] containing a quoted identifier. An expression
+	 * is the only way to use SQL functions within query builders.
+	 *
+	 *     $expression = DB::identifier('users.id');	// returns `users`.`id` for MySQL
+	 *
+	 * @param	string	$string	the string to quote
+	 * @param	string	$db		the database connection to use
+	 * @return	Database_Expression
+	 */
+	public static function identifier($string, $db = null)
+	{
+		return new \Database_Expression(static::quote_identifier($string, $db));
 	}
 
 	/**
@@ -325,21 +349,16 @@ class DB
 	}
 
 	/**
-	 * Sets the Database instance to use transactions
-	 * Transactions are OFF by default
+	 * Checks whether a connection is in transaction.
 	 *
-	 *     DB::transactional();
-	 *     DB::transactional(TRUE);
-	 *     DB::transactional(FALSE);
+	 *     DB::in_transaction();
 	 *
-	 * @param   bool   use tranactions TRUE/FALSE
 	 * @param   string  db connection
-	 * @return  void
-	 * @deprecated  remove in v1.2
+	 * @return  bool
 	 */
-	public static function transactional($use_trans = true, $db = null)
+	public static function in_transaction($db = null)
 	{
-		\Database_Connection::instance($db)->transactional($use_trans);
+		return \Database_Connection::instance($db)->in_transaction();
 	}
 
 	/**
@@ -369,16 +388,22 @@ class DB
 	}
 
 	/**
-	 * Rollsback all pending transactional queries
+	 * Rollsback pending transactional queries
+	 * Rollback to the current level uses SAVEPOINT,
+	 * it does not work if current RDBMS does not support them.
+	 * In this case system rollsback all queries and closes the transaction
 	 *
 	 *     DB::rollback_transaction();
 	 *
-	 * @param   string  db connection
+	 * @param   string  $db connection
+	 * @param   bool    $rollback_all:
+	 *             true  - rollback everything and close transaction;
+	 *             false - rollback only current level 
 	 * @return  bool
 	 */
-	public static function rollback_transaction($db = null)
+	public static function rollback_transaction($db = null, $rollback_all = true)
 	{
-		return \Database_Connection::instance($db)->rollback_transaction();
+		return \Database_Connection::instance($db)->rollback_transaction($rollback_all);
 	}
 
 }

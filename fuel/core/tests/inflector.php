@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -18,7 +18,7 @@ namespace Fuel\Core;
  * @group Core
  * @group Inflector
  */
-class Tests_Inflector extends TestCase
+class Test_Inflector extends TestCase
 {
 
 	public function ordinalize_provider()
@@ -153,8 +153,36 @@ class Tests_Inflector extends TestCase
 	 */
 	public function test_friendly_title()
 	{
+		$output = Inflector::friendly_title('Fuel is a community driven PHP 5 web framework.');
+		$expected = 'Fuel-is-a-community-driven-PHP-5-web-framework';
+		$this->assertEquals($expected, $output);
+	}
+
+	public function test_friendly_title_sep()
+	{
+		$output = Inflector::friendly_title('Fuel is a community driven PHP 5 web framework.', '_');
+		$expected = 'Fuel_is_a_community_driven_PHP_5_web_framework';
+		$this->assertEquals($expected, $output);
+	}
+
+	public function test_friendly_title_lowercase()
+	{
 		$output = Inflector::friendly_title('Fuel is a community driven PHP 5 web framework.', '-', true);
 		$expected = 'fuel-is-a-community-driven-php-5-web-framework';
+		$this->assertEquals($expected, $output);
+	}
+
+	public function test_friendly_title_non_ascii()
+	{
+		$output = Inflector::friendly_title('وقود هو مجتمع مدفوعة إطار شبكة الإنترنت');
+		$expected = '';
+		$this->assertEquals($expected, $output);
+	}
+
+	public function test_friendly_title_allow_non_ascii()
+	{
+		$output = Inflector::friendly_title('وقود هو مجتمع مدفوعة إطار شبكة الإنترنت', '-', false, true);
+		$expected = 'وقود-هو-مجتمع-مدفوعة-إطار-شبكة-الإنترنت';
 		$this->assertEquals($expected, $output);
 	}
 
@@ -193,6 +221,10 @@ class Tests_Inflector extends TestCase
 	{
 		$output = Inflector::pluralize('apple');
 		$expected = "apples";
+		$this->assertEquals($expected, $output);
+
+		$output = Inflector::pluralize('apple', 1);
+		$expected = "apple";
 		$this->assertEquals($expected, $output);
 	}
 

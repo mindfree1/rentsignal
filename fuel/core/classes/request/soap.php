@@ -2,17 +2,26 @@
 
 namespace Fuel\Core;
 
+/**
+ * Request_Soap Class
+ *
+ * Soap driver for Requests
+ *
+ * @package   Fuel\Core
+ *
+ */
+
 class Request_Soap extends \Request_Driver
 {
 	protected static $wsdl_settings = array('wsdl', 'classmap', 'cache_wsdl');
-	protected static $non_wsdl_settings = array('location', 'url', 'style', 'use');
+	protected static $non_wsdl_settings = array('location', 'uri', 'style', 'use');
 	protected static $generic_settings = array(
 		'soap_version', 'compression', 'encoding', 'trace', 'connection_timeout',
 		'typemap', 'user_agent', 'stream_context', 'features',
 	);
 
 	/**
-	 * @var  \SoapClient
+	 * @var  \SoapClient	holds the SoapClient object used for the connection
 	 */
 	protected $connection;
 
@@ -121,8 +130,9 @@ class Request_Soap extends \Request_Driver
 		{
 			$body = $this->connection()->__soapCall($this->function, $this->params, array(), $this->get_headers(), $headers);
 			$this->response_info = $headers;
-			$mime = isset($this->headers['Accept']) ? $this->headers['Accept'] : null;
-			$this->set_response($body, $this->response_info('http_code', 200), $mime);
+
+			$mime = $this->response_info('content_type', 'application/soap+xml');
+			$this->set_response($body, $this->response_info('http_code', 200), $mime, $headers, isset($this->headers['Accept']) ? $this->headers['Accept'] : null);
 
 			$this->set_defaults();
 			return $this;

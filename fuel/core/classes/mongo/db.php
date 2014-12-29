@@ -1,12 +1,13 @@
 <?php
 /**
- * Part of the Fuel framework. *
- * @package		Fuel
- * @version		1.0
- * @author		Fuel Development Team
- * @license		MIT License
- * @copyright	2010 - 2011 Fuel Development Team
- * @link		http://fuelphp.com
+ * Part of the Fuel framework.
+ *
+ * @package    Fuel
+ * @version    1.7
+ * @author     Fuel Development Team
+ * @license    MIT License
+ * @copyright  2010 - 2014 Fuel Development Team
+ * @link       http://fuelphp.com
  */
 
 namespace Fuel\Core;
@@ -24,7 +25,7 @@ namespace Fuel\Core;
  */
 
 
-class Mongo_DbException extends FuelException {}
+class Mongo_DbException extends \FuelException {}
 
 
 class Mongo_Db
@@ -50,6 +51,13 @@ class Mongo_Db
 	 * @var  bool
 	 */
 	protected $persist = false;
+
+	/**
+	 * Whether to use the profiler
+	 *
+	 * @var  bool
+	 */
+	protected $profiling = false;
 
 	/**
 	 * Holds all the select options
@@ -144,6 +152,11 @@ class Mongo_Db
 			$options['persist'] = 'fuel_mongo_persist';
 		}
 
+		if ( ! empty($config['replicaset']))
+		{
+			$options['replicaSet'] = $config['replicaset'];
+		}
+
 		$connection_string = "mongodb://";
 
 		if (empty($config['hostname']))
@@ -170,18 +183,23 @@ class Mongo_Db
 			$connection_string .= "{$config['hostname']}";
 		}
 
+		if (\Arr::get($config, 'profiling') === true)
+		{
+			$this->profiling = true;
+		}
+
 		$connection_string .= "/{$config['database']}";
 
 		// Let's give this a go
 		try
 		{
-			$this->connection = new \Mongo(trim($connection_string), $options);
+			$this->connection = new \MongoClient(trim($connection_string), $options);
 			$this->db = $this->connection->{$config['database']};
 			return $this;
 		}
 		catch (\MongoConnectionException $e)
 		{
-			throw new \Mongo_DbException("Unable to connect to MongoDB: {$e->getMessage()}");
+			throw new \Mongo_DbException("Unable to connect to MongoDB: {$e->getMessage()}", $e->getCode());
 		}
 	}
 
@@ -207,7 +225,7 @@ class Mongo_Db
 			}
 			catch (\Exception $e)
 			{
-				throw new \Mongo_DbException("Unable to drop Mongo database `{$database}`: {$e->getMessage()}");
+				throw new \Mongo_DbException("Unable to drop Mongo database `{$database}`: {$e->getMessage()}", $e->getCode());
 			}
 
 		}
@@ -241,7 +259,7 @@ class Mongo_Db
 			}
 			catch (\Exception $e)
 			{
-				throw new \Mongo_DbException("Unable to drop Mongo collection `{$col}`: {$e->getMessage()}");
+				throw new \Mongo_DbException("Unable to drop Mongo collection `{$col}`: {$e->getMessage()}", $e->getCode());
 			}
 		}
 	}
@@ -258,31 +276,31 @@ class Mongo_Db
 	 */
 	public function select($includes = array(), $excludes = array())
 	{
-	 	if ( ! is_array($includes))
-	 	{
-	 		$includes = array($includes);
-	 	}
+		if ( ! is_array($includes))
+		{
+			$includes = array($includes);
+		}
 
-	 	if ( ! is_array($excludes))
-	 	{
-	 		$excludes = array($excludes);
-	 	}
+		if ( ! is_array($excludes))
+		{
+			$excludes = array($excludes);
+		}
 
-	 	if ( ! empty($includes))
-	 	{
-	 		foreach ($includes as $col)
-	 		{
-	 			$this->selects[$col] = 1;
-	 		}
-	 	}
-	 	else
-	 	{
-	 		foreach ($excludes as $col)
-	 		{
-	 			$this->selects[$col] = 0;
-	 		}
-	 	}
-	 	return $this;
+		if ( ! empty($includes))
+		{
+			foreach ($includes as $col)
+			{
+				$this->selects[$col] = 1;
+			}
+		}
+		else
+		{
+			foreach ($excludes as $col)
+			{
+				$this->selects[$col] = 0;
+			}
+		}
+		return $this;
 	}
 
 	/**
@@ -500,34 +518,28 @@ class Mongo_Db
 	 *		s = dotall, "." matches everything, including newlines
 	 *		u = match unicode
 	 *
-	 *	@param $enable_start_wildcard
-	 *	If set to anything other than TRUE, a starting line character "^" will be prepended
+	 *	@param $disable_start_wildcard
+	 *	If this value evaluates to false, no starting line character "^" will be prepended
 	 *	to the search value, representing only searching for a value at the start of
 	 *	a new line.
 	 *
-	 *	@param $enable_end_wildcard
-	 *	If set to anything other than TRUE, an ending line character "$" will be appended
+	 *	@param $disable_end_wildcard
+	 *	If this value evaluates to false, no ending line character "$" will be appended
 	 *	to the search value, representing only searching for a value at the end of
 	 *	a line.
 	 *
-	 *	@usage	$mongodb->like('foo', 'bar', 'im', false, TRUE);
+	 *	@usage	$mongodb->like('foo', 'bar', 'im', false, true);
 	 */
-	public function like($field = '', $value = '', $flags = 'i', $enable_start_wildcard = TRUE, $enable_end_wildcard = TRUE)
+	public function like($field = '', $value = '', $flags = 'i', $disable_start_wildcard = false, $disable_end_wildcard = false)
 	{
 		$field = (string) trim($field);
 		$this->_where_init($field);
+
 		$value = (string) trim($value);
 		$value = quotemeta($value);
 
-		if ($enable_start_wildcard !== TRUE)
-		{
-			$value = '^' . $value;
-		}
-
-		if ($enable_end_wildcard !== TRUE)
-		{
-			$value .= '$';
-		}
+		(bool) $disable_start_wildcard === false and $value = '^'.$value;
+		(bool) $disable_end_wildcard === false and $value .= '$';
 
 		$regex = "/$value/$flags";
 		$this->wheres[$field] = new \MongoRegex($regex);
@@ -607,21 +619,54 @@ class Mongo_Db
 	}
 
 	/**
+	 *	Get the document cursor from mongodb based upon the passed parameters
+	 *
+	 *	@param	string	$collection		the collection name
+	 *	@usage	$mongodb->get_cursor('foo', array('bar' => 'something'));
+	 */
+	public function get_cursor($collection = "")
+	{
+		if (empty($collection))
+		{
+			throw new \Mongo_DbException("In order to retrieve documents from MongoDB you must provide a collection name.");
+		}
+
+		$documents = $this->db->{$collection}->find($this->wheres, $this->selects)->limit((int) $this->limit)->skip((int) $this->offset)->sort($this->sorts);
+
+		$this->_clear();
+
+		return $documents;
+	}
+
+	/**
 	 *	Get the documents based upon the passed parameters
 	 *
 	 *	@param	string	$collection		the collection name
 	 *	@usage	$mongodb->get('foo', array('bar' => 'something'));
 	 */
-	 public function get($collection = "")
+	public function get($collection = "")
 	{
-		if (empty($collection))
+		if ($this->profiling)
 		{
-			throw new \Mongo_DbException("In order to retrieve documents from MongoDB");
+			$query = json_encode(array(
+			'type'			=> 'find',
+			'collection'	=> $collection,
+			'select'		=> $this->selects,
+			'where'			=> $this->wheres,
+			'limit'			=> $this->limit,
+			'offset'		=> $this->offset,
+			'sort'			=> $this->sorts,
+			));
+
+			$benchmark = \Profiler::start((string) $this->db, $query);
 		}
 
-		$results = array();
+		$documents = $this->get_cursor($collection);
 
-		$documents = $this->db->{$collection}->find($this->wheres, $this->selects)->limit((int) $this->limit)->skip((int) $this->offset)->sort($this->sorts);
+		if (isset($benchmark))
+		{
+			\Profiler::stop($benchmark);
+		}
 
 		$returns = array();
 
@@ -633,25 +678,40 @@ class Mongo_Db
 			}
 		}
 
-		$this->_clear();
-
 		return $returns;
 	}
 
 	/**
-	* Get one document based upon the passwed parameters
+	 * Get one document based upon the passed parameters
 	 *
 	 *	@param	string	$collection		the collection name
-	 *	@usage	$mongodb->get('foo');
+	 *	@usage	$mongodb->get_one('foo');
 	 */
-	 public function get_one($collection = "")
+	public function get_one($collection = "")
 	{
 		if (empty($collection))
 		{
-			throw new \Mongo_DbException("In order to retrieve documents from MongoDB");
+			throw new \Mongo_DbException("In order to retrieve documents from MongoDB you must provide a collection name.");
+		}
+
+		if ($this->profiling)
+		{
+			$query = json_encode(array(
+			'type'			=> 'findOne',
+			'collection'	=> $collection,
+			'select'		=> $this->selects,
+			'where'			=> $this->wheres,
+			));
+
+			$benchmark = \Profiler::start((string) $this->db, $query);
 		}
 
 		$returns = $this->db->{$collection}->findOne($this->wheres, $this->selects);
+
+		if (isset($benchmark))
+		{
+			\Profiler::stop($benchmark);
+		}
 
 		$this->_clear();
 
@@ -663,17 +723,36 @@ class Mongo_Db
 	 *
 	 *	@param	string	$collection		the collection name
 	 *	@param	boolean	$foundonly		send cursor limit and skip information to the count function, if applicable.
-	 *	@usage	$mongodb->get('foo');
+	 *	@usage	$mongodb->count('foo');
 	 */
 
 	public function count($collection = '', $foundonly = false)
 	{
 		if (empty($collection))
 		{
-			throw new \Mongo_DbException("In order to retrieve a count of documents from MongoDB");
+			throw new \Mongo_DbException("In order to retrieve a count of documents from MongoDB you must provide a collection name.");
+		}
+
+		if ($this->profiling)
+		{
+			$query = json_encode(array(
+			'type'			=> 'count',
+			'collection'	=> $collection,
+			'where'			=> $this->wheres,
+			'limit'			=> $this->limit,
+			'offset'		=> $this->offset,
+			));
+
+			$benchmark = \Profiler::start((string) $this->db, $query);
 		}
 
 		$count = $this->db->{$collection}->find($this->wheres)->limit((int) $this->limit)->skip((int) $this->offset)->count($foundonly);
+
+		if (isset($benchmark))
+		{
+			\Profiler::stop($benchmark);
+		}
+
 		$this->_clear();
 		return ($count);
 	}
@@ -693,17 +772,34 @@ class Mongo_Db
 	{
 		if (empty($collection))
 		{
-			throw new \Mongo_DbException("No Mongo collection selected to insert into");
+			throw new \Mongo_DbException("No Mongo collection selected to insert");
 		}
 
 		if (empty($insert) or ! is_array($insert))
 		{
-			throw new \Mongo_DbException("Nothing to insert into Mongo collection or insert is not an array");
+			throw new \Mongo_DbException("Nothing to insert into Mongo collection or insert value is not an array");
 		}
 
 		try
 		{
+			if ($this->profiling)
+			{
+				$query = json_encode(array(
+				'type'			=> 'insert',
+				'collection'	=> $collection,
+				'payload'		=> $insert,
+				));
+
+				$benchmark = \Profiler::start((string) $this->db, $query);
+			}
+
 			$this->db->{$collection}->insert($insert, array('fsync' => true));
+
+			if (isset($benchmark))
+			{
+				\Profiler::stop($benchmark);
+			}
+
 			if (isset($insert['_id']))
 			{
 				return $insert['_id'];
@@ -715,7 +811,7 @@ class Mongo_Db
 		}
 		catch (\MongoCursorException $e)
 		{
-			throw new \Mongo_DbException("Insert of data into MongoDB failed: {$e->getMessage()}");
+			throw new \Mongo_DbException("Insert of data into MongoDB failed: {$e->getMessage()}", $e->getCode());
 		}
 	}
 
@@ -736,19 +832,39 @@ class Mongo_Db
 
 		if (empty($data) or ! is_array($data))
 		{
-			throw new \Mongo_DbException("Nothing to update in Mongo collection or update is not an array");
+			throw new \Mongo_DbException("Nothing to update in Mongo collection or update value is not an array");
 		}
 
 		try
 		{
 			$options = array_merge($options, array('fsync' => true, 'multiple' => false));
+
+			if ($this->profiling)
+			{
+				$query = json_encode(array(
+				'type'			=> 'update',
+				'collection'	=> $collection,
+				'where'			=> $this->wheres,
+				'payload'		=> $data,
+				'options'		=> $options,
+				));
+
+				$benchmark = \Profiler::start((string) $this->db, $query);
+			}
+
 			$this->db->{$collection}->update($this->wheres, (($literal) ? $data : array('$set' => $data)), $options);
+
+			if (isset($benchmark))
+			{
+				\Profiler::stop($benchmark);
+			}
+
 			$this->_clear();
 			return true;
 		}
 		catch (\MongoCursorException $e)
 		{
-			throw new \Mongo_DbException("Update of data into MongoDB failed: {$e->getMessage()}");
+			throw new \Mongo_DbException("Update of data into MongoDB failed: {$e->getMessage()}", $e->getCode());
 		}
 	}
 
@@ -768,18 +884,37 @@ class Mongo_Db
 
 		if (empty($data) or ! is_array($data))
 		{
-			throw new \Mongo_DbException("Nothing to update in Mongo collection or update is not an array");
+			throw new \Mongo_DbException("Nothing to update in Mongo collection or update value is not an array");
 		}
 
 		try
 		{
+			if ($this->profiling)
+			{
+				$query = json_encode(array(
+				'type'			=> 'updateAll',
+				'collection'	=> $collection,
+				'where'			=> $this->wheres,
+				'payload'		=> $data,
+				'literal'		=> $literal,
+				));
+
+				$benchmark = \Profiler::start((string) $this->db, $query);
+			}
+
 			$this->db->{$collection}->update($this->wheres, (($literal) ? $data : array('$set' => $data)), array('fsync' => true, 'multiple' => true));
+
+			if (isset($benchmark))
+			{
+				\Profiler::stop($benchmark);
+			}
+
 			$this->_clear();
 			return true;
 		}
 		catch (\MongoCursorException $e)
 		{
-			throw new \Mongo_DbException("Update of data into MongoDB failed: {$e->getMessage()}");
+			throw new \Mongo_DbException("Update of data into MongoDB failed: {$e->getMessage()}", $e->getCode());
 		}
 	}
 
@@ -798,13 +933,30 @@ class Mongo_Db
 
 		try
 		{
+			if ($this->profiling)
+			{
+				$query = json_encode(array(
+				'type'			=> 'delete',
+				'collection'	=> $collection,
+				'where'			=> $this->wheres,
+				));
+
+				$benchmark = \Profiler::start((string) $this->db, $query);
+			}
+
 			$this->db->{$collection}->remove($this->wheres, array('fsync' => true, 'justOne' => true));
+
+			if (isset($benchmark))
+			{
+				\Profiler::stop($benchmark);
+			}
+
 			$this->_clear();
 			return true;
 		}
 		catch (\MongoCursorException $e)
 		{
-			throw new \Mongo_DbException("Delete of data into MongoDB failed: {$e->getMessage()}");
+			throw new \Mongo_DbException("Delete of data into MongoDB failed: {$e->getMessage()}", $e->getCode());
 		}
 	}
 
@@ -823,13 +975,30 @@ class Mongo_Db
 
 		try
 		{
+			if ($this->profiling)
+			{
+				$query = json_encode(array(
+				'type'			=> 'deleteAll',
+				'collection'	=> $collection,
+				'where'			=> $this->wheres,
+				));
+
+				$benchmark = \Profiler::start((string) $this->db, $query);
+			}
+
 			$this->db->{$collection}->remove($this->wheres, array('fsync' => true, 'justOne' => false));
+
+			if (isset($benchmark))
+			{
+				\Profiler::stop($benchmark);
+			}
+
 			$this->_clear();
 			return true;
 		}
 		catch (\MongoCursorException $e)
 		{
-			throw new \Mongo_DbException("Delete of data into MongoDB failed: {$e->getMessage()}");
+			throw new \Mongo_DbException("Delete of data from MongoDB failed: {$e->getMessage()}", $e->getCode());
 		}
 	}
 
@@ -850,7 +1019,7 @@ class Mongo_Db
 
 		catch (\MongoCursorException $e)
 		{
-			throw new \Mongo_DbException("MongoDB command failed to execute: {$e->getMessage()}");
+			throw new \Mongo_DbException("MongoDB command failed to execute: {$e->getMessage()}", $e->getCode());
 		}
 	}
 
@@ -868,7 +1037,7 @@ class Mongo_Db
 	{
 		if (empty($collection))
 		{
-			throw new \Mongo_DbException("No Mongo collection specified to add index to");
+			throw new \Mongo_DbException("No Mongo collection specified to add an index to");
 		}
 
 		if (empty($keys) or ! is_array($keys))
@@ -912,7 +1081,7 @@ class Mongo_Db
 	{
 		if (empty($collection))
 		{
-			throw new \Mongo_DbException("No Mongo collection specified to remove index from");
+			throw new \Mongo_DbException("No Mongo collection specified to remove an index from");
 		}
 
 		if (empty($keys) or ! is_array($keys))
@@ -964,6 +1133,27 @@ class Mongo_Db
 		return ($this->db->{$collection}->getIndexInfo());
 	}
 
+	/**
+	 *	Returns a collection object so you can perform advanced queries, upserts, pushes and addtosets
+	 *
+	 *	@param	string	$collection		the collection name
+	 *	@usage	$collection_name = $mongodb->get_collection('collection_name');
+	 */
+	public function get_collection($collection)
+	{
+		return ($this->db->{$collection});
+	}
+
+	/**
+	 *	Returns all collection objects
+	 *
+	 *	@param	bool	$system_collections  wether or not to include system collections
+	 *	@usage	$collections = $mongodb->list_collections();
+	 */
+	public function list_collections($system_collections = false)
+	{
+		return ($this->db->listCollections($system_collections));
+	}
 
 	/**
 	 *	Resets the class variables to default settings

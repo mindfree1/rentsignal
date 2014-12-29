@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -40,8 +40,8 @@ return array(
 		/**
 		 * Location from where the updated browscap file can be downloaded.
 		 */
-		'url' => 'http://browsers.garykeith.com/stream.asp?Lite_PHP_BrowsCapINI',	// only major browsers and search engines
-//		'url' => 'http://browsers.garykeith.com/stream.asp?BrowsCapINI',			// complete file, approx. 4 times the lite version
+		'url' => 'http://browscap.org/stream?q=Lite_PHP_BrowsCapINI',     // only major browsers and search engines
+		//'url' => 'http://browscap.org/stream?q=Full_PHP_BrowsCapINI',   // complete file, approx. 3 times the lite version
 
 		/**
 		 * Method used to download the updated browscap file

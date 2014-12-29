@@ -2,20 +2,35 @@
 /**
  * Part of the Fuel framework.
  *
- * @package		Fuel
- * @version		1.0
- * @author		Fuel Development Team
- * @license		MIT License
- * @copyright	2010 - 2011 Fuel Development Team
- * @link		http://fuelphp.com
+ * @package    Fuel
+ * @version    1.7
+ * @author     Fuel Development Team
+ * @license    MIT License
+ * @copyright  2010 - 2014 Fuel Development Team
+ * @link       http://fuelphp.com
  */
 
 namespace Fuel\Core;
 
 class Router
 {
-
+	/**
+	 *
+	 */
 	public static $routes = array();
+
+	/**
+	 * Defines the controller class prefix. This allows you to namespace controllers
+	 */
+	protected static $prefix = '';
+
+	/**
+	 * Fetch the controller prefix to be used, or set a default if not defined
+	 */
+	public static function _init()
+	{
+		static::$prefix = ltrim(\Config::get('controller_prefix', 'Controller_'), '\\');
+	}
 
 	/**
 	 * Add one or multiple routes
@@ -24,7 +39,7 @@ class Router
 	 * @param  string|array|Route  either the translation for $path, an array for verb routing or an instance of Route
 	 * @param  bool                whether to prepend the route(s) to the routes array
 	 */
-	public static function add($path, $options = null, $prepend = false)
+	public static function add($path, $options = null, $prepend = false, $case_sensitive = null)
 	{
 		if (is_array($path))
 		{
@@ -55,19 +70,19 @@ class Router
 
 		if ($prepend)
 		{
-			\Arr::prepend(static::$routes, $name, new \Route($path, $options));
+			\Arr::prepend(static::$routes, $name, new \Route($path, $options, $case_sensitive, $name));
 			return;
 		}
 
-		static::$routes[$name] = new \Route($path, $options);
+		static::$routes[$name] = new \Route($path, $options, $case_sensitive, $name);
 	}
 
 	/**
 	 * Does reverse routing for a named route.  This will return the FULL url
 	 * (including the base url and index.php).
 	 *
-	 * WARNING: This is VERY limited at this point.  Does not work if there is
-	 * any regex in the route.
+	 * WARNING: Reverse routing with routes that contains a regex is still
+	 * experimental. The simple ones work, but complex ones might fail!
 	 *
 	 * Usage:
 	 *
@@ -79,9 +94,90 @@ class Router
 	 */
 	public static function get($name, $named_params = array())
 	{
+		// check if we have this named route
 		if (array_key_exists($name, static::$routes))
 		{
-			return \Uri::create(static::$routes[$name]->path, $named_params);
+			// fetch the url this route defines
+			$url = static::$routes[$name]->path;
+
+			// get named parameters regex's out of the way first
+			foreach($named_params as $name => $value)
+			{
+				if (is_string($name) and ($pos = strpos($url, '(:'.$name.')')) !== false)
+				{
+					$url = substr_replace($url,$value,$pos,strlen($name)+3);
+				}
+			}
+
+			// deal with regex's groups
+			if (preg_match_all('#\((?:\?P<(\w+?)>)?.*?\)#', $url, $matches) !== false)
+			{
+				if (count($matches) == 2)
+				{
+					$indexed_group_count = 0;
+					foreach($matches[0] as $index => $target)
+					{
+						$replace = '';
+						if (array_key_exists($key = $matches[1][$index], $named_params) ||
+						    array_key_exists($key = '$'.($index + 1), $named_params) ||
+						    array_key_exists($key = $indexed_group_count++, $named_params))
+						{
+							$replace = $named_params[$key];
+						}
+
+						if (($pos = strpos($url, $target)) !== false)
+						{
+							$url = substr_replace($url, $replace, $pos, strlen($target));
+						}
+					}
+				}
+			}
+
+			// return the created URI, replace any named parameters not in a regex
+			return \Uri::create($url, $named_params);
+		}
+	}
+
+	/**
+	 * Delete one or multiple routes
+	 *
+	 * @param  string
+	 */
+	public static function delete($path, $case_sensitive = null)
+	{
+		$case_sensitive ?: \Config::get('routing.case_sensitive', true);
+
+		// support the usual route path placeholders
+		$path = str_replace(array(
+			':any',
+			':alnum',
+			':num',
+			':alpha',
+			':segment',
+		), array(
+			'.+',
+			'[[:alnum:]]+',
+			'[[:digit:]]+',
+			'[[:alpha:]]+',
+			'[^/]*',
+		), $path);
+
+		foreach (static::$routes as $name => $route)
+		{
+			if ($case_sensitive)
+			{
+				if (preg_match('#^'.$path.'$#uD', $name))
+				{
+					unset(static::$routes[$name]);
+				}
+			}
+			else
+			{
+				if (preg_match('#^'.$path.'$#uiD', $name))
+				{
+					unset(static::$routes[$name]);
+				}
+			}
 		}
 	}
 
@@ -135,10 +231,10 @@ class Router
 		$module = false;
 
 		// First port of call: request for a module?
-		if (\Fuel::module_exists($segments[0]))
+		if (\Module::exists($segments[0]))
 		{
 			// make the module known to the autoloader
-			\Fuel::add_module($segments[0]);
+			\Module::load($segments[0]);
 			$match->module = array_shift($segments);
 			$namespace .= ucfirst($match->module).'\\';
 			$module = $match->module;
@@ -160,26 +256,38 @@ class Router
 	protected static function parse_segments($segments, $namespace = '', $module = false)
 	{
 		$temp_segments = $segments;
+		$prefix = static::get_prefix();
 
 		foreach (array_reverse($segments, true) as $key => $segment)
 		{
-			$class = $namespace.'Controller_'.\Inflector::words_to_upper(implode('_', $temp_segments));
+			// determine which classes to check. First, all underscores, or all namespaced
+			$classes = array(
+				$namespace.$prefix.\Inflector::words_to_upper(implode(substr($prefix,-1,1), $temp_segments), substr($prefix,-1,1)),
+			);
+
+			// if we're namespacing, check a hybrid version too
+			$classes[] = $namespace.$prefix.\Inflector::words_to_upper(implode('_', $temp_segments));
+
 			array_pop($temp_segments);
-			if (class_exists($class))
+
+			foreach ($classes as $class)
 			{
-				return array(
-					'controller'    => $class,
-					'action'        => isset($segments[$key + 1]) ? $segments[$key + 1] : null,
-					'method_params' => array_slice($segments, $key + 2),
-				);
+				if (static::check_class($class))
+				{
+					return array(
+						'controller'    => $class,
+						'action'        => isset($segments[$key + 1]) ? $segments[$key + 1] : null,
+						'method_params' => array_slice($segments, $key + 2),
+					);
+				}
 			}
 		}
 
 		// Fall back for default module controllers
 		if ($module)
 		{
-			$class = $namespace.'Controller_'.$module;
-			if (class_exists($class))
+			$class = $namespace.$prefix.ucfirst($module);
+			if (static::check_class($class))
 			{
 				return array(
 					'controller'    => $class,
@@ -189,6 +297,27 @@ class Router
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Checks whether class exists.
+	 *
+	 * @param string $class The class name to check.
+	 * @return bool True if $class exists, false otherwise.
+	 */
+	protected static function check_class($class)
+	{
+		return class_exists($class);
+	}
+
+	/**
+	 * Get prefix.
+	 *
+	 * @return string Prefix as defined in config controller_prefix.
+	 */
+	protected static function get_prefix()
+	{
+		return static::$prefix;
 	}
 }
 

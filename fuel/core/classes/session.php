@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -36,18 +36,20 @@ class Session
 	 * array of global config defaults
 	 */
 	protected static $_defaults = array(
-		'driver'			=> 'cookie',
-		'match_ip'			=> false,
-		'match_ua'			=> true,
-		'cookie_domain' 	=> '',
-		'cookie_path'		=> '/',
-		'cookie_http_only'	=> null,
-		'expire_on_close'	=> false,
-		'expiration_time'	=> 7200,
-		'rotation_time'		=> 300,
-		'flash_id'			=> 'flash',
-		'flash_auto_expire'	=> true,
-		'post_cookie_name'	=> ''
+		'driver'                    => 'cookie',
+		'match_ip'                  => false,
+		'match_ua'                  => true,
+		'cookie_domain'             => '',
+		'cookie_path'               => '/',
+		'cookie_http_only'          => null,
+		'encrypt_cookie'            => true,
+		'expire_on_close'           => false,
+		'expiration_time'           => 7200,
+		'rotation_time'             => 300,
+		'flash_id'                  => 'flash',
+		'flash_auto_expire'         => true,
+		'flash_expire_after_get'    => true,
+		'post_cookie_name'          => ''
 	);
 
 	// --------------------------------------------------------------------
@@ -63,20 +65,50 @@ class Session
 		{
 			static::instance();
 		}
+
+		if (\Config::get('session.native_emulation', false))
+		{
+			// emulate native PHP sessions
+			session_set_save_handler (
+				// open
+				function ($savePath, $sessionName) {
+				},
+				// close
+				function () {
+				},
+				// read
+				function ($sessionId) {
+					// copy all existing session vars into the PHP session store
+					$_SESSION = \Session::get();
+					$_SESSION['__org'] = $_SESSION;
+				},
+				// write
+				function ($sessionId, $data) {
+					// get the original data
+					$org = isset($_SESSION['__org']) ? $_SESSION['__org'] : array();
+					unset($_SESSION['__org']);
+
+					// do we need to remove stuff?
+					if ($remove = array_diff_key($org, $_SESSION))
+					{
+						\Session::delete(array_keys($remove));
+					}
+
+					// add or update the remainder
+					empty($_SESSION) or \Session::set($_SESSION);
+				},
+				// destroy
+				function ($sessionId) {
+					\Session::destroy();
+				},
+				// gc
+				function ($lifetime) {
+				}
+			);
+		}
 	}
 
 	// --------------------------------------------------------------------
-
-	/**
-	 * This method is deprecated...use forge() instead.
-	 *
-	 * @deprecated until 1.2
-	 */
-	public static function factory($custom = array())
-	{
-		logger(\Fuel::L_WARNING, 'This method is deprecated.  Please use a forge() instead.', __METHOD__);
-		return static::forge($custom);
-	}
 
 	/**
 	 * Factory
@@ -123,7 +155,7 @@ class Session
 		else
 		{
 			// register a shutdown event to update the session
-			\Event::register('shutdown', array($driver, 'write'));
+			\Event::register('fuel-shutdown', array($driver, 'write'));
 
 			// init the session
 			$driver->init();
@@ -232,7 +264,7 @@ class Session
 	 */
 	public static function key($name = 'session_id')
 	{
-		return static::instance()->key($name);
+		return static::$_instance ? static::instance()->key($name) : null;
 	}
 
 	// --------------------------------------------------------------------
@@ -258,11 +290,12 @@ class Session
 	 * @access	public
 	 * @param	string	name of the variable to get
 	 * @param	mixed	default value to return if the variable does not exist
+	 * @param	bool	true if the flash variable needs to expire immediately
 	 * @return	mixed
 	 */
-	public static function get_flash($name = null, $default = null)
+	public static function get_flash($name = null, $default = null, $expire = null)
 	{
-		return static::instance()->get_flash($name, $default);
+		return static::instance()->get_flash($name, $default, $expire);
 	}
 
 	// --------------------------------------------------------------------
@@ -334,7 +367,7 @@ class Session
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * rotate the session id
 	 *
@@ -347,7 +380,7 @@ class Session
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * destroy the current session
 	 *

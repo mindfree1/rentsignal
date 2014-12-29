@@ -3,49 +3,41 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
 namespace Fuel\Core;
 
 
-abstract class HttpException extends FuelException
+abstract class HttpException extends \FuelException
 {
-	abstract public function handle();
-}
+	/**
+	 * Must return a response object for the handle method
+	 *
+	 * @return  Response
+	 */
+	abstract protected function response();
 
-
-/**
- * @deprecated  This should extend HttpException, but kept as Request404Exception for backwards compat.
- */
-class HttpNotFoundException extends \Request404Exception
-{
 	/**
 	 * When this type of exception isn't caught this method is called by
 	 * Error::exception_handler() to deal with the problem.
 	 */
 	public function handle()
 	{
-		$response = new \Response(\View::forge('404'), 404);
-		\Event::shutdown();
-		$response->send(true);
-	}
-}
+		// get the exception response
+		$response = $this->response();
 
-class HttpServerErrorException extends \HttpException
-{
-	/**
-	 * When this type of exception isn't caught this method is called by
-	 * Error::exception_handler() to deal with the problem.
-	 */
-	public function handle()
-	{
-		$response = new \Response(\View::forge('500'), 500);
-		\Event::shutdown();
+		// fire any app shutdown events
+		\Event::instance()->trigger('shutdown', '', 'none', true);
+
+		// fire any framework shutdown events
+		\Event::instance()->trigger('fuel-shutdown', '', 'none', true);
+
+		// send the response out
 		$response->send(true);
 	}
 }

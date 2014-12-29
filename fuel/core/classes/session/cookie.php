@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -54,9 +54,6 @@ class Session_Cookie extends \Session_Driver
 		$this->keys['updated'] 		= $this->keys['created'];
 		$this->keys['payload'] 		= '';
 
-		// and set the session cookie
-		$this->_set_cookie();
-
 		return $this;
 	}
 
@@ -71,17 +68,46 @@ class Session_Cookie extends \Session_Driver
 	 */
 	public function read($force = false)
 	{
+		// initialize the session
+		$this->data = array();
+		$this->keys = array();
+		$this->flash = array();
+
 		// get the session cookie
 		$payload = $this->_get_cookie();
 
-		// if no session cookie was present, create it
-		if ($payload === false or $force)
+		// validate it
+		if ($force)
 		{
-			$this->create();
+			// a forced session reset
 		}
-
-		if (isset($payload[0])) $this->data  = $payload[0];
-		if (isset($payload[1])) $this->flash = $payload[1];
+		elseif ($payload === false)
+		{
+			// no cookie found
+		}
+		elseif ( ! isset($payload[0]) or ! is_array($payload[0]))
+		{
+			logger('DEBUG', 'Error: not a valid cookie payload!');
+		}
+		elseif ($payload[0]['updated'] + $this->config['expiration_time'] <= $this->time->get_timestamp())
+		{
+			logger('DEBUG', 'Error: session id has expired!');
+		}
+		elseif ($this->config['match_ip'] and $payload[0]['ip_hash'] !== md5(\Input::ip().\Input::real_ip()))
+		{
+			logger('DEBUG', 'Error: IP address in the session doesn\'t match this requests source IP!');
+		}
+		elseif ($this->config['match_ua'] and $payload[0]['user_agent'] !== \Input::user_agent())
+		{
+			logger('DEBUG', 'Error: User agent in the session doesn\'t match the browsers user agent string!');
+		}
+		else
+		{
+			// session is valid, retrieve the payload
+			if (isset($payload[0]) and is_array($payload[0])) $this->keys  = $payload[0];
+			if (isset($payload[1]) and is_array($payload[1])) $this->data  = $payload[1];
+			if (isset($payload[2]) and is_array($payload[2])) $this->flash = $payload[2];
+		}
 
 		return parent::read();
 	}
@@ -96,40 +122,20 @@ class Session_Cookie extends \Session_Driver
 	 */
 	public function write()
 	{
-		parent::write();
-
 		// do we have something to write?
-		if ( ! empty($this->keys))
+		if ( ! empty($this->keys) or ! empty($this->data) or ! empty($this->flash))
 		{
+			parent::write();
+
 			// rotate the session id if needed
 			$this->rotate(false);
 
+			// record the last update time of the session
+			$this->keys['updated'] = $this->time->get_timestamp();
+
 			// then update the cookie
-			$this->_set_cookie(array($this->data, $this->flash));
+			$this->_set_cookie(array($this->keys, $this->data, $this->flash));
 		}
-
-		return $this;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * destroy the current session
-	 *
-	 * @access	public
-	 * @return	Fuel\Core\Session_Cookie
-	 */
-	public function destroy()
-	{
-		// do we have something to destroy?
-		if ( ! empty($this->keys))
-		{
-			// delete the session cookie
-			\Cookie::delete($this->config['cookie_name']);
-		}
-
-		// reset the stored session data
-		$this->keys = $this->flash = $this->data = array();
 
 		return $this;
 	}

@@ -93,6 +93,7 @@
 							error: function()
 							{
 								console.log('error handling');
+
 							}
 						});
 						return false;
@@ -134,6 +135,8 @@
 	</div>
 	<div id="image_titlebar">Favourites</div>
 	<div id="content" class="content"></div>
+	<div id="overlaycontent" class="overlaycontent"></div>
+
 	<script language="javascript" type="text/javascript"> 
 	function loadImages(data)
 	{

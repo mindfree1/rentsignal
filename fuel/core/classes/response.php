@@ -3,10 +3,10 @@
  * Part of the Fuel framework.
  *
  * @package    Fuel
- * @version    1.0
+ * @version    1.7
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2011 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -18,10 +18,14 @@ class Response
 
 	/**
 	 * @var  array  An array of status codes and messages
+	 *
+	 * See http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+	 * for the complete and approved list, and links to the RFC's that define them
 	 */
 	public static $statuses = array(
 		100 => 'Continue',
 		101 => 'Switching Protocols',
+		102 => 'Processing',
 		200 => 'OK',
 		201 => 'Created',
 		202 => 'Accepted',
@@ -30,6 +34,8 @@ class Response
 		205 => 'Reset Content',
 		206 => 'Partial Content',
 		207 => 'Multi-Status',
+		208 => 'Already Reported',
+		226 => 'IM Used',
 		300 => 'Multiple Choices',
 		301 => 'Moved Permanently',
 		302 => 'Found',
@@ -37,6 +43,7 @@ class Response
 		304 => 'Not Modified',
 		305 => 'Use Proxy',
 		307 => 'Temporary Redirect',
+		308 => 'Permanent Redirect',
 		400 => 'Bad Request',
 		401 => 'Unauthorized',
 		402 => 'Payment Required',
@@ -55,22 +62,45 @@ class Response
 		415 => 'Unsupported Media Type',
 		416 => 'Requested Range Not Satisfiable',
 		417 => 'Expectation Failed',
+		418 => 'I\'m a Teapot',
 		422 => 'Unprocessable Entity',
 		423 => 'Locked',
 		424 => 'Failed Dependency',
+		426 => 'Upgrade Required',
+		428 => 'Precondition Required',
+		429 => 'Too Many Requests',
+		431 => 'Request Header Fields Too Large',
 		500 => 'Internal Server Error',
 		501 => 'Not Implemented',
 		502 => 'Bad Gateway',
 		503 => 'Service Unavailable',
 		504 => 'Gateway Timeout',
 		505 => 'HTTP Version Not Supported',
+		506 => 'Variant Also Negotiates',
 		507 => 'Insufficient Storage',
-		509 => 'Bandwidth Limit Exceeded'
+		508 => 'Loop Detected',
+		509 => 'Bandwidth Limit Exceeded',
+		510 => 'Not Extended',
+		511 => 'Network Authentication Required',
 	);
 
+	/**
+	 * Creates an instance of the Response class
+	 *
+	 * @param   string  $body    The response body
+	 * @param   int     $status  The HTTP response status for this response
+	 * @param   array   $headers Array of HTTP headers for this reponse
+	 *
+	 * @return  Response
+	 */
 	public static function forge($body = null, $status = 200, array $headers = array())
 	{
-		return new static($body, $status, $headers);
+		$response = new static($body, $status, $headers);
+
+		// fire any response created events
+		\Event::instance()->has_events('response_created') and \Event::instance()->trigger('response_created', '', 'none');
+
+		return $response;
 	}
 
 	/**
@@ -83,6 +113,7 @@ class Response
 	 * @param   string  $url     The url
 	 * @param   string  $method  The redirect method
 	 * @param   int     $code    The redirect status code
+	 *
 	 * @return  void
 	 */
 	public static function redirect($url = '', $method = 'location', $code = 302)
@@ -94,6 +125,11 @@ class Response
 		if (strpos($url, '://') === false)
 		{
 			$url = $url !== '' ? \Uri::create($url) : \Uri::base();
+		}
+
+		if (\Config::get('response.redirect_with_wildcards', true))
+		{
+			strpos($url, '*') !== false and $url = \Uri::segment_replace($url);
 		}
 
 		if ($method == 'location')
@@ -109,10 +145,36 @@ class Response
 			return;
 		}
 
-		\Event::shutdown();
-
 		$response->send(true);
 		exit;
+	}
+
+	/**
+	 * Redirects back to the previous page, if that page is within the current
+	 * application. If not, it will redirect to the given url, and if none is
+	 * given, back to the application root
+	 *
+	 * @param   string  $url     The url
+	 * @param   string  $method  The redirect method
+	 * @param   int     $code    The redirect status code
+	 *
+	 * @return  void
+	 */
+	public static function redirect_back($url = '', $method = 'location', $code = 302)
+	{
+		// do we have a referrer?
+		if ($referrer = \Input::referrer())
+		{
+			// is it within our website? And not equal to the current url?
+			if (strpos($referrer, \Uri::base()) === 0 and $referrer != \Uri::current())
+			{
+				// redirect back to where we came from
+				static::redirect($referrer, $method, $code);
+			}
+		}
+
+		// no referrer or an external link, do a normal redirect
+		static::redirect($url, $method, $code);
 	}
 
 	/**
@@ -121,7 +183,7 @@ class Response
 	public $status = 200;
 
 	/**
-	 * @var  array  An array of headers
+	 * @var  array  An array of HTTP headers
 	 */
 	public $headers = array();
 
@@ -150,7 +212,8 @@ class Response
 	 * Sets the response status code
 	 *
 	 * @param   string  $status  The status code
-	 * @return  $this
+	 *
+	 * @return  Response
 	 */
 	public function set_status($status = 200)
 	{
@@ -164,7 +227,8 @@ class Response
 	 * @param   string  The header name
 	 * @param   string  The header value
 	 * @param   string  Whether to replace existing value for the header, will never overwrite/be overwritten when false
-	 * @return  $this
+	 *
+	 * @return  Response
 	 */
 	public function set_header($name, $value, $replace = true)
 	{
@@ -181,19 +245,40 @@ class Response
 	}
 
 	/**
+	 * Gets header information from the queue
+	 *
+	 * @param   string  The header name, or null for all headers
+	 *
+	 * @return  mixed
+	 */
+	public function get_header($name = null)
+	{
+		if (func_num_args())
+		{
+			return isset($this->headers[$name]) ? $this->headers[$name] : null;
+		}
+		else
+		{
+			return $this->headers;
+		}
+	}
+
+	/**
 	 * Sets (or returns) the body for the response
 	 *
 	 * @param   string  The response content
-	 * @return  $this|string
+	 *
+	 * @return  Response|string
 	 */
 	public function body($value = false)
 	{
-		if ($value === false)
+		if (func_num_args())
 		{
-			return $this->body;
+			$this->body = $value;
+			return $this;
 		}
-		$this->body = $value;
-		return $this;
+
+		return $this->body;
 	}
 
 	/**
@@ -220,7 +305,11 @@ class Response
 			foreach ($this->headers as $name => $value)
 			{
 				// Parse non-replace headers
-				is_int($name) and is_array($value) and list($name, $value) = $value;
+				if (is_int($name) and is_array($value))
+				{
+					 isset($value[0]) and $name = $value[0];
+					 isset($value[1]) and $value = $value[1];
+				}
 
 				// Create the header
 				is_string($name) and $value = "{$name}: {$value}";
@@ -237,16 +326,22 @@ class Response
 	 * Sends the response to the output buffer.  Optionally will send the
 	 * headers.
 	 *
-	 * @param   string  $send_headers  Whether to send the headers
-	 * @return  $this
+	 * @param   bool  $send_headers  Whether or not to send the defined HTTP headers
+	 *
+	 * @return  void
 	 */
 	public function send($send_headers = false)
 	{
-		$send_headers and $this->send_headers();
+		$body = $this->__toString();
+
+		if ($send_headers)
+		{
+			$this->send_headers();
+		}
 
 		if ($this->body != null)
 		{
-			echo $this->body;
+			echo $body;
 		}
 	}
 
@@ -257,6 +352,6 @@ class Response
 	 */
 	public function __toString()
 	{
-		return (string) $this->body();
+		return (string) $this->body;
 	}
 }

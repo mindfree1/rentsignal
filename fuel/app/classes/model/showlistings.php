@@ -44,6 +44,7 @@ Class ShowListings extends \Model
 		foreach($totalresult as $item)
 		{
 			$url[] = $item['url'];
+			$locations[] = $item['location'];
 		}
 
 		$imgdata = array();
@@ -51,7 +52,7 @@ Class ShowListings extends \Model
 		$imgdata["numrows"] = $numrows;
 		$imgdata["img_url"] = $url;
 		$imgdata["page_limit"] = $per_page;
-		$imgdata["locations"] = $data['loc1'];
+		$imgdata["locations"] = $locations;
 		$imgdata["$img_amount"] = $img_amount;
 
 		//create the view

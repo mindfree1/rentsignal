@@ -136,8 +136,7 @@ function setSlidingPanel(container, map, offlineMode)
 				width: 35,
 				anchor: [16, 0],
 				textColor: '#ffffff',
-				textSize: 10,
-				id: 'test'
+				textSize: 10
 			}];
 			
 			//var markerID = [];
@@ -177,12 +176,7 @@ function setSlidingPanel(container, map, offlineMode)
 		for (var i=0; i < len; i++)
 		{
 				var mLatLng = new google.maps.LatLng(data[i].rentals.lat,data[i].rentals.lng);
-				var marker = new google.maps.Marker({"position": mLatLng, icon: markerImage, id: markerID[i], title: data[i].rentals.location, animation: google.maps.Animation.DROP}); 
-				
-				//contents = data[i].rentals.description;
-
-				//contents = '<div id="contents" style="width:1200px;height:400px;left:-550px;z-index:10000;">' + data[i].rentals.description + 
-				//$('#overlaycontent').val() + '</div>';
+				var marker = new google.maps.Marker({"position": mLatLng, icon: markerImage, id: markerID[i], id: data[i].rentals.id ,title: data[i].rentals.location, animation: google.maps.Animation.DROP}); 
 
 				contents = '<div id="contents" class="contents" style="width:1200px;height:400px;left:-550px;z-index:10000;"></div>';
 
@@ -240,6 +234,8 @@ function setSlidingPanel(container, map, offlineMode)
 		google.maps.event.addListener(markers[num], "click", function (evt) {
 		
 		var getLocation = $(this).attr('title');
+		var rentsignal_id = $(this).attr('id');
+
 		if(infoBubbleContent.isOpen())
 		{
 				//alert($(this).attr('title'));
@@ -247,7 +243,7 @@ function setSlidingPanel(container, map, offlineMode)
 				$.ajax({
 					type: "GET",
 					url: "http://rentsignal.com/propertydetails",
-					data: 'location=' + getLocation,
+					data: 'location=' + getLocation + '&id=' + rentsignal_id,
 					dataType: "html",
 					success: function(data) {
 						contents = data;
@@ -271,7 +267,7 @@ function setSlidingPanel(container, map, offlineMode)
 					$.ajax({
 							type: "GET",
 							url: "http://rentsignal.com/propertydetails",
-							data: 'location=' + getLocation,
+							data: 'location=' + getLocation + '&id=' + rentsignal_id,
 							dataType: "html",
 							success: function(data) {
 								contents = data;
@@ -352,5 +348,5 @@ function displayPoint(marker, index){
 }
 
 $(document).ready(function() {
-		$("#overlaycontent").load("http://rentsignal.com/propertydetails");
+		//$("#overlaycontent").load("http://rentsignal.com/propertydetails");
 	});

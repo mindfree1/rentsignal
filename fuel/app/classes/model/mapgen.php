@@ -59,39 +59,18 @@ Class Mapgen extends \Model
 
 	public static function search_images($data)
 	{
-		$locations[] = $data;
+		$location = $data['location'];
+		$id = $data['id'];
 		//$query_images = DB::select()->from('images')->where($query_imagecount > 1)->and_where('location', 'IN', $locations)->group_by('propimg_id')->execute();
 
-		$query_images = DB::select()->from('images')->where('location', 'IN', $locations)->join('rentsignals', 'LEFT OUTER')->on('rentsignals.id', '=', 'images.propimg_id')->group_by('rentsignals.id')->execute();
-		print_r($query_images);
+		$query_images = DB::select()->from('images')->join('rentsignals', 'INNER')->on('images.propimg_id', '=', 'rentsignals.id')->where('images.location', '=', $location)->and_where('images.propimg_id', '=', $id)->execute();
 
-		//->execute();
 		//->select('propimg_id')->(DB::expr('HAVING count(propimg_id > 1'))->from('images')->GROUP_BY('propimg_id')
 		//$query_images->execute();
-/*$query = DB::select()->from('users');
 
-// Join a table
-$query->join('profiles');
-$query->on('users.id', '=', 'profiles.user_id');
-
-SELECT  series.id,                                   
-series.series_name,                                         
-series.publisher_id,                                       
-series.description, 
-series.image, 
-COUNT (product.id) as nRows 
-FROM series 
-LEFT OUTER JOIN product
-ON series.id = product.series_id                    
-WHERE series.genre = 'Fantasy and Magic'
-GROUP BY series.id,                                   
-series.series_name,                                         
-series.publisher_id,                                       
-series.description, 
-series.image*/
-		/*SELECT firstname, lastname, list.address FROM list
-		INNER JOIN (SELECT address FROM list
-		GROUP BY address HAVING count(id) > 1) dup ON list.address = dup.address*/
+		// Join a table
+		/*$query->join('profiles');
+		$query->on('users.id', '=', 'profiles.user_id');*/
 
 		foreach($query_images as $items)
 		{

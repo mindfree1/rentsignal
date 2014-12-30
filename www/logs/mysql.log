@@ -5285,3 +5285,36 @@ InnoDB: Compressed tables use zlib 1.2.3
 141229 16:52:31 [Note] Event Scheduler: Loaded 0 events
 141229 16:52:31 [Note] wampmysqld: ready for connections.
 Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141230  1:45:29 [Note] wampmysqld: Normal shutdown
+
+141230  1:45:30 [Note] Event Scheduler: Purging the queue. 0 events
+141230  1:45:41  InnoDB: Starting shutdown...
+141230 10:11:59 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141230 10:11:59  InnoDB: Initializing buffer pool, size = 128.0M
+141230 10:11:59  InnoDB: Completed initialization of buffer pool
+141230 10:12:12  InnoDB: highest supported file format is Barracuda.
+141230 10:14:17  InnoDB: 1.1.4 started; log sequence number 2709249
+141230 10:16:10 [Note] Event Scheduler: Loaded 0 events
+141230 10:16:10 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)
+141230 11:30:32 [Note] wampmysqld: Normal shutdown
+
+141230 11:30:33 [Note] Event Scheduler: Purging the queue. 0 events
+141230 11:30:40  InnoDB: Starting shutdown...
+141230 11:30:41  InnoDB: Shutdown completed; log sequence number 2709249
+141230 11:30:42 [Note] wampmysqld: Shutdown complete
+
+141230 15:41:21 [Note] Plugin 'FEDERATED' is disabled.
+InnoDB: The InnoDB memory heap is disabled
+InnoDB: Mutexes and rw_locks use Windows interlocked functions
+InnoDB: Compressed tables use zlib 1.2.3
+141230 15:41:21  InnoDB: Initializing buffer pool, size = 128.0M
+141230 15:41:21  InnoDB: Completed initialization of buffer pool
+141230 15:41:21  InnoDB: highest supported file format is Barracuda.
+141230 15:41:21  InnoDB: 1.1.4 started; log sequence number 2709249
+141230 15:41:22 [Note] Event Scheduler: Loaded 0 events
+141230 15:41:22 [Note] wampmysqld: ready for connections.
+Version: '5.5.8-log'  socket: ''  port: 3306  MySQL Community Server (GPL)

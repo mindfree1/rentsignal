@@ -34,7 +34,6 @@ use \Arr;
 				$data['ratings'] = $_POST['ratings'];
 
 				$results = Mapgen::search_results($data);
-				//$data['location'] = $results['location'];
 			}
 		}
 

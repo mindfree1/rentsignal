@@ -15,8 +15,8 @@ Class ShowListings extends \Model
 		$location = implode("|", $location);
 		
 		$per_page = 8;
-		$totalresult = DB::query('SELECT * FROM `images` INNER JOIN rentsignals ON images.location=rentsignals.location WHERE images.location REGEXP ' . "'" .$location . "'", DB::SELECT)->execute();
-		
+		$totalresult = DB::query('SELECT * FROM `images` INNER JOIN rentsignals ON rentsignals.location = images.location WHERE rentsignals.location REGEXP ' . "'" .$location . "'", DB::SELECT)->execute();
+		//$totalresult = DB::select()->from('images')->join('rentsignals', 'INNER')->on('images.propimg_id', '=', 'rentsignals.id')->where('images.location', 'LIKE', $location)->execute();
 		$numrows = count($totalresult);
 		$pages = ceil($numrows/$per_page);
 
@@ -39,6 +39,7 @@ Class ShowListings extends \Model
 		$max = 'limit ' .$start.','.$per_page; 
 		
  		$result = DB::query('SELECT * FROM `images` WHERE location REGEXP ' . "'" .$location ."'" . " $max", DB::SELECT)->execute();
+ 		//$result = DB::select()->from('images')->where('images.location', 'LIKE', $location)->execute();
 		$img_amount = count($result);
 
 		foreach($totalresult as $item)

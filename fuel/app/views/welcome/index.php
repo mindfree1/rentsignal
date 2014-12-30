@@ -55,7 +55,6 @@
 							<option value="3">3+</option>
 						</select>
 						<div class="starrating">
-							<!--<label for="stars" style="position:absolute;left:0px;">Favourite Rating</label>-->
 								<ul class="stars" id="star_ratings">
 									<li><a href="#" rel="star-1"></a></li>
 									<li><a href="#" rel="star-2"></a></li>
@@ -155,7 +154,7 @@
 				locationimgs[i] = data[i].rentals.location;
 				locations = locationimgs.join("|");
 			}
-			$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locations);
+			$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locationimgs);
 		}
 	}
 
@@ -172,8 +171,6 @@
 			$("#searchContent").css('display', 'inline');
 			$("#searchContent").css('visibility', 'visible');
 		});
-	
-		//$("#openrentals").html('<img src="../assets/img/search-icon.jpg" />');
 	
 		$("#searchContent > ul:gt(0)").hide();
 	});

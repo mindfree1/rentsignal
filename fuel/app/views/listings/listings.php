@@ -27,9 +27,8 @@
 <?php
 
 	//loop through for pagination
-	for($i=1; $i <= $img_amount; $i++)
+	for($i=0; $i <= $img_amount; $i++)
 	{
-		//
-		echo '<img id="img_'.$i.'"'. ' class="' .$locations[$i-1]. '" width="120px" height="120px" src="'. $img_url[$i-1]. '"' . '/>';
+		echo '<img id="img_'.$i.'"'. ' class="' .$locations[$i]. '" width="120px" height="120px" src="'. $img_url[$i]. '"' . '/>';
 	}
 ?>

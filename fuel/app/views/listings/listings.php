@@ -1,10 +1,11 @@
 <p style="position:absolute;margin-left:-180px;"><b>Search Results</b></p>
-<ul id="pagination" style="position:absolute;margin-left:-200px;">
+<ul id="pagination" style="position:absolute;margin-left:-200px;cursor:pointer;">
 	<?php
 		for($i=1; $i<=$page_nums; $i++)
 		{
 			echo '<li id="'.$i.'">'.$i.'</li></a>';
 		}
+		//$locations = implode("," , $locations);
 	?>
 </ul>
 <script>
@@ -15,10 +16,10 @@
 		.css({'color' : '#FF0084'})
 		.css({'border' : 'none'});
 		var pageNum = this.id;
-		if(pageNum == 0 || pageNum == null || pageNum == '')
+		/*if(pageNum == 0 || pageNum == null || pageNum == '')
 		{
 			pageNum = 1;
-		}
+		}*/
 
 		//loads the right page based off click/tap on pagination number
 		$("#content").load('http://rentsignal.com/showlistings/getListings?pages=' + pageNum + '&locations=' + '<?php echo $locations ?>');
@@ -27,8 +28,8 @@
 <?php
 
 	//loop through for pagination
-	for($i=0; $i <= $img_amount; $i++)
+	for($i=1; $i <= $img_amount; $i++)
 	{
-		echo '<img id="img_'.$i.'"'. ' class="' .$locations[$i]. '" width="120px" height="120px" src="'. $img_url[$i]. '"' . '/>';
+		echo '<img id="img_'.$i.'"'. ' class="overlay_images" width="120px" height="120px" src="'. $img_url[$i-1]. '"' . '/>';
 	}
 ?>

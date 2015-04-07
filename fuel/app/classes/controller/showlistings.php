@@ -16,8 +16,8 @@ use \Arr;
 			//to return which page of images should load
 			if(isset($_GET['locations']))
 			{
-				$data['loc1'] = $_GET['locations'];
-				$results = Showlistings::get_results($data);
+				$data = $_GET['locations'];
+				Showlistings::get_results($data);
 			}
 		}
 		
@@ -51,7 +51,7 @@ use \Arr;
 		{
 			if(isset($_GET["locations"]))
 			{
-				$data['loc1'] = $_GET["locations"];
+				$data = $_GET["locations"];
 				Showlistings::get_results($data);
 			}
 		}

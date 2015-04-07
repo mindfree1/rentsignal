@@ -11,38 +11,51 @@ Class ShowListings extends \Model
 	public static function get_results($data)
 	{
 
-		$location = $data;
-		$location = implode("|", $location);
-		
+		$locations= $data;
+		$locations = explode("," , $locations);
+		$start = 0;
+
 		$per_page = 8;
-		$totalresult = DB::query('SELECT * FROM `images` INNER JOIN rentsignals ON rentsignals.location = images.location WHERE rentsignals.location REGEXP ' . "'" .$location . "'", DB::SELECT)->execute();
+		//$totalresult = DB::query('SELECT * FROM `images` INNER JOIN rentsignals ON rentsignals.location = images.location WHERE rentsignals.location IN ' .$locations , DB::SELECT)->execute();
+		$totalresult = DB::select()->from('images')->where('location', 'IN', $locations)->execute();
 		//$totalresult = DB::select()->from('images')->join('rentsignals', 'INNER')->on('images.propimg_id', '=', 'rentsignals.id')->where('images.location', 'LIKE', $location)->execute();
 		$numrows = count($totalresult);
 		$pages = ceil($numrows/$per_page);
 
 		if(isset($_GET['pages']))
 		{
-			$pages = $_GET['pages'];
-			$start = ($pages - 1) * $per_page;	 
+			$pagescalc = $_GET['pages'];
+			if($pagescalc > 1)
+			{
+				$start = $pagescalc * $per_page / 2;
+			}
 		}
-		else
-		{
-			$start = ($pages - 1);	 
-		}
-		
-		if($start == '0')
+		else if($start = '0')
 		{
 			$start = $pages;
 		}
 
-		$pages = ceil($numrows/$per_page);
-		$max = 'limit ' .$start.','.$per_page; 
+		/*else
+		{
+		//$start = ($pages - 1);	 
+		}*/
+	
+		//$pages = ceil($numrows/$per_page);
+		//$max = 'limit ' .$start.','.$per_page; 
+ 		//$result = DB::query('SELECT * FROM `images`'.  " LIMIT 8 OFFSET 4", DB::SELECT)->execute();
 		
- 		$result = DB::query('SELECT * FROM `images` WHERE location REGEXP ' . "'" .$location ."'" . " $max", DB::SELECT)->execute();
+		//$location = $data;
+		//$location = implode("|" , $locations);
+
+		//$start = 11;
+ 		//$result = DB::query('SELECT * FROM `images` WHERE location REGEXP ' . "'" .$location ."'" . " $max", DB::SELECT)->execute();
+ 		//echo $start;
+ 		$result = DB::select()->from('images')->where('location', 'IN', $locations)->offset($start)->limit($per_page)->execute();
+ 		//print_r($result);
  		//$result = DB::select()->from('images')->where('images.location', 'LIKE', $location)->execute();
 		$img_amount = count($result);
 
-		foreach($totalresult as $item)
+		foreach($result as $item)
 		{
 			$url[] = $item['url'];
 			$locations[] = $item['location'];
@@ -53,7 +66,7 @@ Class ShowListings extends \Model
 		$imgdata["numrows"] = $numrows;
 		$imgdata["img_url"] = $url;
 		$imgdata["page_limit"] = $per_page;
-		$imgdata["locations"] = $locations;
+		$imgdata["locations"] = $data;
 		$imgdata["$img_amount"] = $img_amount;
 
 		//create the view
@@ -118,7 +131,7 @@ Class ShowListings extends \Model
 	}
 
 	//ideally I'd want to grab the same image data but populate the view with either favourites or searched results - figure out how to clean this up - atm it's messy
-	public function return_imagedata()
+	/*public function return_imagedata()
 	{
 		$imgdata = array();
 		$imgdata["page_nums"] = $pages;
@@ -140,6 +153,6 @@ Class ShowListings extends \Model
 		$imgview->set('img_amount', $imgdata["$img_amount"], false);
 
 		return $imgview;
-	}
+	}*/
 }
 ?>

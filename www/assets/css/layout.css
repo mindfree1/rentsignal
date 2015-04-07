@@ -23,6 +23,41 @@ body{
 
 #amount{border:0; color:#F6A828 ; font-weight:bold;}
 
+.overlay_images
+{
+  margin-left:5px;
+}
+
+.overlay_images2
+{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.overlay_images3
+{
+  margin-right: 10px;
+}
+
+.overlay_images4
+{
+  margin-right: 10px;
+}
+
+.overlay_imagesextra
+{
+  float: left;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.menufixed
+{
+  position: fixed;
+  top: 0px;
+  z-index: 1000;
+}
+
 #imgctrls {
 	width:100%;
 	height:20px;
@@ -194,9 +229,9 @@ p {
 .stars
 {
   list-style: none;
-  background: url('../img/stars.png');
+  background: url('../img/10stars-large.png');
   background-repeat: no-repeat;
-  width: 90px;
+  width: 190px;
   height: 17px;
   padding:0px;
 }
@@ -208,24 +243,44 @@ p {
   height: 17px;
 }
 
-.rate-1,.star-1{
+.rate-1,.star-1, .overlaystar-1{
   background-position: 0 -17px;
 }
 
-.rate-2, .star-2{
+.rate-2, .star-2, .overlaystar-2{
   background-position: 0 -34px;
 }
 
-.rate-3, .star-3{
+.rate-3, .star-3, .overlaystar-3{
   background-position: 0 -51px;
 }
 
-.rate-4, .star-4{
+.rate-4, .star-4, .overlaystar-4{
   background-position: 0 -68px;
 }
 
-.rate-5, .star-5{
+.rate-5, .star-5, .overlaystar-5{
   background-position: 0 -85px;
+}
+
+.rate-6, .star-6, .overlaystar-6{
+  background-position: 0 -102px;
+}
+
+.rate-7, .star-7, .overlaystar-7{
+  background-position: 0 -119px;
+}
+
+.rate-8, .star-8, .overlaystar-8{
+  background-position: 0 -135px;
+}
+
+.rate-9, .star-9, .overlaystar-9{
+  background-position: 0 -154px;
+}
+
+.rate-10, .star-10, .overlaystar-10{
+  background-position: 0 -169px;
 }
 
 .listitems

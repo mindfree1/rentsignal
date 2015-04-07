@@ -16,7 +16,7 @@ return array(
 		'connection'  => array(
 			'hostname' => 'localhost',
 			'port' => '3306',
-			'database' => 'rentsignal',
+			'database' => 'rentsignals',
 			'username' => 'root',
 			'password' => 'pass',
 			'persistent' => false,

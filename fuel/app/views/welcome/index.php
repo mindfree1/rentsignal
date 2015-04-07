@@ -61,6 +61,11 @@
 									<li><a href="#" rel="star-3"></a></li>
 									<li><a href="#" rel="star-4"></a></li>
 									<li><a href="#" rel="star-5"></a></li>
+									<li><a href="#" rel="star-6"></a></li>
+									<li><a href="#" rel="star-7"></a></li>
+									<li><a href="#" rel="star-8"></a></li>
+									<li><a href="#" rel="star-9"></a></li>
+									<li><a href="#" rel="star-10"></a></li>
 								</ul>	
 						</div>
 					</div>
@@ -122,7 +127,7 @@
 		<div class="hero-unit"></div>
 			<div id="nav-bar"><?php echo Html::anchor('admin', 'Dashboard');?></div>
 			<!--current user logged in name should go here-->
-			<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBKdZ3ZnSzIRg2bdZye0ndl56zkWWPVCJw&sensor=false"></script>
+			<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBKdZ3ZnSzIRg2bdZye0ndl56zkWWPVCJw&sensor=false&libraries=places"></script>
 			<div id="rentsignal_map" style="width:100%;height:1024px;float:right;z-index:1;overflow:hidden;"></div>
 		<footer>
 			<!--<p class="pull-right">Page rendered in {exec_time}s using {mem_usage}mb of memory.</p>
@@ -141,21 +146,11 @@
 	{
 		var locationimgs = [];
 		var locations;
-
-		if(data.length == 1)
-		{
-			locationimgs = data[0].rentals.location;
-			$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locationimgs);
-		}
-		else
-		{
 			for(var i=0;i<data.length;i++)
 			{
 				locationimgs[i] = data[i].rentals.location;
-				locations = locationimgs.join("|");
 			}
 			$("div.content").load("http://rentsignal.com/showlistings/returnimages/?locations=" + locationimgs);
-		}
 	}
 
 	function loadFavourites()

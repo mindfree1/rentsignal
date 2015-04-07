@@ -65,22 +65,18 @@ Class Mapgen extends \Model
 
 		$query_images = DB::select()->from('images')->join('rentsignals', 'INNER')->on('images.propimg_id', '=', 'rentsignals.id')->where('images.location', '=', $location)->and_where('images.propimg_id', '=', $id)->execute();
 
-		//->select('propimg_id')->(DB::expr('HAVING count(propimg_id > 1'))->from('images')->GROUP_BY('propimg_id')
-		//$query_images->execute();
-
-		// Join a table
-		/*$query->join('profiles');
-		$query->on('users.id', '=', 'profiles.user_id');*/
-
 		foreach($query_images as $items)
 		{
 			$imageurls[] = $items['url'];
+			//$description = $items['description'];
 		}
 
 		$image_count = count($query_images);
 
 		$imgdata = array();
 		$imgdata["images"] = $imageurls;
+		$imgdata["description"] = $items['description'];
+		$imgdata["favstars"] = $items['favstars'];
 		$imgdata["image_amount"] = $image_count;
 
 		//create the view
@@ -88,6 +84,8 @@ Class Mapgen extends \Model
 
 		//assign variables for the view to use based on the data
 		$imgview->set('images', $imgdata["images"], false);
+		$imgview->set('description', $imgdata["description"], false);
+		$imgview->set('favstars', $imgdata["favstars"], false);
 		$imgview->set('image_amount', $imgdata["image_amount"], false);
 		
 		echo $imgview;

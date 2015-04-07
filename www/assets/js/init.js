@@ -33,3 +33,13 @@ function prevImage(pageNum)
 	});
 	return false;
 }
+
+	var num = 50; //number of pixels before modifying styles
+
+	$(window).bind('scroll', function () {
+    	if ($(window).scrollTop() > num) {
+        	$('#nav-bar').addClass('menufixed');
+    	} else {
+        	$('#nav-bar').removeClass('menufixed');
+    	}
+	});

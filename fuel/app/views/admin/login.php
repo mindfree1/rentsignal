@@ -11,16 +11,16 @@
 	<div class="row">
 		<div class="input" id="emailField"><?php echo Form::input('email', Input::post('email', 'Enter Email or Username'), array('class' => 'defaultText', 'id' => 'emailField')); ?></div>
 		
-		<?php if ($val->errors('email')): ?>
-			<div class="error"><?php echo $val->errors('email')->get_message('You must provide a username or email'); ?></div>
+		<?php if ($val->error('email')): ?>
+			<div class="error"><?php echo $val->error('email')->get_message('You must provide a username or email'); ?></div>
 		<?php endif; ?>
 	</div>
 
 	<div class="row">
 		<div class="input" id="passwordField"><?php echo Form::password('password', '', array('class' => 'defaultText', 'placeholder' => 'Password')); ?></div>
 		
-		<?php if ($val->errors('password')): ?>
-			<div class="error"><?php echo $val->errors('password')->get_message(':label cannot be blank'); ?></div>
+		<?php if ($val->error('password')): ?>
+			<div class="error"><?php echo $val->error('password')->get_message(':label cannot be blank'); ?></div>
 		<?php endif; ?>
 	</div>
 

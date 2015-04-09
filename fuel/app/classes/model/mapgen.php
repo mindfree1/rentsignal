@@ -76,8 +76,13 @@ Class Mapgen extends \Model
 		$imgdata = array();
 		$imgdata["images"] = $imageurls;
 		$imgdata["description"] = $items['description'];
+		$imgdata["rooms"] = $items['rooms'];
+		$imgdata["avail_from"] = $items['avail_from'];
+		$imgdata["rent"] = $items['rent'];
+		$imgdata["bathrooms"] = $items['bathrooms'];
 		$imgdata["favstars"] = $items['favstars'];
 		$imgdata["image_amount"] = $image_count;
+
 
 		//create the view
 		$imgview = View::forge('propertydetails/propertyoverlay');
@@ -85,6 +90,10 @@ Class Mapgen extends \Model
 		//assign variables for the view to use based on the data
 		$imgview->set('images', $imgdata["images"], false);
 		$imgview->set('description', $imgdata["description"], false);
+		$imgview->set('rooms', $imgdata["rooms"], false);
+		$imgview->set('avail_from', $imgdata["avail_from"], false);
+		$imgview->set('rent', $imgdata["rent"], false);
+		$imgview->set('bathrooms', $imgdata["bathrooms"], false);
 		$imgview->set('favstars', $imgdata["favstars"], false);
 		$imgview->set('image_amount', $imgdata["image_amount"], false);
 		

@@ -23,6 +23,11 @@ var starRating = {
 	},
 }
 
+function hideiamges()
+{
+	alert('hello');
+}
+
 function validateSearch(validData)
 {
 		if(validData[0] == '' || null)

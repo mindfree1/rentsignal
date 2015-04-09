@@ -90,6 +90,18 @@ body{
   height:20px;
 }
 
+#hideimages
+{
+  background-color:#DFAB6A;
+  color:#ffffff;
+  bottom: 50px;
+  z-index: 100;
+  right: 0px;
+  height: 20px;
+  margin-bottom: 30px;
+  position: fixed;
+}
+
 #controls
 {
 	background:#F73737;

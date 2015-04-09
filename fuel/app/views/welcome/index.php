@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Rentsignal Local</title>
 <?php echo Asset::css(array('layout.css','map-styles.css','jquery-ui-1.8.21.custom.css')); ?>
-<?php echo Asset::js(array('jquery-1.7.2.js','markerclusterer.js','jquery-ui-1.8.21.js','infobubble.js','mapgen.js', 'angular.js', 'core_func.js')); ?>
+<?php echo Asset::js(array('jquery-1.7.2.js','markerclusterer.js','jquery-ui-1.8.21.js','infobubble.js','mapgen.js', 'angular.js', 'core_func.js', 'jquery.mCustomScrollbar.js')); ?>
 
 </head>
 <body>
@@ -140,6 +140,7 @@
 	<div id="image_titlebar">Favourites</div>
 	<div id="content" class="content"></div>
 	<div id="overlaycontent" class="overlaycontent"></div>
+	<div id="hideimages">Hide Images</div>
 
 	<script language="javascript" type="text/javascript"> 
 	function loadImages(data)
@@ -157,6 +158,8 @@
 	{
 		$("div.content").load("http://rentsignal.com/showlistings/favpopular");
 	}
+
+	//could propabably move all this script to the core_func.js file
 	
 	$(document).ready(function() {
 		load_map();
@@ -166,7 +169,31 @@
 			$("#searchContent").css('display', 'inline');
 			$("#searchContent").css('visibility', 'visible');
 		});
-	
+
+		$("#hideimages").live("hover", function() {
+			$(this).css('cursor', 'pointer');
+		});
+
+		$("#hideimages").live("click", function() {
+			var showimages = $('#hideimages').text();
+
+			if(showimages == 'Hide Images')
+			{
+				$('#hideimages').text('Show Images');
+				$('#hideimages').css('z-index', '10000');
+				$('#image_titlebar').toggle();
+				$('#content').toggle();
+
+			}
+
+			if(showimages == 'Show Images')
+			{
+				$('#hideimages').text('Hide Images');
+				$('#image_titlebar').toggle();
+				$('#content').toggle();
+			}
+		});
+
 		$("#searchContent > ul:gt(0)").hide();
 	});
 </script>

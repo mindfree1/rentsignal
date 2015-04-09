@@ -95,14 +95,18 @@ function setSlidingPanel(container, map, offlineMode)
 		zoom: 8,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		panControl: true,
+		disableDefaultUI: true,
+		//set to true if you want pan options
+		panControl: false,
 		panControlOptions: {
-  		position: google.maps.ControlPosition.TOP_RIGHT
+  			position: google.maps.ControlPosition.TOP_RIGHT
 		},
+		//set to true if you want zoom controls
 		zoomControl: true,
-		zoomControlOptions: {
-  		style: google.maps.ZoomControlStyle.LARGE,
-  		position: google.maps.ControlPosition.TOP_RIGHT
-	}
+			zoomControlOptions: {
+  				style: google.maps.ZoomControlStyle.LARGE,
+  				position: google.maps.ControlPosition.TOP_RIGHT
+			}
 		};
 
 		var infoWindow = null;
@@ -178,7 +182,7 @@ function setSlidingPanel(container, map, offlineMode)
 				var mLatLng = new google.maps.LatLng(data[i].rentals.lat,data[i].rentals.lng);
 				var marker = new google.maps.Marker({"position": mLatLng, icon: markerImage, id: markerID[i], id: data[i].rentals.id ,title: data[i].rentals.location, animation: google.maps.Animation.DROP}); 
 
-				contents = '<div id="contents" class="contents" style="width:1200px;height:400px;left:-550px;z-index:10000;"></div>';
+				contents = '<div id="contents" class="contents" style="width:1200px;height:1200px;left:-580px;z-index:10000;"></div>';
 
 				/*for(var i=0;i<markersArray;i++)
 				{
@@ -222,7 +226,7 @@ function setSlidingPanel(container, map, offlineMode)
 			backgroundColor: 'rgb(223, 223, 223)',
 			borderRadius: 4,
 			arrowSize: 10,
-			zIndex: 10000,
+			zIndex: 100000000,
 			borderWidth: 1,
 			borderColor: '#2c2c2c',
 			disableAutoPan: false,

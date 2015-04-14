@@ -23,11 +23,6 @@ var starRating = {
 	},
 }
 
-function hideiamges()
-{
-	alert('hello');
-}
-
 function validateSearch(validData)
 {
 		if(validData[0] == '' || null)
@@ -77,13 +72,36 @@ $(document).ready(function() {
 		starRating.setRating($(this), event);
     });
 
-    var num = 50; //number of pixels before modifying styles
+    //Probably a nicer way to do this than double up code for a simple dropdnw, work it out later to clean-up your code buddy!
+    $('.dropdown-toggle').live('mouseover mouseout', function(event) {
+    	if(event.type == 'mouseover')
+    	{
+    		$('.dropdown-menu').css('visibility', 'visible');
+    	}
+    	else
+    	{
+    		$('.dropdown-menu').css('visibility', 'hidden');
+    	}
+    });
+
+    $('.dropdown-toggle2').live('mouseover mouseout', function(event) {
+    	if(event.type == 'mouseover')
+    	{
+    		$('.dropdown-menu2').css('visibility', 'visible');
+    	}
+    	else
+    	{
+    		$('.dropdown-menu2').css('visibility', 'hidden');
+    	}
+    });
+
+    var num = 70; //number of pixels before modifying styles
 
 	$(window).bind('scroll', function () {
     	if ($(window).scrollTop() > num) {
-        	$('#nav-bar').addClass('menufixed');
+        	$('.nav-bar').addClass('menufixed');
     	} else {
-        	$('#nav-bar').removeClass('menufixed');
+        	$('.nav-bar').removeClass('menufixed');
     	}
 	});
 })

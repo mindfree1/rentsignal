@@ -12,7 +12,7 @@ body{
 
 .ui-widget-header
 {
-	background: #AD5050 !important;
+	background: #736F70 !important;
 }
 
 #search_listings{
@@ -79,7 +79,7 @@ body{
 }
 
 #image_titlebar {
-  background-color:#DFAB6A;
+  background-color: rgba(100, 181, 129, 1);
   color:#ffffff;
   width: 100%;
   position: fixed;
@@ -92,7 +92,7 @@ body{
 
 #hideimages
 {
-  background-color:#DFAB6A;
+  background-color: rgba(100, 181, 129, 1);
   color:#ffffff;
   bottom: 50px;
   z-index: 100;
@@ -153,17 +153,77 @@ body{
    border-top-color: #ffffff;
    background: #ffffff;
    }
-   
-#nav-bar
+
+
+.dropdown-toggle, .dropdown-toggle2, .dropdown-toggle3, .dropdown-toggle4
 {
-	background:#DFAB6A;
+
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 3px;
+  background-color: rgba(100, 181, 129, 1); /*fa5b0f- buttons were this orange color*/
+  width: 140px;
+  height: 35px;
+  position: relative;
+  text-align: center;
+  padding: 15px 0px 0px 0px;
+  left: 500px;
+
+}
+
+.dropdown-toggle, .dropdown-toggle2, .dropdown-toggle3, .dropdown-toggle4 > a 
+{
+  text-decoration: none;
+}
+
+.nav-bar > li
+{
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+  /*position: relative;*/
+}
+
+.nav-bar
+{
+	background:#333333;
+  list-style: none;
+  padding: 0px;
+  padding-left: 120px;
+  margin: 0px;
+  display: inline-block;
+  vertical-align: top;
+  /*position: relative;*/
+  float: none;
+  text-decoration: none;
   color: #ffffff;
 	border:solid 1px #c3c3c3;
 	height: 50px;
 	width: 100%;
 }
 
-#nav-bar > a
+.dropdown-menu, .dropdown-menu2, .dropdown-menu3, .dropdown-menu4
+{
+  visibility: hidden;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: rgba(100, 181, 129, 1);
+  width: 140px;
+  height: 35px;
+  margin: 18px 0px 0px 0px;
+  position: relative;
+  text-align: center;
+  padding: 15px 0px 0px 0px;
+  z-index: 10000;
+}
+
+li > a
+{
+  text-decoration: none;
+}
+
+.nav-bar > a
 {
   color: #ffffff;
 }
@@ -175,9 +235,7 @@ p {
 
 #listContent
 {
-	/*display: none;*/
   visibility: hidden;
-	padding-top: 26px;
 }
 
 #content { 
@@ -235,7 +293,7 @@ p {
 	margin-left: -33px;
 	padding-top: 15px;
   height: 250px;
-  background-color: rgba(223,171,106, 1);
+  background-color: rgba(100, 181, 129, 1);
 }
 
 .stars
@@ -309,7 +367,7 @@ p {
 #listingsPane
 {
 /*background:#DFAB6A;*/
-background-color: rgba(223,171,106, 0.5);
+background-color: rgba(100, 181, 129, 0.52);
 border:solid 1px #c3c3c3;
 height:990px;
 width: 400px;

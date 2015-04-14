@@ -8,18 +8,14 @@
 
 </head>
 <body>
-	<div id="header">
-		<div class="row">
-			<div id="logo"></div>
-		</div>
-	</div>
+
 
 	<div id="listContent">
 	<div id="searchContent">
 		<ul class="slider-content">
 			<div id="controls">
 			<form action="" name="control-form">
-			<fieldset style="height:230px;">
+			<fieldset style="">
 				<p><label for="amount">Price range:</label>
 				<input type="text" id="amount"/></p>
 					<div id='map-slider'>
@@ -125,7 +121,40 @@
 	</div>
 	<div class="container">
 		<div class="hero-unit"></div>
-			<div id="nav-bar"><?php echo Html::anchor('admin', 'Dashboard');?></div>
+		<ul class="nav-bar">
+			<li class="dropdown-toggle">
+					<?php echo Html::anchor('admin', 'Dashboard');?>
+				<ul class="dropdown-menu">
+					<li>
+						<?php echo Html::anchor('admin', 'Home Button 2');?>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown-toggle2">
+				<?php echo Html::anchor('admin', 'Main Button 2');?>
+				<ul class="dropdown-menu2">
+					<li>
+						<?php echo Html::anchor('admin', 'Sub Button 2');?>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown-toggle3">
+				<?php echo Html::anchor('admin', 'Main Button 3');?>
+				<ul class="dropdown-menu3">
+					<li>
+						<?php echo Html::anchor('admin', 'Sub Button 3');?>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown-toggle4">
+				<?php echo Html::anchor('admin', 'Main Button 4');?>
+				<ul class="dropdown-menu4">
+					<li>
+						<?php echo Html::anchor('admin', 'Sub Button 4');?>
+					</li>
+				</ul>
+			</li>
+		</ul>
 			<!--current user logged in name should go here-->
 			<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBKdZ3ZnSzIRg2bdZye0ndl56zkWWPVCJw&sensor=false&libraries=places"></script>
 			<div id="rentsignal_map" style="width:100%;height:1024px;float:right;z-index:1;overflow:hidden;"></div>

@@ -64,27 +64,33 @@ function get_starMappings(starClass)
 }
 
 $(document).ready(function() {
-	$('.stars li a').live('mouseover mouseout', function(event) {
+
+	$(document).on("mouseover mouseout", ".stars li a", function(event){
         starRating.showHover($(this), event);
     });
 
-    $('.stars li a').live('click', function(event) {
+	$(document).on("click", ".stars li a", function(event){
 		starRating.setRating($(this), event);
     });
 
-    //Probably a nicer way to do this than double up code for a simple dropdnw, work it out later to clean-up your code buddy!
-    $('.dropdown-toggle').live('mouseover mouseout', function(event) {
+	/*$(document).on("mouseover mouseout", ".dropdown-toggle", function(event){
     	if(event.type == 'mouseover')
     	{
-    		$('.dropdown-menu').css('visibility', 'visible');
+    		if(this.id == 'btndashboard')
+    		{
+    			$('.dropdown-menu-dashboard').css('visibility', 'visible');
+    		}
     	}
     	else
     	{
-    		$('.dropdown-menu').css('visibility', 'hidden');
+    		if(this.id == 'btndashboard')
+    		{
+    			$('.dropdown-menu-dashboard').css('visibility', 'hidden');
+    		}
     	}
     });
 
-    $('.dropdown-toggle2').live('mouseover mouseout', function(event) {
+	$(document).on("mouseover mouseout", ".dropdown-toggle2", function(event){
     	if(event.type == 'mouseover')
     	{
     		$('.dropdown-menu2').css('visibility', 'visible');
@@ -93,15 +99,15 @@ $(document).ready(function() {
     	{
     		$('.dropdown-menu2').css('visibility', 'hidden');
     	}
-    });
+    });*/
 
     var num = 70; //number of pixels before modifying styles
 
-	$(window).bind('scroll', function () {
+	/*$(window).bind('scroll', function () {
     	if ($(window).scrollTop() > num) {
         	$('.nav-bar').addClass('menufixed');
     	} else {
         	$('.nav-bar').removeClass('menufixed');
     	}
-	});
+	});*/
 })

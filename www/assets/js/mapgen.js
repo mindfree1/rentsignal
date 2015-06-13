@@ -49,7 +49,7 @@ function setSlidingPanel(container, map, offlineMode)
 
 	$("#listContent").appendTo(createPanel);
 					
-	$('#openrentals').live('click', function() {
+	$(document).on("click", "#openrentals", function(){ 
 	if (control.isOpen) {
 		$("#listingsPane").animate({
 			"marginLeft": "0px", "height" : "100px", "width" : "50px"},

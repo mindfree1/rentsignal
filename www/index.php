@@ -27,7 +27,7 @@ defined('FUEL_START_TIME') or define('FUEL_START_TIME', microtime(true));
 defined('FUEL_START_MEM') or define('FUEL_START_MEM', memory_get_usage());
 
 // Boot the app
-require APPPATH.'bootstrap.php';
+require APPPATH.'app-bootstrap.php';
 // Generate the request, execute it and send the output.
 try
 {

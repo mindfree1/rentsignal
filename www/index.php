@@ -8,26 +8,33 @@ ini_set('display_errors', 1);
 /**
  * Website document root
  */
-define('DOCROOT', __DIR__.DIRECTORY_SEPARATOR);
+define('DOCROOT', dirname($_SERVER['DOCUMENT_ROOT']));
 /**
  * Path to the application directory.
  */
-define('APPPATH', realpath(__DIR__.'/../fuel/app/').DIRECTORY_SEPARATOR);
+define('APPPATH', DOCROOT.'/fuel/app/');
 /**
  * Path to the default packages directory.
  */
-define('PKGPATH', realpath(__DIR__.'/../fuel/packages/').DIRECTORY_SEPARATOR);
+define('PKGPATH', DOCROOT.'/fuel/packages/');
+
 /**
  * The path to the framework core.
  */
-define('COREPATH', realpath(__DIR__.'/../fuel/core/').DIRECTORY_SEPARATOR);
+
+define('COREPATH', DOCROOT.'/fuel/core/');
+define('VENDORPATH', DOCROOT.'/fuel/vendor/');
+
+//print_r(COREPATH);
+//print_r(dirname($_SERVER['DOCUMENT_ROOT']));
+//print_r(PKGPATH);
 
 // Get the start time and memory for use later
 defined('FUEL_START_TIME') or define('FUEL_START_TIME', microtime(true));
 defined('FUEL_START_MEM') or define('FUEL_START_MEM', memory_get_usage());
 
 // Boot the app
-require APPPATH.'app-bootstrap.php';
+require APPPATH.'bootstrap.php';
 // Generate the request, execute it and send the output.
 try
 {

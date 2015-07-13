@@ -86,7 +86,6 @@
 			<?php endif; ?>
 			</div>
 			<div class="span16">
-<?php echo $content; ?>
 			</div>
 		</div>
 	</div>

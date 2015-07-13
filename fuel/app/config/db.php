@@ -12,13 +12,13 @@ return array(
 	 * Base config, just need to set the DSN, username and password in env. config.
 	 */
 	'default' => array(
-		'type'        => 'mysql',
+		'type'        => 'pdo',
 		'connection'  => array(
 			'hostname' => 'localhost',
 			'port' => '3306',
 			'database' => 'rentsignals',
 			'username' => 'root',
-			'password' => 'pass',
+			'password' => 'root',
 			'persistent' => false,
 			'compress' => false,
 		),

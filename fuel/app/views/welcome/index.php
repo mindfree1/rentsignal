@@ -1,6 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+    <!-- Facebook JS - ToDo: may look to use the PHP lib instead..-->
+      <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '229350117264184',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Google sign-in / platform library -->
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'https://www.googleapis.com/auth/plus.login',
+        'width': 200,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <!-- Basic Page Needs
     ================================================== -->
     <?php echo Asset::css(array('layout.css','map-styles.css','jquery-ui-1.8.21.custom.css', 'bootstrap.css', 'font-awesome.css', 'owl.carousel.css', 'owl.theme.css', 'style.css', 'responsive.css')); ?>
@@ -8,6 +49,10 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="assets/img/Sydney-Tower-Eye-6.jpg" />
+    <meta property="og:title" content="Rentsignal" />
+    <meta property="og:url" content="http://www.rentsignal.com" />
+
     <title>Rentsignal Local</title>
     <meta name="description" content="">
     <meta name="keywords" content="bootstrap theme, portfolio template, digital agency, onepage, mobile responsive, spirit8, free website, free theme, themeforces themes, themeforces wordpress themes, themeforces bootstrap theme">
@@ -169,6 +214,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="index.html">Rentsignal</a>
+          <div class="fb-like" data-href="http://www.rentsignal.com" data-width="50" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true" data-colorscheme="dark"></div>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -178,9 +224,8 @@
             <li><a href="#tf-mapsearch" class="page-scroll">Map Search</a></li>
             <li><a href="#tf-cityscope" class="page-scroll">Cityscope</a></li>
             <li><a href="#tf-team" class="page-scroll">Team</a></li>
-            <li><a href="#tf-services" class="page-scroll">Services</a></li>
-            <li><a href="#tf-works" class="page-scroll">Portfolio</a></li>
-            <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
+            <li><a href="#tf-blog" class="page-scroll">Blog</a></li>
+            <li><a href="#tf-latestnews" class="page-scroll">Latest News</a></li>
             <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -195,14 +240,21 @@
 
                 <div id="rslogoheader"></div>
                 <h1 id="rentsignalwelcome">Welcome to<strong><span class="color"> Rentsignal</span></strong></h1>
+                <form action="http://rentsignal.com/login/oauth/facebook" method="GET">
                 <div id="login">
                     <div id="username"><label id="usernamelabel">Username:</label><input type="text" class="logininput" id="usernameinput"></input></div>
                     <div id="password"><label id="passwordlabel">Password:</label><input type="password" class="logininput" id="passwordinput"></input></div>
-                    <input type="submit" class="submitbtn"></input>
+                    <!--<input type="submit" class="loginbtn" value="Login"></input>-->
+                    <a href="http://rentsignal.com/login/oauth/facebook"><div id="fb-signin"><img src="assets/img/fb-login.jpg"/></div></a>
+                    <!--<div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>-->
+                    <a href="http://rentsignal.com/login/oauth/twitter"><div id="twitter-signin"><img src="assets/img/twitter-login.png" /></div></a>
+                   <div id="my-signin2" data-width="300" data-height="200" data-longtitle="true"></div>
+                    <!--<input type="button" class="signupbtn" value="Signup"></input>-->
+                   <!-- <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true" action="http://rentsignal.com/login/oauth/facebook" method="GET"></div>-->
                 </div>
+                </form>
                 <h1 id="sydneyedition">Sydney<strong> Edition</strong></h1>
                 <a href="#tf-mapsearch" class="fa fa-angle-down page-scroll"></a>
-                <!--<p class="lead">We are a digital agency with <strong>years of experience</strong> and with <strong>extraordinary people</strong></p>-->
             </div>
         </div>
     </div>
@@ -212,33 +264,334 @@
             <div id="rentsignal_map" style="width:100%;height:1024px;float:right;z-index:1;overflow:hidden;"></div>
          </div>
     </div>
-    <!-- About Us Page
+
+    <!-- Cityscope
     ==========================================-->
     <div id="tf-cityscope">
-        <div class="container">
-            <div class="row">
+        <div id="cityscopeheader"></div>
+        <div class="container" id="cityscopecont">
                 <div class="col-md-6">
-                    <!--<img src="assets/img/02.png" class="img-responsive">-->
-                </div>
-                <div class="col-md-6">
-                    <div class="cityscope-text">
-                        <div class="section-title">
-                            <h4>Cityscope</h4>
-                            <h2>See the neighbourhood <strong>you </strong></h2>
+                    <div class="cityscope-text" id="cstxtpos">
+                        <div class="section-title"></br></br>
+                            <h2>Cityscope</h2></br>
+                            <h3>Find <strong> YOUR </strong> Neighbourhood</h3>
                             <hr>
                             <div class="clearfix"></div>
                         </div>
                         <p class="intro">
-                            might just be about to move to
+                            Filter and search based off a number of interests and lifestyle choices to find a neighbourhood perfectly suited to <span class="color"><strong>YOU</strong></span>
                         </p>
                         <ul class="cityscope-list">
                             <li>
                                 <span class="fa fa-dot-circle-o"></span>
-                                <strong>Browse</strong> - <em>Take a look at everything the neighbourhood has to offer based off your search and interests</em>
+                                <em>Take a look at everything neighbourhood's have to offer based off your search and interests</em>
                             </li>
                         </ul>
                     </div>
                 </div>
+
+            <div class="categories">
+                
+                <ul class="cat">
+                    <li class="pull-left"><h4>Filter by Type:</h4></li>
+                    <li class="pull-right">
+                        <ol class="type">
+                            <li><a href="#" data-filter="*" class="active">All</a></li>
+                            <li><a href="#" data-filter=".food">Food/Restrurants</a></li>
+                            <li><a href="#" data-filter=".entertainment">Entertainment</a></li>
+                            <li><a href="#" data-filter=".scenery" >Scenery</a></li>
+                            <li><a href="#" data-filter=".music" >Music</a></li>
+                            <li><a href="#" data-filter=".activities" >Activites</a></li>
+                        </ol>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            <div id="lightbox" class="row">
+
+                <div class="col-sm-6 col-md-3 col-lg-3 food entertainment">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Newtown</h4>
+                                    <small>Mary's</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                    <small><em></em></small>
+                                </div>
+                                <img src="assets/img/cityscope/marysnewtown.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 food entertainment">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Newtown</h4>
+                                    <small>Mary's</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                    <small><em></em></small>
+                                </div>
+                                <img src="assets/img/cityscope/marys2.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 music entertainment">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Sydney - Elizabeth St</h4>
+                                    <small>Ramblin Rascal Tavern</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                    <small><em></em></small>
+                                </div>
+                                <img src="assets/img/cityscope/ramblinrascalsydney.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 scenery  music entertainment">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Marrickville</h4>
+                                    <small>The Henson</small>
+                                    <small>
+                                        <em>
+                                            The Henson is a community driven hotel, supporting, supplying and serving the best of our neighbourhood. Our focus is on quality, 
+                                            seasonality and sustainability. Supporting ethical and responsible practises. The Henson is a playground for everyone to enjoy
+                                        </em>
+                                    </small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/hensonent.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 col-md-3 col-lg-3 scenery music entertainment">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Marrickville</h4>
+                                    <small>The Henson</small>
+                                    <small><em>
+                                        The Henson is a community driven hotel, supporting, supplying and serving the best of our neighbourhood. Our focus is on quality, seasonality and sustainability. 
+                                        Supporting ethical and responsible practises. The Henson is a playground for everyone to enjoy
+                                    </small></em>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/hensonent2.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 activities entertainment">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Manly</h4>
+                                    <small>4 Pines Brewing</small>
+                                    <small><em>
+                                    At 4 Pines Brewing Company in Manly it's all about handcrafted beer. With an emphasis on quality craftsmanship, 
+                                    natural ingredients and traditional time-honoured techniques (not to mention fabulous pub grub) it's no wonder that 
+                                    4 Pines Brewing Company is a local favourite.
+                                    </em></small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/4pinesbreweryburgers.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 branding">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Darlinghurst</h4>
+                                    <small>Hinky Dinks</small>
+
+                                    <small><em>
+                                    Hinky Dinks, the recent tiki bar to hit Darlinghurst, is hoisting the flag for the most entertaining drinking experience 
+                                    since LA's Trader Vic's. With kitsch décor and cocktails like the Hinky Fizz and Bourbon Milk Sundae, Hinky Dinks is 
+                                    all about making your night out one to remember.
+                                    </em></small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/hinkydinks.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 entertainment scenery">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Sydney Art</h4>
+                                    <small>Activities</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/artentertainment1.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 food entertainment activities">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Mosman</h4>
+                                    <small>The Burger Shed</small>
+                                    <small><em>
+                                    At The Burger Shed in Mosman, the finest, sustainable produce to create 
+                                    offerings such as a vintage cheese burger with grass-fed Angus beef, flame-grilled free-range chicken burger, and a summer fish burger of fried local fish. 
+                                    Team it with truffle and parmesan fries and BBQ corn with chilli salt butter and don't look back.
+                                    </em></small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/burgershed.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 food entertainment">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Marrickville</h4>
+                                    <small>Best Burger</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/burgersyd.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 scenery music entertainment">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Newtown</h4>
+                                    <small>The Enmore</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/sydneymusicscene.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 entertainment food">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Summer Hill</h4>
+                                    <small>Best Burger</small>
+
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/burgersyd3.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 entertainment food">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Bondi</h4>
+                                    <small>Amazing Burger</small>
+                                    <small>
+                                    <em>
+                                        Nestled on a bustling Bondi Road corner, Fat Rupert's presents a breath of fresh air with its understated charm and warmth. Head chef Eli Challenger, 
+                                        of Porteno fame, has created an exquisite modern-Australian, paddock-to-plate style menu of share plates. All produce is sourced locally, 
+                                        changing seasonally to provide the freshest flavours. On the drinks side, you will find some incredible wines, craft beers and seriously 
+                                        delicious cocktails served in jam jars.
+                                    </em></small>
+
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/fatruperts.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 entertainment music">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Imperial Hotel Sydney</h4>
+                                    <small>Live Music</small>
+                                    <small><em>
+                                    </em></small>
+
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/imperialhotelsydneymusic.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 entertainment music">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Newtown</h4>
+                                    <small>Newtown Social Club Live Music</small>
+                                    <small><em>
+                                        Get here for the best in Live music from Newtown, showing every night there's always something for everyone's tastes.
+                                    </em></small>
+
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="assets/img/cityscope/socialclubnewtownmusic.jpg" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             </div>
         </div>
     </div>
@@ -258,11 +611,11 @@
                 <div id="team" class="owl-carousel owl-theme row" style="left:300px;">
                     <div class="item">
                         <div class="thumbnail">
-                            <img src="assets/img/team/trent-cofounder.jpg" alt="..." class="img-circle team-img">
+                            <img src="assets/img/team/ceocoufounder.jpg" alt="..." class="img-circle team-img">
                             <div class="caption">
-                                <h3>Trent Durfee</h3>
+                                <h3>Trent Durfée</h3>
                                 <p>CEO / Co-Founder</p>
-                                <p>A passionate tech-head who just wants to help build cool things</p>
+                                <p>A passionate tech-head who just wants to help build cool things and hopefully change the world. Is that too much to ask for?</p>
                             </div>
                         </div>
                     </div>
@@ -271,7 +624,7 @@
                         <div class="thumbnail">
                             <img src="assets/img/team/kaylan-cofounder.jpg" alt="..." class="img-circle team-img">
                             <div class="caption">
-                                <h3>Kaylan Durfee</h3>
+                                <h3>Kaylan Durfée</h3>
                                 <p>COO / Co-Founder</p>
                                 <p>Design gun who is wicked clever at finding the right balance between design, form and functionality.</p>
                             </div>
@@ -285,39 +638,39 @@
 
     <!-- Services Section
     ==========================================-->
-    <div id="tf-services" class="text-center">
+    <div id="tf-blog" class="text-center">
         <div class="container">
             <div class="section-title center">
-                <h2>Take a look at <strong>our services</strong></h2>
+                <h2>Get inspiration from our<strong> blog</strong></h2>
                 <div class="line">
                     <hr>
                 </div>
                 <div class="clearfix"></div>
-                <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>
+                <small><em>Whether it is to deck out your newly rented space with great stylish furniture ideas, ideas for handling your utilities or reading up on the latest events the community has provided you can find it here.</em></small>
             </div>
             <div class="space"></div>
             <div class="row">
-                <div class="col-md-3 col-sm-6 service">
-                    <i class="fa fa-desktop"></i>
-                    <h4><strong>Web design</strong></h4>
+                <div class="col-md-3 col-sm-6 blog">
+                    <div class="icons"><img src="../assets/img/stylish-furniture.jpg" class="iconimg"/></div>
+                    <h4><strong>Stylish Furniture ideas for those on a budget</strong></h4>
                     <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
                 </div>
 
-                <div class="col-md-3 col-sm-6 service">
-                    <i class="fa fa-mobile"></i>
-                    <h4><strong>Mobile Apps</strong></h4>
+                <div class="col-md-3 col-sm-6 blog">
+                    <div class="icons"><img src="../assets/img/cityscope/sydmusic.jpg" class="iconimg"/></div>
+                    <h4><strong>Music that hit your 'hood recent write-ups</strong></h4>
                     <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
                 </div>
 
-                <div class="col-md-3 col-sm-6 service">
-                    <i class="fa fa-camera"></i>
-                    <h4><strong>Photography</strong></h4>
+                <div class="col-md-3 col-sm-6 blog">
+                    <div class="icons"><img src="../assets/img/sydhistory.jpg" class="iconimg"/></div>
+                    <h4><strong>The history of your area</strong></h4>
                     <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
                 </div>
 
-                <div class="col-md-3 col-sm-6 service">
-                    <i class="fa fa-bullhorn"></i>
-                    <h4><strong>Marketing</strong></h4>
+                <div class="col-md-3 col-sm-6 blog">
+                    <div class="icons"><img src="../assets/img/sydutillightbulb.jpg" class="iconimg"/></div>
+                    <h4><strong>8 Tips for handling your rent and utilities in a shared living space</strong></h4>
                     <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
                 </div>
             </div>
@@ -326,216 +679,51 @@
 
     <!-- Clients Section
     ==========================================-->
-    <div id="tf-clients" class="text-center">
+    <!--<div id="tf-clients" class="text-center">
         <div class="overlay">
             <div class="container">
 
                 <div class="section-title center">
                     <h2><strong></strong></h2>
-                    <!--<div class="line">
+                    <div class="line">
                         <hr>
-                    </div>-->
-                </div>
-                <!--<div id="clients" class="owl-carousel owl-theme">-->
-                    <div class="item">
-                        <!--<img src="assets/img/client/01.png">-->
                     </div>
+                </div>
+                <div id="clients" class="owl-carousel owl-theme">
                     <div class="item">
-                        <!--<img src="assets/img/client/02.png">-->
+                        <!--<img src="assets/img/client/01.png">
                     </div>
                     <div class="item">
-                        <!--<img src="assets/img/client/03.png">-->
+                        <!--<img src="assets/img/client/02.png">
                     </div>
                     <div class="item">
-                        <!--<img src="assets/img/client/04.png">-->
+                        <!--<img src="assets/img/client/03.png">
                     </div>
                     <div class="item">
-                        <!--<img src="assets/img/client/05.png">-->
+                        <!--<img src="assets/img/client/04.png">
                     </div>
                     <div class="item">
-                        <!--<img src="assets/img/client/06.png">-->
+                        <!--<img src="assets/img/client/05.png">
                     </div>
                     <div class="item">
-                        <!--<img src="assets/img/client/07.png">-->
+                        <!--<img src="assets/img/client/06.png">
                     </div>
-                <!--</div>-->
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Portfolio Section
-    ==========================================-->
-    <div id="tf-works">
-        <div class="container"> <!-- Container -->
-            <div class="section-title text-center center">
-                <h2>Take a look at <strong>our services</strong></h2>
-                <div class="line">
-                    <hr>
-                </div>
-                <div class="clearfix"></div>
-                <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>
-            </div>
-            <div class="space"></div>
-
-            <div class="categories">
-                
-                <ul class="cat">
-                    <li class="pull-left"><h4>Filter by Type:</h4></li>
-                    <li class="pull-right">
-                        <ol class="type">
-                            <li><a href="#" data-filter="*" class="active">All</a></li>
-                            <li><a href="#" data-filter=".web">Web Design</a></li>
-                            <li><a href="#" data-filter=".photography">Photography</a></li>
-                            <li><a href="#" data-filter=".app" >Mobile App</a></li>
-                            <li><a href="#" data-filter=".branding" >Branding</a></li>
-                        </ol>
-                    </li>
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-
-            <div id="lightbox" class="row">
-
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="assets/img/portfolio/01.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 photography app">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="assets/img/portfolio/02.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="assets/img/portfolio/03.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="assets/img/portfolio/04.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 web">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="assets/img/portfolio/05.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 app">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="assets/img/portfolio/06.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 photography web">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="assets/img/portfolio/07.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 web">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="assets/img/portfolio/08.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
+                    <div class="item">
+                        <!--<img src="assets/img/client/07.png">
                     </div>
                 </div>
 
             </div>
         </div>
-    </div>
+    </div>-->
 
-    <!-- Testimonials Section
+    <!-- Latest News Section
     ==========================================-->
-    <div id="tf-testimonials" class="text-center">
+    <div id="tf-latestnews" class="text-center">
         <div class="overlay">
             <div class="container">
                 <div class="section-title center">
-                    <h2><strong>Our clients’</strong> testimonials</h2>
+                    <h2><strong>Latest News</strong> and Updates</h2>
                     <div class="line">
                         <hr>
                     </div>
@@ -544,18 +732,18 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div id="testimonial" class="owl-carousel owl-theme">
                             <div class="item">
-                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
-                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
+                                <h5>We'll be launching both a Mobile optimized site and iOS plus Android app very soon! Watch this space for an update.</h5>
+                                <p><strong>Trent Durfée</strong>, Rentsignal</p>
                             </div>
 
                             <div class="item">
-                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
-                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
+                                <h5>We'll be revamping the design of Cityscope to be able to offer you the features you want and make it that much easier to find your best possible lifestyle and neighbourhood at ease.</h5>
+                                <p><strong>Kaylan Durfée</strong>, Rentsignal</p>
                             </div>
 
                             <div class="item">
-                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
-                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
+                                <h5>Currently in stealth mode, keeping checking back for when we officially launch. Not long now, let 2015 be an exciting year and we hope you enjoy our site.</h5>
+                                <p><strong>Trent Durfée</strong>, Rentsignal.</p>
                             </div>
                         </div>
                     </div>

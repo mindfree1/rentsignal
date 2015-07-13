@@ -184,11 +184,16 @@ return array(
 		 *     array('auth'	=> PKGPATH.'auth/')
 		 * );
 		 */
+		/*'packages'  => array(
+			'orm' => 'C:\wamp\fuel\packages\orm',
+			'auth' => 'C:\wamp\fuel\packages\auth',
+		),*/
+
 		'packages'  => array(
 			'orm',
 			'auth',
+			//'opauth',
 		),
-
 		/**
 		 * These modules are always loaded on Fuel's startup. You can specify them
 		 * in the following manner:

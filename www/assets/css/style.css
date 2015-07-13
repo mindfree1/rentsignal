@@ -86,6 +86,28 @@ color: #FCAC45;
 font-weight: 900;
 }
 
+/*Blog section icon styles*/
+.icons
+{
+	width: 250px;
+	height: 160px;
+}
+
+.icons:hover
+{
+	border: #FCAC45;
+	color: #ffffff;
+	border: 4px solid transparent;
+	border-radius: 90px;
+}
+
+.iconimg
+{
+	width: 160px;
+	height: 150px;
+	border-radius: 90px;
+}
+
 #tf-menu.navbar-default .navbar-nav > li > a {
 	text-transform: uppercase;
 	color: #FFF;
@@ -153,6 +175,7 @@ font-weight: 900;
 	left:540px;*/
 	margin-left: 30px;
 	border-radius: 40px;
+	margin-bottom: 20px;
 }
 
 #passwordinput
@@ -166,7 +189,7 @@ font-weight: 900;
 	{
 		top: 48%;
 		position: absolute;
-		left: 40%;
+		left: 36.85%;
 	}
 
 	#rslogoheader
@@ -181,20 +204,20 @@ font-weight: 900;
 		height:300px;
 		background-size: 60%;
 		width: 400px;
-		left: 42%;
+		left: 38%;
 	}
 
 	#sydneyedition
 	{
 		top: 88%;
 		position: absolute;
-		left: 44%;
+		left: 41%;
 	}
 
 	#login
 	{
 		position: absolute;
-		left: 40%;
+		left: 37.65%;
 		padding-bottom: 60px;
 		top: 63%;
 	}
@@ -210,14 +233,27 @@ font-weight: 900;
 		margin-left: 5px;
 	}
 
-	.submitbtn
+	.loginbtn
 	{
 		position: absolute;
 		/*top:360px;
 		width:105px;*/
 		top: 75%;
 		width: 200px;
-		left: 35%;
+		left: 0%;
+		color: #000000;
+		font-weight: 900;
+		border-radius: 40px;
+	}
+
+	.signupbtn
+	{
+		position: absolute;
+		/*top:360px;
+		width:105px;*/
+		top: 75%;
+		width: 200px;
+		left: 54.2%;
 		color: #000000;
 		font-weight: 900;
 		border-radius: 40px;
@@ -243,14 +279,19 @@ font-weight: 900;
 		left: 36%;
 	}
 
-	.submitbtn
+	.loginbtn
 	{
-		left: 30%;
+		left: 0%;
+	}
+
+	.signupbtn
+	{
+		left: 54.2%;
 	}
 
 	#sydneyedition
 	{
-		left: 42%;
+		left: 41%;
 	}
 }
 
@@ -263,6 +304,7 @@ a.fa.fa-angle-down {
 	color: #fff;
 	border: 2px solid #b4b4b4;
 	border-radius: 50%;
+	left: 48%;
 	font-size: 40px;
 	margin-top: 0px;
 	position: absolute;
@@ -273,9 +315,23 @@ a.fa.fa-angle-down:hover{
 	color: #ffffff;
 	border: 2px solid #fcac45;
 }
-/* About Section */
+/* Cityscope Section */
+
+#cityscopeheader
+{
+	width: 100%;
+	height: 300px;
+	background: url(../img/angel.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	color: #ffffff;
+}
+
 #tf-cityscope{
-	padding: 680px 0;
+	/*padding: 680px 0;*/
+	margin-bottom: 100px;
 }
 ul.cityscope-list{ margin: 30px 0 0 ;}
 ul.cityscope-list li{
@@ -286,6 +342,18 @@ ul.cityscope-list li{
 }
 ul.cityscope-list li span{ 
 	margin-right: 10px;
+}
+
+#cityscopecont
+{
+	width: 87%;
+}
+
+#cstxtpos
+{
+	width: 1024px;
+	height: 280px;
+	margin-left: -50px;
 }
 
 /* Team Section */
@@ -384,8 +452,8 @@ img.img-circle.team-img {
 	background: #FCAC45;
 }
 
-/* Services Section */
-#tf-services{
+/* Blog Section */
+#tf-blog{
 	padding: 80px 0;
 }
 
@@ -393,7 +461,7 @@ img.img-circle.team-img {
 	margin-top: 40px;
 }
 
-#tf-services i.fa {
+#tf-blog i.fa {
 	font-size: 40px;
 	border: 4px solid #FCAC45;
 	width: 100px;
@@ -404,19 +472,19 @@ img.img-circle.team-img {
 	transition: all 0.5s;
 }
 
-#tf-services i.fa.fa-mobile{
+#tf-blog i.fa.fa-mobile{
 	font-size: 50px;
 	padding: 20px 25px;
 }
 
-#tf-services .service:hover>i.fa{
+#tf-blog .blog:hover>div.fa{
 	background: #FCAC45;
 	color: #ffffff;
 }
 
 /* Clients Section */
 #tf-clients{
-	background: url(../img/gordansbay.jpg);
+	background: url();
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
@@ -448,13 +516,14 @@ img.img-circle.team-img {
 	padding: 80px 0;
 }
 .categories{ 
-	padding: 10px 0;
+	padding: 30px 0;
 }
 ul.cat li{
 	display: inline-block;
 }
 #tf-works li.pull-right {
 	margin-top: 10px;
+	background-color: #F9B145;
 }
 ol.type li{
 	display: inline-block;
@@ -510,7 +579,7 @@ ol.type li a.active { font-weight: 700; }
 	margin: 0 auto;
 	color: #ffffff;
 	background: rgba(0, 0, 0, 0.66);
-	padding: 25% 0;
+	padding: 10% 0;
 	height: 100%;
 	width: 100%;
 	opacity: 0;
@@ -553,7 +622,7 @@ ol.type li a.active { font-weight: 700; }
 	color: #FCAC45;
 }
 /* Testimonials Section */
-#tf-testimonials{
+#tf-latestnews{
 	background: url(../img/sydneytrains.jpg);
 	background-size: cover;
 	background-position: center;
@@ -562,7 +631,7 @@ ol.type li a.active { font-weight: 700; }
 	color: #ffffff;
 }
 
-#tf-testimonials .overlay{
+#tf-latestnews .overlay{
 	background: -moz-linear-gradient(top,  rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.73) 17%, rgba(0,0,0,0.66) 35%, rgba(0,0,0,0.55) 62%, rgba(0,0,0,0.4) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.8)), color-stop(17%,rgba(0,0,0,0.73)), color-stop(35%,rgba(0,0,0,0.66)), color-stop(62%,rgba(0,0,0,0.55)), color-stop(100%,rgba(0,0,0,0.4))); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* Chrome10+,Safari5.1+ */
@@ -573,16 +642,16 @@ ol.type li a.active { font-weight: 700; }
 	padding: 80px 0;
 	background-attachment: fixed;
 }
-#testimonial {
+#latestnews {
 	padding: 30px 0;
 }
-#testimonial .item{
+#latestnews .item{
     display: block;
     width: 100%;
     height: auto;
 }
 
-#testimonial .item p {
+#latestnews .item p {
 	font-weight: 400;
 	margin: 30px 0;
 	color: #d1d1d1;
